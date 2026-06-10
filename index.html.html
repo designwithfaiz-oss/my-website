@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designwithfaiz | Brand, Design &amp; Content Strategy for Creators</title>
+  <meta name="description" content="Helping creators &amp; startups turn content into leads with strategic design, branding, and content systems.">
+  <meta property="og:title" content="Designwithfaiz | Brand, Design &amp; Content Strategy for Creators">
+  <meta property="og:description" content="Helping creators &amp; startups turn content into leads with strategic design, branding, and content systems.">
+  <meta property="og:url" content="https://designwithfaiz.com/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts — Syne (headlines) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS  (unchanged from original)
+       ============================================= */
+    :root {
+      --bg:           #ffffff;
+      --bg-card:      #f5f8fc;
+      --bg-raised:    #eaf2fb;
+      --bg-process:   #f0f7ff;
+      --text:         #1f1f1f;
+      --text-muted:   #5d6b7a;
+      --text-dim:     #9daab8;
+      --accent:       #a0cef7;             /* sky blue — decorative fills / borders / glows */
+      --accent-dark:  #0f7abf;             /* deeper blue — text uses */
+      --accent-glow:  rgba(160,206,247,0.18);
+      --border:       #dde8f2;
+      --border-soft:  #e8f0f9;
+      --font:         'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-display: 'Syne', system-ui, sans-serif;
+      --r:            12px;
+      --r-lg:         20px;
+      --ease:         0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ---- Utilities ---- */
+    .wrap   { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+    .wrap-narrow { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+    .sec    { padding: 110px 0; }
+    .center { text-align: center; }
+    .center .lead { margin-left: auto; margin-right: auto; }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .tag {
+      display: inline-block;
+      background: var(--accent-glow);
+      border: 1px solid rgba(160,206,247,0.55);
+      color: var(--accent-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    /* ---- Typography ---- */
+    .h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 82px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -2.5px;
+    }
+    .h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.6vw, 54px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+    }
+    .h3 {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+    .lead {
+      font-size: clamp(15px, 1.8vw, 19px);
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 620px;
+    }
+    .orange { color: var(--accent-dark); }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 30px;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--ease);
+      border: none;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: #1f1f1f;
+      color: #ffffff;
+      box-shadow: 0 2px 14px rgba(31,31,31,0.16);
+    }
+    .btn-primary:hover {
+      background: #333333;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(31,31,31,0.24);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: #1f1f1f;
+      background: rgba(0,0,0,0.04);
+      transform: translateY(-2px);
+    }
+    .btn-sm { padding: 11px 22px; font-size: 14px; }
+
+    /* =============================================
+       NAVBAR
+       ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+    nav.stuck {
+      border-bottom-color: var(--border);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .nav-logo img { height: 34px; }
+
+    /* Custom text wordmark logo */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 32px; height: 32px;
+      background: #1f1f1f;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 17px;
+      color: #fff;
+      flex-shrink: 0;
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+    .logo:hover .logo-mark {
+      transform: rotate(-6deg);
+      box-shadow: 0 6px 18px rgba(160,206,247,0.45);
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -0.6px;
+      color: var(--text);
+      line-height: 1;
+    }
+    .logo-text span { color: var(--accent-dark); }
+    /* Footer variant — sits on its own, slightly larger mark spacing */
+    .footer-logo .logo-mark { width: 30px; height: 30px; font-size: 16px; border-radius: 8px; }
+    .footer-logo .logo-text { font-size: 18px; }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color var(--ease);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--ease);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+
+    /* Hamburger */
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border-radius: 8px; transition: background var(--ease); }
+    .ham:hover { background: var(--bg-card); }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all var(--ease); }
+    .mob-nav {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 28px 32px;
+      z-index: 99;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+    .mob-nav.on { display: block; }
+    .mob-nav ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .mob-nav a { font-size: 20px; font-weight: 700; color: var(--text); }
+    .mob-nav .btn { margin-top: 24px; width: 100%; justify-content: center; }
+
+    /* =============================================
+       HERO — centered, FounderOS style
+       ============================================= */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 180px 0 120px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(160,206,247,0.22) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+
+    @keyframes heroUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-logo   { animation: heroUp 0.6s cubic-bezier(.4,0,.2,1) both; animation-delay: 0.05s; }
+    .hero-eyebrow{ animation: heroUp 0.6s cubic-bezier(.4,0,.2,1) both; animation-delay: 0.16s; }
+    .hero-headline{animation: heroUp 0.6s cubic-bezier(.4,0,.2,1) both; animation-delay: 0.26s; }
+    .hero-sub    { animation: heroUp 0.6s cubic-bezier(.4,0,.2,1) both; animation-delay: 0.38s; }
+    .hero-cta    { animation: heroUp 0.6s cubic-bezier(.4,0,.2,1) both; animation-delay: 0.5s;  }
+    .hero-proof  { animation: heroUp 0.6s cubic-bezier(.4,0,.2,1) both; animation-delay: 0.62s; }
+
+    .hero-logo-mark {
+      width: 64px; height: 64px;
+      margin: 0 auto 30px;
+      background: #1f1f1f;
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      color: #fff;
+      box-shadow: 0 10px 36px rgba(160,206,247,0.4);
+    }
+    .hero-availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+    }
+    .hero-availability .dot {
+      width: 8px; height: 8px;
+      background: #22C55E;
+      border-radius: 50%;
+      animation: blink 2s ease infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero-headline { margin: 0 auto 26px; max-width: 880px; }
+    .headline-word { position: relative; display: inline-block; }
+    .headline-word::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0; right: 0;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: lineIn 0.55s cubic-bezier(.4,0,.2,1) forwards 1.05s;
+    }
+    @keyframes lineIn { to { transform: scaleX(1); } }
+
+    .hero-sub { margin: 0 auto 38px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .hero-proof {
+      margin-top: 64px;
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-stats .stat-n {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+    }
+    .hero-stats .stat-l { font-size: 12px; color: var(--text-muted); margin-top: 7px; font-weight: 600; }
+
+    /* =============================================
+       TRUST BAR
+       ============================================= */
+    .trust {
+      padding: 46px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .trust-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    /* Text-based client logos */
+    .trust-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 18px 52px;
+    }
+    .trust-logo-name {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 2.2vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-dim);
+      opacity: 0.55;
+      white-space: nowrap;
+      transition: color var(--ease), opacity var(--ease);
+    }
+    .trust-logo-name span { color: var(--accent-dark); }
+    .trust-logo-name:hover { color: var(--text); opacity: 1; }
+    @media (max-width: 480px) {
+      .trust-logos { gap: 14px 32px; }
+    }
+
+    /* =============================================
+       NEGATIVE POSITIONING  ("Not a ___" — FounderOS signature)
+       ============================================= */
+    .neg-sec { background: var(--bg); }
+    .neg-head { max-width: 760px; margin: 0 auto 60px; text-align: center; }
+    .neg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .neg-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 38px 32px;
+      transition: all var(--ease);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .neg-card:hover {
+      border-color: rgba(160,206,247,0.7);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(160,206,247,0.14);
+    }
+    .neg-strike {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .neg-strike s { color: var(--text-dim); text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+    .neg-d { font-size: 14.5px; color: var(--text-muted); line-height: 1.8; }
+    .neg-foot {
+      margin-top: 48px;
+      text-align: center;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+    .neg-foot strong { color: var(--text); font-weight: 700; }
+
+    /* =============================================
+       SERVICES / FEATURE GRID
+       ============================================= */
+    .svc-sec { background: var(--bg-process); }
+    .svc-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .svc-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px 30px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--ease);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--ease);
+      border-radius: 3px 3px 0 0;
+    }
+    .svc-card:hover {
+      border-color: rgba(160,206,247,0.7);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(160,206,247,0.14);
+    }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon {
+      width: 54px; height: 54px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(160,206,247,0.4);
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+    .svc-title { font-family: var(--font-display); font-size: 19px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.3px; color: var(--text); }
+    .svc-desc  { font-size: 14.5px; color: var(--text-muted); line-height: 1.8; margin-bottom: 26px; }
+    .svc-link  {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap var(--ease);
+    }
+    .svc-link:hover { gap: 10px; }
+
+    /* =============================================
+       WORK / PORTFOLIO
+       ============================================= */
+    .work-head { text-align: center; max-width: 720px; margin: 0 auto 52px; }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .work-item {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .work-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .work-item:hover img { transform: scale(1.06); }
+    .work-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,20,0.88) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity var(--ease);
+      display: flex;
+      align-items: flex-end;
+      padding: 26px;
+    }
+    .work-item:hover .work-overlay { opacity: 1; }
+    .work-cat  { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+    .work-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #fff; }
+    .work-yr   { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .work-foot { text-align: center; margin-top: 44px; }
+
+    /* =============================================
+       ABOUT — "Hey, I'm Faiz" personal block
+       ============================================= */
+    .about-sec { background: var(--bg-card); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      position: relative;
+      box-shadow: 0 4px 32px rgba(160,206,247,0.14);
+    }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-badge {
+      position: absolute;
+      bottom: 22px; left: 22px;
+      background: #1f1f1f;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: var(--r);
+      letter-spacing: 0.5px;
+    }
+    .about-bio { font-size: 16px; color: var(--text-muted); line-height: 1.9; margin: 20px 0 18px; }
+    .about-skills { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 36px; }
+    .skill-pill {
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 100px;
+      transition: all var(--ease);
+    }
+    .skill-pill:hover { border-color: var(--accent); color: var(--text); background: var(--accent-glow); }
+    .about-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* =============================================
+       PROCESS
+       ============================================= */
+    .process-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .proc-item {
+      padding: 36px 30px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--ease);
+      background: var(--bg);
+    }
+    .proc-item:nth-child(3n)  { border-right: none; }
+    .proc-item:nth-child(n+4) { border-bottom: none; }
+    .proc-item:hover { background: var(--bg-raised); }
+    .proc-n {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .proc-t { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .proc-d { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; }
+
+    /* =============================================
+       TESTIMONIALS
+       ============================================= */
+    .test-sec { background: var(--bg-process); }
+    .test-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .test-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 40px;
+      transition: border-color var(--ease), box-shadow var(--ease);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .test-card:hover {
+      border-color: rgba(160,206,247,0.6);
+      box-shadow: 0 12px 40px rgba(160,206,247,0.1);
+    }
+    .test-stars { font-size: 14px; color: #F59E0B; letter-spacing: 2px; margin-bottom: 18px; }
+    .test-quote {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+    .test-author { display: flex; align-items: center; gap: 14px; }
+    .test-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+    .test-name { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text); }
+    .test-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* =============================================
+       STATS BAND — signature sky blue section
+       ============================================= */
+    .stats-band { background: var(--accent); }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stats-item {
+      padding: 64px 40px;
+      text-align: center;
+      border-right: 1px solid rgba(31,31,31,0.14);
+    }
+    .stats-item:last-child { border-right: none; }
+    .stats-n {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 800;
+      color: #1f1f1f;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stats-l { font-size: 13px; color: rgba(31,31,31,0.6); font-weight: 600; }
+
+    /* =============================================
+       CTA / CONTACT — centered, FounderOS style
+       ============================================= */
+    .cta-sec {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .cta-sec::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 760px; height: 760px;
+      background: radial-gradient(circle, rgba(160,206,247,0.24) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      padding: 13px 26px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin: 36px auto 0;
+      transition: all var(--ease);
+    }
+    .cta-email:hover { border-color: var(--accent); color: var(--text); box-shadow: 0 4px 20px rgba(160,206,247,0.18); }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 56px 0 48px;
+      background: var(--bg);
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo img { height: 30px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color var(--ease); font-weight: 500; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      transition: all var(--ease);
+    }
+    .footer-socials a:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .footer-copy { font-size: 12px; color: var(--text-dim); text-align: center; margin-top: 36px; }
+
+    /* =============================================
+       SCROLL ANIMATIONS
+       ============================================= */
+    [data-fade] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(.4,0,.2,1),
+                  transform 0.65s cubic-bezier(.4,0,.2,1);
+    }
+    [data-fade].vis { opacity: 1; transform: translateY(0); }
+    [data-d="1"] { transition-delay: 0.08s; }
+    [data-d="2"] { transition-delay: 0.18s; }
+    [data-d="3"] { transition-delay: 0.28s; }
+    [data-d="4"] { transition-delay: 0.38s; }
+    [data-d="5"] { transition-delay: 0.48s; }
+    [data-d="6"] { transition-delay: 0.58s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      [data-fade] { opacity: 1; transform: none; }
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 1200px) {
+      .about-grid { grid-template-columns: 360px 1fr; gap: 56px; }
+    }
+    @media (max-width: 1024px) {
+      .sec { padding: 84px 0; }
+      .neg-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .svc-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-wrap { max-height: 520px; aspect-ratio: auto; max-width: 440px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stats-item:nth-child(2) { border-right: none; }
+      .stats-item:nth-child(3) { border-top: 1px solid rgba(31,31,31,0.14); }
+      .stats-item:nth-child(4) { border-right: none; border-top: 1px solid rgba(31,31,31,0.14); }
+    }
+    @media (max-width: 768px) {
+      .sec  { padding: 72px 0; }
+      .wrap, .wrap-narrow { padding: 0 20px; }
+
+      .nav-links, .nav-actions .btn-outline { display: none; }
+      .ham { display: flex; }
+
+      .hero { padding: 140px 0 84px; }
+      .hero-stats { gap: 36px; }
+
+      .svc-grid  { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .proc-item:nth-child(2n) { border-right: none !important; }
+      .proc-item:nth-child(n+5) { border-bottom: none !important; }
+      .proc-item:nth-child(5)  { border-bottom: 1px solid var(--border) !important; }
+
+      .test-grid { grid-template-columns: 1fr; }
+
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stats-item { padding: 48px 28px; border-top: 1px solid rgba(31,31,31,0.14); }
+      .stats-item:nth-child(1),
+      .stats-item:nth-child(2) { border-top: none; }
+      .stats-item:nth-child(odd)  { border-right: 1px solid rgba(31,31,31,0.14); }
+      .stats-item:nth-child(even) { border-right: none; }
+
+      .footer-row { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .footer-socials { justify-content: center; }
+      .about-img-wrap { max-height: 440px; }
+      .test-card { padding: 30px; }
+    }
+    @media (max-width: 640px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .proc-item { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+      .proc-item:last-child { border-bottom: none !important; }
+    }
+    @media (max-width: 480px) {
+      .sec  { padding: 60px 0; }
+      .wrap, .wrap-narrow { padding: 0 16px; }
+
+      .h1  { letter-spacing: -1.5px; }
+      .h2  { letter-spacing: -0.8px; }
+      .btn { font-size: 14px; padding: 13px 22px; }
+
+      .hero { padding: 124px 0 64px; }
+      .hero-stats { flex-direction: column; gap: 22px; }
+
+      .about-btns { flex-direction: column; }
+      .about-btns .btn { width: 100%; justify-content: center; }
+
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn { width: 100%; max-width: 320px; justify-content: center; }
+      .cta-email { font-size: 13px; }
+
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stats-item { padding: 36px 16px; }
+
+      .footer-links { gap: 16px; }
+      .nav-wrap { padding: 0 16px; }
+    }
+    @media print {
+      nav, .ham, .mob-nav { display: none; }
+      .hero { padding-top: 24px; }
+      [data-fade] { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =============================================
+     ✏️  HOW TO EDIT THIS WEBSITE — NO CODING NEEDED
+     =============================================
+     Search for ✏️ EDIT to jump to any section you want to change.
+
+     To change TEXT: Edit the words between tags
+     To change a LINK: Edit the URL inside href="..."
+     To change an IMAGE: Edit the URL inside src="..."
+     To ADD a portfolio item: Copy any <div class="work-item">...</div> block
+     To ADD a testimonial:   Copy any <div class="test-card">...</div> block
+
+     HOW TO HOST FOR FREE:
+     1. Go to netlify.com/drop
+     2. Drag this HTML file onto the page
+     3. Done! You get a free live URL instantly
+     ============================================= -->
+
+  <!-- ====== NAVBAR ====== -->
+  <nav id="nav">
+    <div class="nav-wrap">
+      <!-- ✏️ EDIT: Logo — change the "F" mark or the "designwithfaiz" text below -->
+      <a href="#home" class="nav-logo logo">
+        <span class="logo-mark">F</span>
+        <span class="logo-text">design<span>withfaiz</span></span>
+      </a>
+
+      <!-- ✏️ EDIT: Nav links -->
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Portfolio</a>
+        <!-- ✏️ EDIT: WhatsApp number -->
+        <a href="https://wa.me/919461817353" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Chat Now →</a>
+      </div>
+
+      <div class="ham" id="ham" aria-label="Open menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mob-nav" id="mob" aria-hidden="true">
+    <ul>
+      <li><a href="#services" class="mlink">Services</a></li>
+      <li><a href="#work"     class="mlink">Work</a></li>
+      <li><a href="#about"    class="mlink">About</a></li>
+      <li><a href="#contact"  class="mlink">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Chat on WhatsApp →</a>
+  </div>
+
+  <!-- ====== HERO ====== -->
+  <section id="home" class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-logo hero-logo-mark">F</div>
+
+      <!-- ✏️ EDIT: Availability badge -->
+      <div class="hero-eyebrow">
+        <div class="hero-availability">
+          <div class="dot"></div>
+          Available for new projects — 2026
+        </div>
+      </div>
+
+      <!-- ✏️ EDIT: Main headline -->
+      <h1 class="h1 hero-headline">
+        Design Systems That Turn
+        <span class="orange headline-word">Attention</span>
+        Into Revenue.
+      </h1>
+
+      <!-- ✏️ EDIT: Tagline below headline -->
+      <p class="lead hero-sub">
+        I don't just design for founders and creators. I build the systems around them — so their brand runs without depending on them being online.
+      </p>
+
+      <div class="hero-cta">
+        <!-- ✏️ EDIT: CTA buttons -->
+        <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Start a Project →</a>
+        <a href="#work" class="btn btn-outline">See My Work</a>
+      </div>
+
+      <!-- ✏️ EDIT: Update these numbers as you grow -->
+      <p class="hero-proof">Trusted by 27+ founders building systemized, founder-led brands.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-n">27+</div>
+          <div class="stat-l">Happy Founders</div>
+        </div>
+        <div>
+          <div class="stat-n">100+</div>
+          <div class="stat-l">Projects Done</div>
+        </div>
+        <div>
+          <div class="stat-n">3+</div>
+          <div class="stat-l">Years Active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TRUST BAR ====== -->
+  <div class="trust">
+    <div class="wrap">
+      <!-- ✏️ EDIT: Change trust bar text -->
+      <p class="trust-label">Trusted by 27+ founders building systemized, founder-led brands</p>
+      <!-- ✏️ EDIT: Client names — change the text inside each span to update a logo -->
+      <div class="trust-logos">
+        <span class="trust-logo-name">Kraken<span>Media</span></span>
+        <span class="trust-logo-name">Keys<span>Media</span></span>
+        <span class="trust-logo-name">Why<span>Funny</span></span>
+        <span class="trust-logo-name">Kreative<span>Media</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== NEGATIVE POSITIONING ("Not a ___") ====== -->
+  <section class="sec neg-sec">
+    <div class="wrap">
+      <div class="neg-head" data-fade>
+        <span class="tag">Why Choose Me</span>
+        <h2 class="h2">Not Just a Designer.<br><span class="orange">Design That Performs.</span></h2>
+      </div>
+
+      <div class="neg-grid">
+        <!-- ✏️ EDIT: Each card -->
+        <div class="neg-card" data-fade data-d="1">
+          <div class="neg-strike"><s>Not Random Posts</s></div>
+          <p class="neg-d">I start with clarity and purpose, not colors and fonts. Strategy comes before design, every time.</p>
+        </div>
+        <div class="neg-card" data-fade data-d="2">
+          <div class="neg-strike"><s>Not Just Aesthetics</s></div>
+          <p class="neg-d">Every visual is made with audience behavior and business goals in mind — built to support trust, engagement, and conversions.</p>
+        </div>
+        <div class="neg-card" data-fade data-d="3">
+          <div class="neg-strike"><s>Not Short-Term Hype</s></div>
+          <p class="neg-d">Long-term brand growth, not short-term trends. I design systems that scale with your brand over time.</p>
+        </div>
+      </div>
+
+      <p class="neg-foot" data-fade>
+        I don't just design posts. <strong>I design systems that support growth.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== SERVICES ====== -->
+  <section id="services" class="sec svc-sec">
+    <div class="wrap">
+      <div class="svc-head" data-fade>
+        <span class="tag">What I Offer</span>
+        <h2 class="h2">How I Help <span class="orange">Brands Grow</span></h2>
+      </div>
+
+      <div class="svc-grid">
+
+        <!-- ✏️ EDIT: Service 1 -->
+        <div class="svc-card" data-fade data-d="1">
+          <div class="svc-icon">🎨</div>
+          <div class="svc-title">Brand Visual System</div>
+          <p class="svc-desc">
+            Startups, personal brands &amp; creators who want a strong, professional &amp; consistent brand identity that converts attention into trust.
+          </p>
+          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Build My Brand Identity →</a>
+        </div>
+
+        <!-- ✏️ EDIT: Service 2 -->
+        <div class="svc-card" data-fade data-d="2">
+          <div class="svc-icon">✍️</div>
+          <div class="svc-title">Content + Design</div>
+          <p class="svc-desc">
+            High-performing content systems for LinkedIn, Instagram &amp; YouTube — built for clarity, consistency &amp; sustained engagement.
+          </p>
+          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Improve My Content →</a>
+        </div>
+
+        <!-- ✏️ EDIT: Service 3 -->
+        <div class="svc-card" data-fade data-d="3">
+          <div class="svc-icon">📊</div>
+          <div class="svc-title">Audit + Strategy</div>
+          <p class="svc-desc">
+            A deep-dive into your brand to find gaps and opportunities — then a clear, actionable plan to fix them and fuel growth.
+          </p>
+          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Optimize My Brand →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WORK / PORTFOLIO ====== -->
+  <section id="work" class="sec">
+    <div class="wrap">
+      <div class="work-head" data-fade>
+        <span class="tag">Selected Work 2025–2026</span>
+        <h2 class="h2">Case Studies That <span class="orange">Delivered Results</span></h2>
+      </div>
+
+      <div class="work-grid">
+
+        <!-- ✏️ EDIT: To add more work, copy a work-item block below and change the src, alt, category, name, and year -->
+        <div class="work-item" data-fade data-d="1">
+          <img src="Macbook-Air-and-iPad-Pro-Showcase-Screens-psd-Mockup-1-1.png"
+               alt="LinkedIn Branding Design" loading="lazy" width="1024" height="704">
+          <div class="work-overlay">
+            <div>
+              <div class="work-cat">LinkedIn Branding</div>
+              <div class="work-name">Brand System for Creator</div>
+              <div class="work-yr">2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-item" data-fade data-d="2">
+          <img src="web-3-1.png" alt="Thumbnail Design" loading="lazy">
+          <div class="work-overlay">
+            <div>
+              <div class="work-cat">Thumbnail Design</div>
+              <div class="work-name">YouTube CTR Optimization</div>
+              <div class="work-yr">2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-item" data-fade data-d="3">
+          <img src="web-2-1.png" alt="Poster Design" loading="lazy">
+          <div class="work-overlay">
+            <div>
+              <div class="work-cat">Poster Design</div>
+              <div class="work-name">Event Brand Creatives</div>
+              <div class="work-yr">2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-item" data-fade data-d="4">
+          <img src="web-1-1.png" alt="Instagram Post Design" loading="lazy">
+          <div class="work-overlay">
+            <div>
+              <div class="work-cat">Instagram Design</div>
+              <div class="work-name">Social Content System</div>
+              <div class="work-yr">2023</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="work-foot" data-fade>
+        <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">Browse All Work on Behance →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT — "Hey, I'm Faiz" ====== -->
+  <section id="about" class="sec about-sec">
+    <div class="wrap">
+      <div class="about-grid">
+
+        <!-- ✏️ EDIT: Replace with your photo URL -->
+        <div class="about-img-wrap" data-fade>
+          <img src="1000016668-scaled-e1771412623403-768x896.jpg"
+               alt="Faiz Ahmed — Designer &amp; Strategist" loading="lazy" width="768" height="896">
+          <div class="about-badge">@designwithfaiz</div>
+        </div>
+
+        <div data-fade data-d="2">
+          <span class="tag">About Me</span>
+          <h2 class="h2">Hey, I'm Faiz.</h2>
+
+          <!-- ✏️ EDIT: Update your bio -->
+          <p class="about-bio">
+            I sit at the intersection of design, AI, and marketing strategy. Most people in this space pick one lane. I work across all three, and I use them together to build content systems that drive real, measurable growth.
+          </p>
+          <p class="about-bio" style="margin-top:-4px">
+            That means I don't hand you a thumbnail and move on. I build the repeatable visual framework your brand runs on, across YouTube, LinkedIn, Instagram, and wherever else your content lives. A system that keeps working after the project ends.
+          </p>
+          <p class="about-bio" style="margin-top:-4px">
+            I don't design posts. I build systems around the people behind them.
+          </p>
+
+          <!-- ✏️ EDIT: Add or remove skill tags -->
+          <div class="about-skills">
+            <span class="skill-pill">Strategic Design</span>
+            <span class="skill-pill">Brand Identity</span>
+            <span class="skill-pill">Content Strategy</span>
+            <span class="skill-pill">LinkedIn Growth</span>
+            <span class="skill-pill">Social Media</span>
+            <span class="skill-pill">AI Tools</span>
+          </div>
+
+          <div class="about-btns">
+            <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Work With Me →</a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">View Behance</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 6-D PROCESS ====== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="process-head" data-fade>
+        <span class="tag">How I Work</span>
+        <h2 class="h2">My <span class="orange">6-D</span> Growth Process</h2>
+      </div>
+
+      <div class="process-grid">
+
+        <!-- ✏️ EDIT: Change process step title & description -->
+        <div class="proc-item" data-fade data-d="1">
+          <div class="proc-n">01</div>
+          <div class="proc-t">Discover</div>
+          <p class="proc-d">I understand your brand, audience, goals, and current challenges before touching design.</p>
+        </div>
+
+        <div class="proc-item" data-fade data-d="2">
+          <div class="proc-n">02</div>
+          <div class="proc-t">Define</div>
+          <p class="proc-d">I define your brand message, visual direction, and content priorities to avoid confusion.</p>
+        </div>
+
+        <div class="proc-item" data-fade data-d="3">
+          <div class="proc-n">03</div>
+          <div class="proc-t">Design</div>
+          <p class="proc-d">I create visuals that support clarity, consistency, and communication — not just aesthetics.</p>
+        </div>
+
+        <div class="proc-item" data-fade data-d="4">
+          <div class="proc-n">04</div>
+          <div class="proc-t">Develop</div>
+          <p class="proc-d">I build repeatable content and design systems that scale with your brand over time.</p>
+        </div>
+
+        <div class="proc-item" data-fade data-d="5">
+          <div class="proc-n">05</div>
+          <div class="proc-t">Deploy</div>
+          <p class="proc-d">I help you apply visuals across platforms with proper structure and clear intent.</p>
+        </div>
+
+        <div class="proc-item" data-fade data-d="6">
+          <div class="proc-n">06</div>
+          <div class="proc-t">Deliver</div>
+          <p class="proc-d">I deliver designs that align with growth, engagement, and long-term brand trust.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS ====== -->
+  <section class="sec test-sec">
+    <div class="wrap">
+      <div class="test-head" data-fade>
+        <span class="tag">Client Wins</span>
+        <h2 class="h2">What <span class="orange">Founders Say</span></h2>
+      </div>
+
+      <div class="test-grid">
+
+        <!-- ✏️ EDIT: Change testimonial quote, name, role, avatar -->
+        <div class="test-card" data-fade data-d="1">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Faiz is very creative! The team loves it. He understood the needs of our project perfectly and was a joy to work with. We definitely recommend working with this creator!"</p>
+          <div class="test-author">
+            <img src="618639426_18067303772542751_92520974792486096_n.jpg"
+                 alt="BB Malloy" class="test-avatar" loading="lazy" width="46" height="46">
+            <div>
+              <div class="test-name">BB Malloy</div>
+              <div class="test-role">Content Creator</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card" data-fade data-d="2">
+          <div class="test-stars">★★★★★</div>
+          <p class="test-quote">"Faiz is always great to work with and very quick to respond. He's great at understanding what my needs are and never fails to execute."</p>
+          <div class="test-author">
+            <img src="626792307_17869330596541853_8886164508096164477_n-1.jpg"
+                 alt="Halston" class="test-avatar" loading="lazy" width="46" height="46">
+            <div>
+              <div class="test-name">Halston</div>
+              <div class="test-role">CEO, Staybolted</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STATS BAND ====== -->
+  <div class="stats-band">
+    <div class="wrap">
+      <div class="stats-row">
+        <!-- ✏️ EDIT: Update these numbers -->
+        <div class="stats-item" data-fade data-d="1">
+          <div class="stats-n">27+</div>
+          <div class="stats-l">Satisfied Clients</div>
+        </div>
+        <div class="stats-item" data-fade data-d="2">
+          <div class="stats-n">100+</div>
+          <div class="stats-l">Projects Completed</div>
+        </div>
+        <div class="stats-item" data-fade data-d="3">
+          <div class="stats-n">3+</div>
+          <div class="stats-l">Years of Experience</div>
+        </div>
+        <div class="stats-item" data-fade data-d="4">
+          <div class="stats-n">1K+</div>
+          <div class="stats-l">Social Followers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== CTA / CONTACT ====== -->
+  <section id="contact" class="sec cta-sec">
+    <div class="wrap">
+      <div class="cta-inner">
+        <span class="tag">Have a Project?</span>
+        <!-- ✏️ EDIT: CTA headline -->
+        <h2 class="h2">Let's Turn Your Ideas<br><span class="orange">Into Reality</span></h2>
+
+        <!-- ✏️ EDIT: CTA subtext -->
+        <p class="lead" style="max-width:480px;margin:20px auto 0">
+          Talk to me about your brand, content, and growth goals. I reply within 24 hours.
+        </p>
+
+        <!-- ✏️ EDIT: Your email -->
+        <a href="mailto:hello@designwithfaiz.com" class="cta-email" style="display:flex;width:fit-content;margin-left:auto;margin-right:auto">
+          📧 hello@designwithfaiz.com
+        </a>
+
+        <div class="cta-btns">
+          <!-- ✏️ EDIT: Contact buttons -->
+          <a href="https://wa.me/919461817353"                        class="btn btn-primary"  target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+          <a href="https://www.instagram.com/designwithfaiz/"         class="btn btn-outline"  target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline"  target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.behance.net/faizgraphicsdesigner"      class="btn btn-outline"  target="_blank" rel="noopener">Behance</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <!-- ✏️ EDIT: Footer logo -->
+        <a href="#home" class="footer-logo logo">
+          <span class="logo-mark">F</span>
+          <span class="logo-text">design<span>withfaiz</span></span>
+        </a>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-socials">
+          <!-- ✏️ EDIT: Social links -->
+          <a href="https://www.instagram.com/designwithfaiz/"         target="_blank" rel="noopener" title="Instagram">📷</a>
+          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" target="_blank" rel="noopener" title="LinkedIn">💼</a>
+          <a href="https://www.behance.net/faizgraphicsdesigner"      target="_blank" rel="noopener" title="Behance">🎨</a>
+          <a href="https://wa.me/919461817353"                        target="_blank" rel="noopener" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <!-- ✏️ EDIT: Update year -->
+      <p class="footer-copy">© 2026 Designwithfaiz · Built with strategy, not just aesthetics.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Nav scroll effect ----
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('stuck', window.scrollY > 24);
+    }, { passive: true });
+
+    // ---- Hamburger toggle ----
+    const ham = document.getElementById('ham');
+    const mob = document.getElementById('mob');
+    ham.addEventListener('click', () => {
+      const isOpen = mob.classList.toggle('on');
+      mob.setAttribute('aria-hidden', String(!isOpen));
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mob.classList.contains('on')) {
+        mob.classList.remove('on');
+        mob.setAttribute('aria-hidden', 'true');
+      }
+    });
+    document.querySelectorAll('.mlink').forEach(l => {
+      l.addEventListener('click', () => {
+        mob.classList.remove('on');
+        mob.setAttribute('aria-hidden', 'true');
+      });
+    });
+
+    // ---- Scroll-fade animation ----
+    const fadeEls = document.querySelectorAll('[data-fade]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('vis');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      fadeEls.forEach(el => io.observe(el));
+    } else {
+      fadeEls.forEach(el => el.classList.add('vis'));
+    }
+    setTimeout(() => { fadeEls.forEach(el => el.classList.add('vis')); }, 2500);
+
+    // ---- Smooth anchor scrolling ----
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = nav.offsetHeight + 12;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
