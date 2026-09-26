@@ -257,6 +257,17 @@
     .mob-nav ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
     .mob-nav a { font-size: 20px; font-weight: 700; color: var(--text); }
     .mob-nav .btn { margin-top: 24px; width: 100%; justify-content: center; }
+    .mob-nav .btn-primary { color: #fff; font-size: 15px; }
+    /* Mid-size screens: keep the header on one clean line */
+    @media (max-width: 1180px) {
+      .nav-actions .btn-outline { display: none; }
+      .nav-links { gap: 26px; }
+    }
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .ham { display: flex; }
+      .nav-actions { margin-left: auto; margin-right: 12px; }
+    }
 
     /* =============================================
        HERO — centered, FounderOS style
@@ -481,6 +492,7 @@
        SERVICES / FEATURE GRID
        ============================================= */
     .svc-sec { background: var(--bg-process); }
+    .work-sec { background: var(--bg-card); }
     .svc-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
     .svc-grid {
       display: grid;
@@ -659,7 +671,7 @@
     /* =============================================
        TESTIMONIALS
        ============================================= */
-    .test-sec { background: var(--bg-process); }
+    .test-sec { background: var(--bg); }
     .test-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
     .test-grid {
       display: grid;
@@ -759,34 +771,59 @@
     /* =============================================
        FOOTER
        ============================================= */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 56px 0 48px;
-      background: var(--bg);
+    .ft {
+      background: #0b1220;
+      color: #c9d6e4;
+      padding: 72px 0 28px;
     }
-    .footer-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
+    .ft-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 1fr 1.2fr;
+      gap: 40px;
     }
-    .footer-logo img { height: 30px; }
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color var(--ease); font-weight: 500; }
-    .footer-links a:hover { color: var(--text); }
-    .footer-socials { display: flex; gap: 10px; }
-    .footer-socials a {
-      width: 36px; height: 36px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px;
-      transition: all var(--ease);
+    .ft .logo-mark { background: #fff; color: #0b1220; }
+    .ft .logo-text { color: #fff; }
+    .ft .logo-text span { color: var(--accent); }
+    .ft-tag { font-size: 14px; line-height: 1.7; color: #93a4b8; margin: 18px 0 22px; max-width: 320px; }
+    .ft-cta { background: var(--accent); color: #0b1220; border-color: var(--accent); }
+    .ft-cta:hover { background: #fff; border-color: #fff; color: #0b1220; }
+    .ft-col { display: flex; flex-direction: column; gap: 11px; }
+    .ft-col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: #fff; margin-bottom: 6px;
     }
-    .footer-socials a:hover { border-color: var(--accent); background: var(--accent-glow); }
-    .footer-copy { font-size: 12px; color: var(--text-dim); text-align: center; margin-top: 36px; }
+    .ft-col a { font-size: 14px; color: #93a4b8; width: fit-content; transition: color var(--ease); }
+    .ft-col a:hover { color: #fff; }
+    .ft-contact { display: inline-flex; align-items: center; gap: 10px; }
+    .ft-contact svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--accent); }
+    .ft-socials { display: flex; gap: 10px; margin-top: 8px; }
+    .ft-socials a {
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(160,206,247,0.18);
+      color: #dfe9f4;
+      transition: background var(--ease), color var(--ease), transform var(--ease);
+    }
+    .ft-socials a:hover { background: var(--accent); color: #0b1220; transform: translateY(-2px); }
+    .ft-socials svg { width: 17px; height: 17px; }
+    .ft-bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      margin-top: 56px; padding-top: 24px;
+      border-top: 1px solid rgba(160,206,247,0.14);
+      font-size: 12.5px; color: #6f8196;
+    }
+    .ft-top { color: #93a4b8; font-weight: 600; }
+    .ft-top:hover { color: #fff; }
+    @media (max-width: 1024px) { .ft-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; } }
+    @media (max-width: 560px) {
+      .ft { padding-top: 56px; }
+      .ft-grid { grid-template-columns: 1fr 1fr; }
+      .ft-brand { grid-column: 1 / -1; }
+      .ft-col:last-child { grid-column: 1 / -1; }
+      .ft-bottom { flex-direction: column; text-align: center; margin-top: 44px; }
+    }
 
     /* =============================================
        SCROLL ANIMATIONS
@@ -837,6 +874,8 @@
 
       .nav-links, .nav-actions .btn-outline { display: none; }
       .ham { display: flex; }
+      nav { padding: 14px 0; }
+      .hero-logo-mark { width: 52px; height: 52px; font-size: 24px; border-radius: 14px; margin-bottom: 24px; }
 
       .hero { padding: 140px 0 84px; }
       .hero-stats { gap: 36px; }
@@ -857,9 +896,6 @@
       .stats-item:nth-child(odd)  { border-right: 1px solid rgba(31,31,31,0.14); }
       .stats-item:nth-child(even) { border-right: none; }
 
-      .footer-row { flex-direction: column; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
-      .footer-socials { justify-content: center; }
       .about-img-wrap { max-height: 440px; }
       .test-card { padding: 30px; }
     }
@@ -876,8 +912,9 @@
       .h2  { letter-spacing: -0.8px; }
       .btn { font-size: 14px; padding: 13px 22px; }
 
-      .hero { padding: 124px 0 64px; }
-      .hero-stats { flex-direction: column; gap: 22px; }
+      .hero { padding: 112px 0 64px; }
+      .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px 12px; margin-top: 48px; }
+      .hero-stats .stat-n { font-size: 32px; }
 
       .about-btns { flex-direction: column; }
       .about-btns .btn { width: 100%; justify-content: center; }
@@ -889,8 +926,13 @@
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .stats-item { padding: 36px 16px; }
 
-      .footer-links { gap: 16px; }
       .nav-wrap { padding: 0 16px; }
+      /* Header: logo + menu only — WhatsApp button lives in the menu */
+      .nav-actions { display: none; }
+      .logo { gap: 8px; }
+      .logo-mark { width: 28px; height: 28px; font-size: 15px; border-radius: 8px; }
+      .logo-text { font-size: 17px; }
+      .hero-logo-mark { display: none; }
     }
     @media print {
       nav, .ham, .mob-nav { display: none; }
@@ -1286,9 +1328,9 @@
 
       <!-- ✏️ EDIT: Nav links -->
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
         <li><a href="#linkedin">LinkedIn</a></li>
         <li><a href="#results">Results</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1309,9 +1351,9 @@
   <!-- Mobile Nav -->
   <div class="mob-nav" id="mob" aria-hidden="true">
     <ul>
-      <li><a href="#services" class="mlink">Services</a></li>
       <li><a href="#linkedin" class="mlink">LinkedIn</a></li>
       <li><a href="#results"  class="mlink">Results</a></li>
+      <li><a href="#services" class="mlink">Services</a></li>
       <li><a href="#work"     class="mlink">Work</a></li>
       <li><a href="#about"    class="mlink">About</a></li>
       <li><a href="#contact"  class="mlink">Contact</a></li>
@@ -1347,12 +1389,11 @@
       <div class="hero-cta">
         <!-- ✏️ EDIT: CTA buttons -->
         <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Start a Project →</a>
-        <a href="#work" class="btn btn-outline">See My Work</a>
+        <a href="#results" class="btn btn-outline">See Results</a>
       </div>
 
       <!-- ✏️ EDIT: Update these numbers as you grow -->
-      <p class="hero-proof">Trusted by 27+ founders building systemized, founder-led brands.</p>
-      <div class="hero-stats">
+      <div class="hero-stats hero-proof">
         <div>
           <div class="stat-n">27+</div>
           <div class="stat-l">Happy Founders</div>
@@ -1364,6 +1405,10 @@
         <div>
           <div class="stat-n">3+</div>
           <div class="stat-l">Years Active</div>
+        </div>
+        <div>
+          <div class="stat-n">1K+</div>
+          <div class="stat-l">Social Followers</div>
         </div>
       </div>
     </div>
@@ -1496,80 +1541,6 @@
       <div class="li-cta" data-fade>
         <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get My LinkedIn Managed →</a>
         <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== NEGATIVE POSITIONING ("Not a ___") ====== -->
-  <section class="sec neg-sec">
-    <div class="wrap">
-      <div class="neg-head" data-fade>
-        <span class="tag">Why Choose Me</span>
-        <h2 class="h2">Not Just a Designer.<br><span class="orange">Design That Performs.</span></h2>
-      </div>
-
-      <div class="neg-grid">
-        <!-- ✏️ EDIT: Each card -->
-        <div class="neg-card" data-fade data-d="1">
-          <div class="neg-strike"><s>Not Random Posts</s></div>
-          <p class="neg-d">I start with clarity and purpose, not colors and fonts. Strategy comes before design, every time.</p>
-        </div>
-        <div class="neg-card" data-fade data-d="2">
-          <div class="neg-strike"><s>Not Just Aesthetics</s></div>
-          <p class="neg-d">Every visual is made with audience behavior and business goals in mind — built to support trust, engagement, and conversions.</p>
-        </div>
-        <div class="neg-card" data-fade data-d="3">
-          <div class="neg-strike"><s>Not Short-Term Hype</s></div>
-          <p class="neg-d">Long-term brand growth, not short-term trends. I design systems that scale with your brand over time.</p>
-        </div>
-      </div>
-
-      <p class="neg-foot" data-fade>
-        I don't just design posts. <strong>I design systems that support growth.</strong>
-      </p>
-    </div>
-  </section>
-
-  <!-- ====== SERVICES ====== -->
-  <section id="services" class="sec svc-sec">
-    <div class="wrap">
-      <div class="svc-head" data-fade>
-        <span class="tag">What I Offer</span>
-        <h2 class="h2">How I Help <span class="orange">Brands Grow</span></h2>
-      </div>
-
-      <div class="svc-grid">
-
-        <!-- ✏️ EDIT: Service 1 -->
-        <div class="svc-card" data-fade data-d="1">
-          <div class="svc-icon">🎨</div>
-          <div class="svc-title">Brand Visual System</div>
-          <p class="svc-desc">
-            Startups, personal brands &amp; creators who want a strong, professional &amp; consistent brand identity that converts attention into trust.
-          </p>
-          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Build My Brand Identity →</a>
-        </div>
-
-        <!-- ✏️ EDIT: Service 2 -->
-        <div class="svc-card" data-fade data-d="2">
-          <div class="svc-icon">✍️</div>
-          <div class="svc-title">Content + Design</div>
-          <p class="svc-desc">
-            High-performing content systems for LinkedIn, Instagram &amp; YouTube — built for clarity, consistency &amp; sustained engagement.
-          </p>
-          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Improve My Content →</a>
-        </div>
-
-        <!-- ✏️ EDIT: Service 3 -->
-        <div class="svc-card" data-fade data-d="3">
-          <div class="svc-icon">📊</div>
-          <div class="svc-title">Audit + Strategy</div>
-          <p class="svc-desc">
-            A deep-dive into your brand to find gaps and opportunities — then a clear, actionable plan to fix them and fuel growth.
-          </p>
-          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Optimize My Brand →</a>
-        </div>
-
       </div>
     </div>
   </section>
@@ -1720,12 +1691,86 @@
     </div>
   </section>
 
+  <!-- ====== SERVICES ====== -->
+  <section id="services" class="sec svc-sec">
+    <div class="wrap">
+      <div class="svc-head" data-fade>
+        <span class="tag">What I Offer</span>
+        <h2 class="h2">How I Help <span class="orange">Brands Grow</span></h2>
+      </div>
+
+      <div class="svc-grid">
+
+        <!-- ✏️ EDIT: Service 1 -->
+        <div class="svc-card" data-fade data-d="1">
+          <div class="svc-icon">🎨</div>
+          <div class="svc-title">Brand Visual System</div>
+          <p class="svc-desc">
+            Startups, personal brands &amp; creators who want a strong, professional &amp; consistent brand identity that converts attention into trust.
+          </p>
+          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Build My Brand Identity →</a>
+        </div>
+
+        <!-- ✏️ EDIT: Service 2 -->
+        <div class="svc-card" data-fade data-d="2">
+          <div class="svc-icon">✍️</div>
+          <div class="svc-title">Content + Design</div>
+          <p class="svc-desc">
+            High-performing content systems for LinkedIn, Instagram &amp; YouTube — built for clarity, consistency &amp; sustained engagement.
+          </p>
+          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Improve My Content →</a>
+        </div>
+
+        <!-- ✏️ EDIT: Service 3 -->
+        <div class="svc-card" data-fade data-d="3">
+          <div class="svc-icon">📊</div>
+          <div class="svc-title">Audit + Strategy</div>
+          <p class="svc-desc">
+            A deep-dive into your brand to find gaps and opportunities — then a clear, actionable plan to fix them and fuel growth.
+          </p>
+          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Optimize My Brand →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== NEGATIVE POSITIONING ("Not a ___") ====== -->
+  <section class="sec neg-sec">
+    <div class="wrap">
+      <div class="neg-head" data-fade>
+        <span class="tag">Why Choose Me</span>
+        <h2 class="h2">Not Just a Designer.<br><span class="orange">Design That Performs.</span></h2>
+      </div>
+
+      <div class="neg-grid">
+        <!-- ✏️ EDIT: Each card -->
+        <div class="neg-card" data-fade data-d="1">
+          <div class="neg-strike"><s>Not Random Posts</s></div>
+          <p class="neg-d">I start with clarity and purpose, not colors and fonts. Strategy comes before design, every time.</p>
+        </div>
+        <div class="neg-card" data-fade data-d="2">
+          <div class="neg-strike"><s>Not Just Aesthetics</s></div>
+          <p class="neg-d">Every visual is made with audience behavior and business goals in mind — built to support trust, engagement, and conversions.</p>
+        </div>
+        <div class="neg-card" data-fade data-d="3">
+          <div class="neg-strike"><s>Not Short-Term Hype</s></div>
+          <p class="neg-d">Long-term brand growth, not short-term trends. I design systems that scale with your brand over time.</p>
+        </div>
+      </div>
+
+      <p class="neg-foot" data-fade>
+        I don't just design posts. <strong>I design systems that support growth.</strong>
+      </p>
+    </div>
+  </section>
+
   <!-- ====== WORK / PORTFOLIO ====== -->
-  <section id="work" class="sec">
+  <section id="work" class="sec work-sec">
     <div class="wrap">
       <div class="work-head" data-fade>
-        <span class="tag">Selected Work 2025–2026</span>
-        <h2 class="h2">Case Studies That <span class="orange">Delivered Results</span></h2>
+        <span class="tag">Portfolio</span>
+        <h2 class="h2">Selected <span class="orange">Design Work</span></h2>
       </div>
 
       <div class="work-grid">
@@ -1784,53 +1829,6 @@
     </div>
   </section>
 
-  <!-- ====== ABOUT — "Hey, I'm Faiz" ====== -->
-  <section id="about" class="sec about-sec">
-    <div class="wrap">
-      <div class="about-grid">
-
-        <!-- ✏️ EDIT: Replace with your photo URL -->
-        <div class="about-img-wrap" data-fade>
-          <img src="1000016668-scaled-e1771412623403-768x896.jpg"
-               alt="Faiz Ahmed — Designer &amp; Strategist" loading="lazy" width="768" height="896">
-          <div class="about-badge">@designwithfaiz</div>
-        </div>
-
-        <div data-fade data-d="2">
-          <span class="tag">About Me</span>
-          <h2 class="h2">Hey, I'm Faiz.</h2>
-
-          <!-- ✏️ EDIT: Update your bio -->
-          <p class="about-bio">
-            I sit at the intersection of design, AI, and marketing strategy. Most people in this space pick one lane. I work across all three, and I use them together to build content systems that drive real, measurable growth.
-          </p>
-          <p class="about-bio" style="margin-top:-4px">
-            That means I don't hand you a thumbnail and move on. I build the repeatable visual framework your brand runs on, across YouTube, LinkedIn, Instagram, and wherever else your content lives. A system that keeps working after the project ends.
-          </p>
-          <p class="about-bio" style="margin-top:-4px">
-            I don't design posts. I build systems around the people behind them.
-          </p>
-
-          <!-- ✏️ EDIT: Add or remove skill tags -->
-          <div class="about-skills">
-            <span class="skill-pill">Strategic Design</span>
-            <span class="skill-pill">Brand Identity</span>
-            <span class="skill-pill">Content Strategy</span>
-            <span class="skill-pill">LinkedIn Growth</span>
-            <span class="skill-pill">Social Media</span>
-            <span class="skill-pill">AI Tools</span>
-          </div>
-
-          <div class="about-btns">
-            <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Work With Me →</a>
-            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">View Behance</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ====== 6-D PROCESS ====== -->
   <section class="sec">
     <div class="wrap">
@@ -1882,6 +1880,53 @@
     </div>
   </section>
 
+  <!-- ====== ABOUT — "Hey, I'm Faiz" ====== -->
+  <section id="about" class="sec about-sec">
+    <div class="wrap">
+      <div class="about-grid">
+
+        <!-- ✏️ EDIT: Replace with your photo URL -->
+        <div class="about-img-wrap" data-fade>
+          <img src="1000016668-scaled-e1771412623403-768x896.jpg"
+               alt="Faiz Ahmed — Designer &amp; Strategist" loading="lazy" width="768" height="896">
+          <div class="about-badge">@designwithfaiz</div>
+        </div>
+
+        <div data-fade data-d="2">
+          <span class="tag">About Me</span>
+          <h2 class="h2">Hey, I'm Faiz.</h2>
+
+          <!-- ✏️ EDIT: Update your bio -->
+          <p class="about-bio">
+            I sit at the intersection of design, AI, and marketing strategy. Most people in this space pick one lane. I work across all three, and I use them together to build content systems that drive real, measurable growth.
+          </p>
+          <p class="about-bio" style="margin-top:-4px">
+            That means I don't hand you a thumbnail and move on. I build the repeatable visual framework your brand runs on, across YouTube, LinkedIn, Instagram, and wherever else your content lives. A system that keeps working after the project ends.
+          </p>
+          <p class="about-bio" style="margin-top:-4px">
+            I don't design posts. I build systems around the people behind them.
+          </p>
+
+          <!-- ✏️ EDIT: Add or remove skill tags -->
+          <div class="about-skills">
+            <span class="skill-pill">Strategic Design</span>
+            <span class="skill-pill">Brand Identity</span>
+            <span class="skill-pill">Content Strategy</span>
+            <span class="skill-pill">LinkedIn Growth</span>
+            <span class="skill-pill">Social Media</span>
+            <span class="skill-pill">AI Tools</span>
+          </div>
+
+          <div class="about-btns">
+            <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Work With Me →</a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">View Behance</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ====== TESTIMONIALS ====== -->
   <section class="sec test-sec">
     <div class="wrap">
@@ -1923,31 +1968,6 @@
     </div>
   </section>
 
-  <!-- ====== STATS BAND ====== -->
-  <div class="stats-band">
-    <div class="wrap">
-      <div class="stats-row">
-        <!-- ✏️ EDIT: Update these numbers -->
-        <div class="stats-item" data-fade data-d="1">
-          <div class="stats-n">27+</div>
-          <div class="stats-l">Satisfied Clients</div>
-        </div>
-        <div class="stats-item" data-fade data-d="2">
-          <div class="stats-n">100+</div>
-          <div class="stats-l">Projects Completed</div>
-        </div>
-        <div class="stats-item" data-fade data-d="3">
-          <div class="stats-n">3+</div>
-          <div class="stats-l">Years of Experience</div>
-        </div>
-        <div class="stats-item" data-fade data-d="4">
-          <div class="stats-n">1K+</div>
-          <div class="stats-l">Social Followers</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ====== CTA / CONTACT ====== -->
   <section id="contact" class="sec cta-sec">
     <div class="wrap">
@@ -1978,30 +1998,57 @@
   </section>
 
   <!-- ====== FOOTER ====== -->
-  <footer>
+  <footer class="ft">
     <div class="wrap">
-      <div class="footer-row">
-        <!-- ✏️ EDIT: Footer logo -->
-        <a href="#home" class="footer-logo logo">
-          <span class="logo-mark">F</span>
-          <span class="logo-text">design<span>withfaiz</span></span>
-        </a>
-        <div class="footer-links">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <!-- ✏️ EDIT: Footer logo -->
+          <a href="#home" class="footer-logo logo">
+            <span class="logo-mark">F</span>
+            <span class="logo-text">design<span>withfaiz</span></span>
+          </a>
+          <p class="ft-tag">Content systems, LinkedIn management and thumbnails that turn attention into revenue for founders and creators.</p>
+          <a href="https://wa.me/919461817353" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start a Project →</a>
+        </div>
+
+        <div class="ft-col" role="navigation" aria-label="Footer">
+          <h4>Explore</h4>
+          <a href="#linkedin">LinkedIn</a>
+          <a href="#results">Results</a>
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <div class="footer-socials">
-          <!-- ✏️ EDIT: Social links -->
-          <a href="https://www.instagram.com/designwithfaiz/"         target="_blank" rel="noopener" title="Instagram">📷</a>
-          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" target="_blank" rel="noopener" title="LinkedIn">💼</a>
-          <a href="https://www.behance.net/faizgraphicsdesigner"      target="_blank" rel="noopener" title="Behance">🎨</a>
-          <a href="https://wa.me/919461817353"                        target="_blank" rel="noopener" title="WhatsApp">💬</a>
+
+        <div class="ft-col">
+          <h4>Services</h4>
+          <a href="#linkedin">LinkedIn Management</a>
+          <a href="#results">YouTube Thumbnails</a>
+          <a href="#services">Brand Visual System</a>
+          <a href="#services">Content + Design</a>
+          <a href="#services">Audit + Strategy</a>
+        </div>
+
+        <div class="ft-col">
+          <h4>Get in touch</h4>
+          <!-- ✏️ EDIT: Email / WhatsApp / social links -->
+          <a href="mailto:hello@designwithfaiz.com" class="ft-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@designwithfaiz.com</a>
+          <a href="https://wa.me/919461817353" class="ft-contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.53 14.95L2 22l5.2-1.46A9.93 9.93 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.09.86.83-3.01-.2-.31a8.2 8.2 0 1 1 6.94 3.79zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>WhatsApp chat</a>
+          <div class="ft-socials">
+            <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg></a>
+            <a href="https://www.instagram.com/designwithfaiz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.2 11.3c.9-.4 1.6-1.2 1.6-2.4C9.8 6.6 8.1 6 6.2 6H1.5v12h4.9c2.1 0 4-1 4-3.4 0-1.5-.8-2.8-2.2-3.3zM3.9 8h2.1c.8 0 1.5.2 1.5 1.1 0 .8-.6 1.2-1.4 1.2H3.9zm2.3 8H3.9v-3.4h2.3c1 0 1.7.4 1.7 1.7 0 1.2-.8 1.7-1.7 1.7zM15 7h5v1.3h-5zm2.5 2.2c-2.7 0-4.4 1.9-4.4 4.4 0 2.6 1.6 4.4 4.4 4.4 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1 1.1-1.8 1.1-1.3 0-2.1-.8-2.2-2.3h6.2c.2-2.6-1.2-4.7-4.1-4.7zm-2 3.4c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8z"/></svg></a>
+            <a href="https://wa.me/919461817353" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.53 14.95L2 22l5.2-1.46A9.93 9.93 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.09.86.83-3.01-.2-.31a8.2 8.2 0 1 1 6.94 3.79zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+          </div>
         </div>
       </div>
-      <!-- ✏️ EDIT: Update year -->
-      <p class="footer-copy">© 2026 Designwithfaiz · Built with strategy, not just aesthetics.</p>
+
+      <div class="ft-bottom">
+        <!-- ✏️ EDIT: Update year -->
+        <p>© 2026 Designwithfaiz · Built with strategy, not just aesthetics.</p>
+        <a href="#home" class="ft-top">Back to top ↑</a>
+      </div>
     </div>
   </footer>
 
@@ -2016,6 +2063,7 @@
     const ham = document.getElementById('ham');
     const mob = document.getElementById('mob');
     ham.addEventListener('click', () => {
+      mob.style.top = nav.offsetHeight + 'px';   // sit exactly under the header at any size
       const isOpen = mob.classList.toggle('on');
       mob.setAttribute('aria-hidden', String(!isOpen));
     });
