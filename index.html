@@ -257,6 +257,17 @@
     .mob-nav ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
     .mob-nav a { font-size: 20px; font-weight: 700; color: var(--text); }
     .mob-nav .btn { margin-top: 24px; width: 100%; justify-content: center; }
+    .mob-nav .btn-primary { color: #fff; font-size: 15px; }
+    /* Mid-size screens: keep the header on one clean line */
+    @media (max-width: 1180px) {
+      .nav-actions .btn-outline { display: none; }
+      .nav-links { gap: 26px; }
+    }
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .ham { display: flex; }
+      .nav-actions { margin-left: auto; margin-right: 12px; }
+    }
 
     /* =============================================
        HERO — centered, FounderOS style
@@ -382,29 +393,55 @@
       text-align: center;
       margin-bottom: 28px;
     }
-    /* Text-based client logos */
+    /* Client logos — infinite scrolling marquee of logo chips */
+    .trust-marquee {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
     .trust-logos {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
-      gap: 18px 52px;
+      gap: 22px;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .trust-marquee:hover .trust-logos { animation-play-state: paused; }
+    .trust-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 22px 12px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      box-shadow: 0 6px 18px rgba(15,122,191,0.06);
+      white-space: nowrap;
+      transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+    }
+    .trust-logo:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 28px rgba(15,122,191,0.14);
+    }
+    .trust-mark {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
     }
     .trust-logo-name {
       font-family: var(--font-display);
-      font-size: clamp(17px, 2.2vw, 22px);
+      font-size: clamp(16px, 2vw, 19px);
       font-weight: 800;
       letter-spacing: -0.5px;
-      color: var(--text-dim);
-      opacity: 0.55;
-      white-space: nowrap;
-      transition: color var(--ease), opacity var(--ease);
+      color: var(--text);
     }
     .trust-logo-name span { color: var(--accent-dark); }
-    .trust-logo-name:hover { color: var(--text); opacity: 1; }
-    @media (max-width: 480px) {
-      .trust-logos { gap: 14px 32px; }
-    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* =============================================
        NEGATIVE POSITIONING  ("Not a ___" — FounderOS signature)
@@ -455,6 +492,7 @@
        SERVICES / FEATURE GRID
        ============================================= */
     .svc-sec { background: var(--bg-process); }
+    .work-sec { background: var(--bg-card); }
     .svc-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
     .svc-grid {
       display: grid;
@@ -633,7 +671,7 @@
     /* =============================================
        TESTIMONIALS
        ============================================= */
-    .test-sec { background: var(--bg-process); }
+    .test-sec { background: var(--bg); }
     .test-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
     .test-grid {
       display: grid;
@@ -733,34 +771,59 @@
     /* =============================================
        FOOTER
        ============================================= */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 56px 0 48px;
-      background: var(--bg);
+    .ft {
+      background: #0b1220;
+      color: #c9d6e4;
+      padding: 72px 0 28px;
     }
-    .footer-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
+    .ft-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 1fr 1.2fr;
+      gap: 40px;
     }
-    .footer-logo img { height: 30px; }
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color var(--ease); font-weight: 500; }
-    .footer-links a:hover { color: var(--text); }
-    .footer-socials { display: flex; gap: 10px; }
-    .footer-socials a {
-      width: 36px; height: 36px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px;
-      transition: all var(--ease);
+    .ft .logo-mark { background: #fff; color: #0b1220; }
+    .ft .logo-text { color: #fff; }
+    .ft .logo-text span { color: var(--accent); }
+    .ft-tag { font-size: 14px; line-height: 1.7; color: #93a4b8; margin: 18px 0 22px; max-width: 320px; }
+    .ft-cta { background: var(--accent); color: #0b1220; border-color: var(--accent); }
+    .ft-cta:hover { background: #fff; border-color: #fff; color: #0b1220; }
+    .ft-col { display: flex; flex-direction: column; gap: 11px; }
+    .ft-col h4 {
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: #fff; margin-bottom: 6px;
     }
-    .footer-socials a:hover { border-color: var(--accent); background: var(--accent-glow); }
-    .footer-copy { font-size: 12px; color: var(--text-dim); text-align: center; margin-top: 36px; }
+    .ft-col a { font-size: 14px; color: #93a4b8; width: fit-content; transition: color var(--ease); }
+    .ft-col a:hover { color: #fff; }
+    .ft-contact { display: inline-flex; align-items: center; gap: 10px; }
+    .ft-contact svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--accent); }
+    .ft-socials { display: flex; gap: 10px; margin-top: 8px; }
+    .ft-socials a {
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(160,206,247,0.18);
+      color: #dfe9f4;
+      transition: background var(--ease), color var(--ease), transform var(--ease);
+    }
+    .ft-socials a:hover { background: var(--accent); color: #0b1220; transform: translateY(-2px); }
+    .ft-socials svg { width: 17px; height: 17px; }
+    .ft-bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      margin-top: 56px; padding-top: 24px;
+      border-top: 1px solid rgba(160,206,247,0.14);
+      font-size: 12.5px; color: #6f8196;
+    }
+    .ft-top { color: #93a4b8; font-weight: 600; }
+    .ft-top:hover { color: #fff; }
+    @media (max-width: 1024px) { .ft-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; } }
+    @media (max-width: 560px) {
+      .ft { padding-top: 56px; }
+      .ft-grid { grid-template-columns: 1fr 1fr; }
+      .ft-brand { grid-column: 1 / -1; }
+      .ft-col:last-child { grid-column: 1 / -1; }
+      .ft-bottom { flex-direction: column; text-align: center; margin-top: 44px; }
+    }
 
     /* =============================================
        SCROLL ANIMATIONS
@@ -811,6 +874,8 @@
 
       .nav-links, .nav-actions .btn-outline { display: none; }
       .ham { display: flex; }
+      nav { padding: 14px 0; }
+      .hero-logo-mark { width: 52px; height: 52px; font-size: 24px; border-radius: 14px; margin-bottom: 24px; }
 
       .hero { padding: 140px 0 84px; }
       .hero-stats { gap: 36px; }
@@ -831,9 +896,6 @@
       .stats-item:nth-child(odd)  { border-right: 1px solid rgba(31,31,31,0.14); }
       .stats-item:nth-child(even) { border-right: none; }
 
-      .footer-row { flex-direction: column; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
-      .footer-socials { justify-content: center; }
       .about-img-wrap { max-height: 440px; }
       .test-card { padding: 30px; }
     }
@@ -850,8 +912,9 @@
       .h2  { letter-spacing: -0.8px; }
       .btn { font-size: 14px; padding: 13px 22px; }
 
-      .hero { padding: 124px 0 64px; }
-      .hero-stats { flex-direction: column; gap: 22px; }
+      .hero { padding: 112px 0 64px; }
+      .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px 12px; margin-top: 48px; }
+      .hero-stats .stat-n { font-size: 32px; }
 
       .about-btns { flex-direction: column; }
       .about-btns .btn { width: 100%; justify-content: center; }
@@ -863,13 +926,375 @@
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .stats-item { padding: 36px 16px; }
 
-      .footer-links { gap: 16px; }
       .nav-wrap { padding: 0 16px; }
+      /* Header: logo + menu only — WhatsApp button lives in the menu */
+      .nav-actions { display: none; }
+      .logo { gap: 8px; }
+      .logo-mark { width: 28px; height: 28px; font-size: 15px; border-radius: 8px; }
+      .logo-text { font-size: 17px; }
+      .hero-logo-mark { display: none; }
     }
     @media print {
       nav, .ham, .mob-nav { display: none; }
       .hero { padding-top: 24px; }
       [data-fade] { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* =============================================
+       LINKEDIN ACCOUNT MANAGEMENT — done-for-you service
+       ============================================= */
+    .li-sec { background: var(--bg); }
+    .li-head { text-align: center; max-width: 760px; margin: 0 auto 60px; }
+    .li-head .lead { margin: 18px auto 0; }
+    .li-in { color: #0a66c2; }
+    .li-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Left: writing → design → publishing pipeline */
+    .li-steps { list-style: none; position: relative; }
+    .li-steps::before {
+      content: "";
+      position: absolute;
+      left: 23px; top: 24px; bottom: 24px;
+      width: 2px;
+      background: linear-gradient(var(--accent), var(--border));
+    }
+    .li-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 14px 16px 14px 0;
+      border-radius: var(--r);
+      transition: background var(--ease);
+    }
+    .li-step:hover { background: var(--bg-card); }
+    .li-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 15px;
+      color: var(--accent-dark);
+      position: relative; z-index: 1;
+      transition: background var(--ease), color var(--ease);
+    }
+    .li-step:hover .li-num { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+    .li-step h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: -0.3px; margin: 3px 0 4px; }
+    .li-step p  { font-size: 14.5px; color: var(--text-muted); line-height: 1.7; }
+
+    /* Right: LinkedIn post mock-up */
+    .li-visual { position: relative; }
+    .li-post {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: 0 30px 70px rgba(15,122,191,0.14);
+      overflow: hidden;
+      animation: li-float 6s ease-in-out infinite;
+    }
+    @keyframes li-float { 50% { transform: translateY(-10px); } }
+    .li-post-top { display: flex; align-items: center; gap: 12px; padding: 18px 20px 12px; }
+    .li-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      color: #fff; font-family: var(--font-display); font-weight: 800;
+    }
+    .li-name { font-weight: 700; font-size: 14.5px; line-height: 1.2; }
+    .li-sub  { font-size: 12px; color: var(--text-dim); }
+    .li-follow { white-space: nowrap; margin-left: auto; font-size: 13px; font-weight: 700; color: #0a66c2; }
+    .li-text { padding: 0 20px 14px; font-size: 14px; line-height: 1.6; color: var(--text); }
+    .li-text b { font-weight: 700; }
+    .li-text .muted { color: var(--text-dim); }
+    /* Infographic carousel inside the post (cross-fades, 4:5 like LinkedIn) */
+    .li-slides {
+      position: relative;
+      margin: 0 20px;
+      aspect-ratio: 4 / 5;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #0b1220;
+    }
+    .li-slides img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.9s ease, transform 3.5s ease;
+    }
+    .li-slides img.on { opacity: 1; transform: scale(1); }
+    .li-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+    .li-dots button {
+      width: 8px; height: 8px; padding: 0;
+      border: 0; border-radius: 8px;
+      background: var(--border);
+      cursor: pointer;
+      transition: width var(--ease), background var(--ease);
+    }
+    .li-dots button.on { width: 22px; background: #0a66c2; }
+
+    /* Gallery row of real LinkedIn infographics */
+    .res-row-label.li-gal-label { --res-muted: var(--text-dim); --res-line: var(--border); margin-top: 72px; }
+    .li-gal-label b { color: var(--accent-dark); }
+    .li-gal {
+      overflow: hidden;
+      padding: 12px 0 24px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .li-gal:hover .li-gal-track { animation-play-state: paused; }
+    .li-gal-track {
+      display: flex; gap: 22px;
+      width: max-content;
+      animation: marquee 50s linear infinite;
+    }
+    .li-gal-item {
+      flex: 0 0 auto;
+      width: 260px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15,122,191,0.10);
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow var(--ease);
+    }
+    .li-gal-item:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 24px 50px rgba(15,122,191,0.2); }
+    .li-gal-item img { width: 100%; height: auto; }
+    .li-actions {
+      display: flex; justify-content: space-around;
+      margin-top: 14px; padding: 10px 12px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+    }
+    .li-chip {
+      position: absolute;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 9px 16px;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 12px 30px rgba(15,122,191,0.14);
+      white-space: nowrap;
+      animation: li-float 5s ease-in-out infinite;
+    }
+    .li-chip.c1 { top: -20px; left: 28px; animation-delay: -1s; }
+    .li-chip.c2 { top: 46%;   right: -30px; animation-delay: -2.5s; }
+    .li-chip.c3 { top: 72%; left: -56px; animation-delay: -3.5s; }
+    .li-chip em { font-style: normal; color: #1a9f5b; }
+
+    .li-incl {
+      margin-top: 64px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 30px 32px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;
+    }
+    .li-incl-t { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -0.3px; margin-right: 8px; }
+    .li-tags { display: flex; flex-wrap: wrap; gap: 10px; flex: 1; }
+    .li-tag {
+      font-size: 13px; font-weight: 600;
+      background: #fff; border: 1px solid var(--border);
+      padding: 7px 14px; border-radius: 100px;
+      color: var(--text);
+    }
+    .li-tag::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
+    /* LinkedIn banner showcase (profile-header style frames) */
+    .li-banners { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; margin-top: 56px; align-items: start; }
+    .li-banner {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15,122,191,0.08);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+    .li-banner:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(15,122,191,0.16); }
+    .li-banner-img { background: var(--bg-card); border-bottom: 1px solid var(--border-soft); }
+    .li-banner-img img { width: 100%; height: auto; }
+    .li-banner-bar { display: flex; align-items: center; gap: 14px; padding: 0 20px 16px; }
+    .li-banner-av {
+      width: 58px; height: 58px; margin-top: -22px;
+      border-radius: 50%; border: 4px solid #fff;
+      display: grid; place-items: center; flex: 0 0 auto;
+      background: linear-gradient(135deg, #b8860b, #e8b93a);
+      color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 20px;
+    }
+    .li-banner-av.sq { border-radius: 12px; }
+    .li-banner figcaption { padding-top: 10px; line-height: 1.35; }
+    .li-banner figcaption b { display: block; font-size: 15px; }
+    .li-banner figcaption span { font-size: 12.5px; color: var(--text-dim); }
+    @media (max-width: 768px) { .li-banners { grid-template-columns: 1fr; } }
+    .li-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
+
+    @media (max-width: 1024px) {
+      .li-grid { grid-template-columns: 1fr; gap: 56px; }
+      .li-visual { max-width: 440px; margin: 0 auto; width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .li-chip.c1 { left: 16px; }
+      .li-chip.c2, .li-chip.c3 { display: none; }
+      .li-incl { padding: 24px 20px; }
+    }
+    @media (max-width: 640px) { .li-gal-item { width: 210px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .li-post, .li-chip, .li-gal-track { animation: none !important; }
+      .li-gal { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+    }
+
+    /* =============================================
+       RESULTS — auto-sliding thumbnail showcase (dark band)
+       ============================================= */
+    .res-sec {
+      --res-bg:    #0b1220;
+      --res-card:  #121b2d;
+      --res-line:  rgba(160,206,247,0.14);
+      --res-text:  #eef4fb;
+      --res-muted: #93a4b8;
+      position: relative;
+      background:
+        radial-gradient(900px 420px at 15% -10%, rgba(15,122,191,0.28), transparent 60%),
+        radial-gradient(700px 380px at 95% 110%, rgba(160,206,247,0.16), transparent 60%),
+        var(--res-bg);
+      color: var(--res-text);
+      overflow: hidden;
+    }
+    .res-sec .tag { background: rgba(160,206,247,0.12); border-color: rgba(160,206,247,0.35); color: var(--accent); }
+    .res-sec .orange { color: var(--accent); }
+    .res-sec .lead { color: var(--res-muted); }
+    .res-head { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+    .res-head .lead { margin: 18px auto 0; }
+
+    .res-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 980px;
+      margin: 0 auto 64px;
+    }
+    .res-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--res-line);
+      border-radius: var(--r-lg);
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .res-stat-n {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff 20%, var(--accent));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .res-stat-l { font-size: 12.5px; color: var(--res-muted); margin-top: 10px; font-weight: 500; }
+
+    .res-row-label {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--res-muted);
+      margin: 0 0 18px;
+    }
+    .res-row-label::before, .res-row-label::after {
+      content: ""; height: 1px; width: 48px; background: var(--res-line);
+    }
+    .res-row-label b { color: var(--accent); font-weight: 700; white-space: nowrap; }
+
+    .res-marquee {
+      overflow: hidden;
+      padding: 10px 0 18px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .res-marquee + .res-row-label { margin-top: 38px; }
+    .res-track {
+      display: flex;
+      gap: 22px;
+      width: max-content;
+      animation: marquee 60s linear infinite;
+    }
+    .res-track.rev { animation-direction: reverse; }
+    .res-marquee:hover .res-track { animation-play-state: paused; }
+
+    .res-card {
+      width: 340px;
+      flex: 0 0 auto;
+      background: var(--res-card);
+      border: 1px solid var(--res-line);
+      border-radius: 18px;
+      padding: 10px 10px 16px;
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1), border-color var(--ease), box-shadow var(--ease);
+    }
+    .res-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: rgba(160,206,247,0.5);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.45), 0 0 0 1px rgba(160,206,247,0.2);
+    }
+    .res-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+    .res-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .res-live {
+      position: absolute; bottom: 10px; left: 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #e0243a; color: #fff;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px;
+      padding: 4px 9px; border-radius: 6px;
+    }
+    .res-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: blink 1.4s ease-in-out infinite; }
+    @keyframes blink { 50% { opacity: 0.25; } }
+
+    .res-title {
+      font-size: 15px; font-weight: 700; line-height: 1.4;
+      color: var(--res-text);
+      margin: 14px 6px 8px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 42px;
+    }
+    .res-meta { display: flex; align-items: center; gap: 8px; margin: 0 6px; font-size: 13px; color: var(--res-muted); }
+    .res-views { color: var(--res-text); font-weight: 700; }
+    .res-views::before { content: "▶ "; font-size: 10px; color: var(--res-muted); }
+    .res-niche { color: var(--res-muted); font-weight: 500; }
+    .res-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 6px 0; min-height: 26px; }
+    .res-badge {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 11px; border-radius: 100px;
+      background: rgba(255,255,255,0.07); color: var(--res-text);
+    }
+    .res-badge.out   { background: linear-gradient(135deg, #e0243a, #ff4f7b); color: #fff; }
+    .res-badge.out.hot { background: linear-gradient(135deg, #7b3cff, #a36bff); }
+    .res-badge.muted { background: transparent; border: 1px dashed var(--res-line); color: var(--res-muted); font-weight: 500; }
+
+    .res-foot { text-align: center; margin-top: 52px; }
+    .res-note { font-size: 12.5px; color: var(--res-muted); margin-top: 16px; }
+
+    @media (max-width: 768px) {
+      .res-stats { grid-template-columns: repeat(2, 1fr); margin-bottom: 48px; }
+      .res-card { width: 280px; }
+      .res-row-label { padding: 0 16px; text-align: center; letter-spacing: 1.5px; }
+      .res-row-label::before, .res-row-label::after { width: 20px; flex: 0 0 auto; }
+      .res-track { gap: 16px; }
+    }
+
+    /* Reduced motion: no auto-slide — rows become swipeable instead */
+    @media (prefers-reduced-motion: reduce) {
+      .trust-marquee, .res-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+      .trust-logos, .res-track { animation: none !important; transform: none !important; }
+      .res-live::before { animation: none !important; }
     }
   </style>
 </head>
@@ -903,6 +1328,8 @@
 
       <!-- ✏️ EDIT: Nav links -->
       <ul class="nav-links">
+        <li><a href="#linkedin">LinkedIn</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
@@ -924,6 +1351,8 @@
   <!-- Mobile Nav -->
   <div class="mob-nav" id="mob" aria-hidden="true">
     <ul>
+      <li><a href="#linkedin" class="mlink">LinkedIn</a></li>
+      <li><a href="#results"  class="mlink">Results</a></li>
       <li><a href="#services" class="mlink">Services</a></li>
       <li><a href="#work"     class="mlink">Work</a></li>
       <li><a href="#about"    class="mlink">About</a></li>
@@ -960,12 +1389,11 @@
       <div class="hero-cta">
         <!-- ✏️ EDIT: CTA buttons -->
         <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Start a Project →</a>
-        <a href="#work" class="btn btn-outline">See My Work</a>
+        <a href="#results" class="btn btn-outline">See Results</a>
       </div>
 
       <!-- ✏️ EDIT: Update these numbers as you grow -->
-      <p class="hero-proof">Trusted by 27+ founders building systemized, founder-led brands.</p>
-      <div class="hero-stats">
+      <div class="hero-stats hero-proof">
         <div>
           <div class="stat-n">27+</div>
           <div class="stat-l">Happy Founders</div>
@@ -978,6 +1406,10 @@
           <div class="stat-n">3+</div>
           <div class="stat-l">Years Active</div>
         </div>
+        <div>
+          <div class="stat-n">1K+</div>
+          <div class="stat-l">Social Followers</div>
+        </div>
       </div>
     </div>
   </section>
@@ -988,42 +1420,274 @@
       <!-- ✏️ EDIT: Change trust bar text -->
       <p class="trust-label">Trusted by 27+ founders building systemized, founder-led brands</p>
       <!-- ✏️ EDIT: Client names — change the text inside each span to update a logo -->
-      <div class="trust-logos">
-        <span class="trust-logo-name">Kraken<span>Media</span></span>
-        <span class="trust-logo-name">Keys<span>Media</span></span>
-        <span class="trust-logo-name">Why<span>Funny</span></span>
-        <span class="trust-logo-name">Kreative<span>Media</span></span>
+      <!--    To ADD a client: copy one <div class="trust-logo"> block (the list repeats itself automatically) -->
+      <div class="trust-marquee">
+        <div class="trust-logos" data-loop>
+          <div class="trust-logo"><span class="trust-mark">K</span><span class="trust-logo-name">Kraken<span>Media</span></span></div>
+          <div class="trust-logo"><span class="trust-mark">K</span><span class="trust-logo-name">Keys<span>Media</span></span></div>
+          <div class="trust-logo"><span class="trust-mark">W</span><span class="trust-logo-name">Why<span>Funny</span></span></div>
+          <div class="trust-logo"><span class="trust-mark">K</span><span class="trust-logo-name">Kreative<span>Media</span></span></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ====== NEGATIVE POSITIONING ("Not a ___") ====== -->
-  <section class="sec neg-sec">
+  <!-- ====== LINKEDIN ACCOUNT MANAGEMENT ====== -->
+  <!-- ✏️ EDIT: Change step text inside each <li class="li-step">; change the "Every month includes" list in .li-tags -->
+  <section id="linkedin" class="sec li-sec">
     <div class="wrap">
-      <div class="neg-head" data-fade>
-        <span class="tag">Why Choose Me</span>
-        <h2 class="h2">Not Just a Designer.<br><span class="orange">Design That Performs.</span></h2>
+      <div class="li-head" data-fade>
+        <span class="tag">LinkedIn Account Management</span>
+        <h2 class="h2">Your <span class="li-in">LinkedIn</span>, <span style="white-space:nowrap">Fully Handled.</span><br><span class="orange">Writing to Publishing.</span></h2>
+        <p class="lead">I run your personal or company LinkedIn for you. I plan it, write it in your voice, design the posts and publish them on schedule. You get a consistent brand presence without spending hours on it every week.</p>
       </div>
 
-      <div class="neg-grid">
-        <!-- ✏️ EDIT: Each card -->
-        <div class="neg-card" data-fade data-d="1">
-          <div class="neg-strike"><s>Not Random Posts</s></div>
-          <p class="neg-d">I start with clarity and purpose, not colors and fonts. Strategy comes before design, every time.</p>
-        </div>
-        <div class="neg-card" data-fade data-d="2">
-          <div class="neg-strike"><s>Not Just Aesthetics</s></div>
-          <p class="neg-d">Every visual is made with audience behavior and business goals in mind — built to support trust, engagement, and conversions.</p>
-        </div>
-        <div class="neg-card" data-fade data-d="3">
-          <div class="neg-strike"><s>Not Short-Term Hype</s></div>
-          <p class="neg-d">Long-term brand growth, not short-term trends. I design systems that scale with your brand over time.</p>
+      <div class="li-grid">
+        <ol class="li-steps">
+          <li class="li-step" data-fade data-d="1">
+            <span class="li-num">01</span>
+            <div><h3>Strategy &amp; Profile Setup</h3><p>Positioning, content pillars and a profile or company page optimised to turn visitors into followers and leads.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="2">
+            <span class="li-num">02</span>
+            <div><h3>Research &amp; Content Calendar</h3><p>Monthly topic research and a planned calendar, so every post has a purpose before it is written.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="3">
+            <span class="li-num">03</span>
+            <div><h3>Post Writing</h3><p>Hooks, stories and insights written in your voice, built to stop the scroll and start conversations.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="4">
+            <span class="li-num">04</span>
+            <div><h3>Post Design</h3><p>Carousels, infographics and branded graphics that match your visual identity on every post.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="5">
+            <span class="li-num">05</span>
+            <div><h3>Publishing &amp; Scheduling</h3><p>Posts go live at the right times, every week, without you having to log in and do it yourself.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="6">
+            <span class="li-num">06</span>
+            <div><h3>Monthly Report</h3><p>A clear report on what performed, what didn't and what we change next month.</p></div>
+          </li>
+        </ol>
+
+        <div class="li-visual" data-fade>
+          <div class="li-post">
+            <div class="li-post-top">
+              <span class="li-avatar">K</span>
+              <div><div class="li-name">Keys Media</div><div class="li-sub">Company page · Managed by Faiz · 🌐</div></div>
+              <span class="li-follow">+ Follow</span>
+            </div>
+            <p class="li-text"><b>Every post on this page is done for them.</b><br>Researched, written, designed and published.<br><span class="muted">A few recent infographics ↓</span></p>
+            <div class="li-slides" data-slides>
+              <img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" class="on" width="720" height="900">
+              <img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" width="720" height="900" loading="lazy">
+            </div>
+            <div class="li-dots" aria-hidden="true"></div>
+          <div class="li-actions" aria-hidden="true"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
+          </div>
+          <span class="li-chip c1" aria-hidden="true">✍️ Written <em>✓</em></span>
+          <span class="li-chip c2" aria-hidden="true">🎨 Designed <em>✓</em></span>
+          <span class="li-chip c3" aria-hidden="true">🚀 Published <em>✓</em></span>
         </div>
       </div>
 
-      <p class="neg-foot" data-fade>
-        I don't just design posts. <strong>I design systems that support growth.</strong>
-      </p>
+      <div class="li-incl" data-fade>
+        <span class="li-incl-t">Every month includes</span>
+        <div class="li-tags">
+          <span class="li-tag">Content strategy</span>
+          <span class="li-tag">Content calendar</span>
+          <span class="li-tag">Post writing</span>
+          <span class="li-tag">Carousels &amp; infographics</span>
+          <span class="li-tag">Branded graphics</span>
+          <span class="li-tag">Scheduling &amp; publishing</span>
+          <span class="li-tag">Performance report</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="res-row-label li-gal-label"><span>Recent posts · <b>Keys Media company page</b></span></p>
+    <!-- ✏️ EDIT: To ADD an infographic, put the image in assets/linkedin/ and copy one <a class="li-gal-item"> line -->
+    <div class="li-gal">
+      <div class="li-gal-track" data-loop>
+        <a class="li-gal-item" href="assets/linkedin/title-shift-37x.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/packaging-audit.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/smart-growth.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/creator-economy.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/first-30-seconds.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/thumbnail-rules.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/growth-mindset.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/thumbnail-diagnostic.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" loading="lazy" width="720" height="900"></a>
+      </div>
+    </div>
+    <div class="wrap">
+      <!-- ✏️ EDIT: LinkedIn banners — replace the images in assets/linkedin/ or copy a .li-banner block -->
+      <div class="li-banners">
+        <figure class="li-banner" data-fade data-d="1">
+          <div class="li-banner-img"><img src="assets/linkedin/banner-founder-profile.jpg" alt="LinkedIn profile banner: Grow Your Audience. Get Real Results. Trusted by TFTC, Green Candle and Wesley Schlemmer" loading="lazy" width="1584" height="396"></div>
+          <div class="li-banner-bar"><span class="li-banner-av">K</span><figcaption><b>Founder profile banner</b><span>Personal LinkedIn · Keys Media</span></figcaption></div>
+        </figure>
+        <figure class="li-banner" data-fade data-d="2">
+          <div class="li-banner-img"><img src="assets/linkedin/banner-keys-media-page.jpg" alt="LinkedIn company page banner: 10M+ views generated, 50%+ subscriber growth, 6+ years experience" loading="lazy" width="1128" height="191"></div>
+          <div class="li-banner-bar"><span class="li-banner-av sq">K</span><figcaption><b>Company page banner</b><span>Keys Media · LinkedIn page</span></figcaption></div>
+        </figure>
+      </div>
+
+      <div class="li-cta" data-fade>
+        <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get My LinkedIn Managed →</a>
+        <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RESULTS — YouTube thumbnail showcase ====== -->
+  <!-- ✏️ EDIT: To ADD a video, copy one <article class="res-card"> block inside a row and change the image, title, views and badges.
+       Thumbnail images live in assets/results/ — replace a file with the same name to swap in a higher-quality version.
+       Each row repeats itself automatically for the endless slide. -->
+  <section id="results" class="sec res-sec">
+    <div class="wrap">
+      <div class="res-head" data-fade>
+        <span class="tag">Client Results</span>
+        <h2 class="h2">Thumbnails That Pulled <span class="orange">1.1M+ Views</span></h2>
+        <p class="lead">Real videos from real client channels. Every thumbnail was built to win the click, and several ran far above the channel's normal performance.</p>
+      </div>
+
+      <div class="res-stats" data-fade>
+        <div class="res-stat"><div class="res-stat-n">1.1M+</div><div class="res-stat-l">Views across featured videos</div></div>
+        <div class="res-stat"><div class="res-stat-n">714K</div><div class="res-stat-l">Views on a single video</div></div>
+        <div class="res-stat"><div class="res-stat-n">26.2x</div><div class="res-stat-l">Best outlier vs. channel average</div></div>
+        <div class="res-stat"><div class="res-stat-n">5</div><div class="res-stat-l">Videos at 8x+ channel average</div></div>
+      </div>
+    </div>
+
+    <p class="res-row-label"><span>Commentary &amp; Entertainment · <b>Long-form</b></span></p>
+    <div class="res-marquee">
+      <div class="res-track" data-loop>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/council-tax.jpg" alt="Thumbnail: Your Council Tax" loading="lazy" width="617" height="337"></div>
+          <h3 class="res-title">This Is Why 9 Councils Are Bankrupt</h3>
+          <div class="res-meta"><span class="res-views">714K views</span></div>
+          <div class="res-badges"><span class="res-badge out">15.4x</span><span class="res-badge">24 VPH</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/physical-comedy.jpg" alt="Thumbnail: The Art of Physical Comedy" loading="lazy" width="691" height="379"></div>
+          <h3 class="res-title">The Best Examples of Physical Comedy: Why We Can't Stop Laughing</h3>
+          <div class="res-meta"><span class="res-views">6.4K views</span></div>
+          <div class="res-badges"><span class="res-badge out">10.2x</span><span class="res-badge">1 VPH</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/starmer-lies.jpg" alt="Thumbnail: LIES!" loading="lazy" width="608" height="332"></div>
+          <h3 class="res-title">Digital ID Scrapped? - Starmer Lied. The Contracts Prove It.</h3>
+          <div class="res-meta"><span class="res-views">145K views</span></div>
+          <div class="res-badges"><span class="res-badge out">10.7x</span><span class="res-badge">24 VPH</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/righteous-gemstones.jpg" alt="Thumbnail: The Righteous Gemstones" loading="lazy" width="1013" height="569"></div>
+          <h3 class="res-title">The Righteous Gemstones: How Comedy Gold Was Born From Unholy Dysfunction</h3>
+          <div class="res-meta"><span class="res-views">1.8K views</span></div>
+          <div class="res-badges"><span class="res-badge out hot">7.5x</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/eu-hacking.jpg" alt="Thumbnail: EU Hacking Your Phone" loading="lazy" width="623" height="340"></div>
+          <h3 class="res-title">The EU Is Forcing Backdoor Access to Your Phone - I Followed the Money</h3>
+          <div class="res-meta"><span class="res-views">94K views</span></div>
+          <div class="res-badges"><span class="res-badge out">26.2x</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/aus-vs-us-comedy.jpg" alt="Thumbnail: Australian vs American Comedy" loading="lazy" width="1014" height="569"></div>
+          <h3 class="res-title">Australian vs American Comedy</h3>
+          <div class="res-meta"><span class="res-niche">Comedy · Entertainment</span></div>
+          <div class="res-badges"><span class="res-badge muted">Long-form</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/ncp-legal.jpg" alt="Thumbnail: NCP and GOV.UK heart" loading="lazy" width="618" height="338"></div>
+          <h3 class="res-title">How Is This Legal?</h3>
+          <div class="res-meta"><span class="res-views">109K views</span></div>
+          <div class="res-badges"><span class="res-badge out hot">8.1x</span><span class="res-badge">3 VPH</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/mcdonalds-monopoly.jpg" alt="Thumbnail: Fake Winner For 12 Years" loading="lazy" width="622" height="340"></div>
+          <h3 class="res-title">What McDonald's Doesn't Want You to Know About Their Monopoly Game</h3>
+          <div class="res-meta"><span class="res-views">29K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Long-form</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/debt-trap.jpg" alt="Thumbnail: Pay In 3" loading="lazy" width="622" height="340"></div>
+          <h3 class="res-title">How To Debt Trap A Generation</h3>
+          <div class="res-meta"><span class="res-views">4K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Long-form</span></div>
+        </article>
+      </div>
+    </div>
+
+    <p class="res-row-label"><span>Bitcoin &amp; Finance · <b>Videos &amp; Live Streams</b></span></p>
+    <div class="res-marquee">
+      <div class="res-track rev" data-loop>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/trump-freeze-live.jpg" alt="Thumbnail: We Need To Freeze Bank Accounts" loading="lazy" width="693" height="380"><span class="res-live">LIVE</span></div>
+          <h3 class="res-title">BREAKING: US Plan To Freeze Bank Accounts Just Went LIVE!</h3>
+          <div class="res-meta"><span class="res-views">34K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/btc-early-not-wrong.jpg" alt="Thumbnail: Early Not Wrong" loading="lazy" width="501" height="282"></div>
+          <h3 class="res-title">Early, Not Wrong</h3>
+          <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
+          <div class="res-badges"><span class="res-badge muted">Video</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/trump-freeze.jpg" alt="Thumbnail: Trump — We Need To Freeze Bank Accounts" loading="lazy" width="636" height="348"><span class="res-live">LIVE</span></div>
+          <h3 class="res-title">BREAKING: Trump Just Gave Wall Street Power To Freeze YOUR Bank Accounts!</h3>
+          <div class="res-meta"><span class="res-views">7K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/btc-why-bitcoin-wins.jpg" alt="Thumbnail: This Is Why Bitcoin Wins" loading="lazy" width="501" height="282"></div>
+          <h3 class="res-title">This Is Why Bitcoin Wins</h3>
+          <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
+          <div class="res-badges"><span class="res-badge muted">Video</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/starmer-freeze.jpg" alt="Thumbnail: Freeze 30M Bank Accounts" loading="lazy" width="695" height="381"><span class="res-live">LIVE</span></div>
+          <h3 class="res-title">UK's Plan to Freeze 30 Million Bank Accounts Has Begun (What You Must Know)</h3>
+          <div class="res-meta"><span class="res-views">3.9K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/btc-we-can-fix-this.jpg" alt="Thumbnail: We Can Fix This" loading="lazy" width="501" height="282"></div>
+          <h3 class="res-title">We Can Fix This</h3>
+          <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
+          <div class="res-badges"><span class="res-badge muted">Video</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/china-bitcoin.jpg" alt="Thumbnail: Holy Sh*t They Did It!?" loading="lazy" width="636" height="348"><span class="res-live">LIVE</span></div>
+          <h3 class="res-title">BREAKING: China's $253B Bitcoin Plan EXPOSED! They Stole It From The US</h3>
+          <div class="res-meta"><span class="res-views">2.3K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/btc-protect-future.jpg" alt="Thumbnail: Protect Your Future" loading="lazy" width="501" height="282"></div>
+          <h3 class="res-title">Protect Your Future</h3>
+          <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
+          <div class="res-badges"><span class="res-badge muted">Video</span></div>
+        </article>
+        <article class="res-card">
+          <div class="res-thumb"><img src="assets/results/bitcoin-cnbc.jpg" alt="Thumbnail: We Want Your Bitcoin" loading="lazy" width="636" height="348"><span class="res-live">LIVE</span></div>
+          <h3 class="res-title">BREAKING: The 2.4M Paper Bitcoin ATTACK Just Got 10x Worse</h3>
+          <div class="res-meta"><span class="res-views">2.2K views</span></div>
+          <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="wrap res-foot" data-fade>
+      <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get Thumbnails Like These →</a>
+      <p class="res-note">Hover to pause · Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
     </div>
   </section>
 
@@ -1071,12 +1735,42 @@
     </div>
   </section>
 
+  <!-- ====== NEGATIVE POSITIONING ("Not a ___") ====== -->
+  <section class="sec neg-sec">
+    <div class="wrap">
+      <div class="neg-head" data-fade>
+        <span class="tag">Why Choose Me</span>
+        <h2 class="h2">Not Just a Designer.<br><span class="orange">Design That Performs.</span></h2>
+      </div>
+
+      <div class="neg-grid">
+        <!-- ✏️ EDIT: Each card -->
+        <div class="neg-card" data-fade data-d="1">
+          <div class="neg-strike"><s>Not Random Posts</s></div>
+          <p class="neg-d">I start with clarity and purpose, not colors and fonts. Strategy comes before design, every time.</p>
+        </div>
+        <div class="neg-card" data-fade data-d="2">
+          <div class="neg-strike"><s>Not Just Aesthetics</s></div>
+          <p class="neg-d">Every visual is made with audience behavior and business goals in mind — built to support trust, engagement, and conversions.</p>
+        </div>
+        <div class="neg-card" data-fade data-d="3">
+          <div class="neg-strike"><s>Not Short-Term Hype</s></div>
+          <p class="neg-d">Long-term brand growth, not short-term trends. I design systems that scale with your brand over time.</p>
+        </div>
+      </div>
+
+      <p class="neg-foot" data-fade>
+        I don't just design posts. <strong>I design systems that support growth.</strong>
+      </p>
+    </div>
+  </section>
+
   <!-- ====== WORK / PORTFOLIO ====== -->
-  <section id="work" class="sec">
+  <section id="work" class="sec work-sec">
     <div class="wrap">
       <div class="work-head" data-fade>
-        <span class="tag">Selected Work 2025–2026</span>
-        <h2 class="h2">Case Studies That <span class="orange">Delivered Results</span></h2>
+        <span class="tag">Portfolio</span>
+        <h2 class="h2">Selected <span class="orange">Design Work</span></h2>
       </div>
 
       <div class="work-grid">
@@ -1135,53 +1829,6 @@
     </div>
   </section>
 
-  <!-- ====== ABOUT — "Hey, I'm Faiz" ====== -->
-  <section id="about" class="sec about-sec">
-    <div class="wrap">
-      <div class="about-grid">
-
-        <!-- ✏️ EDIT: Replace with your photo URL -->
-        <div class="about-img-wrap" data-fade>
-          <img src="1000016668-scaled-e1771412623403-768x896.jpg"
-               alt="Faiz Ahmed — Designer &amp; Strategist" loading="lazy" width="768" height="896">
-          <div class="about-badge">@designwithfaiz</div>
-        </div>
-
-        <div data-fade data-d="2">
-          <span class="tag">About Me</span>
-          <h2 class="h2">Hey, I'm Faiz.</h2>
-
-          <!-- ✏️ EDIT: Update your bio -->
-          <p class="about-bio">
-            I sit at the intersection of design, AI, and marketing strategy. Most people in this space pick one lane. I work across all three, and I use them together to build content systems that drive real, measurable growth.
-          </p>
-          <p class="about-bio" style="margin-top:-4px">
-            That means I don't hand you a thumbnail and move on. I build the repeatable visual framework your brand runs on, across YouTube, LinkedIn, Instagram, and wherever else your content lives. A system that keeps working after the project ends.
-          </p>
-          <p class="about-bio" style="margin-top:-4px">
-            I don't design posts. I build systems around the people behind them.
-          </p>
-
-          <!-- ✏️ EDIT: Add or remove skill tags -->
-          <div class="about-skills">
-            <span class="skill-pill">Strategic Design</span>
-            <span class="skill-pill">Brand Identity</span>
-            <span class="skill-pill">Content Strategy</span>
-            <span class="skill-pill">LinkedIn Growth</span>
-            <span class="skill-pill">Social Media</span>
-            <span class="skill-pill">AI Tools</span>
-          </div>
-
-          <div class="about-btns">
-            <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Work With Me →</a>
-            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">View Behance</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ====== 6-D PROCESS ====== -->
   <section class="sec">
     <div class="wrap">
@@ -1233,6 +1880,53 @@
     </div>
   </section>
 
+  <!-- ====== ABOUT — "Hey, I'm Faiz" ====== -->
+  <section id="about" class="sec about-sec">
+    <div class="wrap">
+      <div class="about-grid">
+
+        <!-- ✏️ EDIT: Replace with your photo URL -->
+        <div class="about-img-wrap" data-fade>
+          <img src="1000016668-scaled-e1771412623403-768x896.jpg"
+               alt="Faiz Ahmed — Designer &amp; Strategist" loading="lazy" width="768" height="896">
+          <div class="about-badge">@designwithfaiz</div>
+        </div>
+
+        <div data-fade data-d="2">
+          <span class="tag">About Me</span>
+          <h2 class="h2">Hey, I'm Faiz.</h2>
+
+          <!-- ✏️ EDIT: Update your bio -->
+          <p class="about-bio">
+            I sit at the intersection of design, AI, and marketing strategy. Most people in this space pick one lane. I work across all three, and I use them together to build content systems that drive real, measurable growth.
+          </p>
+          <p class="about-bio" style="margin-top:-4px">
+            That means I don't hand you a thumbnail and move on. I build the repeatable visual framework your brand runs on, across YouTube, LinkedIn, Instagram, and wherever else your content lives. A system that keeps working after the project ends.
+          </p>
+          <p class="about-bio" style="margin-top:-4px">
+            I don't design posts. I build systems around the people behind them.
+          </p>
+
+          <!-- ✏️ EDIT: Add or remove skill tags -->
+          <div class="about-skills">
+            <span class="skill-pill">Strategic Design</span>
+            <span class="skill-pill">Brand Identity</span>
+            <span class="skill-pill">Content Strategy</span>
+            <span class="skill-pill">LinkedIn Growth</span>
+            <span class="skill-pill">Social Media</span>
+            <span class="skill-pill">AI Tools</span>
+          </div>
+
+          <div class="about-btns">
+            <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Work With Me →</a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">View Behance</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ====== TESTIMONIALS ====== -->
   <section class="sec test-sec">
     <div class="wrap">
@@ -1274,31 +1968,6 @@
     </div>
   </section>
 
-  <!-- ====== STATS BAND ====== -->
-  <div class="stats-band">
-    <div class="wrap">
-      <div class="stats-row">
-        <!-- ✏️ EDIT: Update these numbers -->
-        <div class="stats-item" data-fade data-d="1">
-          <div class="stats-n">27+</div>
-          <div class="stats-l">Satisfied Clients</div>
-        </div>
-        <div class="stats-item" data-fade data-d="2">
-          <div class="stats-n">100+</div>
-          <div class="stats-l">Projects Completed</div>
-        </div>
-        <div class="stats-item" data-fade data-d="3">
-          <div class="stats-n">3+</div>
-          <div class="stats-l">Years of Experience</div>
-        </div>
-        <div class="stats-item" data-fade data-d="4">
-          <div class="stats-n">1K+</div>
-          <div class="stats-l">Social Followers</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ====== CTA / CONTACT ====== -->
   <section id="contact" class="sec cta-sec">
     <div class="wrap">
@@ -1329,30 +1998,57 @@
   </section>
 
   <!-- ====== FOOTER ====== -->
-  <footer>
+  <footer class="ft">
     <div class="wrap">
-      <div class="footer-row">
-        <!-- ✏️ EDIT: Footer logo -->
-        <a href="#home" class="footer-logo logo">
-          <span class="logo-mark">F</span>
-          <span class="logo-text">design<span>withfaiz</span></span>
-        </a>
-        <div class="footer-links">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <!-- ✏️ EDIT: Footer logo -->
+          <a href="#home" class="footer-logo logo">
+            <span class="logo-mark">F</span>
+            <span class="logo-text">design<span>withfaiz</span></span>
+          </a>
+          <p class="ft-tag">Content systems, LinkedIn management and thumbnails that turn attention into revenue for founders and creators.</p>
+          <a href="https://wa.me/919461817353" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start a Project →</a>
+        </div>
+
+        <div class="ft-col" role="navigation" aria-label="Footer">
+          <h4>Explore</h4>
+          <a href="#linkedin">LinkedIn</a>
+          <a href="#results">Results</a>
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <div class="footer-socials">
-          <!-- ✏️ EDIT: Social links -->
-          <a href="https://www.instagram.com/designwithfaiz/"         target="_blank" rel="noopener" title="Instagram">📷</a>
-          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" target="_blank" rel="noopener" title="LinkedIn">💼</a>
-          <a href="https://www.behance.net/faizgraphicsdesigner"      target="_blank" rel="noopener" title="Behance">🎨</a>
-          <a href="https://wa.me/919461817353"                        target="_blank" rel="noopener" title="WhatsApp">💬</a>
+
+        <div class="ft-col">
+          <h4>Services</h4>
+          <a href="#linkedin">LinkedIn Management</a>
+          <a href="#results">YouTube Thumbnails</a>
+          <a href="#services">Brand Visual System</a>
+          <a href="#services">Content + Design</a>
+          <a href="#services">Audit + Strategy</a>
+        </div>
+
+        <div class="ft-col">
+          <h4>Get in touch</h4>
+          <!-- ✏️ EDIT: Email / WhatsApp / social links -->
+          <a href="mailto:hello@designwithfaiz.com" class="ft-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@designwithfaiz.com</a>
+          <a href="https://wa.me/919461817353" class="ft-contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.53 14.95L2 22l5.2-1.46A9.93 9.93 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.09.86.83-3.01-.2-.31a8.2 8.2 0 1 1 6.94 3.79zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>WhatsApp chat</a>
+          <div class="ft-socials">
+            <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg></a>
+            <a href="https://www.instagram.com/designwithfaiz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.2 11.3c.9-.4 1.6-1.2 1.6-2.4C9.8 6.6 8.1 6 6.2 6H1.5v12h4.9c2.1 0 4-1 4-3.4 0-1.5-.8-2.8-2.2-3.3zM3.9 8h2.1c.8 0 1.5.2 1.5 1.1 0 .8-.6 1.2-1.4 1.2H3.9zm2.3 8H3.9v-3.4h2.3c1 0 1.7.4 1.7 1.7 0 1.2-.8 1.7-1.7 1.7zM15 7h5v1.3h-5zm2.5 2.2c-2.7 0-4.4 1.9-4.4 4.4 0 2.6 1.6 4.4 4.4 4.4 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1 1.1-1.8 1.1-1.3 0-2.1-.8-2.2-2.3h6.2c.2-2.6-1.2-4.7-4.1-4.7zm-2 3.4c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8z"/></svg></a>
+            <a href="https://wa.me/919461817353" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.53 14.95L2 22l5.2-1.46A9.93 9.93 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.09.86.83-3.01-.2-.31a8.2 8.2 0 1 1 6.94 3.79zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+          </div>
         </div>
       </div>
-      <!-- ✏️ EDIT: Update year -->
-      <p class="footer-copy">© 2026 Designwithfaiz · Built with strategy, not just aesthetics.</p>
+
+      <div class="ft-bottom">
+        <!-- ✏️ EDIT: Update year -->
+        <p>© 2026 Designwithfaiz · Built with strategy, not just aesthetics.</p>
+        <a href="#home" class="ft-top">Back to top ↑</a>
+      </div>
     </div>
   </footer>
 
@@ -1367,6 +2063,7 @@
     const ham = document.getElementById('ham');
     const mob = document.getElementById('mob');
     ham.addEventListener('click', () => {
+      mob.style.top = nav.offsetHeight + 'px';   // sit exactly under the header at any size
       const isOpen = mob.classList.toggle('on');
       mob.setAttribute('aria-hidden', String(!isOpen));
     });
@@ -1399,6 +2096,52 @@
       fadeEls.forEach(el => el.classList.add('vis'));
     }
     setTimeout(() => { fadeEls.forEach(el => el.classList.add('vis')); }, 2500);
+
+    // ---- Endless sliders (client logos + results) ----
+    // Repeats each [data-loop] row until it is wider than the screen, then doubles it
+    // so the CSS marquee animation (-50%) loops seamlessly. Speed stays constant per row.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('[data-loop]').forEach(track => {
+      if (reduceMotion) return;
+      const originals = Array.from(track.children);
+      const addCopy = () => originals.forEach(el => {
+        const c = el.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        c.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
+        track.appendChild(c);
+      });
+      const minWidth = Math.max(window.innerWidth, 1600);
+      let guard = 0;
+      while (track.scrollWidth < minWidth && guard++ < 10) addCopy();
+      const setCount = track.children.length / originals.length;
+      for (let i = 0; i < setCount; i++) addCopy();
+      const pxPerSec = track.classList.contains('trust-logos') ? 45 : 38;
+      track.style.animationDuration = (track.scrollWidth / 2 / pxPerSec) + 's';
+    });
+
+    // ---- LinkedIn post: rotate infographics (pauses on hover, dots are clickable) ----
+    document.querySelectorAll('[data-slides]').forEach(box => {
+      const imgs = Array.from(box.querySelectorAll('img'));
+      const dots = box.nextElementSibling;
+      let i = 0, timer = null;
+      const show = n => {
+        imgs[i].classList.remove('on'); dots.children[i].classList.remove('on');
+        i = (n + imgs.length) % imgs.length;
+        imgs[i].classList.add('on'); dots.children[i].classList.add('on');
+      };
+      imgs.forEach((_, n) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.tabIndex = -1;
+        if (n === 0) d.classList.add('on');
+        d.addEventListener('click', () => show(n));
+        dots.appendChild(d);
+      });
+      const start = () => { if (!reduceMotion) timer = setInterval(() => show(i + 1), 3500); };
+      box.addEventListener('mouseenter', () => clearInterval(timer));
+      box.addEventListener('mouseleave', start);
+      start();
+    });
 
     // ---- Smooth anchor scrolling ----
     document.querySelectorAll('a[href^="#"]').forEach(a => {
