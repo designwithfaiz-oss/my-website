@@ -899,6 +899,154 @@
     }
 
     /* =============================================
+       LINKEDIN ACCOUNT MANAGEMENT — done-for-you service
+       ============================================= */
+    .li-sec { background: var(--bg); }
+    .li-head { text-align: center; max-width: 760px; margin: 0 auto 60px; }
+    .li-head .lead { margin: 18px auto 0; }
+    .li-in { color: #0a66c2; }
+    .li-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Left: writing → design → publishing pipeline */
+    .li-steps { list-style: none; position: relative; }
+    .li-steps::before {
+      content: "";
+      position: absolute;
+      left: 23px; top: 24px; bottom: 24px;
+      width: 2px;
+      background: linear-gradient(var(--accent), var(--border));
+    }
+    .li-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 14px 16px 14px 0;
+      border-radius: var(--r);
+      transition: background var(--ease);
+    }
+    .li-step:hover { background: var(--bg-card); }
+    .li-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 15px;
+      color: var(--accent-dark);
+      position: relative; z-index: 1;
+      transition: background var(--ease), color var(--ease);
+    }
+    .li-step:hover .li-num { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
+    .li-step h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: -0.3px; margin: 3px 0 4px; }
+    .li-step p  { font-size: 14.5px; color: var(--text-muted); line-height: 1.7; }
+
+    /* Right: LinkedIn post mock-up */
+    .li-visual { position: relative; }
+    .li-post {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: 0 30px 70px rgba(15,122,191,0.14);
+      overflow: hidden;
+      animation: li-float 6s ease-in-out infinite;
+    }
+    @keyframes li-float { 50% { transform: translateY(-10px); } }
+    .li-post-top { display: flex; align-items: center; gap: 12px; padding: 18px 20px 12px; }
+    .li-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      color: #fff; font-family: var(--font-display); font-weight: 800;
+    }
+    .li-name { font-weight: 700; font-size: 14.5px; line-height: 1.2; }
+    .li-sub  { font-size: 12px; color: var(--text-dim); }
+    .li-follow { margin-left: auto; font-size: 13px; font-weight: 700; color: #0a66c2; }
+    .li-text { padding: 0 20px 14px; font-size: 14px; line-height: 1.6; color: var(--text); }
+    .li-text b { font-weight: 700; }
+    .li-text .muted { color: var(--text-dim); }
+    .li-graphic {
+      margin: 0 20px;
+      aspect-ratio: 4 / 5;
+      max-height: 330px;
+      width: calc(100% - 40px);
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(160,206,247,0.45), transparent 45%),
+        linear-gradient(160deg, #0b1220 0%, #10365a 100%);
+      color: #fff;
+      padding: 26px 24px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .li-graphic-k { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+    .li-graphic-h { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; line-height: 1.1; letter-spacing: -0.8px; }
+    .li-graphic-h span { color: var(--accent); }
+    .li-graphic-dots { display: flex; gap: 6px; }
+    .li-graphic-dots i { width: 22px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.25); }
+    .li-graphic-dots i:first-child { background: var(--accent); }
+    .li-actions {
+      display: flex; justify-content: space-around;
+      margin-top: 14px; padding: 10px 12px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+    }
+    .li-chip {
+      position: absolute;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 9px 16px;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 12px 30px rgba(15,122,191,0.14);
+      white-space: nowrap;
+      animation: li-float 5s ease-in-out infinite;
+    }
+    .li-chip.c1 { top: -20px; left: 28px; animation-delay: -1s; }
+    .li-chip.c2 { top: 46%;   right: -30px; animation-delay: -2.5s; }
+    .li-chip.c3 { top: 72%; left: -34px; animation-delay: -3.5s; }
+    .li-chip em { font-style: normal; color: #1a9f5b; }
+
+    .li-incl {
+      margin-top: 64px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 30px 32px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;
+    }
+    .li-incl-t { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -0.3px; margin-right: 8px; }
+    .li-tags { display: flex; flex-wrap: wrap; gap: 10px; flex: 1; }
+    .li-tag {
+      font-size: 13px; font-weight: 600;
+      background: #fff; border: 1px solid var(--border);
+      padding: 7px 14px; border-radius: 100px;
+      color: var(--text);
+    }
+    .li-tag::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
+    .li-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
+
+    @media (max-width: 1024px) {
+      .li-grid { grid-template-columns: 1fr; gap: 56px; }
+      .li-visual { max-width: 440px; margin: 0 auto; width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .li-chip.c1 { left: 16px; }
+      .li-chip.c2 { right: -6px; }
+      .li-chip.c3 { left: -6px; }
+      .li-incl { padding: 24px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .li-post, .li-chip { animation: none !important; }
+    }
+
+    /* =============================================
        RESULTS — auto-sliding thumbnail showcase (dark band)
        ============================================= */
     .res-sec {
@@ -1078,6 +1226,7 @@
       <!-- ✏️ EDIT: Nav links -->
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#linkedin">LinkedIn</a></li>
         <li><a href="#results">Results</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
@@ -1100,6 +1249,7 @@
   <div class="mob-nav" id="mob" aria-hidden="true">
     <ul>
       <li><a href="#services" class="mlink">Services</a></li>
+      <li><a href="#linkedin" class="mlink">LinkedIn</a></li>
       <li><a href="#results"  class="mlink">Results</a></li>
       <li><a href="#work"     class="mlink">Work</a></li>
       <li><a href="#about"    class="mlink">About</a></li>
@@ -1175,6 +1325,85 @@
       </div>
     </div>
   </div>
+
+  <!-- ====== LINKEDIN ACCOUNT MANAGEMENT ====== -->
+  <!-- ✏️ EDIT: Change step text inside each <li class="li-step">; change the "Every month includes" list in .li-tags -->
+  <section id="linkedin" class="sec li-sec">
+    <div class="wrap">
+      <div class="li-head" data-fade>
+        <span class="tag">LinkedIn Account Management</span>
+        <h2 class="h2">Your <span class="li-in">LinkedIn</span>, <span style="white-space:nowrap">Fully Handled.</span><br><span class="orange">Writing to Publishing.</span></h2>
+        <p class="lead">I run your personal or company LinkedIn for you. I plan it, write it in your voice, design the posts and publish them on schedule. You get a consistent brand presence without spending hours on it every week.</p>
+      </div>
+
+      <div class="li-grid">
+        <ol class="li-steps">
+          <li class="li-step" data-fade data-d="1">
+            <span class="li-num">01</span>
+            <div><h3>Strategy &amp; Profile Setup</h3><p>Positioning, content pillars and a profile or company page optimised to turn visitors into followers and leads.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="2">
+            <span class="li-num">02</span>
+            <div><h3>Research &amp; Content Calendar</h3><p>Monthly topic research and a planned calendar, so every post has a purpose before it is written.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="3">
+            <span class="li-num">03</span>
+            <div><h3>Post Writing</h3><p>Hooks, stories and insights written in your voice, built to stop the scroll and start conversations.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="4">
+            <span class="li-num">04</span>
+            <div><h3>Post Design</h3><p>Carousels, infographics and branded graphics that match your visual identity on every post.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="5">
+            <span class="li-num">05</span>
+            <div><h3>Publishing &amp; Scheduling</h3><p>Posts go live at the right times, every week, without you having to log in and do it yourself.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="6">
+            <span class="li-num">06</span>
+            <div><h3>Monthly Report</h3><p>A clear report on what performed, what didn't and what we change next month.</p></div>
+          </li>
+        </ol>
+
+        <div class="li-visual" data-fade aria-hidden="true">
+          <div class="li-post">
+            <div class="li-post-top">
+              <span class="li-avatar">Y</span>
+              <div><div class="li-name">Your Brand</div><div class="li-sub">Founder · Scheduled · 🌐</div></div>
+              <span class="li-follow">+ Follow</span>
+            </div>
+            <p class="li-text"><b>Most founders post on LinkedIn.</b><br>Very few build a system around it.<br><span class="muted">Here's the framework we use every month ↓</span></p>
+            <div class="li-graphic">
+              <span class="li-graphic-k">Carousel · 1 / 8</span>
+              <div class="li-graphic-h">Content that <span>works while you work.</span></div>
+              <div class="li-graphic-dots"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="li-actions"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
+          </div>
+          <span class="li-chip c1">✍️ Written <em>✓</em></span>
+          <span class="li-chip c2">🎨 Designed <em>✓</em></span>
+          <span class="li-chip c3">🚀 Published <em>✓</em></span>
+        </div>
+      </div>
+
+      <div class="li-incl" data-fade>
+        <span class="li-incl-t">Every month includes</span>
+        <div class="li-tags">
+          <span class="li-tag">Content strategy</span>
+          <span class="li-tag">Content calendar</span>
+          <span class="li-tag">Post writing</span>
+          <span class="li-tag">Carousels &amp; infographics</span>
+          <span class="li-tag">Branded graphics</span>
+          <span class="li-tag">Scheduling &amp; publishing</span>
+          <span class="li-tag">Performance report</span>
+        </div>
+      </div>
+
+      <div class="li-cta" data-fade>
+        <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get My LinkedIn Managed →</a>
+        <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ====== NEGATIVE POSITIONING ("Not a ___") ====== -->
   <section class="sec neg-sec">
