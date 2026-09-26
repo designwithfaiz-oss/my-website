@@ -1064,6 +1064,32 @@
       color: var(--text);
     }
     .li-tag::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
+    /* LinkedIn banner showcase (profile-header style frames) */
+    .li-banners { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; margin-top: 56px; align-items: start; }
+    .li-banner {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15,122,191,0.08);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+    .li-banner:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(15,122,191,0.16); }
+    .li-banner-img { background: var(--bg-card); border-bottom: 1px solid var(--border-soft); }
+    .li-banner-img img { width: 100%; height: auto; }
+    .li-banner-bar { display: flex; align-items: center; gap: 14px; padding: 0 20px 16px; }
+    .li-banner-av {
+      width: 58px; height: 58px; margin-top: -22px;
+      border-radius: 50%; border: 4px solid #fff;
+      display: grid; place-items: center; flex: 0 0 auto;
+      background: linear-gradient(135deg, #b8860b, #e8b93a);
+      color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 20px;
+    }
+    .li-banner-av.sq { border-radius: 12px; }
+    .li-banner figcaption { padding-top: 10px; line-height: 1.35; }
+    .li-banner figcaption b { display: block; font-size: 15px; }
+    .li-banner figcaption span { font-size: 12.5px; color: var(--text-dim); }
+    @media (max-width: 768px) { .li-banners { grid-template-columns: 1fr; } }
     .li-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
 
     @media (max-width: 1024px) {
@@ -1408,11 +1434,14 @@
             </div>
             <p class="li-text"><b>Every post on this page is done for them.</b><br>Researched, written, designed and published.<br><span class="muted">A few recent infographics ↓</span></p>
             <div class="li-slides" data-slides>
-              <img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" class="on" width="720" height="900">
+              <img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" class="on" width="720" height="900">
+              <img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" width="720" height="900" loading="lazy">
               <img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" width="720" height="900" loading="lazy">
               <img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" width="720" height="900" loading="lazy">
               <img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" width="720" height="900" loading="lazy">
               <img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" width="720" height="900" loading="lazy">
             </div>
             <div class="li-dots" aria-hidden="true"></div>
           <div class="li-actions" aria-hidden="true"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
@@ -1441,14 +1470,29 @@
     <!-- ✏️ EDIT: To ADD an infographic, put the image in assets/linkedin/ and copy one <a class="li-gal-item"> line -->
     <div class="li-gal">
       <div class="li-gal-track" data-loop>
+        <a class="li-gal-item" href="assets/linkedin/title-shift-37x.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" loading="lazy" width="720" height="900"></a>
         <a class="li-gal-item" href="assets/linkedin/packaging-audit.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/smart-growth.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" loading="lazy" width="720" height="900"></a>
         <a class="li-gal-item" href="assets/linkedin/creator-economy.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" loading="lazy" width="720" height="900"></a>
         <a class="li-gal-item" href="assets/linkedin/first-30-seconds.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/thumbnail-rules.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" loading="lazy" width="720" height="900"></a>
         <a class="li-gal-item" href="assets/linkedin/growth-mindset.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" loading="lazy" width="720" height="900"></a>
         <a class="li-gal-item" href="assets/linkedin/thumbnail-diagnostic.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" loading="lazy" width="720" height="900"></a>
       </div>
     </div>
     <div class="wrap">
+      <!-- ✏️ EDIT: LinkedIn banners — replace the images in assets/linkedin/ or copy a .li-banner block -->
+      <div class="li-banners">
+        <figure class="li-banner" data-fade data-d="1">
+          <div class="li-banner-img"><img src="assets/linkedin/banner-founder-profile.jpg" alt="LinkedIn profile banner: Grow Your Audience. Get Real Results. Trusted by TFTC, Green Candle and Wesley Schlemmer" loading="lazy" width="1584" height="396"></div>
+          <div class="li-banner-bar"><span class="li-banner-av">K</span><figcaption><b>Founder profile banner</b><span>Personal LinkedIn · Keys Media</span></figcaption></div>
+        </figure>
+        <figure class="li-banner" data-fade data-d="2">
+          <div class="li-banner-img"><img src="assets/linkedin/banner-keys-media-page.jpg" alt="LinkedIn company page banner: 10M+ views generated, 50%+ subscriber growth, 6+ years experience" loading="lazy" width="1128" height="191"></div>
+          <div class="li-banner-bar"><span class="li-banner-av sq">K</span><figcaption><b>Company page banner</b><span>Keys Media · LinkedIn page</span></figcaption></div>
+        </figure>
+      </div>
+
       <div class="li-cta" data-fade>
         <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get My LinkedIn Managed →</a>
         <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
