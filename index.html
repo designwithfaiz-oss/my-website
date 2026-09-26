@@ -967,29 +967,63 @@
     }
     .li-name { font-weight: 700; font-size: 14.5px; line-height: 1.2; }
     .li-sub  { font-size: 12px; color: var(--text-dim); }
-    .li-follow { margin-left: auto; font-size: 13px; font-weight: 700; color: #0a66c2; }
+    .li-follow { white-space: nowrap; margin-left: auto; font-size: 13px; font-weight: 700; color: #0a66c2; }
     .li-text { padding: 0 20px 14px; font-size: 14px; line-height: 1.6; color: var(--text); }
     .li-text b { font-weight: 700; }
     .li-text .muted { color: var(--text-dim); }
-    .li-graphic {
+    /* Infographic carousel inside the post (cross-fades, 4:5 like LinkedIn) */
+    .li-slides {
+      position: relative;
       margin: 0 20px;
       aspect-ratio: 4 / 5;
-      max-height: 330px;
-      width: calc(100% - 40px);
-      border-radius: 12px;
-      background:
-        radial-gradient(circle at 85% 15%, rgba(160,206,247,0.45), transparent 45%),
-        linear-gradient(160deg, #0b1220 0%, #10365a 100%);
-      color: #fff;
-      padding: 26px 24px;
-      display: flex; flex-direction: column; justify-content: space-between;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #0b1220;
     }
-    .li-graphic-k { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
-    .li-graphic-h { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; line-height: 1.1; letter-spacing: -0.8px; }
-    .li-graphic-h span { color: var(--accent); }
-    .li-graphic-dots { display: flex; gap: 6px; }
-    .li-graphic-dots i { width: 22px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.25); }
-    .li-graphic-dots i:first-child { background: var(--accent); }
+    .li-slides img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.9s ease, transform 3.5s ease;
+    }
+    .li-slides img.on { opacity: 1; transform: scale(1); }
+    .li-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+    .li-dots button {
+      width: 8px; height: 8px; padding: 0;
+      border: 0; border-radius: 8px;
+      background: var(--border);
+      cursor: pointer;
+      transition: width var(--ease), background var(--ease);
+    }
+    .li-dots button.on { width: 22px; background: #0a66c2; }
+
+    /* Gallery row of real LinkedIn infographics */
+    .res-row-label.li-gal-label { --res-muted: var(--text-dim); --res-line: var(--border); margin-top: 72px; }
+    .li-gal-label b { color: var(--accent-dark); }
+    .li-gal {
+      overflow: hidden;
+      padding: 12px 0 24px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .li-gal:hover .li-gal-track { animation-play-state: paused; }
+    .li-gal-track {
+      display: flex; gap: 22px;
+      width: max-content;
+      animation: marquee 50s linear infinite;
+    }
+    .li-gal-item {
+      flex: 0 0 auto;
+      width: 260px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(15,122,191,0.10);
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow var(--ease);
+    }
+    .li-gal-item:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 24px 50px rgba(15,122,191,0.2); }
+    .li-gal-item img { width: 100%; height: auto; }
     .li-actions {
       display: flex; justify-content: space-around;
       margin-top: 14px; padding: 10px 12px;
@@ -1010,7 +1044,7 @@
     }
     .li-chip.c1 { top: -20px; left: 28px; animation-delay: -1s; }
     .li-chip.c2 { top: 46%;   right: -30px; animation-delay: -2.5s; }
-    .li-chip.c3 { top: 72%; left: -34px; animation-delay: -3.5s; }
+    .li-chip.c3 { top: 72%; left: -56px; animation-delay: -3.5s; }
     .li-chip em { font-style: normal; color: #1a9f5b; }
 
     .li-incl {
@@ -1038,12 +1072,13 @@
     }
     @media (max-width: 640px) {
       .li-chip.c1 { left: 16px; }
-      .li-chip.c2 { right: -6px; }
-      .li-chip.c3 { left: -6px; }
+      .li-chip.c2, .li-chip.c3 { display: none; }
       .li-incl { padding: 24px 20px; }
     }
+    @media (max-width: 640px) { .li-gal-item { width: 210px; } }
     @media (prefers-reduced-motion: reduce) {
-      .li-post, .li-chip { animation: none !important; }
+      .li-post, .li-chip, .li-gal-track { animation: none !important; }
+      .li-gal { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
     }
 
     /* =============================================
@@ -1364,24 +1399,27 @@
           </li>
         </ol>
 
-        <div class="li-visual" data-fade aria-hidden="true">
+        <div class="li-visual" data-fade>
           <div class="li-post">
             <div class="li-post-top">
-              <span class="li-avatar">Y</span>
-              <div><div class="li-name">Your Brand</div><div class="li-sub">Founder · Scheduled · 🌐</div></div>
+              <span class="li-avatar">K</span>
+              <div><div class="li-name">Keys Media</div><div class="li-sub">Company page · Managed by Faiz · 🌐</div></div>
               <span class="li-follow">+ Follow</span>
             </div>
-            <p class="li-text"><b>Most founders post on LinkedIn.</b><br>Very few build a system around it.<br><span class="muted">Here's the framework we use every month ↓</span></p>
-            <div class="li-graphic">
-              <span class="li-graphic-k">Carousel · 1 / 8</span>
-              <div class="li-graphic-h">Content that <span>works while you work.</span></div>
-              <div class="li-graphic-dots"><i></i><i></i><i></i><i></i></div>
+            <p class="li-text"><b>Every post on this page is done for them.</b><br>Researched, written, designed and published.<br><span class="muted">A few recent infographics ↓</span></p>
+            <div class="li-slides" data-slides>
+              <img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" class="on" width="720" height="900">
+              <img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" width="720" height="900" loading="lazy">
             </div>
-            <div class="li-actions"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
+            <div class="li-dots" aria-hidden="true"></div>
+          <div class="li-actions" aria-hidden="true"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
           </div>
-          <span class="li-chip c1">✍️ Written <em>✓</em></span>
-          <span class="li-chip c2">🎨 Designed <em>✓</em></span>
-          <span class="li-chip c3">🚀 Published <em>✓</em></span>
+          <span class="li-chip c1" aria-hidden="true">✍️ Written <em>✓</em></span>
+          <span class="li-chip c2" aria-hidden="true">🎨 Designed <em>✓</em></span>
+          <span class="li-chip c3" aria-hidden="true">🚀 Published <em>✓</em></span>
         </div>
       </div>
 
@@ -1398,6 +1436,19 @@
         </div>
       </div>
 
+    </div>
+    <p class="res-row-label li-gal-label"><span>Recent posts · <b>Keys Media company page</b></span></p>
+    <!-- ✏️ EDIT: To ADD an infographic, put the image in assets/linkedin/ and copy one <a class="li-gal-item"> line -->
+    <div class="li-gal">
+      <div class="li-gal-track" data-loop>
+        <a class="li-gal-item" href="assets/linkedin/packaging-audit.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/creator-economy.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/first-30-seconds.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/growth-mindset.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/thumbnail-diagnostic.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" loading="lazy" width="720" height="900"></a>
+      </div>
+    </div>
+    <div class="wrap">
       <div class="li-cta" data-fade>
         <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get My LinkedIn Managed →</a>
         <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
@@ -1974,6 +2025,30 @@
       for (let i = 0; i < setCount; i++) addCopy();
       const pxPerSec = track.classList.contains('trust-logos') ? 45 : 38;
       track.style.animationDuration = (track.scrollWidth / 2 / pxPerSec) + 's';
+    });
+
+    // ---- LinkedIn post: rotate infographics (pauses on hover, dots are clickable) ----
+    document.querySelectorAll('[data-slides]').forEach(box => {
+      const imgs = Array.from(box.querySelectorAll('img'));
+      const dots = box.nextElementSibling;
+      let i = 0, timer = null;
+      const show = n => {
+        imgs[i].classList.remove('on'); dots.children[i].classList.remove('on');
+        i = (n + imgs.length) % imgs.length;
+        imgs[i].classList.add('on'); dots.children[i].classList.add('on');
+      };
+      imgs.forEach((_, n) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.tabIndex = -1;
+        if (n === 0) d.classList.add('on');
+        d.addEventListener('click', () => show(n));
+        dots.appendChild(d);
+      });
+      const start = () => { if (!reduceMotion) timer = setInterval(() => show(i + 1), 3500); };
+      box.addEventListener('mouseenter', () => clearInterval(timer));
+      box.addEventListener('mouseleave', start);
+      start();
     });
 
     // ---- Smooth anchor scrolling ----
