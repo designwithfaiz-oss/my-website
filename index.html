@@ -657,35 +657,53 @@
        PROCESS
        ============================================= */
     .process-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .process-head .lead { margin: 18px auto 0; }
     .process-grid {
+      list-style: none;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      background: var(--bg);
+      gap: 20px;
     }
     .proc-item {
-      padding: 36px 30px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: background var(--ease);
-      background: var(--bg);
+      position: relative;
+      padding: 32px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
     }
-    .proc-item:nth-child(3n)  { border-right: none; }
-    .proc-item:nth-child(n+4) { border-bottom: none; }
-    .proc-item:hover { background: var(--bg-raised); }
+    .proc-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 34px var(--accent-glow);
+    }
     .proc-n {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+      color: #fff;
       font-family: var(--font-display);
-      font-size: 48px;
+      font-size: 15px;
       font-weight: 800;
-      color: var(--accent);
-      opacity: 0.4;
       line-height: 1;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
     }
+    .proc-item:first-child { background: var(--bg-raised); border-color: var(--accent); }
     .proc-t { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
-    .proc-d { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; }
+    .proc-d { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .proc-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    .proc-cta-note { font-size: 13px; color: var(--text-muted); }
 
     /* =============================================
        TESTIMONIALS
@@ -902,9 +920,6 @@
       .svc-grid  { grid-template-columns: 1fr; }
       .work-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
-      .proc-item:nth-child(2n) { border-right: none !important; }
-      .proc-item:nth-child(n+5) { border-bottom: none !important; }
-      .proc-item:nth-child(5)  { border-bottom: 1px solid var(--border) !important; }
 
       .test-grid { grid-template-columns: 1fr; }
 
@@ -919,9 +934,8 @@
       .test-card { padding: 30px; }
     }
     @media (max-width: 640px) {
-      .process-grid { grid-template-columns: 1fr; }
-      .proc-item { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
-      .proc-item:last-child { border-bottom: none !important; }
+      .process-grid { grid-template-columns: 1fr; gap: 14px; }
+      .proc-item { padding: 26px 22px; }
     }
     @media (max-width: 480px) {
       .sec  { padding: 60px 0; }
@@ -1440,7 +1454,7 @@
 
       <div class="hero-cta">
         <!-- ✏️ EDIT: CTA buttons -->
-        <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Book a Discovery Call →</a>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Start Your Project →</a>
         <a href="#results" class="btn btn-outline">See Results</a>
       </div>
 
@@ -1765,7 +1779,7 @@
       <div class="svc-head" data-fade>
         <span class="tag">Services</span>
         <h2 class="h2">One Studio, <span class="orange">Three Services.</span></h2>
-        <p class="lead">The same design thinking behind each. Every project starts with a 15–20 minute discovery call, and I scope the exact package for your goal.</p>
+        <p class="lead">The same design thinking behind each. Every project starts with a short project form, and I scope the exact package for your goal.</p>
       </div>
 
       <div class="svc-grid">
@@ -1807,7 +1821,7 @@
             <li>Facebook and Meta ad creatives</li>
             <li>Social graphics, banners, posters and infographics</li>
           </ul>
-          <a href="https://wa.me/919461817353" class="svc-link" target="_blank" rel="noopener">Book a discovery call →</a>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="svc-link" target="_blank" rel="noopener">Fill the project form →</a>
         </div>
       </div>
     </div>
@@ -1908,52 +1922,57 @@
   </section>
 
   <!-- ====== PROCESS (how we work together) ====== -->
-  <section class="sec">
+  <section class="sec proc-sec">
     <div class="wrap">
       <div class="process-head" data-fade>
         <span class="tag">How We Work Together</span>
-        <h2 class="h2">From First Call to <span class="orange">First Delivery</span></h2>
+        <h2 class="h2">From First Form to <span class="orange">First Delivery</span></h2>
+        <p class="lead">No calls to book. Fill one short form and the rest happens in writing, on your schedule.</p>
       </div>
 
-      <div class="process-grid">
+      <!-- ✏️ EDIT: Change process step title & description -->
+      <ol class="process-grid">
+        <li class="proc-item" data-fade data-d="1">
+          <span class="proc-n">01</span>
+          <div class="proc-t">Project Form</div>
+          <p class="proc-d">Tell me about your channel, goals and budget in a 2-minute form. No call to schedule.</p>
+        </li>
 
-        <!-- ✏️ EDIT: Change process step title & description -->
-        <div class="proc-item" data-fade data-d="1">
-          <div class="proc-n">01</div>
-          <div class="proc-t">Discovery Call</div>
-          <p class="proc-d">15–20 minutes on Google Meet. I listen first, then match one service to your goal.</p>
-        </div>
-
-        <div class="proc-item" data-fade data-d="2">
-          <div class="proc-n">02</div>
+        <li class="proc-item" data-fade data-d="2">
+          <span class="proc-n">02</span>
           <div class="proc-t">Proposal</div>
-          <p class="proc-d">Scope, timeline, price and a payment link, sent within 24 hours of the call.</p>
-        </div>
+          <p class="proc-d">Scope, timeline, price and a payment link, sent within 24 hours of your form.</p>
+        </li>
 
-        <div class="proc-item" data-fade data-d="3">
-          <div class="proc-n">03</div>
+        <li class="proc-item" data-fade data-d="3">
+          <span class="proc-n">03</span>
           <div class="proc-t">Onboarding</div>
-          <p class="proc-d">A short intake form and an audit of your brand and content, done within 3 business days.</p>
-        </div>
+          <p class="proc-d">A short intake and an audit of your brand and content, done within 3 business days.</p>
+        </li>
 
-        <div class="proc-item" data-fade data-d="4">
-          <div class="proc-n">04</div>
+        <li class="proc-item" data-fade data-d="4">
+          <span class="proc-n">04</span>
           <div class="proc-t">Delivery</div>
           <p class="proc-d">Work lands on your own Notion board, so you always see what is in progress and what is done.</p>
-        </div>
+        </li>
 
-        <div class="proc-item" data-fade data-d="5">
-          <div class="proc-n">05</div>
+        <li class="proc-item" data-fade data-d="5">
+          <span class="proc-n">05</span>
           <div class="proc-t">Revisions &amp; Approval</div>
           <p class="proc-d">You review, I refine. Nothing goes live until you approve it.</p>
-        </div>
+        </li>
 
-        <div class="proc-item" data-fade data-d="6">
-          <div class="proc-n">06</div>
-          <div class="proc-t">Monthly Review</div>
-          <p class="proc-d">For retainers, a 15-minute check-in each month. I flag problems before you have to.</p>
-        </div>
+        <li class="proc-item" data-fade data-d="6">
+          <span class="proc-n">06</span>
+          <div class="proc-t">Monthly Report</div>
+          <p class="proc-d">For retainers, a written report each month on what worked and what is next. I flag problems before you have to.</p>
+        </li>
+      </ol>
 
+      <div class="proc-cta" data-fade>
+        <!-- ✏️ EDIT: Project form link -->
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Fill the Project Form →</a>
+        <span class="proc-cta-note">Takes about 2 minutes · Reply within 24 hours</span>
       </div>
     </div>
   </section>
@@ -2056,7 +2075,7 @@
 
         <!-- ✏️ EDIT: CTA subtext -->
         <p class="lead" style="max-width:480px;margin:20px auto 0">
-          Tell me about your channel or agency and what you want to grow. It starts with a 15–20 minute discovery call, and I reply within 24 hours.
+          Tell me about your channel or agency and what you want to grow. It starts with a short project form, and I reply within 24 hours.
         </p>
 
         <!-- ✏️ EDIT: Your email -->
@@ -2066,7 +2085,8 @@
 
         <div class="cta-btns">
           <!-- ✏️ EDIT: Contact buttons -->
-          <a href="https://wa.me/919461817353"                        class="btn btn-primary"  target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary"  target="_blank" rel="noopener">📝 Fill the Project Form</a>
+          <a href="https://wa.me/919461817353"                        class="btn btn-outline"  target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
           <a href="https://x.com/designwithfaiz"                      class="btn btn-outline"  target="_blank" rel="noopener">X / Twitter</a>
           <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline"  target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://www.behance.net/faizgraphicsdesigner"      class="btn btn-outline"  target="_blank" rel="noopener">Behance</a>
@@ -2086,7 +2106,7 @@
             <span class="logo-text">design<span>withfaiz</span></span>
           </a>
           <p class="ft-tag">LinkedIn management, thumbnails and brand graphics for YouTube creators and their agencies. A solo studio in Jaipur, working with the US, UK and Canada.</p>
-          <a href="https://wa.me/919461817353" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Book a Discovery Call →</a>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start Your Project →</a>
         </div>
 
         <div class="ft-col" role="navigation" aria-label="Footer">
