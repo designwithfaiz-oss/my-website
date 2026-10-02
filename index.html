@@ -408,15 +408,15 @@
     }
     .trust-marquee:hover .trust-logos { animation-play-state: paused; }
     .trust-logo {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px 22px 12px 12px;
+      justify-content: center;
+      height: 76px;
+      padding: 0 30px;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 100px;
       box-shadow: 0 6px 18px rgba(15,122,191,0.06);
-      white-space: nowrap;
       transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
     }
     .trust-logo:hover {
@@ -424,23 +424,11 @@
       border-color: var(--accent);
       box-shadow: 0 12px 28px rgba(15,122,191,0.14);
     }
-    .trust-mark {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      display: grid; place-items: center;
-      font-family: var(--font-display);
-      font-size: 15px; font-weight: 800;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    .trust-logo img { height: 38px; width: auto; max-width: none; }
+    @media (max-width: 640px) {
+      .trust-logo { height: 60px; padding: 0 22px; }
+      .trust-logo img { height: 28px; }
     }
-    .trust-logo-name {
-      font-family: var(--font-display);
-      font-size: clamp(16px, 2vw, 19px);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--text);
-    }
-    .trust-logo-name span { color: var(--accent-dark); }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* =============================================
@@ -1473,7 +1461,7 @@
           <div class="stat-l">Years Active</div>
         </div>
         <div>
-          <div class="stat-n">1K+</div>
+          <div class="stat-n">2K+</div>
           <div class="stat-l">Social Followers</div>
         </div>
       </div>
@@ -1485,15 +1473,14 @@
     <div class="wrap">
       <!-- ✏️ EDIT: Change trust bar text -->
       <p class="trust-label">Trusted by 27+ founders, YouTube creators and agencies</p>
-      <!-- ✏️ EDIT: Client names — change the text inside each span to update a logo -->
+      <!-- ✏️ EDIT: Client logos live in assets/clients/ (transparent PNG, 120px tall) -->
       <!--    To ADD a client: copy one <div class="trust-logo"> block (the list repeats itself automatically) -->
       <div class="trust-marquee">
         <div class="trust-logos" data-loop>
-          <div class="trust-logo"><span class="trust-mark">K</span><span class="trust-logo-name">Kraken<span>Media</span></span></div>
-          <div class="trust-logo"><span class="trust-mark">K</span><span class="trust-logo-name">Keys<span>Media</span></span></div>
-          <div class="trust-logo"><span class="trust-mark">W</span><span class="trust-logo-name">Why<span>Funny</span></span></div>
-          <div class="trust-logo"><span class="trust-mark">K</span><span class="trust-logo-name">Kreative<span>Media</span></span></div>
-          <div class="trust-logo"><span class="trust-mark">T</span><span class="trust-logo-name">This Is<span>Content</span></span></div>
+          <div class="trust-logo"><img src="assets/clients/kraken-media.png" alt="Kraken Media" width="570" height="120" loading="lazy" decoding="async"></div>
+          <div class="trust-logo"><img src="assets/clients/keys-media.png" alt="Keys Media" width="749" height="120" loading="lazy" decoding="async"></div>
+          <div class="trust-logo"><img src="assets/clients/why-funny.png" alt="Why Funny" width="603" height="120" loading="lazy" decoding="async"></div>
+          <div class="trust-logo"><img src="assets/clients/bb-malloy.png" alt="BB Malloy" width="498" height="120" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1995,7 +1982,7 @@
 
           <!-- ✏️ EDIT: Update your bio -->
           <p class="about-bio">
-            I'm Faiz Ahmed. I run Designwithfaiz, a solo design and content studio in Jaipur, India, working with YouTube creators and agencies in the US, UK and Canada.
+            I'm Faiz Ahmed. I run Designwithfaiz, a design and content studio in Jaipur, India, working with YouTube creators and agencies in the US, UK and Canada.
           </p>
           <p class="about-bio" style="margin-top:-4px">
             I work where design, AI and marketing strategy meet. Most LinkedIn managers only write and most thumbnail designers only make graphics. I do both, and I know why one feeds the other.
@@ -2105,7 +2092,7 @@
             <span class="logo-mark">F</span>
             <span class="logo-text">design<span>withfaiz</span></span>
           </a>
-          <p class="ft-tag">LinkedIn management, thumbnails and brand graphics for YouTube creators and their agencies. A solo studio in Jaipur, working with the US, UK and Canada.</p>
+          <p class="ft-tag">LinkedIn management, thumbnails and brand graphics for YouTube creators and their agencies. A studio in Jaipur, working with the US, UK and Canada.</p>
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start Your Project →</a>
         </div>
 
@@ -2192,6 +2179,28 @@
       fadeEls.forEach(el => el.classList.add('vis'));
     }
     setTimeout(() => { fadeEls.forEach(el => el.classList.add('vis')); }, 2500);
+
+    // ---- Hero numbers: count up from 0 when they scroll into view ----
+    // Reads the final text (e.g. "27+", "2K+") so editing the HTML is all you need.
+    document.querySelectorAll('.hero-stats .stat-n').forEach(el => {
+      const m = el.textContent.trim().match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
+      if (!m || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const [, pre, num, post] = m, target = parseFloat(num), dec = (num.split('.')[1] || '').length;
+      el.style.minWidth = el.offsetWidth + 'px';
+      el.textContent = pre + (0).toFixed(dec) + post;
+      const run = () => {
+        const t0 = performance.now(), dur = 1600;
+        const tick = now => {
+          const k = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+          el.textContent = pre + (target * e).toFixed(dec) + post;
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if (!('IntersectionObserver' in window)) return run();
+      const o = new IntersectionObserver(([en]) => { if (en.isIntersecting) { o.disconnect(); run(); } }, { threshold: 0.6 });
+      o.observe(el);
+    });
 
     // ---- Endless sliders (client logos + results) ----
     // Repeats each [data-loop] row until it is wider than the screen, then doubles it
