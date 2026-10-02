@@ -1127,20 +1127,21 @@
       color: var(--text);
     }
     .li-tag::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
-    /* LinkedIn banner showcase (profile-header style frames) */
-    .li-banners { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; margin-top: 56px; align-items: start; }
-    .li-banner {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
+    /* LinkedIn banner showcase: one banner at a time, slides left (auto, arrows, dots, swipe) */
+    .li-bslider { position: relative; margin: 56px auto 0; max-width: 1000px; }
+    .li-bviewport {
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(15,122,191,0.08);
-      transition: transform var(--ease), box-shadow var(--ease);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 14px 40px rgba(15,122,191,0.10);
+      touch-action: pan-y;
     }
-    .li-banner:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(15,122,191,0.16); }
-    .li-banner-img { background: var(--bg-card); border-bottom: 1px solid var(--border-soft); }
-    .li-banner-img img { width: 100%; height: auto; }
-    .li-banner-bar { display: flex; align-items: center; gap: 14px; padding: 0 20px 16px; }
+    .li-btrack { display: flex; transition: transform 0.7s cubic-bezier(.65,.05,.25,1); }
+    .li-banner { flex: 0 0 100%; min-width: 0; margin: 0; background: #fff; }
+    .li-banner-img { aspect-ratio: 4 / 1; background: #fff; border-bottom: 1px solid var(--border-soft); overflow: hidden; }
+    .li-banner-img img { width: 100%; height: 100%; object-fit: contain; }
+    .li-banner-bar { display: flex; align-items: center; gap: 14px; padding: 0 22px 18px; }
     .li-banner-av {
       width: 58px; height: 58px; margin-top: -22px;
       border-radius: 50%; border: 4px solid #fff;
@@ -1149,10 +1150,35 @@
       color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 20px;
     }
     .li-banner-av.sq { border-radius: 12px; }
+    .li-banner-av.blue { background: linear-gradient(135deg, var(--accent-dark), var(--accent)); }
+    .li-banner-av.navy { background: linear-gradient(135deg, #16324f, #2f6aa3); }
     .li-banner figcaption { padding-top: 10px; line-height: 1.35; }
     .li-banner figcaption b { display: block; font-size: 15px; }
     .li-banner figcaption span { font-size: 12.5px; color: var(--text-dim); }
-    @media (max-width: 768px) { .li-banners { grid-template-columns: 1fr; } }
+    .li-barrow {
+      position: absolute; top: calc(50% - 30px); transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--border); background: #fff; color: var(--text);
+      font-size: 20px; line-height: 1; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15,122,191,0.14);
+      transition: transform var(--ease), border-color var(--ease);
+      z-index: 2;
+    }
+    .li-barrow:hover { border-color: var(--accent); transform: translateY(-50%) scale(1.06); }
+    .li-barrow.prev { left: -22px; }
+    .li-barrow.next { right: -22px; }
+    .li-bdots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+    .li-bdots button {
+      width: 8px; height: 8px; padding: 0; border: 0; border-radius: 8px;
+      background: var(--border); cursor: pointer; transition: width var(--ease), background var(--ease);
+    }
+    .li-bdots button.on { width: 26px; background: var(--accent-dark); }
+    @media (max-width: 768px) {
+      .li-barrow { display: none; }
+      .li-banner-bar { padding: 0 14px 14px; gap: 10px; }
+      .li-banner-av { width: 46px; height: 46px; font-size: 16px; margin-top: -16px; border-width: 3px; }
+      .li-banner figcaption b { font-size: 14px; }
+    }
     /* LinkedIn plan: price + weekly post mix */
     .li-plan {
       display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 20px;
@@ -1595,16 +1621,32 @@
       </div>
     </div>
     <div class="wrap">
-      <!-- ✏️ EDIT: LinkedIn banners — replace the images in assets/linkedin/ or copy a .li-banner block -->
-      <div class="li-banners">
-        <figure class="li-banner" data-fade data-d="1">
-          <div class="li-banner-img"><img src="assets/linkedin/banner-founder-profile.jpg" alt="LinkedIn profile banner: Grow Your Audience. Get Real Results. Trusted by TFTC, Green Candle and Wesley Schlemmer" loading="lazy" width="1584" height="396"></div>
-          <div class="li-banner-bar"><span class="li-banner-av">K</span><figcaption><b>Founder profile banner</b><span>Personal LinkedIn · Keys Media</span></figcaption></div>
-        </figure>
-        <figure class="li-banner" data-fade data-d="2">
-          <div class="li-banner-img"><img src="assets/linkedin/banner-keys-media-page.jpg" alt="LinkedIn company page banner: 10M+ views generated, 50%+ subscriber growth, 6+ years experience" loading="lazy" width="1128" height="191"></div>
-          <div class="li-banner-bar"><span class="li-banner-av sq">K</span><figcaption><b>Company page banner</b><span>Keys Media · LinkedIn page</span></figcaption></div>
-        </figure>
+      <!-- ✏️ EDIT: LinkedIn banners — put the image in assets/linkedin/ and copy a <figure class="li-banner"> block.
+           The slider, arrows and dots pick up new banners automatically. -->
+      <div class="li-bslider" data-banner-slider data-fade aria-roledescription="carousel" aria-label="LinkedIn banners">
+        <button type="button" class="li-barrow prev" aria-label="Previous banner">←</button>
+        <div class="li-bviewport">
+          <div class="li-btrack">
+          <figure class="li-banner">
+            <div class="li-banner-img"><img src="assets/linkedin/banner-founder-profile.jpg" alt="LinkedIn profile banner: Grow Your Audience. Get Real Results. Trusted by TFTC, Green Candle and Wesley Schlemmer" loading="lazy" width="1584" height="396"></div>
+            <div class="li-banner-bar"><span class="li-banner-av">K</span><figcaption><b>Founder profile banner</b><span>Personal LinkedIn · Keys Media</span></figcaption></div>
+          </figure>
+          <figure class="li-banner">
+            <div class="li-banner-img"><img src="assets/linkedin/banner-keys-media-page.jpg" alt="LinkedIn company page banner: 10M+ views generated, 50%+ subscriber growth, 6+ years experience" loading="lazy" width="1128" height="191"></div>
+            <div class="li-banner-bar"><span class="li-banner-av sq">K</span><figcaption><b>Company page banner</b><span>Keys Media · LinkedIn page</span></figcaption></div>
+          </figure>
+          <figure class="li-banner">
+            <div class="li-banner-img"><img src="assets/linkedin/banner-designwithfaiz.jpg" alt="LinkedIn profile banner: Helping Founders &amp; Creators Scale with Strategic Content Systems. 27+ satisfied clients, 5 years experience, 250+ projects delivered" loading="lazy" width="1584" height="396"></div>
+            <div class="li-banner-bar"><span class="li-banner-av blue">F</span><figcaption><b>Studio profile banner</b><span>Personal LinkedIn · Designwithfaiz</span></figcaption></div>
+          </figure>
+          <figure class="li-banner">
+            <div class="li-banner-img"><img src="assets/linkedin/banner-law-firm.jpg" alt="LinkedIn profile banner: From 0 to 7 Figure Law Firm in 24 Months. Now helping lawyers build profitable firms using systems, hiring and content" loading="lazy" width="1584" height="396"></div>
+            <div class="li-banner-bar"><span class="li-banner-av navy">L</span><figcaption><b>Law firm founder banner</b><span>Personal LinkedIn · Legal coach</span></figcaption></div>
+          </figure>
+          </div>
+        </div>
+        <button type="button" class="li-barrow next" aria-label="Next banner">→</button>
+        <div class="li-bdots"></div>
       </div>
 
       <div class="li-cta" data-fade>
@@ -2222,6 +2264,42 @@
       for (let i = 0; i < setCount; i++) addCopy();
       const pxPerSec = track.classList.contains('trust-logos') ? 45 : 38;
       track.style.animationDuration = (track.scrollWidth / 2 / pxPerSec) + 's';
+    });
+
+    // ---- LinkedIn banners: slide one at a time (auto every 4s, pauses on hover, arrows, dots, swipe) ----
+    document.querySelectorAll('[data-banner-slider]').forEach(box => {
+      const track = box.querySelector('.li-btrack');
+      const slides = Array.from(track.children);
+      const dots = box.querySelector('.li-bdots');
+      let i = 0, timer = null;
+      const go = n => {
+        i = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${i * 100}%)`;
+        slides.forEach((s, k) => s.setAttribute('aria-hidden', k !== i));
+        Array.from(dots.children).forEach((d, k) => d.classList.toggle('on', k === i));
+      };
+      slides.forEach((_, n) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.setAttribute('aria-label', `Show banner ${n + 1}`);
+        d.addEventListener('click', () => { go(n); restart(); });
+        dots.appendChild(d);
+      });
+      const stop = () => clearInterval(timer);
+      const restart = () => { stop(); if (!reduceMotion) timer = setInterval(() => go(i + 1), 4000); };
+      box.querySelector('.prev').addEventListener('click', () => { go(i - 1); restart(); });
+      box.querySelector('.next').addEventListener('click', () => { go(i + 1); restart(); });
+      box.addEventListener('mouseenter', stop);
+      box.addEventListener('mouseleave', restart);
+      let x0 = null;
+      box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+      box.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+        x0 = null; restart();
+      });
+      go(0); restart();
     });
 
     // ---- LinkedIn post: rotate infographics (pauses on hover, dots are clickable) ----
