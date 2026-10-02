@@ -432,6 +432,70 @@
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* =============================================
+       META AD CREATIVES
+       ============================================= */
+    .ads-sec { background: var(--bg); overflow: hidden; }
+    .ads-head { text-align: center; max-width: 760px; margin: 0 auto 36px; }
+    .ads-head .lead { margin: 18px auto 0; }
+    .ads-formats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0 auto 52px; }
+    .ads-formats span {
+      padding: 8px 16px; border-radius: 100px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+    }
+    .ads-formats b { color: var(--accent-dark); }
+    .ads-gal {
+      overflow: hidden;
+      padding: 14px 0 28px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .ads-gal:hover .ads-track { animation-play-state: paused; }
+    .ads-track { display: flex; align-items: center; gap: 22px; width: max-content; animation: marquee 50s linear infinite; }
+    /* Each creative sits in a Facebook/Instagram-style feed post frame */
+    .ad-card {
+      flex: 0 0 auto; width: 290px; margin: 0;
+      background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15,122,191,0.10);
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow var(--ease);
+    }
+    .ad-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(15,122,191,0.18); }
+    .ad-top { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+    .ad-av {
+      width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto;
+      display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 14px;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    }
+    .ad-top b { display: block; font-size: 13.5px; line-height: 1.2; }
+    .ad-top small { font-size: 11.5px; color: var(--text-dim); }
+    .ad-media { aspect-ratio: 4 / 5; background: var(--bg-card); }
+    .ad-media.sq { aspect-ratio: 1 / 1; }
+    .ad-media.story { aspect-ratio: 9 / 16; }
+    .ad-media img { width: 100%; height: 100%; object-fit: cover; }
+    .ad-media.ph {
+      display: grid; place-items: center; text-align: center;
+      border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);
+      background: repeating-linear-gradient(135deg, var(--bg-card) 0 14px, var(--bg-raised) 14px 28px);
+      color: var(--text-dim); font-size: 13px; font-weight: 600;
+    }
+    .ad-bot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; }
+    .ad-bot span { font-size: 12.5px; color: var(--text-muted); line-height: 1.35; }
+    .ad-cta-btn {
+      flex: 0 0 auto; padding: 7px 12px; border-radius: 8px;
+      background: var(--bg-raised); font-size: 12px; font-weight: 700; color: var(--text);
+    }
+    .ads-foot { text-align: center; margin-top: 40px; }
+    .ads-note { font-size: 12.5px; color: var(--text-dim); margin-top: 14px; }
+    @media (max-width: 640px) {
+      .ad-card { width: 240px; }
+      .ads-formats span { font-size: 12px; padding: 7px 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ads-gal { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+      .ads-track { animation: none; }
+    }
+
+    /* =============================================
        NEGATIVE POSITIONING  ("Not a ___" — FounderOS signature)
        ============================================= */
     .neg-sec { background: var(--bg); }
@@ -1410,6 +1474,7 @@
       <ul class="nav-links">
         <li><a href="#linkedin">LinkedIn</a></li>
         <li><a href="#results">Results</a></li>
+        <li><a href="#meta-ads">Meta Ads</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
@@ -1433,6 +1498,7 @@
     <ul>
       <li><a href="#linkedin" class="mlink">LinkedIn</a></li>
       <li><a href="#results"  class="mlink">Results</a></li>
+      <li><a href="#meta-ads" class="mlink">Meta Ads</a></li>
       <li><a href="#services" class="mlink">Services</a></li>
       <li><a href="#work"     class="mlink">Work</a></li>
       <li><a href="#about"    class="mlink">About</a></li>
@@ -1802,6 +1868,68 @@
     </div>
   </section>
 
+  <!-- ====== META AD CREATIVES ====== -->
+  <!-- ✏️ EDIT: To ADD an ad, copy one <figure class="ad-card"> block. Put the image in assets/ads/ and replace the
+       placeholder div with: <div class="ad-media"><img src="assets/ads/FILE.jpg" alt="..." loading="lazy"></div>
+       Use class "ad-media" for 4:5, "ad-media sq" for 1:1, "ad-media story" for 9:16.
+       The row repeats itself automatically for the endless slide. -->
+  <section id="meta-ads" class="sec ads-sec">
+    <div class="wrap">
+      <div class="ads-head" data-fade>
+        <span class="tag">Meta Ad Creatives</span>
+        <h2 class="h2">Ads Built to <span class="orange">Stop the Scroll.</span></h2>
+        <p class="lead">Facebook and Instagram ad creatives designed from the same system as your brand, so every ad looks like you and is made to earn the click.</p>
+      </div>
+      <div class="ads-formats" data-fade>
+        <span><b>4:5</b> Feed</span>
+        <span><b>1:1</b> Square</span>
+        <span><b>9:16</b> Stories &amp; Reels</span>
+        <span>Carousel ads</span>
+        <span>A/B variations</span>
+      </div>
+    </div>
+
+    <div class="ads-gal">
+      <div class="ads-track" data-loop>
+        <figure class="ad-card">
+          <div class="ad-top"><span class="ad-av">C</span><div><b>Client name</b><small>Sponsored</small></div></div>
+          <div class="ad-media  ph">Your ad design<br>4:5 feed</div>
+          <figcaption class="ad-bot"><span>Short ad headline goes here</span><span class="ad-cta-btn">Learn more</span></figcaption>
+        </figure>
+        <figure class="ad-card">
+          <div class="ad-top"><span class="ad-av">C</span><div><b>Client name</b><small>Sponsored</small></div></div>
+          <div class="ad-media sq ph">Your ad design<br>1:1 feed</div>
+          <figcaption class="ad-bot"><span>Short ad headline goes here</span><span class="ad-cta-btn">Learn more</span></figcaption>
+        </figure>
+        <figure class="ad-card">
+          <div class="ad-top"><span class="ad-av">C</span><div><b>Client name</b><small>Sponsored</small></div></div>
+          <div class="ad-media story ph">Your ad design<br>9:16 story</div>
+          <figcaption class="ad-bot"><span>Short ad headline goes here</span><span class="ad-cta-btn">Learn more</span></figcaption>
+        </figure>
+        <figure class="ad-card">
+          <div class="ad-top"><span class="ad-av">C</span><div><b>Client name</b><small>Sponsored</small></div></div>
+          <div class="ad-media  ph">Your ad design<br>4:5 feed</div>
+          <figcaption class="ad-bot"><span>Short ad headline goes here</span><span class="ad-cta-btn">Learn more</span></figcaption>
+        </figure>
+        <figure class="ad-card">
+          <div class="ad-top"><span class="ad-av">C</span><div><b>Client name</b><small>Sponsored</small></div></div>
+          <div class="ad-media sq ph">Your ad design<br>1:1 feed</div>
+          <figcaption class="ad-bot"><span>Short ad headline goes here</span><span class="ad-cta-btn">Learn more</span></figcaption>
+        </figure>
+        <figure class="ad-card">
+          <div class="ad-top"><span class="ad-av">C</span><div><b>Client name</b><small>Sponsored</small></div></div>
+          <div class="ad-media story ph">Your ad design<br>9:16 story</div>
+          <figcaption class="ad-bot"><span>Short ad headline goes here</span><span class="ad-cta-btn">Learn more</span></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="wrap ads-foot" data-fade>
+      <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get Ad Creatives Like These →</a>
+      <p class="ads-note">Hover to pause · Every ad delivered in feed, square and story sizes.</p>
+    </div>
+  </section>
+
   <!-- ====== SERVICES ====== -->
   <section id="services" class="sec svc-sec">
     <div class="wrap">
@@ -1850,7 +1978,7 @@
             <li>Facebook and Meta ad creatives</li>
             <li>Social graphics, banners, posters and infographics</li>
           </ul>
-          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="svc-link" target="_blank" rel="noopener">Fill the project form →</a>
+          <a href="#meta-ads" class="svc-link">See ad creatives →</a>
         </div>
       </div>
     </div>
