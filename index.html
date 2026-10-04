@@ -10,10 +10,10 @@
   <meta property="og:url" content="https://designwithfaiz.com/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Google Fonts — Syne (headlines) + DM Sans (body) -->
+  <!-- Google Fonts — Bricolage Grotesque (headlines) + Syne (logo only) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Syne:wght@800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* =============================================
@@ -33,7 +33,8 @@
       --border:       #dde8f2;
       --border-soft:  #e8f0f9;
       --font:         'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      --font-display: 'Syne', system-ui, sans-serif;
+      --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+      --font-brand:   'Syne', system-ui, sans-serif;
       --r:            12px;
       --r-lg:         20px;
       --ease:         0.3s ease;
@@ -88,15 +89,16 @@
       font-family: var(--font-display);
       font-size: clamp(42px, 7vw, 82px);
       font-weight: 800;
-      line-height: 1.04;
-      letter-spacing: -2.5px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
     }
     .h2 {
       font-family: var(--font-display);
-      font-size: clamp(30px, 4.6vw, 54px);
+      font-size: clamp(32px, 4.6vw, 56px);
       font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -1.8px;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
     }
     .h3 {
       font-family: var(--font-display);
@@ -189,7 +191,7 @@
       background: #1f1f1f;
       border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
+      font-family: var(--font-brand);
       font-weight: 800;
       font-size: 17px;
       color: #fff;
@@ -201,7 +203,7 @@
       box-shadow: 0 6px 18px rgba(160,206,247,0.45);
     }
     .logo-text {
-      font-family: var(--font-display);
+      font-family: var(--font-brand);
       font-weight: 800;
       font-size: 19px;
       letter-spacing: -0.6px;
@@ -309,7 +311,7 @@
       border: 3px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.10);
     }
     .hero-avs span:first-child { margin-left: 0; }
-    .hero-proofrow p { font-size: 14px; line-height: 1.45; color: var(--text-muted); }
+    .hero-proofrow p { font-size: 15px; line-height: 1.35; color: var(--text-muted); }
     .hero-proofrow mark { background: var(--accent-dark); color: #fff; font-weight: 800; padding: 1px 6px; border-radius: 4px; }
     .hero-avail { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
     .hero-avail .dot { width: 7px; height: 7px; background: #22C55E; border-radius: 50%; animation: blink 2s ease infinite; }
@@ -317,8 +319,8 @@
 
     .hero-headline {
       font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(30px, 3.9vw, 54px); line-height: 1.12; letter-spacing: -1.5px;
-      color: var(--text); margin: 0 auto 24px;
+      font-size: clamp(42px, 6.4vw, 88px); line-height: 1.0; letter-spacing: -0.035em; text-wrap: balance;
+      color: var(--text); margin: 0 auto 24px; max-width: 1100px;
     }
     .hero-grad {
       background: linear-gradient(90deg, #0a66c2, var(--accent-dark) 55%, #38a3e8);
@@ -519,7 +521,7 @@
     .li-hero .tag { display: table; margin: 0 auto 18px; }
     .li-h {
       font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(28px, 3.9vw, 52px); line-height: 1.1; letter-spacing: -1.5px; color: #0b1a2b;
+      font-size: clamp(40px, 5.6vw, 76px); line-height: 1.0; letter-spacing: -0.035em; color: #0b1a2b; text-wrap: balance;
     }
     .li-grad {
       background: linear-gradient(90deg, #0a66c2, var(--accent-dark) 55%, #38a3e8);
@@ -583,8 +585,8 @@
       .li-offer-main, .li-offer-fit { padding: 28px 22px; }
     }
     @media (max-width: 560px) {
-      .li-h { letter-spacing: -1px; }
-      .li-hero-cta .btn { width: 100%; justify-content: center; }
+      .li-hero-cta { flex-direction: column; align-items: center; }
+      .li-hero-cta .btn { min-width: 250px; justify-content: center; }
       .li-trust { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
     }
 
@@ -1054,17 +1056,22 @@
       .sec  { padding: 60px 0; }
       .wrap, .wrap-narrow { padding: 0 16px; }
 
-      .h1  { letter-spacing: -1.5px; }
-      .h2  { letter-spacing: -0.8px; }
       .btn { font-size: 14px; padding: 13px 22px; }
 
       .hero { padding: 112px 0 64px; }
-      .hero-headline { letter-spacing: -1px; }
-      .hero-avs span { width: 32px; height: 32px; font-size: 12px; margin-left: -9px; border-width: 2px; }
-      .hero-proofrow { gap: 10px; }
-      .hero-proofrow p { font-size: 12.5px; }
-      .hero-cta .btn { width: 100%; justify-content: center; }
-      .hero-stats { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
+      .hero-proofrow { flex-direction: column; gap: 10px; margin-bottom: 22px; text-align: center; }
+      .hero-avs span { width: 34px; height: 34px; font-size: 12px; margin-left: -10px; border-width: 2px; }
+      .hero-proofrow p { font-size: 14px; line-height: 1.4; }
+      .hero-avail { font-size: 12px; }
+      .hero-headline { line-height: 1.02; }
+      .hero-sub { font-size: 16.5px; margin-bottom: 30px; }
+      .hero-cta { flex-direction: column; align-items: center; gap: 14px; }
+      .hero-cta .btn { min-width: 230px; justify-content: center; }
+      .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 34px; }
+      .hero-stats li { flex-direction: column; gap: 2px; font-size: 12px; text-align: center; }
+      .hero-stats li > span:last-child { display: flex; flex-direction: column; }
+      .hero-stats .stat-n { font-family: var(--font-display); font-size: 24px; letter-spacing: -0.03em; }
+      .hero-chip-i { display: none; }
 
       .about-btns { flex-direction: column; }
       .about-btns .btn { width: 100%; justify-content: center; }
@@ -1545,7 +1552,7 @@
 
       <!-- ✏️ EDIT: Tagline below headline -->
       <p class="hero-sub">
-        LinkedIn management, YouTube thumbnails and brand design for <b>YouTube creators and their agencies.</b> One studio, one system, <b>built to win clicks and clients.</b>
+        LinkedIn, thumbnails and brand design for <b>YouTube creators and their agencies.</b> One system, built to win <b>clicks and clients.</b>
       </p>
 
       <div class="hero-cta">
@@ -1588,7 +1595,7 @@
       <!-- ✏️ EDIT: LinkedIn hero — proof row, headline, CTAs and the three trust points -->
       <div class="li-hero" data-fade>
         <span class="tag">LinkedIn Account Management</span>
-        <h2 class="li-h">Post 5 times a week<br><span class="li-grad">without writing a word.</span></h2>
+        <h2 class="li-h">Post 5 times a week<br><span class="li-grad">without writing <span style="white-space:nowrap">a word.</span></span></h2>
         <p class="li-lead">I run your LinkedIn end to end. <b>Strategy, writing, design and publishing.</b> Your page stays active and on-brand <b>while you run the business.</b></p>
         <div class="li-hero-cta">
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $150/month <span class="btn-ico">→</span></a>
