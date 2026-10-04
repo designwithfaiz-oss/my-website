@@ -548,6 +548,112 @@
        SERVICES / FEATURE GRID
        ============================================= */
     .svc-sec { background: var(--bg-process); }
+    /* ---- LinkedIn hero (proof row, gradient headline, trust points) ---- */
+    .li-hero { text-align: center; max-width: 900px; margin: 0 auto 64px; }
+    .li-proof { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 26px; text-align: left; }
+    .li-proof-avs { display: flex; }
+    .li-proof-avs span {
+      width: 40px; height: 40px; border-radius: 50%; margin-left: -10px;
+      display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 15px;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      border: 3px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+    .li-proof-avs span:first-child { margin-left: 0; }
+    .li-proof p { font-size: 14px; line-height: 1.3; color: var(--text-muted); }
+    .li-proof mark { background: #0a66c2; color: #fff; font-weight: 800; padding: 1px 6px; border-radius: 4px; }
+    .li-hero .tag { display: table; margin: 0 auto 18px; }
+    .li-h {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(36px, 6vw, 68px); line-height: 1.04; letter-spacing: -2px; color: #0b1a2b;
+    }
+    .li-grad {
+      background: linear-gradient(90deg, #0a66c2, var(--accent-dark) 55%, #38a3e8);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .li-sub { font-size: clamp(16px, 2vw, 19px); color: var(--text-muted); line-height: 1.6; max-width: 720px; margin: 22px auto 0; }
+    .li-sub b { color: var(--text); }
+    .li-hero-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
+    .btn-li {
+      background: linear-gradient(180deg, #1478d4, #0a5aa8); color: #fff;
+      box-shadow: 0 0 0 5px rgba(10,102,194,0.14), 0 10px 26px rgba(10,102,194,0.28);
+    }
+    .btn-li:hover { transform: translateY(-2px); box-shadow: 0 0 0 6px rgba(10,102,194,0.18), 0 16px 36px rgba(10,102,194,0.34); }
+    .btn-ico { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.22); font-size: 13px; }
+    .btn-li-ghost { background: #fff; color: #0a66c2; border: 1.5px solid rgba(10,102,194,0.35); }
+    .btn-li-ghost:hover { border-color: #0a66c2; transform: translateY(-2px); }
+    .li-trust { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 30px; margin-top: 30px; }
+    .li-trust li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text-muted); }
+    .li-trust-i {
+      width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
+      display: grid; place-items: center; color: #0a66c2; background: #fff;
+    }
+    .li-trust-i svg { width: 19px; height: 19px; }
+
+    /* ---- LinkedIn offer card ---- */
+    .li-offer {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; margin-top: 64px;
+      border: 1px solid var(--border); border-radius: 24px; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(10,102,194,0.10); scroll-margin-top: 100px;
+    }
+    .li-offer-main { padding: 40px; background: #0b1a2b; color: #fff; }
+    .li-offer-k { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+    .li-offer-n { font-family: var(--font-display); font-weight: 800; font-size: 58px; letter-spacing: -2px; line-height: 1; margin: 14px 0 10px; }
+    .li-offer-n small { font-family: var(--font); font-size: 16px; font-weight: 600; letter-spacing: 0; color: #b9c4cf; }
+    .li-offer-p { font-size: 14.5px; color: #c9d3dd; }
+    .li-offer-mix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
+    .li-offer-mix div { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 12px; padding: 12px; text-align: center; }
+    .li-offer-mix b { display: block; font-family: var(--font-display); font-size: 28px; color: var(--accent); line-height: 1.1; }
+    .li-offer-mix span { font-size: 12.5px; color: #c9d3dd; }
+    .li-offer-list { list-style: none; display: grid; gap: 10px; margin-bottom: 28px; }
+    .li-offer-list li { position: relative; padding-left: 28px; font-size: 15px; }
+    .li-offer-list li::before {
+      content: "✓"; position: absolute; left: 0; top: 1px; width: 19px; height: 19px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 11px; font-weight: 800; background: #0a66c2; color: #fff;
+    }
+    .li-offer-btn { width: 100%; justify-content: center; }
+    .li-offer-note { text-align: center; font-size: 12.5px; color: #93a4b8; margin-top: 12px; }
+    .li-offer-fit { padding: 40px; background: var(--bg-card); display: flex; flex-direction: column; }
+    .li-offer-fit h3 { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.4px; margin-bottom: 20px; }
+    .li-offer-fit > ul { list-style: none; display: grid; gap: 16px; margin-bottom: 26px; }
+    .li-offer-fit > ul > li { position: relative; padding-left: 30px; font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .li-offer-fit > ul > li::before { content: "→"; position: absolute; left: 0; color: #0a66c2; font-weight: 800; }
+    .li-start { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 24px; }
+    .li-start-t { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+    .li-start ol { list-style: none; display: grid; gap: 12px; }
+    .li-start li { display: flex; align-items: center; gap: 12px; font-size: 14.5px; font-weight: 600; color: var(--text); }
+    .li-start b { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-raised); color: #0a66c2; font-size: 13px; }
+    .li-fit-link { margin-top: auto; font-weight: 700; color: #0a66c2; }
+    @media (max-width: 860px) {
+      .li-offer { grid-template-columns: 1fr; }
+      .li-offer-main, .li-offer-fit { padding: 28px 22px; }
+    }
+    @media (max-width: 560px) {
+      .li-proof-avs span { width: 32px; height: 32px; font-size: 12px; margin-left: -9px; border-width: 2px; }
+      .li-proof p { font-size: 12.5px; }
+      .li-h { letter-spacing: -1px; }
+      .li-hero-cta .btn { width: 100%; justify-content: center; }
+      .li-trust { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
+    }
+
+    /* ---- Services: conversion layout ---- */
+    .svc-best { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--accent-dark); margin: -4px 0 8px; }
+    .svc-card .svc-price { margin-bottom: 18px; }
+    .svc-card .svc-list { margin-top: 0; }
+    .svc-out { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: -6px 0 18px; }
+    .svc-actions { margin-top: auto; display: grid; gap: 12px; justify-items: center; }
+    .svc-btn { width: 100%; justify-content: center; }
+    .svc-help {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      margin-top: 32px; padding: 22px 28px; border-radius: var(--r-lg);
+      background: #fff; border: 1px dashed rgba(15,122,191,0.35);
+    }
+    .svc-help b { display: block; font-family: var(--font-display); font-size: 18px; }
+    .svc-help span { font-size: 14.5px; color: var(--text-muted); }
+    .svc-assure { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin-top: 24px; }
+    .svc-assure li { font-size: 13.5px; color: var(--text-muted); font-weight: 600; }
+    .svc-assure li::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
+    @media (max-width: 560px) { .svc-help { padding: 20px; } .svc-help .btn { width: 100%; justify-content: center; } }
+
     .work-sec { background: var(--bg-card); }
     .svc-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
     .svc-grid {
@@ -1033,8 +1139,6 @@
        LINKEDIN ACCOUNT MANAGEMENT — done-for-you service
        ============================================= */
     .li-sec { background: var(--bg); }
-    .li-head { text-align: center; max-width: 760px; margin: 0 auto 60px; }
-    .li-head .lead { margin: 18px auto 0; }
     .li-in { color: #0a66c2; }
     .li-grid {
       display: grid;
@@ -1178,23 +1282,6 @@
     .li-chip.c3 { top: 72%; left: -56px; animation-delay: -3.5s; }
     .li-chip em { font-style: normal; color: #1a9f5b; }
 
-    .li-incl {
-      margin-top: 64px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 30px 32px;
-      display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;
-    }
-    .li-incl-t { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -0.3px; margin-right: 8px; }
-    .li-tags { display: flex; flex-wrap: wrap; gap: 10px; flex: 1; }
-    .li-tag {
-      font-size: 13px; font-weight: 600;
-      background: #fff; border: 1px solid var(--border);
-      padding: 7px 14px; border-radius: 100px;
-      color: var(--text);
-    }
-    .li-tag::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
     /* LinkedIn banner showcase: one banner at a time, slides left (auto, arrows, dots, swipe) */
     .li-bslider { position: relative; margin: 56px auto 0; max-width: 1000px; }
     .li-bviewport {
@@ -1247,39 +1334,6 @@
       .li-banner-av { width: 46px; height: 46px; font-size: 16px; margin-top: -16px; border-width: 3px; }
       .li-banner figcaption b { font-size: 14px; }
     }
-    /* LinkedIn plan: price + weekly post mix */
-    .li-plan {
-      display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 20px;
-      margin-top: 64px;
-    }
-    .li-price {
-      background: #1f1f1f; color: #fff;
-      border-radius: var(--r-lg);
-      padding: 30px 32px;
-    }
-    .li-price-k { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
-    .li-price-n { font-family: var(--font-display); font-weight: 800; font-size: 54px; letter-spacing: -2px; line-height: 1; margin: 14px 0 12px; }
-    .li-price-n small { font-family: var(--font); font-size: 16px; font-weight: 600; letter-spacing: 0; color: #b9c4cf; }
-    .li-price p { font-size: 14px; color: #c9d3dd; line-height: 1.6; }
-    .li-mix {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-      align-content: center;
-    }
-    .li-mix-i {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
-      padding: 22px 20px; display: flex; flex-direction: column; gap: 4px;
-    }
-    .li-mix-i b { font-family: var(--font-display); font-size: 38px; font-weight: 800; color: var(--accent-dark); line-height: 1; margin-bottom: 6px; }
-    .li-mix-i span { font-weight: 700; font-size: 15px; }
-    .li-mix-i small { font-size: 12.5px; color: var(--text-muted); }
-    .li-mix-note { grid-column: 1 / -1; font-size: 13px; color: var(--text-dim); text-align: center; }
-    .li-plan + .li-incl { margin-top: 20px; }
-    @media (max-width: 900px) { .li-plan { grid-template-columns: 1fr; } }
-    @media (max-width: 480px) {
-      .li-mix { grid-template-columns: 1fr; }
-      .li-mix-i { display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; row-gap: 2px; align-items: center; padding: 16px 18px; }
-      .li-mix-i b { grid-row: span 2; font-size: 30px; margin: 0; }
-    }
     .li-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
 
     @media (max-width: 1024px) {
@@ -1289,7 +1343,6 @@
     @media (max-width: 640px) {
       .li-chip.c1 { left: 16px; }
       .li-chip.c2, .li-chip.c3 { display: none; }
-      .li-incl { padding: 24px 20px; }
     }
     @media (max-width: 640px) { .li-gal-item { width: 210px; } }
     @media (prefers-reduced-motion: reduce) {
@@ -1583,13 +1636,35 @@
   </div>
 
   <!-- ====== LINKEDIN ACCOUNT MANAGEMENT ====== -->
-  <!-- ✏️ EDIT: Change step text inside each <li class="li-step">; change the "Every month includes" list in .li-tags -->
+  <!-- ✏️ EDIT: Change step text inside each <li class="li-step">; price and "what you get" live in the #li-plan offer card below -->
   <section id="linkedin" class="sec li-sec">
     <div class="wrap">
-      <div class="li-head" data-fade>
+      <!-- ✏️ EDIT: LinkedIn hero — proof row, headline, CTAs and the three trust points -->
+      <div class="li-hero" data-fade>
+        <div class="li-proof">
+          <div class="li-proof-avs" aria-hidden="true">
+            <span style="--c1:#b8860b;--c2:#e8b93a">K</span>
+            <span style="--c1:#ff3d7f;--c2:#ffb03a">K</span>
+            <span style="--c1:#5a5a5a;--c2:#8a8a8a">W</span>
+            <span style="--c1:#7b5cff;--c2:#5ed5e6">B</span>
+            <span style="--c1:#1f6fe0;--c2:#ff7ac2">B</span>
+            <span style="--c1:#e3262f;--c2:#ff5a5f">i</span>
+            <span style="--c1:#2b55d9;--c2:#5b85ff">K</span>
+          </div>
+          <p>Trusted by <mark>27+</mark> founders,<br>creators and agencies.</p>
+        </div>
         <span class="tag">LinkedIn Account Management</span>
-        <h2 class="h2">Your <span class="li-in">LinkedIn</span>, <span style="white-space:nowrap">Fully Handled.</span><br><span class="orange">Writing to Publishing.</span></h2>
-        <p class="lead">I run your LinkedIn from research to publishing, five posts a week. Personal profile or company page, written in your voice and designed to stop the scroll. Your LinkedIn should work harder than your outreach.</p>
+        <h2 class="li-h">Post 5 times a week<br><span class="li-grad">without writing a word.</span></h2>
+        <p class="li-sub">I run your LinkedIn end to end. <b>Strategy, writing, design and publishing.</b> Your page stays active and on-brand <b>while you run the business.</b></p>
+        <div class="li-hero-cta">
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $150/month <span class="btn-ico">→</span></a>
+          <a href="#li-plan" class="btn btn-li-ghost">See what's included</a>
+        </div>
+        <ul class="li-trust">
+          <li><span class="li-trust-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>5 posts every week</li>
+          <li><span class="li-trust-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.4-.9-1.4-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.6 2.5 2 2.5.9 2.5 2-1 2-2.5 2c-1.1 0-2.1-.6-2.5-1.5M12 6.5V8M12 16v1.5"/></svg></span>Fixed $150/month</li>
+          <li><span class="li-trust-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></span>Nothing goes live until you approve</li>
+        </ul>
       </div>
 
       <div class="li-grid">
@@ -1647,31 +1722,43 @@
         </div>
       </div>
 
-      <!-- ✏️ EDIT: LinkedIn plan — price and weekly post mix -->
-      <div class="li-plan" data-fade>
-        <div class="li-price">
-          <span class="li-price-k">LinkedIn Management</span>
-          <div class="li-price-n">$150<small>/month</small></div>
-          <p>Fixed price. 5 posts a week, about 20–22 a month.</p>
+      <!-- ✏️ EDIT: LinkedIn offer — price, weekly post mix, what's included and who it's for -->
+      <div id="li-plan" class="li-offer" data-fade>
+        <div class="li-offer-main">
+          <span class="li-offer-k">Done-for-you LinkedIn</span>
+          <div class="li-offer-n">$150<small>/month</small></div>
+          <p class="li-offer-p">Fixed price. 5 posts a week, about 20–22 a month, planned a month ahead.</p>
+          <div class="li-offer-mix">
+            <div><b>1</b><span>Carousel</span></div>
+            <div><b>2</b><span>Cheat sheets</span></div>
+            <div><b>2</b><span>Standard posts</span></div>
+          </div>
+          <ul class="li-offer-list">
+            <li>Content strategy &amp; monthly calendar</li>
+            <li>Posts written in your voice</li>
+            <li>Carousels, infographics &amp; branded graphics</li>
+            <li>Scheduling &amp; publishing, every week</li>
+            <li>Monthly performance report</li>
+          </ul>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li li-offer-btn" target="_blank" rel="noopener">Start for $150/month <span class="btn-ico">→</span></a>
+          <p class="li-offer-note">2-minute form · Reply within 24 hours</p>
         </div>
-        <div class="li-mix">
-          <div class="li-mix-i"><b>1</b><span>Carousel</span><small>Multi-slide system post</small></div>
-          <div class="li-mix-i"><b>2</b><span>Cheat sheets</span><small>Single reference graphic</small></div>
-          <div class="li-mix-i"><b>2</b><span>Standard posts</span><small>One-page graphic or text</small></div>
-          <p class="li-mix-note">Every week, planned a month ahead.</p>
-        </div>
-      </div>
-
-      <div class="li-incl" data-fade>
-        <span class="li-incl-t">Every month includes</span>
-        <div class="li-tags">
-          <span class="li-tag">Content strategy</span>
-          <span class="li-tag">Content calendar</span>
-          <span class="li-tag">Post writing</span>
-          <span class="li-tag">Carousels &amp; infographics</span>
-          <span class="li-tag">Branded graphics</span>
-          <span class="li-tag">Scheduling &amp; publishing</span>
-          <span class="li-tag">Performance report</span>
+        <div class="li-offer-fit">
+          <h3>This is for you if…</h3>
+          <ul>
+            <li>You know LinkedIn matters, but posting always slips to "next week".</li>
+            <li>You run a YouTube channel or agency and want your page to bring in leads.</li>
+            <li>You want posts that look as good as they read, without hiring a team.</li>
+          </ul>
+          <div class="li-start">
+            <span class="li-start-t">How it starts</span>
+            <ol>
+              <li><b>1</b>Fill the 2-minute form</li>
+              <li><b>2</b>Get your plan and price within 24 hours</li>
+              <li><b>3</b>Approve the first posts, then I take it from there</li>
+            </ol>
+          </div>
+          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="li-fit-link" target="_blank" rel="noopener">See my own LinkedIn →</a>
         </div>
       </div>
 
@@ -1720,7 +1807,7 @@
       </div>
 
       <div class="li-cta" data-fade>
-        <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Start at $150/month →</a>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $150/month <span class="btn-ico">→</span></a>
         <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
       </div>
     </div>
@@ -1867,7 +1954,7 @@
     </div>
 
     <div class="wrap res-foot" data-fade>
-      <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Get Thumbnails Like These →</a>
+      <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get Thumbnails Like These →</a>
       <p class="res-note">Hover to pause · Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
     </div>
   </section>
@@ -1938,52 +2025,80 @@
     <div class="wrap">
       <div class="svc-head" data-fade>
         <span class="tag">Services</span>
-        <h2 class="h2">One Studio, <span class="orange">Three Services.</span></h2>
-        <p class="lead">The same design thinking behind each. Every project starts with a short project form, and I scope the exact package for your goal.</p>
+        <h2 class="h2">Pick What You Need.<br><span class="orange">I Handle the Rest.</span></h2>
+        <p class="lead">Three services, one design system. Choose one and fill a 2-minute form. You get scope, timeline and price within 24 hours.</p>
       </div>
 
       <div class="svc-grid">
         <!-- ✏️ EDIT: Service 1 -->
         <div class="svc-card svc-feat" data-fade data-d="1">
-          <span class="svc-badge">Flagship</span>
+          <span class="svc-badge">Most popular</span>
           <div class="svc-icon">💼</div>
+          <span class="svc-best">Best for: Founders, creators &amp; agency owners</span>
           <div class="svc-title">LinkedIn Management</div>
-          <div class="svc-price">$150<small>/month</small></div>
-          <p class="svc-desc">I run your LinkedIn from research to publishing, five posts a week.</p>
+          <p class="svc-out">Stay visible on LinkedIn without writing a word.</p>
+          <div class="svc-price ">$150<small>/month</small></div>
           <ul class="svc-list">
-            <li>1 carousel, 2 cheat sheets, 2 standard posts a week</li>
-            <li>Strategy, writing in your voice and design</li>
-            <li>Scheduling, publishing and a monthly report</li>
+            <li>5 posts a week: carousels, cheat sheets &amp; posts</li>
+            <li>Written in your voice, designed on-brand</li>
+            <li>Scheduled, published &amp; reported monthly</li>
           </ul>
-          <a href="#linkedin" class="svc-link">See what's included →</a>
+          <div class="svc-actions">
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary svc-btn" target="_blank" rel="noopener">Start for $150/month →</a>
+            <a href="#linkedin" class="svc-link">See examples →</a>
+          </div>
         </div>
         <!-- ✏️ EDIT: Service 2 -->
         <div class="svc-card" data-fade data-d="2">
+          
           <div class="svc-icon">🎯</div>
-          <div class="svc-title">Content System + Thumbnail Design</div>
+          <span class="svc-best">Best for: YouTube channels that want more clicks</span>
+          <div class="svc-title">Thumbnails + Content System</div>
+          <p class="svc-out">Win the click on every video, with a look that stays on-brand.</p>
           <div class="svc-price svc-quote">Custom quote</div>
-          <p class="svc-desc">Thumbnails built to win the click, inside a system that keeps every video on-brand.</p>
           <ul class="svc-list">
             <li>CTR-led thumbnails matched to the title</li>
-            <li>Templates plus colour and type rules for the channel</li>
+            <li>Templates plus colour and type rules</li>
             <li>Per-video or monthly pack, revision included</li>
           </ul>
-          <a href="#results" class="svc-link">See the results →</a>
+          <div class="svc-actions">
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a thumbnail quote →</a>
+            <a href="#results" class="svc-link">See results →</a>
+          </div>
         </div>
         <!-- ✏️ EDIT: Service 3 -->
         <div class="svc-card" data-fade data-d="3">
+          
           <div class="svc-icon">🎨</div>
-          <div class="svc-title">Branding + Graphic Design</div>
+          <span class="svc-best">Best for: Brands launching or running ads</span>
+          <div class="svc-title">Branding + Meta Ads</div>
+          <p class="svc-out">One design system for your brand, ads and social graphics.</p>
           <div class="svc-price svc-quote">Custom quote</div>
-          <p class="svc-desc">Your brand identity, ad creatives, posters and social graphics, all from one design system.</p>
           <ul class="svc-list">
             <li>Logo, colours, typography and usage rules</li>
-            <li>Facebook and Meta ad creatives</li>
-            <li>Social graphics, banners, posters and infographics</li>
+            <li>Facebook &amp; Instagram ad creatives</li>
+            <li>Banners, posters, social graphics &amp; infographics</li>
           </ul>
-          <a href="#meta-ads" class="svc-link">See ad creatives →</a>
+          <div class="svc-actions">
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a design quote →</a>
+            <a href="#meta-ads" class="svc-link">See ad creatives →</a>
+          </div>
         </div>
       </div>
+
+      <!-- ✏️ EDIT: Help strip + reassurance under the service cards -->
+      <div class="svc-help" data-fade>
+        <div>
+          <b>Not sure which one fits?</b>
+          <span>Tell me your goal in the form and I'll recommend the right service. No call needed.</span>
+        </div>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Help me choose →</a>
+      </div>
+      <ul class="svc-assure" data-fade>
+        <li>Reply within 24 hours</li>
+        <li>Nothing goes live until you approve it</li>
+        <li>Progress on your own Notion board</li>
+      </ul>
     </div>
   </section>
 
@@ -2029,8 +2144,8 @@
 
         <!-- ✏️ EDIT: To add more work, copy a work-item block below and change the src, alt, category, name, and year -->
         <div class="work-item" data-fade data-d="1">
-          <img src="Macbook-Air-and-iPad-Pro-Showcase-Screens-psd-Mockup-1-1.png"
-               alt="LinkedIn Branding Design" loading="lazy" width="1024" height="704">
+          <img src="assets/work/linkedin-branding-mockup.webp"
+               alt="LinkedIn Branding Design" loading="lazy" width="1200" height="825">
           <div class="work-overlay">
             <div>
               <div class="work-cat">LinkedIn Branding</div>
@@ -2041,7 +2156,7 @@
         </div>
 
         <div class="work-item" data-fade data-d="2">
-          <img src="web-3-1.png" alt="Thumbnail Design" loading="lazy">
+          <img src="assets/work/thumbnail-design.webp" width="1024" height="768" alt="Thumbnail Design" loading="lazy">
           <div class="work-overlay">
             <div>
               <div class="work-cat">Thumbnail Design</div>
@@ -2052,7 +2167,7 @@
         </div>
 
         <div class="work-item" data-fade data-d="3">
-          <img src="web-2-1.png" alt="Poster Design" loading="lazy">
+          <img src="assets/work/poster-design.webp" width="1024" height="768" alt="Poster Design" loading="lazy">
           <div class="work-overlay">
             <div>
               <div class="work-cat">Poster Design</div>
@@ -2063,7 +2178,7 @@
         </div>
 
         <div class="work-item" data-fade data-d="4">
-          <img src="web-1-1.png" alt="Instagram Post Design" loading="lazy">
+          <img src="assets/work/instagram-design.webp" width="1024" height="768" alt="Instagram Post Design" loading="lazy">
           <div class="work-overlay">
             <div>
               <div class="work-cat">Instagram Design</div>
