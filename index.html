@@ -1287,9 +1287,11 @@
     .pf-sk { display: grid; gap: 7px; margin: 12px 0 18px; }
     .pf-sk i { display: block; height: 8px; border-radius: 8px; background: #e5e9ee; width: 70%; }
     .pf-sk i + i { width: 40%; background: #cfe3f7; }
+    .pf-sk-long i:nth-child(n+3) { width: 85%; background: #eef1f4; }
+    .pf-sk-long i:last-child { width: 55%; }
     .pf-feat-t { display: block; font-size: 15px; font-weight: 700; color: #1f1f1f; margin-bottom: 12px; }
     .pf-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .pf-feat > div { aspect-ratio: 1.91 / 1; border-radius: 4px; overflow: hidden; background: #eef2f6; }
+    .pf-feat > div { aspect-ratio: 1.91 / 1; border-radius: 4px; overflow: hidden; background: #eef2f6; border: 1px solid #e3e8ee; }
     .pf-feat img { width: 100%; height: 100%; object-fit: cover; }
     .pf-ph {
       display: grid; place-items: center; width: 100%; height: 100%;
@@ -1681,17 +1683,18 @@
           <div class="li-plan-p" data-panel="setup" hidden>
             <span class="li-offer-k">One-time profile setup</span>
             <div class="li-offer-n">$79<small>one-time</small></div>
-            <p class="li-offer-p">Your LinkedIn profile designed to turn visits into enquiries. Pay once, keep it.</p>
+            <p class="li-offer-p">Your profile is the first page people check after they see your name. I make it work like a landing page: clear offer, proof up front, one next step. Pay once, and it stays fresh all year.</p>
             <div class="li-offer-mix">
-              <div><b>1</b><span>Profile banner</span></div>
-              <div><b>✦</b><span>Featured section</span></div>
-              <div><b>✓</b><span>Ready to upload</span></div>
+              <div><b>1</b><span>Banner &amp; Featured set</span></div>
+              <div><b>3</b><span>Revisions</span></div>
+              <div><b>2</b><span>Updates a year</span></div>
             </div>
             <ul class="li-offer-list">
               <li>Custom banner designed around your offer</li>
               <li>Featured section graphics that point to your offer or booking link</li>
-              <li>Matched to your brand colours and photo</li>
-              <li>Exported at LinkedIn sizes, ready to upload</li>
+              <li>Matched to your brand colours and photo, exported at LinkedIn sizes</li>
+              <li>3 rounds of revisions until it feels right</li>
+              <li>2 free updates within the year when your offer changes</li>
             </ul>
             <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li li-offer-btn" target="_blank" rel="noopener">Get My Profile Set Up, $79 <span class="btn-ico">→</span></a>
             <p class="li-offer-note">2-minute form · Reply within 24 hours</p>
@@ -1779,12 +1782,12 @@
           <article class="pf-card">
             <div class="pf-banner"><img src="assets/linkedin/banner-designwithfaiz.jpg" alt="LinkedIn profile banner for Designwithfaiz" loading="lazy" width="1584" height="396"></div>
             <div class="pf-body">
-              <span class="pf-av">F</span>
+              <span class="pf-av"><img src="assets/linkedin/profiles/faiz-ahmed.jpg" alt="Faiz Ahmed" loading="lazy" width="240" height="240"></span>
               <h4 class="pf-name">Faiz Ahmed</h4>
               <p class="pf-sub">Designwithfaiz · Personal profile</p>
               <span class="pf-sk" aria-hidden="true"><i></i><i></i></span>
               <b class="pf-feat-t">Featured</b>
-              <div class="pf-feat"><div><span class="pf-ph">Featured</span></div><div><span class="pf-ph">Featured</span></div></div>
+              <div class="pf-feat"><div><img src="assets/linkedin/profiles/faiz-featured-work-with-me.jpg" alt="Featured: Work With Me, Designwithfaiz service page" loading="lazy" width="600" height="322"></div><div><img src="assets/linkedin/profiles/faiz-featured-build-your-system.jpg" alt="Featured: Let's Build Your System" loading="lazy" width="600" height="322"></div></div>
             </div>
           </article>
         </div>
@@ -1803,14 +1806,23 @@
             </div>
           </article>
           <article class="pf-card">
+            <div class="pf-banner"><img src="assets/linkedin/banner-brandon-keys-light.jpg" alt="Earlier LinkedIn profile banner for Brandon Keys, Keys Media" loading="lazy" width="1584" height="396"></div>
+            <div class="pf-body">
+              <span class="pf-av"><img src="assets/linkedin/profiles/brandon-keys.jpg" alt="Brandon Keys" loading="lazy" width="240" height="240"></span>
+              <h4 class="pf-name">Brandon Keys</h4>
+              <p class="pf-sub">Founder, Keys Media · Earlier version</p>
+              <span class="pf-sk" aria-hidden="true"><i></i><i></i></span>
+              <b class="pf-feat-t">Featured</b>
+              <div class="pf-feat"><div><img src="assets/linkedin/profiles/keys-featured-strategy-call-light.jpg" alt="Featured: Book your strategy call with Brandon Keys (light version)" loading="lazy" width="600" height="322"></div><div><img src="assets/linkedin/profiles/keys-featured-10m-views-light.jpg" alt="Featured: Keys Media, 10M+ views for clients (light version)" loading="lazy" width="600" height="322"></div></div>
+            </div>
+          </article>
+          <article class="pf-card">
             <div class="pf-banner"><img src="assets/linkedin/banner-keys-media-page.jpg" alt="LinkedIn company page banner for Keys Media" loading="lazy" width="1128" height="191"></div>
             <div class="pf-body">
               <span class="pf-av sq">K</span>
               <h4 class="pf-name">Keys Media</h4>
               <p class="pf-sub">Company page</p>
-              <span class="pf-sk" aria-hidden="true"><i></i><i></i></span>
-              <b class="pf-feat-t">Featured</b>
-              <div class="pf-feat"><div><span class="pf-ph">Featured</span></div><div><span class="pf-ph">Featured</span></div></div>
+              <span class="pf-sk pf-sk-long" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
             </div>
           </article>
         </div>
