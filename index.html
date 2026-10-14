@@ -550,73 +550,117 @@
     .li-pick.open .btn-ico { transform: rotate(180deg); }
     .btn-li-ghost { background: #fff; color: #0a66c2; border: 1.5px solid rgba(10,102,194,0.35); }
     .btn-li-ghost:hover { border-color: #0a66c2; transform: translateY(-2px); }
-    .li-trust { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 30px; margin-top: 30px; }
-    .li-trust li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text-muted); }
-    .li-trust-i {
-      width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
-      display: grid; place-items: center; color: #0a66c2; background: #fff;
-    }
-    .li-trust-i svg { width: 19px; height: 19px; }
 
-    /* ---- LinkedIn offer card ---- */
-    .li-offer {
-      display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; margin-top: 64px;
-      border: 1px solid var(--border); border-radius: 24px; overflow: hidden;
-      box-shadow: 0 20px 50px rgba(10,102,194,0.10); scroll-margin-top: 100px;
+    /* ---- LinkedIn: quick facts under the hero buttons ---- */
+    .li-facts { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin-top: 28px; }
+    .li-facts li { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--text-muted); }
+    .li-facts svg { width: 20px; height: 20px; padding: 4px; border-radius: 50%; background: #0b1a2b; color: #fff; flex: 0 0 auto; }
+
+    /* ---- LinkedIn: shared small headings ---- */
+    .li-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-dim); }
+    .li-eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: #0a66c2; }
+    .li-ba-head, .li-plans-head, .li-work-head { text-align: center; max-width: 760px; margin: 0 auto 36px; }
+    .li-ba-head h3, .li-plans-head h3, .li-work-head h3, .li-decide h3 {
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.8vw, 46px);
+      line-height: 1.06; letter-spacing: -0.035em; margin-top: 12px; text-wrap: balance;
     }
-    .li-offer-main { padding: 40px; background: #0b1a2b; color: #fff; }
-    .li-switch {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 26px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px;
-    }
-    .li-switch button {
-      border: 0; border-radius: 100px; padding: 11px 10px; cursor: pointer;
-      background: transparent; color: #c9d3dd; font: 700 13.5px var(--font); transition: background var(--ease), color var(--ease);
-    }
-    .li-switch button em { font-style: normal; color: var(--accent); margin-left: 4px; }
-    .li-switch button.on { background: #fff; color: #0b1a2b; }
-    .li-switch button.on em { color: #0a66c2; }
-    .li-plan-p[hidden] { display: none; }
-    .li-plan-p { animation: heroUp 0.35s ease both; }
-    @media (max-width: 480px) { .li-switch .sw-lg { display: none; } }
-    .li-offer-k { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
-    .li-offer-n { font-family: var(--font-display); font-weight: 800; font-size: 58px; letter-spacing: -2px; line-height: 1; margin: 14px 0 10px; }
-    .li-offer-n small { font-family: var(--font); font-size: 16px; font-weight: 600; letter-spacing: 0; color: #b9c4cf; }
-    .li-offer-p { font-size: 14.5px; color: #c9d3dd; }
-    .li-offer-mix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
-    .li-offer-mix div { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); border-radius: 12px; padding: 12px; text-align: center; }
-    .li-offer-mix b { display: block; font-family: var(--font-display); font-size: 28px; color: var(--accent); line-height: 1.1; }
-    .li-offer-mix span { font-size: 12.5px; color: #c9d3dd; }
-    .li-offer-list { list-style: none; display: grid; gap: 10px; margin-bottom: 28px; }
-    .li-offer-list li { position: relative; padding-left: 28px; font-size: 15px; }
-    .li-offer-list li::before {
-      content: "✓"; position: absolute; left: 0; top: 1px; width: 19px; height: 19px; border-radius: 50%;
-      display: grid; place-items: center; font-size: 11px; font-weight: 800; background: #0a66c2; color: #fff;
-    }
-    .li-offer-btn { width: 100%; justify-content: center; }
-    .li-offer-note { text-align: center; font-size: 12.5px; color: #93a4b8; margin-top: 12px; }
-    .li-offer-fit { padding: 40px; background: var(--bg-card); display: flex; flex-direction: column; }
-    .li-offer-fit h3 { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.4px; margin-bottom: 20px; }
-    .li-offer-fit > ul { list-style: none; display: grid; gap: 16px; margin-bottom: 26px; }
-    .li-offer-fit > ul > li { position: relative; padding-left: 30px; font-size: 15px; color: var(--text-muted); line-height: 1.55; }
-    .li-offer-fit > ul > li::before { content: "→"; position: absolute; left: 0; color: #0a66c2; font-weight: 800; }
-    .li-start { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 24px; }
-    .li-start-t { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
-    .li-start ol { list-style: none; display: grid; gap: 12px; }
-    .li-start li { display: flex; align-items: center; gap: 12px; font-size: 14.5px; font-weight: 600; color: var(--text); }
-    .li-start b { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-raised); color: #0a66c2; font-size: 13px; }
-    .li-fit-link { margin-top: auto; font-weight: 700; color: #0a66c2; }
+    .li-ba-head h3 span, .li-plans-head h3 span, .li-work-head h3 span, .li-decide h3 span { color: var(--text-dim); }
+    .li-ba-head p, .li-plans-head p, .li-work-head p { font-size: 16.5px; color: var(--text-muted); margin-top: 12px; }
+
+    /* ---- LinkedIn: Before / After profile ---- */
+    .li-ba-wrap { margin-top: 96px; scroll-margin-top: 90px; }
+    .li-ba { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: center; padding-top: 12px; }
+    .ba-card { position: relative; margin: 0; background: #fff; border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 14px 40px rgba(15,40,80,0.08); }
+    .ba-before { filter: saturate(0.6); }
+    .ba-after { border-color: rgba(10,102,194,0.35); box-shadow: 0 20px 50px rgba(10,102,194,0.16); }
+    .ba-label { position: absolute; top: -12px; left: 18px; z-index: 2; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 100px; background: #fff; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .ba-after .ba-label { background: #0a66c2; color: #fff; }
+    .ba-banner { position: relative; aspect-ratio: 4 / 1; background: #dfe5ec; border-radius: 17px 17px 0 0; overflow: hidden; }
+    .ba-banner img { width: 100%; height: 100%; object-fit: cover; }
+    .ba-empty { background: linear-gradient(135deg, #d7dde5, #c9d1db); }
+    .ba-flag { position: absolute; right: 12px; bottom: 10px; font-size: 11.5px; font-weight: 700; color: #c62828; background: #fdecec; padding: 4px 9px; border-radius: 100px; }
+    .ba-body { padding: 0 20px 18px; }
+    .ba-av { display: block; width: 76px; height: 76px; margin-top: -38px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; background: #e5e9ee; position: relative; }
+    .ba-av img { width: 100%; height: 100%; object-fit: cover; }
+    .ba-av-empty::after { content: ""; position: absolute; left: 50%; top: 52%; width: 34px; height: 34px; translate: -50% -50%; border-radius: 50%; background: #b9c2cd; box-shadow: 0 26px 0 6px #b9c2cd; }
+    .ba-name { display: block; font-size: 17px; margin-top: 8px; color: var(--text); }
+    .ba-role { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 10px; }
+    .ba-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--border-soft); font-size: 13.5px; color: var(--text-muted); }
+    .ba-row em { font-style: normal; font-weight: 700; text-align: right; display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .ba-row em.bad { color: #c62828; }
+    .ba-row em.ok { color: #1a8f50; }
+    .ba-pin { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: 0.3px; padding: 3px 8px; border-radius: 100px; color: #fff; white-space: nowrap; }
+    .ba-banner .ba-pin { position: absolute; right: 10px; top: 10px; }
+    .ba-pin.p1 { background: #0b1a2b; }
+    .ba-pin.p2 { background: #0a66c2; }
+    .ba-arrow { font-size: 28px; color: #0a66c2; font-weight: 800; }
+
+    /* ---- LinkedIn: plan cards ---- */
+    .li-plans-head { margin-top: 110px; scroll-margin-top: 90px; }
+    .li-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 980px; margin: 0 auto; }
+    .lp-card { position: relative; display: flex; flex-direction: column; padding: 32px; border-radius: 22px; background: #fff; border: 1px solid var(--border); }
+    .lp-feat { background: #0b1a2b; color: #fff; border-color: #0b1a2b; box-shadow: 0 24px 60px rgba(10,40,80,0.25); }
+    .lp-badge { position: absolute; top: -12px; right: 24px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; background: #0a66c2; color: #fff; }
+    .lp-step { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #0a66c2; }
+    .lp-feat .lp-step { color: var(--accent); }
+    .lp-card h4 { font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1.1; letter-spacing: -0.03em; margin-top: 10px; }
+    .lp-for { font-size: 15px; color: var(--text-muted); margin-top: 6px; }
+    .lp-feat .lp-for { color: #b9c4cf; }
+    .lp-price { font-family: var(--font-display); font-weight: 800; font-size: 52px; letter-spacing: -0.04em; line-height: 1; margin: 22px 0 18px; }
+    .lp-price small { font-family: var(--font); font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--text-dim); margin-left: 4px; }
+    .lp-feat .lp-price small { color: #93a4b8; }
+    .lp-mix { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+    .lp-mix span { font-size: 13px; padding: 6px 11px; border-radius: 100px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); }
+    .lp-mix b { color: var(--accent); }
+    .lp-mix em { font-style: normal; font-size: 13px; color: #93a4b8; }
+    .lp-list { list-style: none; display: grid; gap: 11px; margin-bottom: 26px; }
+    .lp-list li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; }
+    .lp-list li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 19px; height: 19px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 800; background: #0b1a2b; color: #fff; }
+    .lp-feat .lp-list li::before { background: #0a66c2; }
+    .lp-btn { margin-top: auto; justify-content: center; width: 100%; }
+    .lp-see { display: block; text-align: center; margin-top: 14px; font-size: 14px; font-weight: 700; color: #0a66c2; }
+    .lp-feat .lp-see { color: var(--accent); }
+
+    /* ---- LinkedIn: plan labels on the proof blocks ---- */
+    .lp-tag { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 14px; border-radius: 100px; background: rgba(160,206,247,0.14); border: 1px solid rgba(160,206,247,0.35); color: var(--accent); }
+    .lp-tag-light { background: #e8f1fb; border-color: rgba(10,102,194,0.25); color: #0a66c2; }
+    #li-work-setup, #li-work-monthly { scroll-margin-top: 80px; }
+    .li-work-head { margin-top: 96px; }
+    .pf-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 20px; margin-top: 30px; }
+    .pf-foot span { font-size: 13.5px; color: #93a4b8; }
+    .li-cta-note { font-size: 13.5px; color: var(--text-muted); }
+    .li-cta { align-items: center; }
+
+    /* ---- LinkedIn: still deciding ---- */
+    .li-decide { margin: 96px auto 0; max-width: 980px; text-align: center; }
+    .li-decide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 30px; text-align: left; }
+    .ld-opt { display: block; padding: 26px; border-radius: 18px; border: 1px solid var(--border); background: var(--bg-card); transition: transform var(--ease), border-color var(--ease); }
+    .ld-opt:hover { transform: translateY(-3px); border-color: #0a66c2; }
+    .ld-k { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #0a66c2; }
+    .ld-opt p { font-family: var(--font-display); font-weight: 700; font-size: 21px; line-height: 1.25; letter-spacing: -0.02em; margin: 10px 0 16px; color: var(--text); }
+    .ld-opt b { font-size: 15px; color: var(--text); }
+    .ld-feat { background: #0b1a2b; border-color: #0b1a2b; }
+    .ld-feat p, .ld-feat b { color: #fff; }
+    .ld-feat .ld-k { color: var(--accent); }
+    .ld-steps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 30px; margin-top: 28px; }
+    .ld-steps li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 600; color: var(--text); }
+    .ld-steps b { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-raised); color: #0a66c2; font-size: 12.5px; }
+
     @media (max-width: 860px) {
-      .li-offer { grid-template-columns: 1fr; }
-      .li-offer-main, .li-offer-fit { padding: 28px 22px; }
+      .li-ba { grid-template-columns: 1fr; }
+      .ba-arrow { rotate: 90deg; text-align: center; }
+      .li-ba { gap: 26px; }
+      .li-plans, .li-decide-grid { grid-template-columns: 1fr; }
+      .lp-card { padding: 26px 22px; }
     }
     @media (max-width: 560px) {
       .li-hero-cta { flex-direction: column; align-items: center; }
       .li-hero-cta .btn { min-width: 250px; justify-content: center; }
       .li-pick-menu { width: min(330px, calc(100vw - 32px)); }
-      .li-trust { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
+      .li-facts { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
+      .li-ba-wrap, .li-plans-head, .li-work-head, .li-decide { margin-top: 72px; }
+      .ba-row { font-size: 12.5px; }
     }
-
     /* ---- Services: conversion layout ---- */
     .svc-best { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--accent-dark); margin: -4px 0 8px; }
     .svc-card .svc-price { margin-bottom: 18px; }
@@ -1619,16 +1663,15 @@
   </div>
 
   <!-- ====== LINKEDIN ACCOUNT MANAGEMENT ====== -->
-  <!-- ✏️ EDIT: Change step text inside each <li class="li-step">; price and "what you get" live in the #li-plan offer card below -->
+  <!-- ✏️ EDIT: LinkedIn section order: hero, Before/After, the two plans (#li-plans), Plan 01 proof (#li-work-setup), Plan 02 proof (#li-work-monthly), "Still deciding?" -->
   <section id="linkedin" class="sec li-sec">
     <div class="wrap">
-      <!-- ✏️ EDIT: LinkedIn hero — proof row, headline, CTAs and the three trust points -->
+      <!-- ✏️ EDIT: LinkedIn hero — headline, buttons and the three quick facts -->
       <div class="li-hero" data-fade>
-        <span class="tag">LinkedIn Account Management</span>
-        <h2 class="li-h">Post 5 times a week<br><span class="li-grad">without writing <span style="white-space:nowrap">a word.</span></span></h2>
-        <p class="li-lead">I run your LinkedIn end to end. <b>Strategy, writing, design and publishing.</b> Your page stays active and on-brand <b>while you run the business.</b></p>
+        <span class="tag">LinkedIn for founders &amp; creators</span>
+        <h2 class="li-h">People check your LinkedIn<br><span class="li-grad">before they reply.</span></h2>
+        <p class="li-lead">Most profiles lose the lead right there. <b>I fix what they see first,</b> then <b>keep them seeing you every week.</b></p>
         <div class="li-hero-cta">
-          <!-- ✏️ EDIT: Top LinkedIn button opens a menu with both offers -->
           <div class="li-pick" data-pick>
             <button type="button" class="btn btn-li" aria-haspopup="true" aria-expanded="false">Choose Your Plan <span class="btn-ico">▾</span></button>
             <div class="li-pick-menu" role="menu" hidden>
@@ -1640,167 +1683,103 @@
                 <span><b>Monthly Management</b><small>5 posts a week, done for you</small></span>
                 <em>$179<small>/month</small></em>
               </a>
-              <a class="li-pick-more" href="#li-plan">Compare both plans ↓</a>
+              <a class="li-pick-more" href="#li-plans">Compare both plans ↓</a>
             </div>
           </div>
-          <a href="#li-plan" class="btn btn-li-ghost">See what's included</a>
+          <a href="#li-ba" class="btn btn-li-ghost">See Before &amp; After</a>
         </div>
-        <ul class="li-trust">
-          <li><span class="li-trust-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>5 posts every week</li>
-          <li><span class="li-trust-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"/></svg></span>Written in your voice</li>
-          <li><span class="li-trust-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></span>Designed, scheduled &amp; published</li>
+        <ul class="li-facts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Starting at $79</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Profile ready in 48 hours</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>3 revisions included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Nothing goes live until you approve</li>
         </ul>
       </div>
 
-      <div class="li-grid">
-        <ol class="li-steps">
-          <li class="li-step" data-fade data-d="1">
-            <span class="li-num">01</span>
-            <div><h3>Strategy &amp; Profile Setup</h3><p>Positioning, content pillars and a profile or company page optimised to turn visitors into followers and leads.</p></div>
-          </li>
-          <li class="li-step" data-fade data-d="2">
-            <span class="li-num">02</span>
-            <div><h3>Research &amp; Content Calendar</h3><p>Monthly topic research and a planned calendar, so every post has a purpose before it is written.</p></div>
-          </li>
-          <li class="li-step" data-fade data-d="3">
-            <span class="li-num">03</span>
-            <div><h3>Post Writing</h3><p>Hooks, stories and insights written in your voice, built to stop the scroll and start conversations.</p></div>
-          </li>
-          <li class="li-step" data-fade data-d="4">
-            <span class="li-num">04</span>
-            <div><h3>Post Design</h3><p>Carousels, infographics and branded graphics that match your visual identity on every post.</p></div>
-          </li>
-          <li class="li-step" data-fade data-d="5">
-            <span class="li-num">05</span>
-            <div><h3>Publishing &amp; Scheduling</h3><p>Posts go live at the right times, every week, without you having to log in and do it yourself.</p></div>
-          </li>
-          <li class="li-step" data-fade data-d="6">
-            <span class="li-num">06</span>
-            <div><h3>Monthly Report</h3><p>A clear report on what performed, what didn't and what we change next month.</p></div>
-          </li>
-        </ol>
-
-        <div class="li-visual" data-fade>
-          <div class="li-post">
-            <div class="li-post-top">
-              <span class="li-avatar">K</span>
-              <div><div class="li-name">Keys Media</div><div class="li-sub">Company page · Managed by Faiz · 🌐</div></div>
-              <span class="li-follow">+ Follow</span>
+      <!-- ====== Before / After: what a visitor sees, and which plan fixes which part ====== -->
+      <div id="li-ba" class="li-ba-wrap" data-fade>
+        <div class="li-ba-head">
+          <span class="li-eyebrow">The 5-second check</span>
+          <h3>Same person. <span>Different first impression.</span></h3>
+          <p>Before anyone books a call, they open your profile. This is what decides if they stay.</p>
+        </div>
+        <div class="li-ba">
+          <figure class="ba-card ba-before">
+            <figcaption class="ba-label">Before</figcaption>
+            <div class="ba-banner ba-empty"><span class="ba-flag">✕ Default banner</span></div>
+            <div class="ba-body">
+              <span class="ba-av ba-av-empty" aria-hidden="true"></span>
+              <b class="ba-name">Your Name</b>
+              <span class="ba-role">Founder · Consultant</span>
+              <div class="ba-row"><span>Featured</span><em class="bad">✕ Empty</em></div>
+              <div class="ba-row"><span>Last post</span><em class="bad">✕ 3 months ago</em></div>
+              <div class="ba-row"><span>Next step for a visitor</span><em class="bad">✕ None</em></div>
             </div>
-            <p class="li-text"><b>Every post on this page is done for them.</b><br>Researched, written, designed and published.<br><span class="muted">A few recent infographics ↓</span></p>
-            <div class="li-slides" data-slides>
-              <img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" class="on" width="720" height="900">
-              <img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" width="720" height="900" loading="lazy">
-              <img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" width="720" height="900" loading="lazy">
-              <img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" width="720" height="900" loading="lazy">
-              <img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" width="720" height="900" loading="lazy">
-              <img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" width="720" height="900" loading="lazy">
-              <img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" width="720" height="900" loading="lazy">
-              <img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" width="720" height="900" loading="lazy">
+          </figure>
+          <div class="ba-arrow" aria-hidden="true">→</div>
+          <figure class="ba-card ba-after">
+            <figcaption class="ba-label">After</figcaption>
+            <div class="ba-banner"><img src="assets/linkedin/banner-founder-profile.jpg" alt="Finished LinkedIn banner for Brandon Keys" loading="lazy" width="1584" height="396"><span class="ba-pin p1">Profile Setup</span></div>
+            <div class="ba-body">
+              <span class="ba-av"><img src="assets/linkedin/profiles/brandon-keys.jpg" alt="" loading="lazy" width="240" height="240"></span>
+              <b class="ba-name">Brandon Keys</b>
+              <span class="ba-role">Founder, Keys Media</span>
+              <div class="ba-row"><span>Featured</span><em class="ok">✓ Book a call · See results <i class="ba-pin p1">Profile Setup</i></em></div>
+              <div class="ba-row"><span>Last post</span><em class="ok">✓ This week <i class="ba-pin p2">Monthly</i></em></div>
+              <div class="ba-row"><span>Next step for a visitor</span><em class="ok">✓ Book a strategy call</em></div>
             </div>
-            <div class="li-dots" aria-hidden="true"></div>
-          <div class="li-actions" aria-hidden="true"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
-          </div>
-          <span class="li-chip c1" aria-hidden="true">✍️ Written <em>✓</em></span>
-          <span class="li-chip c2" aria-hidden="true">🎨 Designed <em>✓</em></span>
-          <span class="li-chip c3" aria-hidden="true">🚀 Published <em>✓</em></span>
+          </figure>
         </div>
       </div>
 
-      <!-- ✏️ EDIT: LinkedIn offer — price, weekly post mix, what's included and who it's for -->
-      <div id="li-plan" class="li-offer" data-fade>
-        <div class="li-offer-main" data-plans>
-          <!-- ✏️ EDIT: The two LinkedIn offers. The switch shows one at a time; "on" marks the one shown first. -->
-          <div class="li-switch" role="tablist" aria-label="LinkedIn offers">
-            <button type="button" role="tab" aria-selected="false" data-plan="setup">Profile Setup <em>$79</em></button>
-            <button type="button" role="tab" aria-selected="true" class="on" data-plan="monthly">Monthly<span class="sw-lg"> Management</span> <em>$179</em></button>
-          </div>
-
-          <div class="li-plan-p" data-panel="setup" hidden>
-            <span class="li-offer-k">One-time profile setup</span>
-            <div class="li-offer-n">$79<small>one-time</small></div>
-            <p class="li-offer-p">Your profile is the first page people check after they see your name. I make it work like a landing page: clear offer, proof up front, one next step. Pay once, and it stays fresh all year.</p>
-            <div class="li-offer-mix">
-              <div><b>1</b><span>Banner &amp; Featured set</span></div>
-              <div><b>3</b><span>Revisions</span></div>
-              <div><b>2</b><span>Updates a year</span></div>
-            </div>
-            <ul class="li-offer-list">
-              <li>Custom banner designed around your offer</li>
-              <li>Featured section graphics that point to your offer or booking link</li>
-              <li>Matched to your brand colours and photo, exported at LinkedIn sizes</li>
-              <li>3 rounds of revisions until it feels right</li>
-              <li>2 free updates within the year when your offer changes</li>
-            </ul>
-            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li li-offer-btn" target="_blank" rel="noopener">Get My Profile Set Up, $79 <span class="btn-ico">→</span></a>
-            <p class="li-offer-note">2-minute form · Reply within 24 hours</p>
-          </div>
-
-          <div class="li-plan-p" data-panel="monthly">
-            <span class="li-offer-k">Done-for-you LinkedIn</span>
-            <div class="li-offer-n">$179<small>/month</small></div>
-            <p class="li-offer-p">Fixed price. 5 posts a week, about 20–22 a month, planned a month ahead.</p>
-            <div class="li-offer-mix">
-              <div><b>1</b><span>Carousel</span></div>
-              <div><b>2</b><span>Cheat sheets</span></div>
-              <div><b>2</b><span>Standard posts</span></div>
-            </div>
-            <ul class="li-offer-list">
-              <li>Content strategy &amp; monthly calendar</li>
-              <li>Posts written in your voice</li>
-              <li>Carousels, infographics &amp; branded graphics</li>
-              <li>Scheduling &amp; publishing, every week</li>
-              <li>Monthly performance report</li>
-            </ul>
-            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li li-offer-btn" target="_blank" rel="noopener">Start for $179/month <span class="btn-ico">→</span></a>
-            <p class="li-offer-note">2-minute form · Reply within 24 hours</p>
-          </div>
-        </div>
-        <div class="li-offer-fit">
-          <h3>This is for you if…</h3>
-          <ul>
-            <li>You know LinkedIn matters, but posting always slips to "next week".</li>
-            <li>You run a YouTube channel or agency and want your page to bring in leads.</li>
-            <li>You want posts that look as good as they read, without hiring a team.</li>
-            <li>Your profile gets visits, but the banner and Featured section don't tell people what to do next.</li>
+      <!-- ====== The two plans ====== -->
+      <div id="li-plans" class="li-plans-head" data-fade>
+        <span class="li-eyebrow">Two plans</span>
+        <h3>Fix the profile. <span>Then fill the feed.</span></h3>
+        <p>Start with either one, or do both. Every plan starts with a 2-minute form and a reply within 24 hours.</p>
+      </div>
+      <!-- ✏️ EDIT: The two LinkedIn plans -->
+      <div class="li-plans">
+        <article class="lp-card" data-fade data-d="1">
+          <span class="lp-step">Plan 01 · Fix the profile</span>
+          <h4>Profile Setup</h4>
+          <p class="lp-for">For when people visit your profile but don't reach out.</p>
+          <div class="lp-price">$79<small>one-time</small></div>
+          <ul class="lp-list">
+            <li>Custom banner built around your offer</li>
+            <li>Featured section graphics that point to one next step</li>
+            <li>Matched to your brand colours and photo</li>
+            <li>Delivered in 48 hours</li>
+            <li>3 revisions, plus 2 free updates in the year</li>
           </ul>
-          <div class="li-start">
-            <span class="li-start-t">How it starts</span>
-            <ol>
-              <li><b>1</b>Fill the 2-minute form</li>
-              <li><b>2</b>Get your plan and price within 24 hours</li>
-              <li><b>3</b>Approve the work, then it goes live</li>
-            </ol>
-          </div>
-          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="li-fit-link" target="_blank" rel="noopener">See my own LinkedIn →</a>
-        </div>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline lp-btn" target="_blank" rel="noopener">Get My Profile Set Up →</a>
+          <a href="#li-work-setup" class="lp-see">See profiles I've set up ↓</a>
+        </article>
+        <article class="lp-card lp-feat" data-fade data-d="2">
+          <span class="lp-badge">Most popular</span>
+          <span class="lp-step">Plan 02 · Fill the feed</span>
+          <h4>Monthly Management</h4>
+          <p class="lp-for">For when you know you should post, but it never happens.</p>
+          <div class="lp-price">$179<small>/month</small></div>
+          <div class="lp-mix"><span><b>1</b> carousel</span><span><b>2</b> cheat sheets</span><span><b>2</b> posts</span><em>every week</em></div>
+          <ul class="lp-list">
+            <li>Strategy and a calendar planned a month ahead</li>
+            <li>Written in your voice, designed on-brand</li>
+            <li>Scheduled and published for you</li>
+            <li>A monthly report on what worked</li>
+          </ul>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li lp-btn" target="_blank" rel="noopener">Start for $179/month <span class="btn-ico">→</span></a>
+          <a href="#li-work-monthly" class="lp-see">See posts I've made ↓</a>
+        </article>
       </div>
+    </div>
 
-    </div>
-    <p class="res-row-label li-gal-label"><span>Recent posts · <b>Keys Media company page</b></span></p>
-    <!-- ✏️ EDIT: To ADD an infographic, put the image in assets/linkedin/ and copy one <a class="li-gal-item"> line -->
-    <div class="li-gal">
-      <div class="li-gal-track" data-loop>
-        <a class="li-gal-item" href="assets/linkedin/title-shift-37x.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/packaging-audit.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/smart-growth.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/creator-economy.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/first-30-seconds.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/thumbnail-rules.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/growth-mindset.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" loading="lazy" width="720" height="900"></a>
-        <a class="li-gal-item" href="assets/linkedin/thumbnail-diagnostic.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" loading="lazy" width="720" height="900"></a>
-      </div>
-    </div>
-    <!-- ====== LinkedIn profile showcase (banner + profile photo + Featured section), two sliding rows ====== -->
-    <!-- ✏️ EDIT: Each profile is one <article class="pf-card">.
-         Banner:   put the image in assets/linkedin/ and replace <span class="pf-ph">Banner</span> with an <img>.
-         Photo:    replace the letter inside <span class="pf-av"> with <img src="assets/linkedin/profiles/NAME.jpg" alt="">.
-         Featured: replace each <span class="pf-ph">Featured</span> with <img src="assets/linkedin/profiles/FILE.jpg" alt="">.
-         Rows repeat themselves automatically for the endless slide; the second row slides the other way. -->
-    <div class="pf-show" data-fade>
+    <!-- ====== Plan 01 proof: profile showcase (banner + profile photo + Featured section), two sliding rows ====== -->
+    <!-- ✏️ EDIT: Each profile is one <article class="pf-card">. Rows repeat automatically; the second row slides the other way. -->
+    <div id="li-work-setup" class="pf-show" data-fade>
       <div class="wrap pf-head">
-        <span class="pf-kicker">Profile setups</span>
-        <h3>Banners and Featured sections that <span>turn visits into enquiries.</span></h3>
+        <span class="lp-tag">Plan 01 · Profile Setup · $79</span>
+        <h3>Profiles I've set up. <span>Banner, photo, Featured.</span></h3>
       </div>
       <div class="pf-marquee">
         <div class="pf-track" data-loop>
@@ -1863,11 +1842,115 @@
           </article>
         </div>
       </div>
+      <div class="wrap pf-foot">
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Get My Profile Set Up, $79 <span class="btn-ico">→</span></a>
+        <span>3 revisions · 2 free updates in the year</span>
+      </div>
+    </div>
+
+    <!-- ====== Plan 02 proof: how monthly works + real posts ====== -->
+    <div id="li-work-monthly" class="wrap li-work-head" data-fade>
+      <span class="lp-tag lp-tag-light">Plan 02 · Monthly Management · $179/month</span>
+      <h3>A month of posts, <span>handled end to end.</span></h3>
+      <p>Every post on the Keys Media company page is researched, written, designed and published by me.</p>
+    </div>
+    <div class="wrap">
+      <div class="li-grid">
+        <ol class="li-steps">
+          <li class="li-step" data-fade data-d="1">
+            <span class="li-num">01</span>
+            <div><h3>Strategy &amp; Content Pillars</h3><p>What you want to be known for, turned into 3–4 themes, so every post builds toward what you sell.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="2">
+            <span class="li-num">02</span>
+            <div><h3>Research &amp; Content Calendar</h3><p>Monthly topic research and a planned calendar, so every post has a purpose before it is written.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="3">
+            <span class="li-num">03</span>
+            <div><h3>Post Writing</h3><p>Hooks, stories and insights written in your voice, built to stop the scroll and start conversations.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="4">
+            <span class="li-num">04</span>
+            <div><h3>Post Design</h3><p>Carousels, infographics and branded graphics that match your visual identity on every post.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="5">
+            <span class="li-num">05</span>
+            <div><h3>Publishing &amp; Scheduling</h3><p>Posts go live at the right times, every week, without you having to log in and do it yourself.</p></div>
+          </li>
+          <li class="li-step" data-fade data-d="6">
+            <span class="li-num">06</span>
+            <div><h3>Monthly Report</h3><p>A clear report on what performed, what didn't and what we change next month.</p></div>
+          </li>
+        </ol>
+
+        <div class="li-visual" data-fade>
+          <div class="li-post">
+            <div class="li-post-top">
+              <span class="li-avatar">K</span>
+              <div><div class="li-name">Keys Media</div><div class="li-sub">Company page · Managed by Faiz · 🌐</div></div>
+              <span class="li-follow">+ Follow</span>
+            </div>
+            <p class="li-text"><b>Every post on this page is done for them.</b><br>Researched, written, designed and published.<br><span class="muted">A few recent infographics ↓</span></p>
+            <div class="li-slides" data-slides>
+              <img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" class="on" width="720" height="900">
+              <img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" width="720" height="900" loading="lazy">
+              <img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" width="720" height="900" loading="lazy">
+            </div>
+            <div class="li-dots" aria-hidden="true"></div>
+          <div class="li-actions" aria-hidden="true"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
+          </div>
+          <span class="li-chip c1" aria-hidden="true">✍️ Written <em>✓</em></span>
+          <span class="li-chip c2" aria-hidden="true">🎨 Designed <em>✓</em></span>
+          <span class="li-chip c3" aria-hidden="true">🚀 Published <em>✓</em></span>
+        </div>
+      </div>
+
+    </div>
+    <p class="res-row-label li-gal-label"><span>Recent posts · <b>Keys Media company page</b></span></p>
+    <!-- ✏️ EDIT: To ADD an infographic, put the image in assets/linkedin/ and copy one <a class="li-gal-item"> line -->
+    <div class="li-gal">
+      <div class="li-gal-track" data-loop>
+        <a class="li-gal-item" href="assets/linkedin/title-shift-37x.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/title-shift-37x.jpg" alt="LinkedIn infographic: The Title Shift That Created 37x View Velocity" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/packaging-audit.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/packaging-audit.jpg" alt="LinkedIn infographic: The 5-Question Packaging Audit" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/smart-growth.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/smart-growth.jpg" alt="LinkedIn infographic: The 4 Elements of Smart Growth" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/creator-economy.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/creator-economy.jpg" alt="LinkedIn infographic: The Creator Economy: $500 Billion" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/first-30-seconds.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/first-30-seconds.jpg" alt="LinkedIn infographic: The First 30 Seconds Decide Everything" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/thumbnail-rules.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-rules.jpg" alt="LinkedIn infographic: How to Apply 5 Thumbnail Rules to Generate Growth" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/growth-mindset.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/growth-mindset.jpg" alt="LinkedIn infographic: Content-First vs Growth Mindset" loading="lazy" width="720" height="900"></a>
+        <a class="li-gal-item" href="assets/linkedin/thumbnail-diagnostic.jpg" target="_blank" rel="noopener"><img src="assets/linkedin/thumbnail-diagnostic.jpg" alt="LinkedIn infographic: 5 Signs Your YouTube Thumbnail Is Costing You Views" loading="lazy" width="720" height="900"></a>
+      </div>
     </div>
     <div class="wrap">
       <div class="li-cta" data-fade>
-        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start My LinkedIn <span class="btn-ico">→</span></a>
-        <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline" target="_blank" rel="noopener">See My LinkedIn</a>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $179/month <span class="btn-ico">→</span></a>
+        <span class="li-cta-note">5 posts a week · Planned a month ahead · Reply within 24 hours</span>
+      </div>
+
+      <!-- ====== Still deciding? ====== -->
+      <div class="li-decide" data-fade>
+        <h3>Still deciding? <span>Here's the short version.</span></h3>
+        <div class="li-decide-grid">
+          <a class="ld-opt" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
+            <span class="ld-k">Pick Profile Setup if</span>
+            <p>People find you, look around, and leave without messaging.</p>
+            <b>$79 one-time →</b>
+          </a>
+          <a class="ld-opt ld-feat" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
+            <span class="ld-k">Pick Monthly Management if</span>
+            <p>Your profile is fine, but nobody sees it because you rarely post.</p>
+            <b>$179/month →</b>
+          </a>
+        </div>
+        <ol class="ld-steps">
+          <li><b>1</b>Fill the 2-minute form</li>
+          <li><b>2</b>Get scope and price within 24 hours</li>
+          <li><b>3</b>Approve the work, then it goes live</li>
+        </ol>
       </div>
     </div>
   </section>
@@ -2105,7 +2188,7 @@
           </ul>
           <div class="svc-actions">
             <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary svc-btn" target="_blank" rel="noopener">Start for $179/month →</a>
-            <a href="#linkedin" class="svc-link">See examples →</a>
+            <a href="#li-plans" class="svc-link">Compare both plans →</a>
           </div>
         </div>
         <!-- ✏️ EDIT: Service 2 -->
@@ -2580,15 +2663,6 @@
       menu.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
       document.addEventListener('click', e => { if (!box.contains(e.target)) set(false); });
       document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
-    });
-
-    // ---- LinkedIn offers: switch between Profile Setup and Monthly Management ----
-    document.querySelectorAll('[data-plans]').forEach(box => {
-      const tabs = box.querySelectorAll('[data-plan]');
-      tabs.forEach(t => t.addEventListener('click', () => {
-        tabs.forEach(x => { const on = x === t; x.classList.toggle('on', on); x.setAttribute('aria-selected', on); });
-        box.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== t.dataset.plan; });
-      }));
     });
 
     // ---- LinkedIn post: rotate infographics (pauses on hover, dots are clickable) ----
