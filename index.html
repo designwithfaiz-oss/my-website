@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/icon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/icon-512.png">
+  <link rel="apple-touch-icon" href="assets/brand/icon-180.png">
   <title>Designwithfaiz | LinkedIn Management, Thumbnails &amp; Brand Design for YouTube Creators</title>
   <meta name="description" content="I help YouTube creators and their agencies turn attention into revenue with LinkedIn management, thumbnails and brand graphics.">
   <meta property="og:title" content="Designwithfaiz | Design Systems That Turn Attention Into Revenue">
@@ -10,10 +13,10 @@
   <meta property="og:url" content="https://designwithfaiz.com/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Google Fonts — Bricolage Grotesque (headlines) + Syne (logo only) + DM Sans (body) -->
+  <!-- Google Fonts — Bricolage Grotesque (headlines) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Syne:wght@800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* =============================================
@@ -34,7 +37,6 @@
       --border-soft:  #e8f0f9;
       --font:         'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
-      --font-brand:   'Syne', system-ui, sans-serif;
       --r:            12px;
       --r-lg:         20px;
       --ease:         0.3s ease;
@@ -180,40 +182,11 @@
     }
     .nav-logo img { height: 34px; }
 
-    /* Custom text wordmark logo */
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo-mark {
-      width: 32px; height: 32px;
-      background: #1f1f1f;
-      border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-brand);
-      font-weight: 800;
-      font-size: 17px;
-      color: #fff;
-      flex-shrink: 0;
-      transition: transform var(--ease), box-shadow var(--ease);
-    }
-    .logo:hover .logo-mark {
-      transform: rotate(-6deg);
-      box-shadow: 0 6px 18px rgba(160,206,247,0.45);
-    }
-    .logo-text {
-      font-family: var(--font-brand);
-      font-weight: 800;
-      font-size: 19px;
-      letter-spacing: -0.6px;
-      color: var(--text);
-      line-height: 1;
-    }
-    .logo-text span { color: var(--accent-dark); }
-    /* Footer variant — sits on its own, slightly larger mark spacing */
-    .footer-logo .logo-mark { width: 30px; height: 30px; font-size: 16px; border-radius: 8px; }
-    .footer-logo .logo-text { font-size: 18px; }
+    /* Logo image (assets/brand/logo.png; light version for the dark footer) */
+    .logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .logo img { display: block; height: 34px; width: auto; transition: transform var(--ease); }
+    .logo:hover img { transform: translateY(-1px); }
+    .footer-logo img { height: 38px; }
 
     .nav-links {
       display: flex;
@@ -1008,9 +981,6 @@
       grid-template-columns: 1.4fr 0.8fr 1fr 1.2fr;
       gap: 40px;
     }
-    .ft .logo-mark { background: #fff; color: #0b1220; }
-    .ft .logo-text { color: #fff; }
-    .ft .logo-text span { color: var(--accent); }
     .ft-tag { font-size: 14px; line-height: 1.7; color: #93a4b8; margin: 18px 0 22px; max-width: 320px; }
     .ft-cta { background: var(--accent); color: #0b1220; border-color: var(--accent); }
     .ft-cta:hover { background: #fff; border-color: #fff; color: #0b1220; }
@@ -1158,9 +1128,8 @@
       .nav-wrap { padding: 0 16px; }
       /* Header: logo + menu only — WhatsApp button lives in the menu */
       .nav-actions { display: none; }
-      .logo { gap: 8px; }
-      .logo-mark { width: 28px; height: 28px; font-size: 15px; border-radius: 8px; }
-      .logo-text { font-size: 17px; }
+      .logo img { height: 28px; }
+      .footer-logo img { height: 32px; }
     }
     @media print {
       nav, .ham, .mob-nav { display: none; }
@@ -1566,8 +1535,7 @@
     <div class="nav-wrap">
       <!-- ✏️ EDIT: Logo — change the "F" mark or the "designwithfaiz" text below -->
       <a href="#home" class="nav-logo logo">
-        <span class="logo-mark">F</span>
-        <span class="logo-text">design<span>withfaiz</span></span>
+        <img src="assets/brand/logo.png" alt="designwithfaiz" width="774" height="144" fetchpriority="high">
       </a>
 
       <!-- ✏️ EDIT: Nav links -->
@@ -2520,8 +2488,7 @@
         <div class="ft-brand">
           <!-- ✏️ EDIT: Footer logo -->
           <a href="#home" class="footer-logo logo">
-            <span class="logo-mark">F</span>
-            <span class="logo-text">design<span>withfaiz</span></span>
+            <img src="assets/brand/logo-light.png" alt="designwithfaiz" width="774" height="144" loading="lazy">
           </a>
           <p class="ft-tag">LinkedIn management, thumbnails and brand graphics for YouTube creators and their agencies. A studio in Jaipur, working with the US, UK and Canada.</p>
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start Your Project →</a>
