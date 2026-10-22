@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/icon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/brand/icon-180.png">
+  <title>The Pattern Pack — LinkedIn Carousel Templates for Canva | Designwithfaiz</title>
+  <meta name="description" content="13 Canva templates for LinkedIn carousels and posts, built from 927 posts by top creators. Works on Canva Free. For coaches, consultants and founders.">
+  <link rel="canonical" href="https://designwithfaiz.com/pattern-pack/">
+
+  <!-- Open Graph / Twitter. ✏️ EDIT: replace {{OG_IMAGE}} with a 1200×630 image URL,
+       e.g. https://designwithfaiz.com/pattern-pack/images/og-image.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Pattern Pack — LinkedIn Carousel Templates for Canva">
+  <meta property="og:description" content="13 Canva templates for LinkedIn carousels and posts, built from 927 posts by top creators. Works on Canva Free.">
+  <meta property="og:url" content="https://designwithfaiz.com/pattern-pack/">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Pattern Pack — LinkedIn Carousel Templates for Canva">
+  <meta name="twitter:description" content="13 Canva templates for LinkedIn carousels and posts, built from 927 posts by top creators. Works on Canva Free.">
+  <meta name="twitter:image" content="{{OG_IMAGE}}">
+
+  <!-- Google Fonts — Fraunces Bold (headlines) + Outfit (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- =============================================
+       GUMROAD LINKS — ✏️ EDIT: paste your 4 product URLs here (only place to change them)
+       ============================================= -->
+  <script>
+    window.PP_LINKS = {
+      core:   '{{GUMROAD_CORE_URL}}',    // The Pattern Pack ($27), e.g. https://designwithfaiz.gumroad.com/l/xxxx
+      bundle: '{{GUMROAD_BUNDLE_URL}}',  // The LinkedIn Content Kit ($47)
+      free:   '{{GUMROAD_FREE_URL}}',    // Free sample ($0)
+      setup:  '{{GUMROAD_SETUP_URL}}'    // Done-for-you setup ($99)
+    };
+  </script>
+
+  <!-- =============================================
+       META PIXEL — OFF. Paste Pixel ID and uncomment to switch on.
+       (Also uncomment the event block at the bottom of the page.)
+       =============================================
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{{META_PIXEL_ID}}');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', { content_name: 'The Pattern Pack', value: 27, currency: 'USD' });
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+    src="https://www.facebook.com/tr?id={{META_PIXEL_ID}}&ev=PageView&noscript=1"></noscript>
+  ============ END META PIXEL ============ -->
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS (brand rules)
+       ============================================= */
+    :root {
+      --bg:        #ffffff;
+      --bg-alt:    #f5f4f0;   /* warm off-white: alternate sections + placeholders */
+      --tint:      #d8ebf9;   /* blue tint: soft fills */
+      --accent:    #a0cef7;   /* powder blue: small highlights only */
+      --text:      #1f1f1f;
+      --stone:     #8a8a88;   /* secondary text */
+      --muted:     #4a4a48;   /* body copy on white */
+      --line:      #e5e4e0;   /* dividers */
+      --font:         'Outfit', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-display: 'Fraunces', Georgia, serif;
+      --r:     12px;
+      --r-lg:  20px;
+      --ease:  0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    .sec  { padding: 72px 0; }
+    .sec-alt { background: var(--bg-alt); }
+
+    /* ---- Type ---- */
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
+    h1 { font-size: clamp(36px, 7vw, 64px); line-height: 1.06; }
+    h2 { font-size: clamp(28px, 4.6vw, 44px); line-height: 1.12; margin-bottom: 20px; }
+    h3 { font-size: 22px; line-height: 1.25; }
+    p  { color: var(--muted); }
+    .label {
+      display: inline-block;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    /* Powder-blue highlighter: near-black text on a blue marker (no blue text) */
+    .mark { background: var(--accent); color: var(--text); padding: 0 0.12em; border-radius: 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+    .small { font-size: 14px; color: var(--stone); }
+    .lead  { font-size: 18px; line-height: 1.65; max-width: 620px; }
+
+    /* ---- Buttons (pill, no shadows) ---- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 48px;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-family: var(--font); font-size: 16px; font-weight: 600; line-height: 1.2;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: background var(--ease), color var(--ease), border-color var(--ease);
+      text-align: center;
+    }
+    .btn-primary { background: var(--text); color: #ffffff; border-color: var(--text); }
+    .btn-primary:hover { background: #3a3a3a; border-color: #3a3a3a; }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--text); }
+    .btn-outline:hover { background: var(--bg-alt); }
+    .btn-sm { min-height: 44px; padding: 10px 22px; font-size: 15px; }
+    .btn-block { width: 100%; }
+    .text-link {
+      display: inline-flex; align-items: center; min-height: 44px;
+      font-weight: 600; color: var(--text);
+      text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 5px;
+    }
+    .text-link:hover { text-decoration-color: var(--text); }
+    :focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+    /* Neutralise Gumroad's injected button styling so our buttons stay on-brand */
+    a.btn.gumroad-button {
+      background-image: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      font-family: var(--font) !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      line-height: 1.2 !important;
+      border-radius: 100px !important;
+      padding: 12px 28px !important;
+      min-height: 48px !important;
+      height: auto !important;
+      display: inline-flex !important;
+    }
+    a.btn-primary.gumroad-button { background-color: var(--text) !important; color: #fff !important; border: 1.5px solid var(--text) !important; }
+    a.btn-primary.gumroad-button:hover { background-color: #3a3a3a !important; }
+    a.btn-outline.gumroad-button { background-color: transparent !important; color: var(--text) !important; border: 1.5px solid var(--text) !important; }
+    a.btn-outline.gumroad-button:hover { background-color: var(--bg-alt) !important; }
+    a.btn-block.gumroad-button { display: flex !important; width: 100% !important; }
+    .gumroad-button-logo { display: none !important; }
+
+    /* ---- Image placeholders (swap for <img> when the real files are ready) ---- */
+    .ph {
+      background: var(--bg-alt);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      display: grid; place-items: center;
+      padding: 16px;
+      text-align: center;
+      font-size: 14px; color: var(--stone);
+    }
+    .ph-45 { aspect-ratio: 4 / 5; }          /* 1080×1350 slide */
+    .shot { border-radius: var(--r); border: 1px solid var(--line); width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+
+    /* =============================================
+       NAVBAR (same structure + class names as homepage, no shadows)
+       ============================================= */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 14px 0;
+      background: #ffffff;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--ease);
+    }
+    nav.stuck { border-bottom-color: var(--line); }
+    .nav-wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1180px; margin: 0 auto; padding: 0 16px;
+    }
+    .logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .logo img { display: block; height: 36px; width: auto; }
+    .footer-logo img { height: 42px; }
+    .nav-links { display: none; gap: 26px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); position: relative; white-space: nowrap; transition: color var(--ease); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 2px;
+      background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--ease);
+    }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+    .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+    .nav-actions { display: none; gap: 12px; align-items: center; }
+
+    .ham {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 44px; height: 44px; padding: 11px; margin-right: -11px;
+      cursor: pointer; border-radius: 8px; background: none; border: 0;
+    }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mob-nav {
+      display: none;
+      position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      padding: 24px 16px 28px;
+      max-height: calc(100vh - 72px); overflow-y: auto;
+    }
+    .mob-nav.on { display: block; }
+    .mob-nav ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mob-nav a.mlink { display: flex; align-items: center; min-height: 44px; font-size: 20px; font-weight: 600; color: var(--text); }
+    .mob-nav .btn { margin-top: 20px; width: 100%; }
+
+    @media (min-width: 961px) {
+      .nav-links { display: flex; }
+      .nav-actions { display: flex; }
+      .ham { display: none; }
+      .logo img { height: 44px; }
+      .footer-logo img { height: 48px; }
+      nav { padding: 18px 0; }
+      .nav-wrap { padding: 0 28px; }
+    }
+    @media (min-width: 961px) and (max-width: 1180px) {
+      .nav-actions .btn-outline { display: none; }
+    }
+    @media (min-width: 961px) and (max-width: 1040px) {
+      .nav-links { gap: 14px; }
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    .hero { padding: 112px 0 64px; }
+    .hero-grid { display: grid; gap: 40px; align-items: center; }
+    .hero h1 { margin-bottom: 20px; }
+    .hero .lead { margin-bottom: 28px; }
+    .hero-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .hero-cta .btn { width: 100%; }
+    .hero .small { margin-top: 12px; }
+    .hero-visual { max-width: 460px; width: 100%; justify-self: center; }
+
+    /* ---- Problem ---- */
+    .points { list-style: none; display: grid; gap: 12px; margin-top: 28px; max-width: 720px; }
+    .points li {
+      background: #ffffff; border: 1px solid var(--line); border-radius: var(--r);
+      padding: 18px 20px; font-size: 17px; color: var(--text);
+    }
+
+    /* ---- What you get ---- */
+    .ticks { list-style: none; display: grid; gap: 14px; margin-top: 28px; }
+    .ticks li { position: relative; padding-left: 34px; font-size: 17px; color: var(--text); }
+    .ticks li::before {
+      content: ''; position: absolute; left: 0; top: 4px;
+      width: 20px; height: 20px; border-radius: 50%; background: var(--tint);
+    }
+    .ticks li::after {
+      content: ''; position: absolute; left: 7px; top: 8px;
+      width: 5px; height: 9px; border: solid var(--text); border-width: 0 2px 2px 0; transform: rotate(45deg);
+    }
+    .ticks li span { color: var(--muted); }
+    .grid-6 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 44px; }
+
+    /* ---- Research ---- */
+    .research { max-width: 760px; }
+    .research p + p { margin-top: 16px; }
+
+    /* ---- How it works ---- */
+    .steps { list-style: none; display: grid; gap: 14px; margin-top: 28px; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      display: flex; gap: 16px; align-items: flex-start;
+      background: #ffffff; border: 1px solid var(--line); border-radius: var(--r);
+      padding: 20px; font-size: 17px; color: var(--text);
+    }
+    .steps li::before {
+      content: counter(step);
+      flex: 0 0 auto;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--tint); color: var(--text);
+      font-family: var(--font-display); font-weight: 700; font-size: 17px;
+    }
+    .steps li span { padding-top: 5px; }
+
+    /* ---- Pricing ---- */
+    .price-grid { display: grid; gap: 16px; margin-top: 36px; align-items: stretch; }
+    .card {
+      background: #ffffff; border: 1px solid var(--line); border-radius: var(--r-lg);
+      padding: 28px 22px;
+      display: flex; flex-direction: column;
+    }
+    .card.pop { border: 2px solid var(--text); }
+    .card .tagline {
+      align-self: flex-start;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      background: var(--accent); color: var(--text);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .card h3 { margin-bottom: 8px; }
+    .price { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.1; color: var(--text); margin: 6px 0 8px; }
+    .launch { font-size: 14px; color: var(--muted); background: var(--tint); border-radius: 8px; padding: 8px 12px; margin-bottom: 8px; }
+    .launch code { font-family: inherit; font-weight: 600; color: var(--text); }
+    .card ul { list-style: none; display: grid; gap: 8px; align-content: start; margin: 16px 0 24px; flex: 1; }
+    .card ul li { position: relative; padding-left: 20px; color: var(--muted); }
+    .card ul li::before { content: ''; position: absolute; left: 2px; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .addon {
+      margin-top: 16px;
+      background: var(--tint); border-radius: var(--r-lg);
+      padding: 28px 22px;
+      display: grid; gap: 18px; align-items: center;
+    }
+    .addon h3 { margin-bottom: 8px; }
+    .addon p { color: var(--text); }
+
+    /* ---- About ---- */
+    .about-grid { display: grid; gap: 32px; align-items: center; }
+    .about-img { width: 100%; max-width: 360px; height: auto; border-radius: var(--r-lg); aspect-ratio: 768 / 896; object-fit: cover; }
+    .about-grid p { margin-bottom: 16px; max-width: 560px; }
+
+    /* ---- FAQ ---- */
+    .faq { max-width: 760px; margin-top: 28px; border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      min-height: 56px; padding: 14px 0;
+      font-size: 18px; font-weight: 600; color: var(--text);
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 24px; font-weight: 400; line-height: 1; flex: 0 0 auto; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq details p { padding: 0 0 20px; max-width: 640px; }
+
+    /* ---- Final CTA ---- */
+    .final { text-align: center; }
+    .final h2 { margin-bottom: 28px; }
+    .final .btn { width: 100%; max-width: 360px; }
+
+    /* =============================================
+       FOOTER (same structure as homepage)
+       ============================================= */
+    .ft { background: #0b1220; color: #c9d6e4; padding: 56px 0 28px; }
+    .ft-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+    .ft-brand { grid-column: 1 / -1; }
+    .ft-tag { font-size: 14px; line-height: 1.7; color: #b4bfcb; margin: 18px 0 22px; max-width: 320px; }
+    .ft-cta { background: var(--accent); color: #0b1220; border-color: var(--accent); }
+    .ft-cta:hover { background: #fff; border-color: #fff; color: #0b1220; }
+    .ft-col { display: flex; flex-direction: column; gap: 4px; }
+    .ft-col:last-child { grid-column: 1 / -1; }
+    .ft-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+    .ft-col a { display: inline-flex; align-items: center; min-height: 36px; font-size: 14px; color: #b4bfcb; width: fit-content; transition: color var(--ease); }
+    .ft-col a:hover { color: #fff; }
+    .ft-contact { gap: 10px; }
+    .ft-contact svg { width: 16px; height: 16px; flex: 0 0 auto; color: #c9ced4; }  /* light grey, not blue, on dark */
+    .ft-socials { display: flex; gap: 10px; margin-top: 8px; }
+    .ft-socials a {
+      width: 44px; height: 44px; display: grid; place-items: center;
+      border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      color: #dfe4ea; transition: background var(--ease), color var(--ease);
+    }
+    .ft-socials a:hover { background: #fff; color: #0b1220; }
+    .ft-socials svg { width: 17px; height: 17px; }
+    .ft-bottom {
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;
+      margin-top: 44px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px; color: #9aa5b1;
+    }
+    .ft-bottom p { color: #9aa5b1; }
+    .ft-top { color: #b4bfcb; font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
+    .ft-top:hover { color: #fff; }
+
+    /* =============================================
+       LARGER SCREENS
+       ============================================= */
+    @media (min-width: 640px) {
+      .wrap { padding: 0 28px; }
+      .hero-cta { flex-direction: row; align-items: center; gap: 24px; }
+      .hero-cta .btn { width: auto; }
+      .grid-6 { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .addon { grid-template-columns: 1fr auto; padding: 32px; }
+      .ft-bottom { flex-direction: row; justify-content: space-between; text-align: left; flex-wrap: wrap; }
+    }
+    @media (min-width: 768px) {
+      .sec { padding: 104px 0; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 300px 1fr; gap: 48px; }
+    }
+    @media (min-width: 900px) {
+      .hero { padding: 152px 0 104px; }
+      .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 64px; }
+      .price-grid { grid-template-columns: repeat(3, 1fr); }
+      .about-grid { grid-template-columns: 360px 1fr; gap: 72px; }
+    }
+    @media (min-width: 1024px) {
+      .ft { padding-top: 72px; }
+      .ft-grid { grid-template-columns: 1.4fr 0.8fr 1fr 1.2fr; gap: 40px; }
+      .ft-brand, .ft-col:last-child { grid-column: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav id="nav">
+    <div class="nav-wrap">
+      <a href="/" class="nav-logo logo">
+        <img src="/assets/brand/logo.png" alt="designwithfaiz" width="774" height="144" fetchpriority="high">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/#linkedin">LinkedIn</a></li>
+        <li><a href="/#results">Results</a></li>
+        <li><a href="/#meta-ads">Meta Ads</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#work">Work</a></li>
+        <li><a href="/pattern-pack/" aria-current="page">Templates</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Portfolio</a>
+        <a href="https://wa.me/919461817353" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Chat Now →</a>
+      </div>
+
+      <button class="ham" id="ham" type="button" aria-label="Open menu" aria-controls="mob" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mob-nav" id="mob" aria-hidden="true">
+    <ul>
+      <li><a href="/#linkedin" class="mlink">LinkedIn</a></li>
+      <li><a href="/#results"  class="mlink">Results</a></li>
+      <li><a href="/#meta-ads" class="mlink">Meta Ads</a></li>
+      <li><a href="/#services" class="mlink">Services</a></li>
+      <li><a href="/#work"     class="mlink">Work</a></li>
+      <li><a href="/pattern-pack/" class="mlink" aria-current="page">Templates</a></li>
+      <li><a href="/#about"    class="mlink">About</a></li>
+      <li><a href="/#contact"  class="mlink">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Chat on WhatsApp →</a>
+  </div>
+
+  <main>
+
+    <!-- ====== 1. HERO ====== -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="label">Canva templates for LinkedIn</span>
+          <h1>The LinkedIn post patterns top creators <span class="mark">actually</span> use.</h1>
+          <p class="lead">13 Canva templates built from 927 posts by 9 top LinkedIn creators. Open in Canva Free, fill in your words, export, post.</p>
+          <div class="hero-cta">
+            <a href="#pricing" data-buy="core" class="btn btn-primary gumroad-button">Get the pack — $27</a>
+            <a href="#pricing" data-buy="free" class="text-link">Or get 2 patterns free →</a>
+          </div>
+          <p class="small">Works on Canva Free. Instant download.</p>
+        </div>
+
+        <div class="hero-visual">
+          <!-- ✏️ IMAGE SWAP: replace this block with
+               <img src="/pattern-pack/images/hero-preview.jpg" alt="Cover slide of a carousel from The Pattern Pack" width="1080" height="1350" class="shot" fetchpriority="high"> -->
+          <div class="ph ph-45" role="img" aria-label="Preview of a carousel cover slide from The Pattern Pack">Hero preview: carousel cover slide, 1080×1350</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 2. PROBLEM ====== -->
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <h2>You know LinkedIn brings clients. The blank page is the problem.</h2>
+        <ul class="points">
+          <li>You don't know what to post this week.</li>
+          <li>Your graphics look different every time.</li>
+          <li>Designing one carousel takes your whole afternoon.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====== 3. WHAT'S INSIDE ====== -->
+    <section class="sec" id="inside">
+      <div class="wrap">
+        <h2>What you get</h2>
+        <ul class="ticks">
+          <li>10 carousel patterns <span>(multi-slide, 1080×1350)</span></li>
+          <li>3 single-image patterns <span>(quote, tip, cheat sheet)</span></li>
+          <li>147 pages in 3 colourways</li>
+          <li>An evidence page for every pattern<span>: where it shows up, typical slide count, measured engagement</span></li>
+          <li>Brand setup page<span>: change colours, fonts and logo across every page in about 5 minutes</span></li>
+          <li>Hook bank and caption starters</li>
+          <li>Quick-start guide (PDF)</li>
+        </ul>
+
+        <!-- ✏️ IMAGE SWAP: replace each .ph block with an <img>. Expected files (1080×1350):
+             /pattern-pack/images/preview-1.jpg … preview-6.jpg
+             <img src="/pattern-pack/images/preview-1.jpg" alt="Cover slide from The Pattern Pack" width="1080" height="1350" class="shot" loading="lazy"> -->
+        <div class="grid-6">
+          <div class="ph ph-45" role="img" aria-label="Preview 1: cover slide">Preview 1: cover slide, 1080×1350</div>
+          <div class="ph ph-45" role="img" aria-label="Preview 2: inside slide">Preview 2: inside slide, 1080×1350</div>
+          <div class="ph ph-45" role="img" aria-label="Preview 3: evidence page">Preview 3: evidence page, 1080×1350</div>
+          <div class="ph ph-45" role="img" aria-label="Preview 4: single-image quote post">Preview 4: quote post, 1080×1350</div>
+          <div class="ph ph-45" role="img" aria-label="Preview 5: cheat sheet post">Preview 5: cheat sheet, 1080×1350</div>
+          <div class="ph ph-45" role="img" aria-label="Preview 6: brand setup page">Preview 6: brand setup page, 1080×1350</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 4. RESEARCH ====== -->
+    <section class="sec sec-alt">
+      <div class="wrap"><div class="research">
+        <h2>Built from research, not guesswork</h2>
+        <p class="lead">I run LinkedIn pages for founders every week. For this pack I studied 927 public posts from 9 top LinkedIn creators and kept only the post patterns that showed up again and again.</p>
+        <p class="lead">Each pattern has its own name and its own design. No creator's design, wording or name is copied.</p>
+        <p class="small" style="margin-top:24px">Not affiliated with or endorsed by any LinkedIn creator.</p>
+      </div></div>
+    </section>
+
+    <!-- ====== 5. HOW IT WORKS ====== -->
+    <section class="sec">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li><span>Buy and download the PDF.</span></li>
+          <li><span>Click the template link. It copies into your Canva.</span></li>
+          <li><span>Pick a pattern, fill the prompts, export as PDF.</span></li>
+          <li><span>Upload to LinkedIn as a document post.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====== 6. PRICING ====== -->
+    <section class="sec sec-alt" id="pricing">
+      <div class="wrap">
+        <h2>Pick your pack</h2>
+
+        <div class="price-grid">
+          <div class="card">
+            <h3>Free sample</h3>
+            <p class="price">$0</p>
+            <ul>
+              <li>2 patterns</li>
+              <li>1 colourway</li>
+              <li>10 hooks</li>
+            </ul>
+            <a href="#pricing" data-buy="free" class="btn btn-outline btn-block gumroad-button">Get it free</a>
+          </div>
+
+          <div class="card pop">
+            <span class="tagline">Most popular</span>
+            <h3>The Pattern Pack</h3>
+            <p class="price">$27</p>
+            <!-- ===== START LAUNCH PRICE NOTE (delete this block when the launch ends) ===== -->
+            <p class="launch">Launch price $19 for the first 50 buyers with code <code>{{LAUNCH_CODE}}</code></p>
+            <!-- ===== END LAUNCH PRICE NOTE ===== -->
+            <ul>
+              <li>Everything in "What you get"</li>
+              <li>13 patterns, 147 pages, 3 colourways</li>
+              <li>Evidence pages, brand setup, hook bank, guide</li>
+            </ul>
+            <a href="#pricing" data-buy="core" class="btn btn-primary btn-block gumroad-button">Get the pack</a>
+          </div>
+
+          <div class="card">
+            <h3>The LinkedIn Content Kit</h3>
+            <p class="price">$47</p>
+            <ul>
+              <li>The Pattern Pack</li>
+              <li>20 extra single-image layouts</li>
+              <li>10 extra covers</li>
+              <li>LinkedIn banner</li>
+              <li>3 Featured graphics</li>
+            </ul>
+            <a href="#pricing" data-buy="bundle" class="btn btn-outline btn-block gumroad-button">Get the kit</a>
+          </div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <h3>Want it done for you? $99</h3>
+            <p>I apply your colours, fonts, logo and photo to every page and write your first carousel. Delivered in 48 hours.</p>
+          </div>
+          <a href="#pricing" data-buy="setup" class="btn btn-primary gumroad-button">Add done-for-you setup</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 7. ABOUT ====== -->
+    <section class="sec">
+      <div class="wrap about-grid">
+        <img src="/1000016668-scaled-e1771412623403-768x896.jpg" alt="Faiz Ahmed, designer at Designwithfaiz" width="768" height="896" loading="lazy" class="about-img">
+        <div>
+          <h2>Made by Faiz Ahmed</h2>
+          <p class="lead">I'm a designer from Jaipur, India. I run LinkedIn content and design for founders and agencies in the US, UK and Canada. 27+ founders served, 100+ projects.</p>
+          <a href="/" class="text-link">See my work →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 8. FAQ ====== -->
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <h2>Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>Do I need Canva Pro?</summary>
+            <p>No. Everything works on Canva Free. No Pro fonts or Pro elements.</p>
+          </details>
+          <details>
+            <summary>Does it work for company pages?</summary>
+            <p>Yes. Personal profiles and company pages both.</p>
+          </details>
+          <details>
+            <summary>I'm not a designer. Is that OK?</summary>
+            <p>Yes. You only change the words. The layout, spacing and colours are already done.</p>
+          </details>
+          <details>
+            <summary>Is this connected to the creators you studied?</summary>
+            <p>No. The patterns were found in public posts. No creator is connected to or endorses this pack.</p>
+          </details>
+          <details>
+            <summary>What's the refund policy?</summary>
+            <p>{{REFUND_POLICY}}</p>
+          </details>
+          <details>
+            <summary>Can I use it for clients?</summary>
+            <p>{{LICENSE_TEXT}}</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== 9. FINAL CTA ====== -->
+    <section class="sec final">
+      <div class="wrap">
+        <h2>Stop starting from a blank page.</h2>
+        <a href="#pricing" data-buy="core" class="btn btn-primary gumroad-button">Get the pack — $27</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <a href="/" class="footer-logo logo">
+            <img src="/assets/brand/logo-light.png" alt="designwithfaiz" width="774" height="144" loading="lazy">
+          </a>
+          <p class="ft-tag">LinkedIn management, thumbnails and brand graphics for founders, creators and agencies. A studio in Jaipur, working with the US, UK and Canada.</p>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start Your Project →</a>
+        </div>
+
+        <div class="ft-col" role="navigation" aria-label="Footer">
+          <h4>Explore</h4>
+          <a href="/#linkedin">LinkedIn</a>
+          <a href="/#results">Results</a>
+          <a href="/#services">Services</a>
+          <a href="/#work">Work</a>
+          <a href="/pattern-pack/">Templates</a>
+          <a href="/#about">About</a>
+          <a href="/#contact">Contact</a>
+        </div>
+
+        <div class="ft-col">
+          <h4>Services</h4>
+          <a href="/#linkedin">LinkedIn Management</a>
+          <a href="/#results">Content System + Thumbnails</a>
+          <a href="/#services">Branding + Graphic Design</a>
+        </div>
+
+        <div class="ft-col">
+          <h4>Get in touch</h4>
+          <a href="mailto:hello@designwithfaiz.com" class="ft-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@designwithfaiz.com</a>
+          <a href="https://wa.me/919461817353" class="ft-contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.53 14.95L2 22l5.2-1.46A9.93 9.93 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.09.86.83-3.01-.2-.31a8.2 8.2 0 1 1 6.94 3.79zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22a7.4 7.4 0 0 1-1.37-1.7c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>WhatsApp chat</a>
+          <div class="ft-socials">
+            <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg></a>
+            <a href="https://x.com/designwithfaiz" target="_blank" rel="noopener" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.2h1.7L7.4 4.73H5.58z"/></svg></a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.2 11.3c.9-.4 1.6-1.2 1.6-2.4C9.8 6.6 8.1 6 6.2 6H1.5v12h4.9c2.1 0 4-1 4-3.4 0-1.5-.8-2.8-2.2-3.3zM3.9 8h2.1c.8 0 1.5.2 1.5 1.1 0 .8-.6 1.2-1.4 1.2H3.9zm2.3 8H3.9v-3.4h2.3c1 0 1.7.4 1.7 1.7 0 1.2-.8 1.7-1.7 1.7zM15 7h5v1.3h-5zm2.5 2.2c-2.7 0-4.4 1.9-4.4 4.4 0 2.6 1.6 4.4 4.4 4.4 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1 1.1-1.8 1.1-1.3 0-2.1-.8-2.2-2.3h6.2c.2-2.6-1.2-4.7-4.1-4.7zm-2 3.4c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ft-bottom">
+        <p>© 2026 Designwithfaiz · Built with strategy, not just aesthetics.</p>
+        <p>Made by Designwithfaiz</p>
+        <a href="#top" class="ft-top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Apply Gumroad URLs from PP_LINKS (runs before gumroad.js so the overlay picks them up) ----
+    document.querySelectorAll('[data-buy]').forEach(a => {
+      const url = window.PP_LINKS[a.dataset.buy];
+      if (url) a.href = url;
+    });
+
+    // ---- Nav border on scroll ----
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('stuck', window.scrollY > 24);
+    }, { passive: true });
+
+    // ---- Hamburger toggle ----
+    const ham = document.getElementById('ham');
+    const mob = document.getElementById('mob');
+    const setMenu = open => {
+      mob.classList.toggle('on', open);
+      mob.setAttribute('aria-hidden', String(!open));
+      ham.setAttribute('aria-expanded', String(open));
+    };
+    ham.addEventListener('click', () => {
+      mob.style.top = nav.offsetHeight + 'px';
+      setMenu(!mob.classList.contains('on'));
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+    document.querySelectorAll('.mlink').forEach(l => l.addEventListener('click', () => setMenu(false)));
+
+    /* ---- META PIXEL EVENTS — OFF. Uncomment together with the Pixel base code in <head>. ----
+    // PageView + ViewContent fire on load in the <head> snippet.
+    document.querySelectorAll('[data-buy]').forEach(a => {
+      a.addEventListener('click', () => {
+        if (typeof fbq !== 'function') return;
+        if (a.dataset.buy === 'free') {
+          fbq('track', 'Lead', { content_name: 'Pattern Pack free sample' });
+        } else {
+          fbq('track', 'InitiateCheckout', { content_name: a.dataset.buy });
+        }
+      });
+    });
+    ---- END META PIXEL EVENTS ---- */
+  </script>
+
+  <!-- Gumroad overlay checkout. If it fails to load, the buy links still open Gumroad normally. -->
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+</body>
+</html>
