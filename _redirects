@@ -1,0 +1,5 @@
+# Send every .in address to the main .com site (permanent redirect)
+https://designwithfaiz.in/*      https://designwithfaiz.com/:splat  301!
+http://designwithfaiz.in/*       https://designwithfaiz.com/:splat  301!
+https://www.designwithfaiz.in/*  https://designwithfaiz.com/:splat  301!
+http://www.designwithfaiz.in/*   https://designwithfaiz.com/:splat  301!
