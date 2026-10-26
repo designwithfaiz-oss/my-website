@@ -3,3 +3,8 @@ https://designwithfaiz.in/*      https://designwithfaiz.com/:splat  301!
 http://designwithfaiz.in/*       https://designwithfaiz.com/:splat  301!
 https://www.designwithfaiz.in/*  https://designwithfaiz.com/:splat  301!
 http://www.designwithfaiz.in/*   https://designwithfaiz.com/:splat  301!
+
+# Pattern Pack page is HIDDEN for now (files kept in /pattern-pack/).
+# To show it again: delete the 2 lines below and re-add the "Templates" nav link in index.html.
+/pattern-pack    /  302!
+/pattern-pack/*  /  302!
