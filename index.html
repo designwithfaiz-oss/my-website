@@ -404,15 +404,16 @@
     /* Before / after pairs */
     .th-ba { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .th-pair { margin: 0; background: var(--res-card); border: 1px solid var(--res-line); border-radius: 18px; padding: 12px; }
-    .th-shot { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; }
-    .th-shot img { width: 100%; height: 100%; object-fit: cover; }
+    .th-shot { position: relative; }
+    .th-shot img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; }
     .th-shot + .th-shot { margin-top: 10px; }
-    .th-shot .ph-box { height: 100%; border-radius: 10px; }
-    .th-lbl { position: absolute; top: 8px; left: 8px; z-index: 1; font-size: 10.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 9px; border-radius: 100px; background: #fff; color: #0b1220; }
+    .th-shot .ph-box { aspect-ratio: 16 / 9; border-radius: 10px; }
+    .th-lbl { display: inline-block; margin: 0 0 8px 2px; font-size: 10.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 9px; border-radius: 100px; background: #fff; color: #0b1220; }
     .th-lbl.after { background: var(--accent); }
     .th-pair figcaption { padding: 14px 4px 4px; }
     .th-pair figcaption b { display: block; font-size: 15px; line-height: 1.35; color: var(--res-text); }
     .th-pair figcaption span { display: block; font-size: 13px; color: var(--res-muted); margin-top: 6px; }
+    .th-pair figcaption em { font-style: normal; font-weight: 800; font-size: 12px; margin-left: 4px; padding: 2px 8px; border-radius: 100px; background: var(--accent); color: #0b1220; white-space: nowrap; }
 
     /* Click rules */
     .th-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -2046,17 +2047,17 @@
           <figure class="th-pair">
             <div class="th-shot"><span class="th-lbl">Before</span><img src="assets/thumbnails/ba-1-before.webp" alt="Old thumbnail: Digital ID - Scrapped" loading="lazy" width="960" height="540"></div>
             <div class="th-shot"><span class="th-lbl after">After</span><img src="assets/thumbnails/ba-1-after.webp" alt="New thumbnail: LIES! with Starmer and Farage" loading="lazy" width="960" height="540"></div>
-            <figcaption><b>Digital ID Scrapped? - Starmer Lied. The Contracts Prove It.</b><span>Before: 20K views · After: 145K views</span></figcaption>
+            <figcaption><b>Digital ID Scrapped? - Starmer Lied. The Contracts Prove It.</b><span>Before: 20K views → After: 145K views <em>7x</em></span></figcaption>
           </figure>
           <figure class="th-pair">
             <div class="th-shot"><span class="th-lbl">Before</span><img src="assets/thumbnails/ba-2-before.webp" alt="Old thumbnail: 0.01 Bitcoin to $820,098" loading="lazy" width="960" height="540"></div>
             <div class="th-shot"><span class="th-lbl after">After</span><img src="assets/thumbnails/ba-2-after.webp" alt="New thumbnail: Prepare for 0.01 BTC" loading="lazy" width="960" height="540"></div>
-            <figcaption><b>Prepare for 0.01 BTC</b><span>Before: 1K views · After: 13K views</span></figcaption>
+            <figcaption><b>Bitcoin: Why You Should Prepare for 0.01 BTC</b><span>Before: 1K views → After: 13K views <em>13x</em></span></figcaption>
           </figure>
           <figure class="th-pair">
-            <div class="th-shot"><span class="th-lbl">Before</span><div class="ph-box dark" role="img" aria-label="Before thumbnail 3, coming soon">Before 3 · 1280×720</div></div>
-            <div class="th-shot"><span class="th-lbl after">After</span><div class="ph-box dark" role="img" aria-label="After thumbnail 3, coming soon">After 3 · 1280×720</div></div>
-            <figcaption><b>Video title 3</b><span>Before: — views · After: — views</span></figcaption>
+            <div class="th-shot"><span class="th-lbl">Before</span><img src="assets/thumbnails/ba-3-before.webp" alt="Old thumbnail: EU Hacking Your Phone on a green code background" loading="lazy" width="960" height="540"></div>
+            <div class="th-shot"><span class="th-lbl after">After</span><img src="assets/thumbnails/ba-3-after.webp" alt="New thumbnail: EU Hacking Your Phone with the EU flag and map" loading="lazy" width="960" height="540"></div>
+            <figcaption><b>The EU Is Forcing Backdoor Access to Your Phone - I Followed the Money</b><span>Before: 8K views → After: 94K views <em>11x</em></span></figcaption>
           </figure>
         </div>
       </div>
