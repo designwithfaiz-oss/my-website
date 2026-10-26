@@ -370,72 +370,147 @@
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* =============================================
-       META AD CREATIVES
+       SHARED: image placeholder box (swap for <img> when real files are ready)
        ============================================= */
-    .ads-sec { background: var(--bg); overflow: hidden; }
-    .ads-head { text-align: center; max-width: 760px; margin: 0 auto 36px; }
-    .ads-head .lead { margin: 18px auto 0; }
-    .ads-formats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0 auto 52px; }
-    .ads-formats span {
-      padding: 8px 16px; border-radius: 100px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      font-size: 13px; font-weight: 600; color: var(--text-muted);
-    }
-    .ads-formats b { color: var(--accent-dark); }
-    .ads-gal {
-      overflow: hidden;
-      padding: 14px 0 28px;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    }
-    .ads-gal:hover .ads-track { animation-play-state: paused; }
-    .ads-track { display: flex; align-items: center; gap: 22px; width: max-content; animation: marquee 50s linear infinite; }
-    /* Each creative sits in a Facebook/Instagram-style feed post frame */
-    .ad-card {
-      flex: 0 0 auto; width: 290px; margin: 0;
-      background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-      box-shadow: 0 10px 30px rgba(15,122,191,0.10);
-      transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow var(--ease);
-    }
-    .ad-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(15,122,191,0.18); }
-    .ad-top { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
-    .ad-av {
-      width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto;
-      display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 14px;
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
-    }
-    .ad-av.kyb { background: linear-gradient(135deg, #2b55d9, #5b85ff); }
-    .ad-av.bb { background: linear-gradient(135deg, #1f6fe0, #ff7ac2); }
-    .ad-av.ins { background: linear-gradient(135deg, #e3262f, #ff5a5f); }
-    .ad-top b { display: block; font-size: 13.5px; line-height: 1.2; }
-    .ad-top small { font-size: 11.5px; color: var(--text-dim); }
-    .ad-media { aspect-ratio: 4 / 5; background: var(--bg-card); }
-    .ad-media.sq { aspect-ratio: 1 / 1; }
-    .ad-media.tall { aspect-ratio: 2 / 3; }
-    .ad-media.story { aspect-ratio: 9 / 16; }
-    .ad-media img { width: 100%; height: 100%; object-fit: cover; }
-    .ad-media.ph {
-      display: grid; place-items: center; text-align: center;
-      border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);
+    .ph-box {
+      display: grid; place-items: center; text-align: center; padding: 12px;
+      border: 1px dashed var(--border); border-radius: 12px;
       background: repeating-linear-gradient(135deg, var(--bg-card) 0 14px, var(--bg-raised) 14px 28px);
-      color: var(--text-dim); font-size: 13px; font-weight: 600;
+      color: var(--text-dim); font-size: 12.5px; font-weight: 600; line-height: 1.4;
     }
-    .ad-bot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; }
-    .ad-bot span { font-size: 12.5px; color: var(--text-muted); line-height: 1.35; }
-    .ad-cta-btn {
-      flex: 0 0 auto; padding: 7px 12px; border-radius: 8px;
-      background: var(--bg-raised); font-size: 12px; font-weight: 700; color: var(--text);
+    .ph-box.dark {
+      border-color: rgba(160,206,247,0.25);
+      background: repeating-linear-gradient(135deg, #121b2d 0 14px, #16213a 14px 28px);
+      color: #93a4b8;
     }
-    .ads-foot { text-align: center; margin-top: 40px; }
-    .ads-note { font-size: 12.5px; color: var(--text-dim); margin-top: 14px; }
+
+    /* =============================================
+       THUMBNAILS — detail blocks inside the dark results band
+       ============================================= */
+    .th-facts { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin: -20px auto 44px; }
+    .th-facts li { display: flex; align-items: center; gap: 8px; font-size: 14.5px; color: var(--res-muted); }
+    .th-facts li::before { content: "✓"; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 800; background: var(--accent); color: #0b1220; flex: 0 0 auto; }
+    .th-block { margin-top: 96px; }
+    .th-head { text-align: center; max-width: 760px; margin: 0 auto 36px; }
+    .th-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--res-muted); }
+    .th-eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+    .th-head h3 {
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.8vw, 46px);
+      line-height: 1.06; letter-spacing: -0.035em; margin-top: 12px; text-wrap: balance; color: var(--res-text);
+    }
+    .th-head h3 span { color: var(--res-muted); }
+    .th-head p { font-size: 16.5px; color: var(--res-muted); margin-top: 12px; }
+
+    /* Before / after pairs */
+    .th-ba { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .th-pair { margin: 0; background: var(--res-card); border: 1px solid var(--res-line); border-radius: 18px; padding: 12px; }
+    .th-shot { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; }
+    .th-shot img { width: 100%; height: 100%; object-fit: cover; }
+    .th-shot + .th-shot { margin-top: 10px; }
+    .th-shot .ph-box { height: 100%; border-radius: 10px; }
+    .th-lbl { position: absolute; top: 8px; left: 8px; z-index: 1; font-size: 10.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 9px; border-radius: 100px; background: #fff; color: #0b1220; }
+    .th-lbl.after { background: var(--accent); }
+    .th-pair figcaption { padding: 14px 4px 4px; }
+    .th-pair figcaption b { display: block; font-size: 15px; line-height: 1.35; color: var(--res-text); }
+    .th-pair figcaption span { display: block; font-size: 13px; color: var(--res-muted); margin-top: 6px; }
+
+    /* Click rules */
+    .th-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .th-rule { background: rgba(255,255,255,0.03); border: 1px solid var(--res-line); border-radius: 18px; padding: 24px; }
+    .th-rule-n { font-family: var(--font-display); font-weight: 800; font-size: 14px; color: var(--accent); }
+    .th-rule h4 { font-family: var(--font-display); font-size: 19px; font-weight: 700; letter-spacing: -0.3px; margin: 8px 0 6px; color: var(--res-text); }
+    .th-rule p { font-size: 14.5px; line-height: 1.6; color: var(--res-muted); }
+
+    /* Process */
+    .th-steps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: th; }
+    .th-steps li { counter-increment: th; position: relative; background: var(--res-card); border: 1px solid var(--res-line); border-radius: 16px; padding: 20px 18px; }
+    .th-steps li::before { content: counter(th); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--accent); font-family: var(--font-display); font-weight: 800; font-size: 14px; color: var(--accent); margin-bottom: 12px; }
+    .th-steps b { display: block; font-size: 15.5px; color: var(--res-text); }
+    .th-steps span { display: block; font-size: 13.5px; line-height: 1.55; color: var(--res-muted); margin-top: 6px; }
+
+    /* Niches + what's included */
+    .th-niches { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 860px; margin: 0 auto; }
+    .th-niches span { font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 100px; background: rgba(255,255,255,0.05); border: 1px solid var(--res-line); color: var(--res-text); }
+    .th-offer { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; max-width: 980px; margin: 0 auto; }
+    .th-inc, .th-quote { border-radius: 22px; padding: 30px; }
+    .th-inc { background: var(--res-card); border: 1px solid var(--res-line); }
+    .th-inc h4, .th-quote h4 { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.03em; color: var(--res-text); }
+    .th-inc ul { list-style: none; display: grid; gap: 11px; margin-top: 18px; }
+    .th-inc li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; color: var(--res-text); }
+    .th-inc li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 19px; height: 19px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 800; background: var(--accent); color: #0b1220; }
+    .th-quote { background: var(--accent); color: #0b1220; display: flex; flex-direction: column; }
+    .th-quote h4 { color: #0b1220; }
+    .th-quote p { font-size: 15px; line-height: 1.6; margin: 10px 0 22px; color: #1f2d3d; }
+    .th-quote .btn { margin-top: auto; justify-content: center; }
+
+    @media (max-width: 960px) {
+      .th-ba, .th-rules { grid-template-columns: 1fr 1fr; }
+      .th-steps { grid-template-columns: repeat(2, 1fr); }
+      .th-offer { grid-template-columns: 1fr; }
+    }
     @media (max-width: 640px) {
-      .ad-card { width: 240px; }
-      .ads-formats span { font-size: 12px; padding: 7px 12px; }
+      .th-ba, .th-rules, .th-steps { grid-template-columns: 1fr; }
+      .th-block { margin-top: 72px; }
+      .th-facts { flex-direction: column; align-items: flex-start; width: fit-content; }
+      .th-inc, .th-quote { padding: 24px 20px; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      .ads-gal { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
-      .ads-track { animation: none; }
+
+    /* =============================================
+       SOCIAL MEDIA MANAGEMENT
+       ============================================= */
+    .sm-sec { background: var(--bg); }
+    .sm-head { text-align: center; max-width: 780px; margin: 0 auto 30px; }
+    .sm-head .lead { margin: 18px auto 0; }
+    .sm-plat { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 64px; }
+    .sm-plat span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border); font-size: 14px; font-weight: 700; color: var(--text); }
+    .sm-plat svg { width: 16px; height: 16px; flex: 0 0 auto; }
+    .sm-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .sm-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .sm-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 22px; }
+    .sm-card i { font-style: normal; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-dark); }
+    .sm-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: -0.3px; margin: 8px 0 6px; }
+    .sm-card p { font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+    /* Instagram-style profile preview with placeholder posts */
+    .sm-feed { background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: 18px; box-shadow: 0 20px 50px rgba(15,122,191,0.10); max-width: 460px; width: 100%; justify-self: center; }
+    .sm-feed-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .sm-feed-av { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-raised); border: 2px solid var(--accent); flex: 0 0 auto; }
+    .sm-feed-top b { display: block; font-size: 14.5px; }
+    .sm-feed-top small { font-size: 12.5px; color: var(--text-dim); }
+    .sm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .sm-grid .ph-box { aspect-ratio: 4 / 5; border-radius: 6px; font-size: 11px; padding: 6px; }
+    .sm-grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px; }
+    .sm-month { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 64px; }
+    .sm-month li { background: var(--bg-process); border-radius: 16px; padding: 20px; }
+    .sm-month b { display: block; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-dark); }
+    .sm-month strong { display: block; font-family: var(--font-display); font-size: 17px; margin: 6px 0 4px; }
+    .sm-month span { font-size: 14px; line-height: 1.55; color: var(--text-muted); }
+    .sm-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 20px; margin-top: 44px; text-align: center; }
+    .sm-foot span { font-size: 14px; color: var(--text-muted); }
+    @media (max-width: 960px) {
+      .sm-layout { grid-template-columns: 1fr; gap: 40px; }
+      .sm-month { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 560px) {
+      .sm-cards, .sm-month { grid-template-columns: 1fr; }
+      .sm-plat { margin-bottom: 44px; }
+      .sm-foot .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ---- Services: other services on request ---- */
+    .svc-other { margin-top: 32px; padding: 28px; border-radius: var(--r-lg); background: #fff; border: 1px solid var(--border); }
+    .svc-other-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 18px; }
+    .svc-other-top b { font-family: var(--font-display); font-size: 20px; letter-spacing: -0.3px; }
+    .svc-other-top span { font-size: 14px; color: var(--text-muted); }
+    .svc-other ul { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .svc-other li { background: var(--bg-card); border-radius: 14px; padding: 16px; }
+    .svc-other li b { display: block; font-size: 15px; color: var(--text); }
+    .svc-other li span { display: block; font-size: 13.5px; line-height: 1.5; color: var(--text-muted); margin-top: 4px; }
+    .svc-other-cta { display: inline-block; margin-top: 16px; }
+    @media (max-width: 960px) { .svc-other ul { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .svc-other { padding: 20px; } .svc-other ul { grid-template-columns: 1fr; } }
+
+    .res-row-label.th-gap { margin-top: 96px; }
+    @media (max-width: 640px) { .res-row-label.th-gap { margin-top: 72px; } }
 
     /* =============================================
        NEGATIVE POSITIONING  ("Not a ___" — FounderOS signature)
@@ -1547,8 +1622,8 @@
       <!-- ✏️ EDIT: Nav links -->
       <ul class="nav-links">
         <li><a href="#linkedin">LinkedIn</a></li>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#meta-ads">Meta Ads</a></li>
+        <li><a href="#results">Thumbnails</a></li>
+        <li><a href="#social">Social</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
@@ -1571,8 +1646,8 @@
   <div class="mob-nav" id="mob" aria-hidden="true">
     <ul>
       <li><a href="#linkedin" class="mlink">LinkedIn</a></li>
-      <li><a href="#results"  class="mlink">Results</a></li>
-      <li><a href="#meta-ads" class="mlink">Meta Ads</a></li>
+      <li><a href="#results"  class="mlink">Thumbnails</a></li>
+      <li><a href="#social"   class="mlink">Social</a></li>
       <li><a href="#services" class="mlink">Services</a></li>
       <li><a href="#work"     class="mlink">Work</a></li>
       <li><a href="#about"    class="mlink">About</a></li>
@@ -1936,10 +2011,18 @@
   <section id="results" class="sec res-sec">
     <div class="wrap">
       <div class="res-head" data-fade>
-        <span class="tag">Thumbnail Results</span>
+        <span class="tag">YouTube Thumbnails</span>
         <h2 class="h2">Design That Clicks, <span class="orange">Not Just Looks.</span></h2>
         <p class="lead">A thumbnail has about a second to win the click. These are real videos from client channels, and several ran far above the channel's average video.</p>
       </div>
+
+      <!-- ✏️ EDIT: Thumbnail quick facts -->
+      <ul class="th-facts" data-fade>
+        <li>Delivered in 48 hours</li>
+        <li>2 revisions included</li>
+        <li>Matched to your title</li>
+        <li>Custom quote for your channel</li>
+      </ul>
 
       <div class="res-stats" data-fade>
         <div class="res-stat"><div class="res-stat-n">1.1M+</div><div class="res-stat-l">Views across featured videos</div></div>
@@ -1947,9 +2030,39 @@
         <div class="res-stat"><div class="res-stat-n">26.2x</div><div class="res-stat-l">Best outlier vs. channel average</div></div>
         <div class="res-stat"><div class="res-stat-n">5</div><div class="res-stat-l">Videos at 8x+ channel average</div></div>
       </div>
+
+      <!-- ====== Thumbnails: Before / After ====== -->
+      <!-- ✏️ EDIT: Before/after pairs. Put images in assets/thumbnails/ (1280×720) and replace each placeholder div with:
+           <img src="assets/thumbnails/ba-1-before.jpg" alt="Old thumbnail: VIDEO TITLE" loading="lazy" width="1280" height="720">
+           Expected files: ba-1-before.jpg, ba-1-after.jpg, ba-2-before.jpg, ba-2-after.jpg, ba-3-before.jpg, ba-3-after.jpg
+           Then change the title and the numbers in each <figcaption>. -->
+      <div class="th-block" data-fade>
+        <div class="th-head">
+          <span class="th-eyebrow">Before &amp; After</span>
+          <h3>Same video. <span>A thumbnail that gets the click.</span></h3>
+          <p>The old thumbnail next to my redesign, with what changed after.</p>
+        </div>
+        <div class="th-ba">
+          <figure class="th-pair">
+            <div class="th-shot"><span class="th-lbl">Before</span><div class="ph-box dark" role="img" aria-label="Before thumbnail 1, coming soon">Before 1 · 1280×720</div></div>
+            <div class="th-shot"><span class="th-lbl after">After</span><div class="ph-box dark" role="img" aria-label="After thumbnail 1, coming soon">After 1 · 1280×720</div></div>
+            <figcaption><b>Video title 1</b><span>Before: — views · After: — views</span></figcaption>
+          </figure>
+          <figure class="th-pair">
+            <div class="th-shot"><span class="th-lbl">Before</span><div class="ph-box dark" role="img" aria-label="Before thumbnail 2, coming soon">Before 2 · 1280×720</div></div>
+            <div class="th-shot"><span class="th-lbl after">After</span><div class="ph-box dark" role="img" aria-label="After thumbnail 2, coming soon">After 2 · 1280×720</div></div>
+            <figcaption><b>Video title 2</b><span>Before: — views · After: — views</span></figcaption>
+          </figure>
+          <figure class="th-pair">
+            <div class="th-shot"><span class="th-lbl">Before</span><div class="ph-box dark" role="img" aria-label="Before thumbnail 3, coming soon">Before 3 · 1280×720</div></div>
+            <div class="th-shot"><span class="th-lbl after">After</span><div class="ph-box dark" role="img" aria-label="After thumbnail 3, coming soon">After 3 · 1280×720</div></div>
+            <figcaption><b>Video title 3</b><span>Before: — views · After: — views</span></figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
-    <p class="res-row-label"><span>Commentary &amp; Entertainment · <b>Long-form</b></span></p>
+    <p class="res-row-label th-gap"><span>Commentary &amp; Entertainment · <b>Long-form</b></span></p>
     <div class="res-marquee">
       <div class="res-track" data-loop>
         <article class="res-card">
@@ -2069,70 +2182,146 @@
       </div>
     </div>
 
+    <div class="wrap">
+      <!-- ====== Thumbnails: what makes a click ====== -->
+      <!-- ✏️ EDIT: Thumbnail rules -->
+      <div class="th-block" data-fade>
+        <div class="th-head">
+          <span class="th-eyebrow">What makes a click</span>
+          <h3>Six rules. <span>Every thumbnail, every time.</span></h3>
+        </div>
+        <div class="th-rules">
+          <div class="th-rule"><span class="th-rule-n">01</span><h4>One clear focus</h4><p>One main subject, so the eye knows where to land in a split second.</p></div>
+          <div class="th-rule"><span class="th-rule-n">02</span><h4>Face and emotion</h4><p>A real reaction tells the viewer how the video will feel before they click.</p></div>
+          <div class="th-rule"><span class="th-rule-n">03</span><h4>Three words or fewer</h4><p>The text adds to the title. It never repeats it.</p></div>
+          <div class="th-rule"><span class="th-rule-n">04</span><h4>Contrast that stands out</h4><p>Colours and shapes that pop on both light and dark YouTube.</p></div>
+          <div class="th-rule"><span class="th-rule-n">05</span><h4>Checked at phone size</h4><p>I check every thumbnail small first. If it reads on a phone, it reads everywhere.</p></div>
+          <div class="th-rule"><span class="th-rule-n">06</span><h4>Matched to the title</h4><p>Thumbnail and title tell one story together, so the click feels worth it.</p></div>
+        </div>
+      </div>
+
+      <!-- ====== Thumbnails: process ====== -->
+      <!-- ✏️ EDIT: Thumbnail process steps -->
+      <div class="th-block" data-fade>
+        <div class="th-head">
+          <span class="th-eyebrow">How it works</span>
+          <h3>From title to thumbnail <span>in 48 hours.</span></h3>
+        </div>
+        <ol class="th-steps">
+          <li><b>Brief</b><span>Send the title, the video idea and any photos you want in it.</span></li>
+          <li><b>Concept</b><span>I plan the idea and the layout before I design anything.</span></li>
+          <li><b>Design</b><span>The full thumbnail at 1280×720, built for the click.</span></li>
+          <li><b>Revisions</b><span>2 rounds of changes included.</span></li>
+          <li><b>Delivery</b><span>Final file within 48 hours, ready to upload.</span></li>
+        </ol>
+      </div>
+
+      <!-- ====== Thumbnails: niches ====== -->
+      <!-- ✏️ EDIT: Niches -->
+      <div class="th-block" data-fade>
+        <div class="th-head">
+          <span class="th-eyebrow">Niches</span>
+          <h3>Channels I design for.</h3>
+        </div>
+        <div class="th-niches">
+          <span>Commentary &amp; news</span>
+          <span>Politics</span>
+          <span>Comedy &amp; entertainment</span>
+          <span>Bitcoin &amp; finance</span>
+          <span>Education</span>
+          <span>Live streams</span>
+          <span>Your niche? Ask me</span>
+        </div>
+      </div>
+
+      <!-- ====== Thumbnails: what's included + quote ====== -->
+      <!-- ✏️ EDIT: What's included -->
+      <div class="th-block th-offer" data-fade>
+        <div class="th-inc">
+          <h4>What you get</h4>
+          <ul>
+            <li>A 1280×720 thumbnail, ready to upload to YouTube</li>
+            <li>Text and layout matched to your title</li>
+            <li>Delivered within 48 hours</li>
+            <li>2 revisions included</li>
+            <li>A consistent look across videos: templates, colour and type rules</li>
+            <li>Per video or as a monthly pack</li>
+          </ul>
+        </div>
+        <div class="th-quote">
+          <h4>Custom quote</h4>
+          <p>Tell me about your channel and how often you post. You get a price and a timeline within 24 hours.</p>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get a thumbnail quote →</a>
+        </div>
+      </div>
+    </div>
+
     <div class="wrap res-foot" data-fade>
-      <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get Thumbnails Like These →</a>
-      <p class="res-note">Hover to pause · Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
+      <p class="res-note">Hover the rows to pause · Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
     </div>
   </section>
 
-  <!-- ====== META AD CREATIVES ====== -->
-  <!-- ✏️ EDIT: To ADD an ad, copy one <figure class="ad-card"> block. Put the image in assets/ads/ and replace the
-       placeholder div with: <div class="ad-media"><img src="assets/ads/FILE.jpg" alt="..." loading="lazy"></div>
-       Use class "ad-media" for 4:5, "ad-media sq" for 1:1, "ad-media story" for 9:16.
-       The row repeats itself automatically for the endless slide. -->
-  <section id="meta-ads" class="sec ads-sec">
+  <!-- ====== SOCIAL MEDIA MANAGEMENT ====== -->
+  <section id="social" class="sec sm-sec">
     <div class="wrap">
-      <div class="ads-head" data-fade>
-        <span class="tag">Meta Ad Creatives</span>
-        <h2 class="h2">Ads Built to <span class="orange">Stop the Scroll.</span></h2>
-        <p class="lead">Facebook and Instagram ad creatives designed from the same system as your brand, so every ad looks like you and is made to earn the click.</p>
+      <!-- ✏️ EDIT: Social media headline -->
+      <div class="sm-head" data-fade>
+        <span class="tag">Social Media Management</span>
+        <h2 class="h2">Show Up Everywhere.<br><span class="orange">Without Doing It Yourself.</span></h2>
+        <p class="lead">I plan, design, write and post your content every month, on the platforms your customers use. You approve. I handle the rest.</p>
       </div>
-      <!-- ✏️ EDIT: Clients whose ads appear below -->
-      <div class="ads-formats" data-fade>
-        <span><b>Bubbly Bins</b></span>
-        <span><b>insure247</b></span>
-        <span><b>Know Your Business</b></span>
-      </div>
-    </div>
 
-    <div class="ads-gal">
-      <div class="ads-track" data-loop>
-        <figure class="ad-card">
-          <div class="ad-top"><span class="ad-av bb">B</span><div><b>Bubbly Bins</b><small>Sponsored</small></div></div>
-          <div class="ad-media sq"><img src="assets/ads/bubbly-bins-street-smell.jpg" alt="Bubbly Bins ad: You're the reason the street doesn't smell right." loading="lazy" width="720" height="720"></div>
-          <figcaption class="ad-bot"><span>Bins cleaned with a 200°C hot water wash</span><span class="ad-cta-btn">Book now</span></figcaption>
-        </figure>
-        <figure class="ad-card">
-          <div class="ad-top"><span class="ad-av ins">i</span><div><b>insure247</b><small>Sponsored</small></div></div>
-          <div class="ad-media sq"><img src="assets/ads/insure247-loyal-premiums.jpg" alt="insure247 ad: 9 years loyal. Premiums keep going up. Found it for less in minutes." loading="lazy" width="720" height="720"></div>
-          <figcaption class="ad-bot"><span>Compare 130+ UK car insurers. Free.</span><span class="ad-cta-btn">Compare</span></figcaption>
-        </figure>
-        <figure class="ad-card">
-          <div class="ad-top"><span class="ad-av bb">B</span><div><b>Bubbly Bins</b><small>Sponsored</small></div></div>
-          <div class="ad-media sq"><img src="assets/ads/bubbly-bins-dreaded.jpg" alt="Bubbly Bins ad: You've dreaded this for a year. Gone this week. You don't even touch it." loading="lazy" width="720" height="720"></div>
-          <figcaption class="ad-bot"><span>First clean free. Limited time only.</span><span class="ad-cta-btn">Book now</span></figcaption>
-        </figure>
-        <figure class="ad-card">
-          <div class="ad-top"><span class="ad-av ins">i</span><div><b>insure247</b><small>Sponsored</small></div></div>
-          <div class="ad-media tall"><img src="assets/ads/insure247-renewal-gone-up.jpg" alt="insure247 ad: Your insurance renewal price has gone up. Compare quotes from 130+ UK insurers at once." loading="lazy" width="720" height="1080"></div>
-          <figcaption class="ad-bot"><span>Compare quotes from 130+ UK insurers at once</span><span class="ad-cta-btn">Find out</span></figcaption>
-        </figure>
-        <figure class="ad-card">
-          <div class="ad-top"><span class="ad-av kyb">K</span><div><b>Know Your Business</b><small>Sponsored</small></div></div>
-          <div class="ad-media sq"><img src="assets/ads/kyb-vat-gap.jpg" alt="Know Your Business ad: Profitable business. Wrong month for cash. HMRC does not care." loading="lazy" width="720" height="720"></div>
-          <figcaption class="ad-bot"><span>Compare tax loan providers now</span><span class="ad-cta-btn">Learn more</span></figcaption>
-        </figure>
-        <figure class="ad-card">
-          <div class="ad-top"><span class="ad-av bb">B</span><div><b>Bubbly Bins</b><small>Sponsored</small></div></div>
-          <div class="ad-media sq"><img src="assets/ads/bubbly-bins-first-clean.jpg" alt="Bubbly Bins ad: Make the first thing they see the clean one. First clean's free." loading="lazy" width="720" height="720"></div>
-          <figcaption class="ad-bot"><span>Make the first thing they see the clean one</span><span class="ad-cta-btn">Book now</span></figcaption>
-        </figure>
+      <!-- ✏️ EDIT: Platforms -->
+      <div class="sm-plat" data-fade>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7h3l.5-4h-3.5V8.9c0-.6.4-.9 1-.9z"/></svg>Facebook</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.2h1.7L7.4 4.73H5.58z"/></svg>X (Twitter)</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg>YouTube Community &amp; Shorts</span>
       </div>
-    </div>
 
-    <div class="wrap ads-foot" data-fade>
-      <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get Ad Creatives Like These →</a>
-      <p class="ads-note">Real ads from client campaigns · Hover to pause</p>
+      <div class="sm-layout">
+        <!-- ✏️ EDIT: What's included -->
+        <div class="sm-cards" data-fade>
+          <div class="sm-card"><i>01 · Plan</i><h3>Strategy &amp; calendar</h3><p>A content plan for the month, built around your goals and your offer.</p></div>
+          <div class="sm-card"><i>02 · Create</i><h3>Design + captions</h3><p>On-brand graphics and carousels, with captions written in your voice.</p></div>
+          <div class="sm-card"><i>03 · Publish</i><h3>Scheduling &amp; posting</h3><p>Every post scheduled and published for you, on every platform.</p></div>
+          <div class="sm-card"><i>04 · Report</i><h3>Monthly report</h3><p>What worked, what didn't, and what we change next month.</p></div>
+        </div>
+
+        <!-- ✏️ EDIT: Example posts. Put images in assets/social/ (1080×1350) and replace each placeholder div with:
+             <img src="assets/social/post-1.jpg" alt="Instagram post for CLIENT: TOPIC" loading="lazy" width="1080" height="1350">
+             Expected files: post-1.jpg … post-9.jpg -->
+        <div class="sm-feed" data-fade data-d="2">
+          <div class="sm-feed-top">
+            <span class="sm-feed-av" aria-hidden="true"></span>
+            <div><b>yourbrand</b><small>A month of posts, planned and on-brand</small></div>
+          </div>
+          <div class="sm-grid">
+            <div class="ph-box" role="img" aria-label="Example post 1, coming soon">Post 1</div>
+            <div class="ph-box" role="img" aria-label="Example post 2, coming soon">Post 2</div>
+            <div class="ph-box" role="img" aria-label="Example post 3, coming soon">Post 3</div>
+            <div class="ph-box" role="img" aria-label="Example post 4, coming soon">Post 4</div>
+            <div class="ph-box" role="img" aria-label="Example post 5, coming soon">Post 5</div>
+            <div class="ph-box" role="img" aria-label="Example post 6, coming soon">Post 6</div>
+            <div class="ph-box" role="img" aria-label="Example post 7, coming soon">Post 7</div>
+            <div class="ph-box" role="img" aria-label="Example post 8, coming soon">Post 8</div>
+            <div class="ph-box" role="img" aria-label="Example post 9, coming soon">Post 9</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✏️ EDIT: How a month works -->
+      <ol class="sm-month" data-fade>
+        <li><b>Start</b><strong>Onboarding</strong><span>A short form about your brand, your goals and your platforms.</span></li>
+        <li><b>Plan</b><strong>Calendar</strong><span>I send next month's plan. You approve it.</span></li>
+        <li><b>Create</b><strong>You approve posts</strong><span>You see every post before it goes live.</span></li>
+        <li><b>Report</b><strong>Monthly report</strong><span>Results, what worked, and the plan for next month.</span></li>
+      </ol>
+
+      <div class="sm-foot" data-fade>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get a social media quote →</a>
+        <span>Custom quote · Reply within 24 hours · Nothing goes live until you approve</span>
+      </div>
     </div>
   </section>
 
@@ -2176,7 +2365,7 @@
           <ul class="svc-list">
             <li>CTR-led thumbnails matched to the title</li>
             <li>Templates plus colour and type rules</li>
-            <li>Per-video or monthly pack, revision included</li>
+            <li>Per-video or monthly pack · 48h, 2 revisions</li>
           </ul>
           <div class="svc-actions">
             <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a thumbnail quote →</a>
@@ -2186,21 +2375,36 @@
         <!-- ✏️ EDIT: Service 3 -->
         <div class="svc-card" data-fade data-d="3">
           
-          <div class="svc-icon">🎨</div>
-          <span class="svc-best">Best for: Brands launching or running ads</span>
-          <div class="svc-title">Branding + Meta Ads</div>
-          <p class="svc-out">One design system for your brand, ads and social graphics.</p>
+          <div class="svc-icon">📱</div>
+          <span class="svc-best">Best for: Brands that want to stay active everywhere</span>
+          <div class="svc-title">Social Media Management</div>
+          <p class="svc-out">Instagram, Facebook, X and YouTube, planned and posted for you.</p>
           <div class="svc-price svc-quote">Custom quote</div>
           <ul class="svc-list">
-            <li>Logo, colours, typography and usage rules</li>
-            <li>Facebook &amp; Instagram ad creatives</li>
-            <li>Banners, posters, social graphics &amp; infographics</li>
+            <li>Monthly strategy and content calendar</li>
+            <li>Designed posts with captions in your voice</li>
+            <li>Scheduled, published &amp; reported monthly</li>
           </ul>
           <div class="svc-actions">
-            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a design quote →</a>
-            <a href="#meta-ads" class="svc-link">See ad creatives →</a>
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a social media quote →</a>
+            <a href="#social" class="svc-link">See what's included →</a>
           </div>
         </div>
+      </div>
+
+      <!-- ✏️ EDIT: Other services (on request) -->
+      <div id="other-services" class="svc-other" data-fade>
+        <div class="svc-other-top">
+          <b>Other services, on request</b>
+          <span>Not part of a plan. Tell me what you need and I'll quote it.</span>
+        </div>
+        <ul>
+          <li><b>Meta ad creatives</b><span>Facebook and Instagram ads for your campaigns.</span></li>
+          <li><b>Logo &amp; brand identity</b><span>Logo, colours, fonts and simple usage rules.</span></li>
+          <li><b>Posters, banners &amp; infographics</b><span>One-off graphics for launches, events and social.</span></li>
+          <li><b>Pitch decks</b><span>Clean slide design for decks and presentations.</span></li>
+        </ul>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="svc-link svc-other-cta" target="_blank" rel="noopener">Request a quote →</a>
       </div>
 
       <!-- ✏️ EDIT: Help strip + reassurance under the service cards -->
@@ -2503,7 +2707,8 @@
         <div class="ft-col" role="navigation" aria-label="Footer">
           <h4>Explore</h4>
           <a href="#linkedin">LinkedIn</a>
-          <a href="#results">Results</a>
+          <a href="#results">Thumbnails</a>
+          <a href="#social">Social</a>
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
@@ -2513,8 +2718,9 @@
         <div class="ft-col">
           <h4>Services</h4>
           <a href="#linkedin">LinkedIn Management</a>
-          <a href="#results">Content System + Thumbnails</a>
-          <a href="#services">Branding + Graphic Design</a>
+          <a href="#results">YouTube Thumbnails</a>
+          <a href="#social">Social Media Management</a>
+          <a href="#other-services">Other services</a>
         </div>
 
         <div class="ft-col">
