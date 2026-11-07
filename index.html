@@ -667,6 +667,21 @@
     .lp-mix { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
     .lp-mix span { font-size: 13px; padding: 6px 11px; border-radius: 100px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); }
     .lp-mix b { color: var(--accent); }
+    .lp-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .lp-tier { padding: 12px; border-radius: var(--r); border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
+    .lp-tier > b { display: block; font-size: 13px; letter-spacing: .02em; color: var(--accent); margin-bottom: 4px; }
+    .lp-tier .lp-price { margin-bottom: 8px; font-size: 38px; }
+    .lp-feat .lp-for { margin-bottom: 14px; }
+    .lp-tier .lp-mix { margin-bottom: 0; }
+    @media (max-width: 520px) { .lp-tiers { grid-template-columns: 1fr; } }
+    .faq-sec { background: var(--bg-card); }
+    .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 12px; }
+    .faq-list details { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 22px; }
+    .faq-list summary { cursor: pointer; font-weight: 700; font-size: 16px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: var(--accent-dark); font-size: 20px; line-height: 1; }
+    .faq-list details[open] summary::after { content: "–"; }
+    .faq-list details p { margin: 12px 0 0; color: var(--text-muted); line-height: 1.6; }
     .lp-mix em { font-style: normal; font-size: 13px; color: #93a4b8; }
     .lp-list { list-style: none; display: grid; gap: 11px; margin-bottom: 26px; }
     .lp-list li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; }
@@ -1592,6 +1607,8 @@
       .res-live::before { animation: none !important; }
     }
   </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Designwithfaiz", "url": "https://designwithfaiz.com", "email": "hello@designwithfaiz.com", "founder": {"@type": "Person", "name": "Faiz Ahmed"}, "address": {"@type": "PostalAddress", "addressLocality": "Jaipur", "addressCountry": "IN"}, "areaServed": "Worldwide", "description": "LinkedIn management, YouTube thumbnails and social media management for founders, creators and agencies.", "sameAs": ["https://www.linkedin.com/in/faiz-ahmed-7931022b8/", "https://x.com/designwithfaiz", "https://www.behance.net/faizgraphicsdesigner"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "name": "LinkedIn Profile Setup", "price": "79", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Management: Consistent (3 posts a week)", "price": "179", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Management: Full Feed (5 posts a week)", "price": "349", "priceCurrency": "USD"}, {"@type": "Offer", "name": "YouTube Thumbnails", "description": "From $25 per thumbnail"}, {"@type": "Offer", "name": "Social Media Management", "description": "From $249 per month"}]}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need to get on a call?", "acceptedAnswer": {"@type": "Answer", "text": "No. You fill a 2-minute form and I send scope, timeline and price within 24 hours. A call happens only if you ask for one."}}, {"@type": "Question", "name": "What's the difference between $179 and $349?", "acceptedAnswer": {"@type": "Answer", "text": "Both include strategy, a monthly calendar, writing in your voice, design, scheduling and a monthly report. Consistent ($179) is 3 posts a week. Full Feed ($349) is 5 posts a week."}}, {"@type": "Question", "name": "Do you reply to comments for me?", "acceptedAnswer": {"@type": "Answer", "text": "No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing."}}, {"@type": "Question", "name": "Will the posts sound like me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Before the first post I study your past posts, your offer and how you talk. You approve every post before it goes live."}}, {"@type": "Question", "name": "Do you work with company pages too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page."}}, {"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "Monthly plans are paid at the start of each month. Profile Setup is paid upfront. I send a secure payment link with the proposal."}}]}</script>
 </head>
 <body>
 
@@ -1730,8 +1747,8 @@
                 <em>$79<small>one-time</small></em>
               </a>
               <a role="menuitem" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
-                <span><b>Monthly Management</b><small>5 posts a week, done for you</small></span>
-                <em>$179<small>/month</small></em>
+                <span><b>Monthly Management</b><small>3 or 5 posts a week, done for you</small></span>
+                <em>$179<small>/month+</small></em>
               </a>
               <a class="li-pick-more" href="#li-plans">Compare both plans ↓</a>
             </div>
@@ -1810,8 +1827,10 @@
           <span class="lp-step">Plan 02 · Fill the feed</span>
           <h4>Monthly Management</h4>
           <p class="lp-for">For when you know you should post, but it never happens.</p>
-          <div class="lp-price">$179<small>/month</small></div>
-          <div class="lp-mix"><span><b>1</b> carousel</span><span><b>2</b> cheat sheets</span><span><b>2</b> posts</span><em>every week</em></div>
+          <div class="lp-tiers">
+            <div class="lp-tier"><b>Consistent</b><div class="lp-price">$179<small>/month</small></div><div class="lp-mix"><span><b>3</b> posts a week</span><em>1 carousel · 1 cheat sheet · 1 post</em></div></div>
+            <div class="lp-tier"><b>Full Feed</b><div class="lp-price">$349<small>/month</small></div><div class="lp-mix"><span><b>5</b> posts a week</span><em>1 carousel · 2 cheat sheets · 2 posts</em></div></div>
+          </div>
           <ul class="lp-list">
             <li>Strategy and a calendar planned a month ahead</li>
             <li>Written in your voice, designed on-brand</li>
@@ -1911,7 +1930,7 @@
 
     <!-- ====== Plan 02 proof: how monthly works + real posts ====== -->
     <div id="li-work-monthly" class="wrap li-work-head" data-fade>
-      <span class="lp-tag lp-tag-light">Plan 02 · Monthly Management · $179/month</span>
+      <span class="lp-tag lp-tag-light">Plan 02 · Monthly Management · from $179/month</span>
       <h3>A month of posts, <span>handled end to end.</span></h3>
       <p>Every post on the Keys Media company page is researched, written, designed and published by me.</p>
     </div>
@@ -1989,7 +2008,7 @@
     <div class="wrap">
       <div class="li-cta" data-fade>
         <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $179/month <span class="btn-ico">→</span></a>
-        <span class="li-cta-note">5 posts a week · Planned a month ahead · Reply within 24 hours</span>
+        <span class="li-cta-note">3 posts a week ($179) or 5 posts a week ($349) · Planned a month ahead · Reply within 24 hours</span>
       </div>
 
       <!-- ====== Still deciding? ====== -->
@@ -2004,7 +2023,7 @@
           <a class="ld-opt ld-feat" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
             <span class="ld-k">Pick Monthly Management if</span>
             <p>Your profile is fine, but nobody sees it because you rarely post.</p>
-            <b>$179/month →</b>
+            <b>From $179/month →</b>
           </a>
         </div>
         <ol class="ld-steps">
@@ -2033,7 +2052,7 @@
         <li>Delivered in 48 hours</li>
         <li>2 revisions included</li>
         <li>Matched to your title</li>
-        <li>Custom quote for your channel</li>
+        <li>From $25 per thumbnail</li>
       </ul>
 
       <div class="res-stats" data-fade>
@@ -2079,55 +2098,55 @@
       <div class="res-track" data-loop>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/council-tax.webp" alt="Thumbnail: Your Council Tax" loading="lazy" width="617" height="337"></div>
-          <h3 class="res-title">This Is Why 9 Councils Are Bankrupt</h3>
+          <p class="res-title">This Is Why 9 Councils Are Bankrupt</p>
           <div class="res-meta"><span class="res-views">714K views</span></div>
           <div class="res-badges"><span class="res-badge out">15.4x</span><span class="res-badge">24 VPH</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/physical-comedy.webp" alt="Thumbnail: The Art of Physical Comedy" loading="lazy" width="691" height="379"></div>
-          <h3 class="res-title">The Best Examples of Physical Comedy: Why We Can't Stop Laughing</h3>
+          <p class="res-title">The Best Examples of Physical Comedy: Why We Can't Stop Laughing</p>
           <div class="res-meta"><span class="res-views">6.4K views</span></div>
           <div class="res-badges"><span class="res-badge out">10.2x</span><span class="res-badge">1 VPH</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/starmer-lies.webp" alt="Thumbnail: LIES!" loading="lazy" width="608" height="332"></div>
-          <h3 class="res-title">Digital ID Scrapped? - Starmer Lied. The Contracts Prove It.</h3>
+          <p class="res-title">Digital ID Scrapped? - Starmer Lied. The Contracts Prove It.</p>
           <div class="res-meta"><span class="res-views">145K views</span></div>
           <div class="res-badges"><span class="res-badge out">10.7x</span><span class="res-badge">24 VPH</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/righteous-gemstones.webp" alt="Thumbnail: The Righteous Gemstones" loading="lazy" width="1013" height="569"></div>
-          <h3 class="res-title">The Righteous Gemstones: How Comedy Gold Was Born From Unholy Dysfunction</h3>
+          <p class="res-title">The Righteous Gemstones: How Comedy Gold Was Born From Unholy Dysfunction</p>
           <div class="res-meta"><span class="res-views">1.8K views</span></div>
           <div class="res-badges"><span class="res-badge out hot">7.5x</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/eu-hacking.webp" alt="Thumbnail: EU Hacking Your Phone" loading="lazy" width="623" height="340"></div>
-          <h3 class="res-title">The EU Is Forcing Backdoor Access to Your Phone - I Followed the Money</h3>
+          <p class="res-title">The EU Is Forcing Backdoor Access to Your Phone - I Followed the Money</p>
           <div class="res-meta"><span class="res-views">94K views</span></div>
           <div class="res-badges"><span class="res-badge out">26.2x</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/aus-vs-us-comedy.webp" alt="Thumbnail: Australian vs American Comedy" loading="lazy" width="1014" height="569"></div>
-          <h3 class="res-title">Australian vs American Comedy</h3>
+          <p class="res-title">Australian vs American Comedy</p>
           <div class="res-meta"><span class="res-niche">Comedy · Entertainment</span></div>
           <div class="res-badges"><span class="res-badge muted">Long-form</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/ncp-legal.webp" alt="Thumbnail: NCP and GOV.UK heart" loading="lazy" width="618" height="338"></div>
-          <h3 class="res-title">How Is This Legal?</h3>
+          <p class="res-title">How Is This Legal?</p>
           <div class="res-meta"><span class="res-views">109K views</span></div>
           <div class="res-badges"><span class="res-badge out hot">8.1x</span><span class="res-badge">3 VPH</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/mcdonalds-monopoly.webp" alt="Thumbnail: Fake Winner For 12 Years" loading="lazy" width="622" height="340"></div>
-          <h3 class="res-title">What McDonald's Doesn't Want You to Know About Their Monopoly Game</h3>
+          <p class="res-title">What McDonald's Doesn't Want You to Know About Their Monopoly Game</p>
           <div class="res-meta"><span class="res-views">29K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Long-form</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/debt-trap.webp" alt="Thumbnail: Pay In 3" loading="lazy" width="622" height="340"></div>
-          <h3 class="res-title">How To Debt Trap A Generation</h3>
+          <p class="res-title">How To Debt Trap A Generation</p>
           <div class="res-meta"><span class="res-views">4K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Long-form</span></div>
         </article>
@@ -2139,55 +2158,55 @@
       <div class="res-track rev" data-loop>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/trump-freeze-live.webp" alt="Thumbnail: We Need To Freeze Bank Accounts" loading="lazy" width="693" height="380"><span class="res-live">LIVE</span></div>
-          <h3 class="res-title">BREAKING: US Plan To Freeze Bank Accounts Just Went LIVE!</h3>
+          <p class="res-title">BREAKING: US Plan To Freeze Bank Accounts Just Went LIVE!</p>
           <div class="res-meta"><span class="res-views">34K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/btc-early-not-wrong.webp" alt="Thumbnail: Early Not Wrong" loading="lazy" width="501" height="282"></div>
-          <h3 class="res-title">Early, Not Wrong</h3>
+          <p class="res-title">Early, Not Wrong</p>
           <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
           <div class="res-badges"><span class="res-badge muted">Video</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/trump-freeze.webp" alt="Thumbnail: Trump — We Need To Freeze Bank Accounts" loading="lazy" width="636" height="348"><span class="res-live">LIVE</span></div>
-          <h3 class="res-title">BREAKING: Trump Just Gave Wall Street Power To Freeze YOUR Bank Accounts!</h3>
+          <p class="res-title">BREAKING: Trump Just Gave Wall Street Power To Freeze YOUR Bank Accounts!</p>
           <div class="res-meta"><span class="res-views">7K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/btc-why-bitcoin-wins.webp" alt="Thumbnail: This Is Why Bitcoin Wins" loading="lazy" width="501" height="282"></div>
-          <h3 class="res-title">This Is Why Bitcoin Wins</h3>
+          <p class="res-title">This Is Why Bitcoin Wins</p>
           <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
           <div class="res-badges"><span class="res-badge muted">Video</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/starmer-freeze.webp" alt="Thumbnail: Freeze 30M Bank Accounts" loading="lazy" width="695" height="381"><span class="res-live">LIVE</span></div>
-          <h3 class="res-title">UK's Plan to Freeze 30 Million Bank Accounts Has Begun (What You Must Know)</h3>
+          <p class="res-title">UK's Plan to Freeze 30 Million Bank Accounts Has Begun (What You Must Know)</p>
           <div class="res-meta"><span class="res-views">3.9K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/btc-we-can-fix-this.webp" alt="Thumbnail: We Can Fix This" loading="lazy" width="501" height="282"></div>
-          <h3 class="res-title">We Can Fix This</h3>
+          <p class="res-title">We Can Fix This</p>
           <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
           <div class="res-badges"><span class="res-badge muted">Video</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/china-bitcoin.webp" alt="Thumbnail: Holy Sh*t They Did It!?" loading="lazy" width="636" height="348"><span class="res-live">LIVE</span></div>
-          <h3 class="res-title">BREAKING: China's $253B Bitcoin Plan EXPOSED! They Stole It From The US</h3>
+          <p class="res-title">BREAKING: China's $253B Bitcoin Plan EXPOSED! They Stole It From The US</p>
           <div class="res-meta"><span class="res-views">2.3K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/btc-protect-future.webp" alt="Thumbnail: Protect Your Future" loading="lazy" width="501" height="282"></div>
-          <h3 class="res-title">Protect Your Future</h3>
+          <p class="res-title">Protect Your Future</p>
           <div class="res-meta"><span class="res-niche">Bitcoin · Education</span></div>
           <div class="res-badges"><span class="res-badge muted">Video</span></div>
         </article>
         <article class="res-card">
           <div class="res-thumb"><img src="assets/results/bitcoin-cnbc.webp" alt="Thumbnail: We Want Your Bitcoin" loading="lazy" width="636" height="348"><span class="res-live">LIVE</span></div>
-          <h3 class="res-title">BREAKING: The 2.4M Paper Bitcoin ATTACK Just Got 10x Worse</h3>
+          <p class="res-title">BREAKING: The 2.4M Paper Bitcoin ATTACK Just Got 10x Worse</p>
           <div class="res-meta"><span class="res-views">2.2K views</span></div>
           <div class="res-badges"><span class="res-badge muted">Live stream</span></div>
         </article>
@@ -2261,8 +2280,8 @@
           </ul>
         </div>
         <div class="th-quote">
-          <h4>Custom quote</h4>
-          <p>Tell me about your channel and how often you post. You get a price and a timeline within 24 hours.</p>
+          <h4>From $25 per thumbnail</h4>
+          <p>Monthly packs cost less per thumbnail. Tell me about your channel and how often you post. You get a price and a timeline within 24 hours.</p>
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get a thumbnail quote →</a>
         </div>
       </div>
@@ -2332,7 +2351,7 @@
 
       <div class="sm-foot" data-fade>
         <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get a social media quote →</a>
-        <span>Custom quote · Reply within 24 hours · Nothing goes live until you approve</span>
+        <span>From $249/month · Reply within 24 hours · Nothing goes live until you approve</span>
       </div>
     </div>
   </section>
@@ -2354,10 +2373,10 @@
           <span class="svc-best">Best for: Founders, creators &amp; agency owners</span>
           <div class="svc-title">LinkedIn Management</div>
           <p class="svc-out">Stay visible on LinkedIn without writing a word.</p>
-          <div class="svc-price ">$179<small>/month</small></div>
+          <div class="svc-price "><small>from </small>$179<small>/month</small></div>
           <p class="svc-alt">Or a one-time profile setup for <b>$79</b></p>
           <ul class="svc-list">
-            <li>5 posts a week: carousels, cheat sheets &amp; posts</li>
+            <li>3 posts a week ($179) or 5 posts a week ($349)</li>
             <li>Written in your voice, designed on-brand</li>
             <li>Scheduled, published &amp; reported monthly</li>
           </ul>
@@ -2373,7 +2392,7 @@
           <span class="svc-best">Best for: YouTube channels that want more clicks</span>
           <div class="svc-title">YouTube Thumbnails</div>
           <p class="svc-out">Win the click on every video, with a look that stays on-brand.</p>
-          <div class="svc-price svc-quote">Custom quote</div>
+          <div class="svc-price"><small>from </small>$25<small>/thumbnail</small></div>
           <ul class="svc-list">
             <li>CTR-led thumbnails matched to the title</li>
             <li>Templates plus colour and type rules</li>
@@ -2391,7 +2410,7 @@
           <span class="svc-best">Best for: Brands that want to stay active everywhere</span>
           <div class="svc-title">Social Media Management</div>
           <p class="svc-out">Instagram, Facebook, X and YouTube, planned and posted for you.</p>
-          <div class="svc-price svc-quote">Custom quote</div>
+          <div class="svc-price"><small>from </small>$249<small>/month</small></div>
           <ul class="svc-list">
             <li>Monthly strategy and content calendar</li>
             <li>Designed posts with captions in your voice</li>
@@ -2669,6 +2688,25 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <!-- ✏️ EDIT: Questions and answers. If you change these, change the FAQPage schema in the head too. -->
+  <section id="faq" class="sec faq-sec">
+    <div class="wrap">
+      <div class="test-head" data-fade>
+        <span class="tag">FAQ</span>
+        <h2 class="h2">Questions <span class="orange">Before You Start</span></h2>
+      </div>
+      <div class="faq-list" data-fade>
+        <details><summary>Do I need to get on a call?</summary><p>No. You fill a 2-minute form and I send scope, timeline and price within 24 hours. A call happens only if you ask for one.</p></details>
+        <details><summary>What's the difference between $179 and $349?</summary><p>Both include strategy, a monthly calendar, writing in your voice, design, scheduling and a monthly report. Consistent ($179) is 3 posts a week. Full Feed ($349) is 5 posts a week.</p></details>
+        <details><summary>Do you reply to comments for me?</summary><p>No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing.</p></details>
+        <details><summary>Will the posts sound like me?</summary><p>Yes. Before the first post I study your past posts, your offer and how you talk. You approve every post before it goes live.</p></details>
+        <details><summary>Do you work with company pages too?</summary><p>Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page.</p></details>
+        <details><summary>How do I pay?</summary><p>Monthly plans are paid at the start of each month. Profile Setup is paid upfront. I send a secure payment link with the proposal.</p></details>
       </div>
     </div>
   </section>
