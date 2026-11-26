@@ -6,12 +6,42 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/icon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/icon-512.png">
   <link rel="apple-touch-icon" href="assets/brand/icon-180.png">
-  <title>Designwithfaiz | LinkedIn Management, YouTube Thumbnails &amp; Social Media Management</title>
-  <meta name="description" content="Designwithfaiz helps founders, creators and agencies turn attention into clients with LinkedIn management, YouTube thumbnails and social media management.">
+  <title>Designwithfaiz | LinkedIn Management, YouTube Thumbnails, Video Editing &amp; Social Media</title>
+  <meta name="description" content="Designwithfaiz helps founders, creators and agencies turn attention into clients with LinkedIn management, YouTube thumbnails, video editing and social media management.">
+  <link rel="canonical" href="https://designwithfaiz.com/">
   <meta property="og:title" content="Designwithfaiz | Design Systems That Turn Attention Into Revenue">
-  <meta property="og:description" content="LinkedIn management, YouTube thumbnails and social media management that help founders, creators and agencies turn attention into clients.">
+  <meta property="og:description" content="LinkedIn management, YouTube thumbnails, video editing and social media management that help founders, creators and agencies turn attention into clients.">
   <meta property="og:url" content="https://designwithfaiz.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://designwithfaiz.com/assets/brand/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta property="og:image:alt" content="Design Systems That Turn Attention Into Revenue · designwithfaiz.com">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://designwithfaiz.com/assets/brand/og-image.jpg">
+
+  <!-- ✏️ EDIT: Tracking. Replace the 2 placeholder IDs below with your real ones:
+       GA4 Measurement ID  → G-XXXXXXXXXX  (Google Analytics → Admin → Data streams)
+       Meta Pixel ID       → PIXEL_ID      (Meta Events Manager → Data sources)
+       Nothing loads while the placeholders are still in place. -->
+  <script>
+    (function () {
+      var GA4_ID = 'G-XXXXXXXXXX';
+      var META_PIXEL_ID = 'PIXEL_ID';
+      if (GA4_ID.indexOf('XXXX') === -1) {
+        var g = document.createElement('script'); g.async = true;
+        g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+        document.head.appendChild(g);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date()); gtag('config', GA4_ID);
+      }
+      if (META_PIXEL_ID !== 'PIXEL_ID') {
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', META_PIXEL_ID); fbq('track', 'PageView');
+      }
+    })();
+  </script>
 
   <!-- Google Fonts — Bricolage Grotesque (headlines) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -370,7 +400,7 @@
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* =============================================
-       SHARED: image placeholder box (swap for <img> when real files are ready)
+       SHARED: image placeholder box (swap for an image tag when real files are ready)
        ============================================= */
     .ph-box {
       display: grid; place-items: center; text-align: center; padding: 12px;
@@ -1606,9 +1636,196 @@
       .trust-logos, .res-track { animation: none !important; transform: none !important; }
       .res-live::before { animation: none !important; }
     }
+
+    /* =============================================
+       NOV 2026 OFFERS UPDATE: new components
+       ============================================= */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ---- LinkedIn: three options ---- */
+    .li-plans-3 { grid-template-columns: repeat(3, 1fr); max-width: 1180px; align-items: stretch; }
+    .li-plans-3 .lp-card { padding: 30px 26px; }
+    .li-plans-3 .lp-card h4 { font-size: 26px; }
+    .li-plans-3 .lp-price { font-size: 46px; margin: 18px 0 16px; }
+    .li-plans-3 .lp-tiers { grid-template-columns: 1fr; gap: 10px; margin: 16px 0 20px; }
+    .li-plans-3 .lp-tier { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 12px; padding: 14px 16px; }
+    .li-plans-3 .lp-tier > b { margin: 0; font-size: 14px; }
+    .li-plans-3 .lp-tier .lp-price { font-size: 30px; margin: 0; }
+    .li-plans-3 .lp-tier .lp-price small { font-size: 13px; }
+    .lp-tier em { grid-column: 1 / -1; display: block; font-style: normal; font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-top: 4px; }
+    .lp-tier em span { display: block; font-size: 14px; font-weight: 600; color: #fff; }
+    .lp-tier em span b { color: var(--accent); }
+    .lp-feat .lp-tier em { color: #b9c4cf; }
+    .lp-card:not(.lp-feat) .lp-tier { border-color: var(--border); background: var(--bg-card); }
+    .lp-card:not(.lp-feat) .lp-tier > b { color: #0a66c2; }
+    .lp-card:not(.lp-feat) .lp-tier .lp-price small { color: var(--text-dim); }
+    .li-plans-3 .lp-list { gap: 9px; }
+    .li-plans-3 .lp-list li { font-size: 14.5px; }
+    .lp-feat .lp-list li b { color: #fff; }
+    .lp-meta { font-size: 13.5px; font-weight: 700; color: #0a66c2; margin: -8px 0 18px; padding: 10px 14px; border-radius: 10px; background: #e8f1fb; text-align: center; }
+    .lp-badge-new { background: var(--accent); color: #0b1220; }
+    @media (max-width: 1080px) {
+      .li-plans-3 { grid-template-columns: 1fr; max-width: 560px; }
+    }
+
+    /* ---- LinkedIn: comparison table ---- */
+    .li-compare { max-width: 1180px; margin: 44px auto 0; }
+    .li-compare-h { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; text-align: center; margin-bottom: 16px; }
+    .li-compare-wrap { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: #fff; }
+    .lc-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .lc-table th, .lc-table td { padding: 14px 18px; text-align: left; vertical-align: top; border-top: 1px solid var(--border-soft); line-height: 1.45; }
+    .lc-table thead th { border-top: 0; font-family: var(--font-display); font-size: 16px; font-weight: 700; background: var(--bg-card); }
+    .lc-table thead th.lc-feat { background: #0b1a2b; color: #fff; }
+    .lc-table tbody th { font-weight: 700; color: var(--text); width: 26%; }
+    .lc-table td { color: var(--text-muted); }
+    .lc-table td.lc-feat { background: #f2f8fe; color: var(--text); font-weight: 600; }
+    .lc-table td b { color: var(--text); font-family: var(--font-display); font-size: 16px; }
+    .lc-yes { color: #0a66c2; font-weight: 800; }
+    .lc-no { color: var(--text-dim); }
+    @media (max-width: 760px) {
+      .li-compare-wrap { border: 0; border-radius: 0; background: none; overflow: visible; }
+      .lc-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+      .lc-table, .lc-table tbody, .lc-table tr, .lc-table th, .lc-table td { display: block; width: 100%; }
+      .lc-table tr { background: #fff; border: 1px solid var(--border); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
+      .lc-table tbody th { width: 100%; border-top: 0; padding: 12px 16px; background: var(--bg-card); font-family: var(--font-display); font-size: 15px; }
+      .lc-table td { display: flex; justify-content: space-between; gap: 14px; padding: 10px 16px; text-align: right; }
+      .lc-table td .lc-v { text-align: right; }
+      .lc-table td::before { content: attr(data-label); font-weight: 600; color: var(--text-muted); text-align: left; flex: 0 0 auto; max-width: 48%; }
+      .lc-table td.lc-feat::before { color: #0a66c2; }
+    }
+
+    /* ---- LinkedIn: pick in 10 seconds ---- */
+    .li-decide-3 { grid-template-columns: repeat(3, 1fr); }
+    .li-decide-3 .ld-opt { display: flex; flex-direction: column; }
+    .li-decide-3 .ld-k { font-size: 15.5px; font-weight: 500; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--text-muted); }
+    .li-decide-3 .ld-k::after { content: " →"; color: #0a66c2; font-weight: 800; }
+    .li-decide-3 .ld-opt p { font-size: 24px; margin: 12px 0 14px; }
+    .li-decide-3 .ld-opt b { margin-top: auto; color: #0a66c2; }
+    .li-decide-3 .ld-feat .ld-k { color: #b9c4cf; }
+    .li-decide-3 .ld-feat .ld-k::after, .li-decide-3 .ld-feat b { color: var(--accent); }
+    @media (max-width: 860px) { .li-decide-3 { grid-template-columns: 1fr; } }
+
+    /* ---- Thumbnails: plans ---- */
+    .th-plans { list-style: none; display: grid; gap: 0; margin: 16px 0 22px; }
+    .th-plans li { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 12px; padding: 13px 0; border-top: 1px solid rgba(11,18,32,0.14); }
+    .th-plans li:first-child { border-top: 0; padding-top: 4px; }
+    .th-plan-n { font-weight: 700; font-size: 15.5px; }
+    .th-plan-p { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; }
+    .th-plan-p i { font-style: normal; font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: 0; color: #2c3e52; }
+    .th-plans small { grid-column: 1 / -1; font-size: 13px; line-height: 1.5; color: #1f2d3d; }
+    .btn-dark { background: #0b1220; color: #fff; border: 1.5px solid #0b1220; }
+    .btn-dark:hover { background: #16304d; border-color: #16304d; transform: translateY(-2px); }
+
+    /* ---- Video editing ---- */
+    .vid-sec { background: var(--bg-card); }
+    #video { scroll-margin-top: 70px; }
+    .vs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; }
+    .vs-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 14px 14px 20px; display: flex; flex-direction: column; transition: transform var(--ease), box-shadow var(--ease); }
+    .vs-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(15,122,191,0.12); }
+    .vs-visual { border-radius: 14px; overflow: hidden; background: #0b1a2b; aspect-ratio: 4 / 5; margin-bottom: 16px; }
+    .vs-visual svg, .vs-visual video, .vs-visual img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .vs-card i { font-style: normal; font-size: 11.5px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-dark); padding: 0 6px; }
+    .vs-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: -0.3px; margin: 6px 0 6px; padding: 0 6px; }
+    .vs-card p { font-size: 14px; line-height: 1.6; color: var(--text-muted); padding: 0 6px; }
+    .vs-send { display: block; margin: 14px 6px 0; padding-top: 12px; border-top: 1px dashed var(--border); font-size: 13px; color: var(--text-muted); margin-top: auto; }
+    .vs-card p + .vs-send { margin-top: 14px; }
+    .vs-send b { color: var(--text); }
+    .vs-zoom { transform-box: fill-box; transform-origin: center; animation: vsZoom 3.2s ease-in-out infinite; }
+    .vs-wave rect { transform-box: fill-box; transform-origin: center; animation: vsWave 1.1s ease-in-out infinite; }
+    .vs-wave rect:nth-child(2n) { animation-delay: .25s; }
+    .vs-wave rect:nth-child(3n) { animation-delay: .5s; }
+    .vs-pulse { animation: vsPulse 2.4s ease-in-out infinite; }
+    .vs-bars rect { transform-box: fill-box; transform-origin: bottom; animation: vsGrow 3.4s ease-in-out infinite; }
+    .vs-bars rect:nth-child(2) { animation-delay: .15s; } .vs-bars rect:nth-child(3) { animation-delay: .3s; } .vs-bars rect:nth-child(4) { animation-delay: .45s; }
+    @keyframes vsZoom { 0%,100% { transform: scale(1); } 50% { transform: scale(.92); } }
+    @keyframes vsWave { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(.45); } }
+    @keyframes vsPulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    @keyframes vsGrow { 0%,15% { transform: scaleY(.25); } 45%,100% { transform: scaleY(1); } }
+    @media (prefers-reduced-motion: reduce) { .vs-zoom, .vs-wave rect, .vs-pulse, .vs-bars rect { animation: none; } }
+    .vs-inc { margin: 40px auto 0; max-width: 980px; text-align: center; }
+    .vs-inc > b { display: block; font-family: var(--font-display); font-size: 20px; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .vs-inc ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; }
+    .vs-inc li { font-size: 14px; font-weight: 600; padding: 8px 14px 8px 12px; border-radius: 100px; background: #fff; border: 1px solid var(--border); }
+    .vs-inc li::before { content: "✓ "; color: var(--accent-dark); font-weight: 800; }
+    .vp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 880px; margin: 48px auto 0; }
+    .vp-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 24px; text-align: center; }
+    .vp-feat { background: #0b1a2b; border-color: #0b1a2b; color: #fff; box-shadow: 0 20px 50px rgba(10,40,80,0.22); }
+    .vp-n { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-dark); }
+    .vp-feat .vp-n { color: var(--accent); }
+    .vp-p { font-family: var(--font-display); font-weight: 800; font-size: 44px; letter-spacing: -0.04em; line-height: 1; margin: 12px 0 10px; }
+    .vp-p small { font-family: var(--font); font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--text-dim); margin-left: 3px; }
+    .vp-feat .vp-p small { color: #93a4b8; }
+    .vp-card b { display: block; font-size: 15.5px; }
+    .vp-card em { display: block; font-style: normal; font-size: 13.5px; color: var(--text-muted); margin-top: 4px; }
+    .vp-feat em { color: #b9c4cf; }
+    .vp-note { text-align: center; font-size: 14.5px; color: var(--text-muted); margin: 18px auto 0; max-width: 640px; line-height: 1.6; }
+    .vs-steps { grid-template-columns: repeat(3, 1fr); max-width: 980px; margin-left: auto; margin-right: auto; margin-top: 48px; }
+    .vid-sec .sm-month li { background: #fff; border: 1px solid var(--border); }
+    @media (max-width: 1024px) { .vs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 760px) { .vs-steps { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) {
+      .vs-grid { grid-template-columns: 1fr; gap: 12px; }
+      .vs-card { display: grid; grid-template-columns: 112px 1fr; column-gap: 14px; align-items: start; padding: 12px; }
+      .vs-visual { grid-row: 1 / span 4; margin-bottom: 0; }
+      .vs-card i, .vs-card h3, .vs-card p { padding: 0; }
+      .vs-card h3 { font-size: 18px; margin: 4px 0; }
+      .vs-card p { font-size: 13.5px; }
+      .vs-send { margin: 10px 0 0; }
+      .vs-card p + .vs-send { margin-top: 10px; }
+      .vp-grid { grid-template-columns: 1fr; max-width: 420px; }
+    }
+
+    /* ---- Social: creatives + plans ---- */
+    .sm-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .sm-grid img { height: auto; min-width: 0; aspect-ratio: 1 / 1; object-position: top center; background: var(--bg-card); }
+    .sm-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 980px; margin: 64px auto 0; }
+    .smp-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 26px; }
+    .smp-feat { background: #0b1a2b; border-color: #0b1a2b; color: #fff; box-shadow: 0 20px 50px rgba(10,40,80,0.22); }
+    .smp-n { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-dark); }
+    .smp-feat .smp-n { color: var(--accent); }
+    .smp-p { font-family: var(--font-display); font-weight: 800; font-size: 46px; letter-spacing: -0.04em; line-height: 1; margin: 12px 0 16px; }
+    .smp-p small { font-family: var(--font); font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--text-dim); margin-left: 3px; }
+    .smp-feat .smp-p small { color: #93a4b8; }
+    .smp-card ul { list-style: none; display: grid; gap: 9px; }
+    .smp-card li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.5; }
+    .smp-card li::before { content: "✓"; position: absolute; left: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 10.5px; font-weight: 800; background: var(--accent); color: #0b1220; }
+    .smp-inc { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 10px; padding: 18px 20px; border-radius: 18px; border: 1px dashed rgba(15,122,191,0.35); }
+    .smp-inc b { font-size: 14px; margin-right: 4px; }
+    .smp-inc span { font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 100px; background: var(--bg-card); border: 1px solid var(--border); }
+    @media (max-width: 640px) { .sm-plans { grid-template-columns: 1fr; margin-top: 48px; } .smp-inc { justify-content: flex-start; } }
+
+    /* ---- Services: four cards ---- */
+    @media (min-width: 769px) { .svc-grid-4 { grid-template-columns: repeat(2, 1fr); max-width: 1000px; margin-left: auto; margin-right: auto; } }
+    .svc-list li b { color: var(--text); }
+    .svc-agency { text-align: center; font-size: 14px; color: var(--text-muted); margin-top: 14px; }
+    .svc-agency b { color: var(--accent-dark); }
+    .ft-agency { font-size: 13px; color: var(--accent); margin: -10px 0 20px; }
+
+    /* ---- FAQ: grouped, two columns on desktop ---- */
+    .faq-groups { max-width: 1120px; margin: 0 auto; columns: 2; column-gap: 28px; }
+    .faq-group { break-inside: avoid; margin-bottom: 30px; }
+    .faq-gh { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .faq-gh span { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: #fff; border: 1px solid var(--border); font-size: 17px; }
+    .faq-groups .faq-list { max-width: none; gap: 10px; }
+    .faq-groups .faq-list details { padding: 20px 24px; transition: border-color var(--ease), box-shadow var(--ease); }
+    .faq-groups .faq-list details:hover { border-color: rgba(15,122,191,0.35); }
+    .faq-groups .faq-list details[open] { border-color: rgba(15,122,191,0.45); box-shadow: 0 12px 30px rgba(15,122,191,0.08); }
+    .faq-groups .faq-list summary { font-size: 17px; line-height: 1.4; align-items: flex-start; }
+    .faq-groups .faq-list summary::after { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-raised); font-size: 18px; }
+    .faq-groups .faq-list details p { font-size: 16px; line-height: 1.7; }
+    .faq-more { max-width: 1120px; margin: 10px auto 0; display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; padding: 22px 28px; border-radius: var(--r-lg); background: #fff; border: 1px dashed rgba(15,122,191,0.35); }
+    .faq-more b { display: block; font-family: var(--font-display); font-size: 19px; }
+    .faq-more span { font-size: 15px; color: var(--text-muted); }
+    @media (max-width: 860px) { .faq-groups { columns: 1; max-width: 760px; } .faq-more { max-width: 760px; } }
+    @media (max-width: 560px) {
+      .faq-groups .faq-list details { padding: 16px 18px; }
+      .faq-groups .faq-list summary { font-size: 16px; }
+      .faq-groups .faq-list details p { font-size: 15px; }
+      .faq-more { padding: 20px; } .faq-more .btn { width: 100%; justify-content: center; }
+    }
   </style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Designwithfaiz", "url": "https://designwithfaiz.com", "email": "hello@designwithfaiz.com", "founder": {"@type": "Person", "name": "Faiz Ahmed"}, "address": {"@type": "PostalAddress", "addressLocality": "Jaipur", "addressCountry": "IN"}, "areaServed": "Worldwide", "description": "LinkedIn management, YouTube thumbnails and social media management for founders, creators and agencies.", "sameAs": ["https://www.linkedin.com/in/faiz-ahmed-7931022b8/", "https://x.com/designwithfaiz", "https://www.behance.net/faizgraphicsdesigner"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "name": "LinkedIn Profile Setup", "price": "79", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Management: Consistent (3 posts a week)", "price": "179", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Management: Full Feed (5 posts a week)", "price": "349", "priceCurrency": "USD"}, {"@type": "Offer", "name": "YouTube Thumbnails", "description": "From $25 per thumbnail"}, {"@type": "Offer", "name": "Social Media Management", "description": "Custom quote"}]}}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need to get on a call?", "acceptedAnswer": {"@type": "Answer", "text": "No. You fill a 2-minute form and I send scope, timeline and price within 24 hours. A call happens only if you ask for one."}}, {"@type": "Question", "name": "What's the difference between $179 and $349?", "acceptedAnswer": {"@type": "Answer", "text": "Both include strategy, a monthly calendar, writing in your voice, design, scheduling and a monthly report. Consistent ($179) is 3 posts a week. Full Feed ($349) is 5 posts a week."}}, {"@type": "Question", "name": "Do you reply to comments for me?", "acceptedAnswer": {"@type": "Answer", "text": "No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing."}}, {"@type": "Question", "name": "Will the posts sound like me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Before the first post I study your past posts, your offer and how you talk. You approve every post before it goes live."}}, {"@type": "Question", "name": "Do you work with company pages too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page."}}, {"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "Monthly plans are paid at the start of each month. Profile Setup is paid upfront. I send a secure payment link with the proposal."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Designwithfaiz", "url": "https://designwithfaiz.com", "email": "hello@designwithfaiz.com", "founder": {"@type": "Person", "name": "Faiz Ahmed"}, "address": {"@type": "PostalAddress", "addressLocality": "Jaipur", "addressCountry": "IN"}, "areaServed": "Worldwide", "description": "LinkedIn management, YouTube packaging (thumbnails and titles), video editing and social media management for founders, creators and agencies.", "sameAs": ["https://www.linkedin.com/in/faiz-ahmed-7931022b8/", "https://x.com/designwithfaiz", "https://www.behance.net/faizgraphicsdesigner"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "name": "LinkedIn Profile Setup", "price": "79", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Design Pack: 12 posts", "price": "179", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Design Pack: 20 posts", "price": "279", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Management: Consistent (3 posts a week)", "price": "249", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "249", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Management: Full Feed (5 posts a week)", "price": "449", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "449", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "YouTube Packaging: per video (3 thumbnails + 3 titles)", "price": "39", "priceCurrency": "USD"}, {"@type": "Offer", "name": "YouTube Packaging: 4 videos a month", "price": "129", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "129", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "YouTube Packaging: 8 videos a month", "price": "239", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "239", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 8 videos a month", "price": "199", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "199", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 16 videos a month", "price": "369", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "369", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 30 videos a month", "price": "649", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "649", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Social Media Management: Starter", "price": "349", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "349", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Social Media Management: Growth", "price": "599", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "599", "priceCurrency": "USD", "unitText": "MONTH"}}]}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need to get on a call?", "acceptedAnswer": {"@type": "Answer", "text": "No. You fill a 2-minute form and I send the scope, timeline and price within 24 hours. A call happens only if you ask for one."}}, {"@type": "Question", "name": "What's the difference between Consistent and Full Feed?", "acceptedAnswer": {"@type": "Answer", "text": "Both include strategy, a monthly plan, writing in your voice with 3 captions to choose from on every post, design, publishing and a monthly report. Consistent ($249/month) is 3 posts a week. Full Feed ($449/month) is 5 posts a week. Commit to 3 months on either and your Profile Setup is free."}}, {"@type": "Question", "name": "How do I approve posts?", "acceptedAnswer": {"@type": "Answer", "text": "Every Friday you get a folder with next week's posts. Reply in one message with your choices or changes. If you don't reply in 48 hours, my recommended caption goes live."}}, {"@type": "Question", "name": "I already write my posts. Can you just design them?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that's the Design Pack. Send your text any time and get the designs in 3 working days."}}, {"@type": "Question", "name": "Can I change the post types in my Design Pack?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can swap one type for another. The only swap not allowed is an image post for a carousel."}}, {"@type": "Question", "name": "Do you write my headline and About too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Profile Setup includes your positioning line, 3 headline options and a full About section, written from a short questionnaire. You approve the text before any design starts."}}, {"@type": "Question", "name": "What do you need from me for Profile Setup?", "acceptedAnswer": {"@type": "Answer", "text": "Answers to 8 short questions, your best photo, your brand colours or website, and a screenshot of your LinkedIn analytics so we can compare results after 30 days."}}, {"@type": "Question", "name": "Will the posts sound like me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Before the first post I study your past posts, your offer and how you talk. You also get 3 captions on every post, so you pick the one that sounds most like you."}}, {"@type": "Question", "name": "Do you reply to comments for me?", "acceptedAnswer": {"@type": "Answer", "text": "No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing."}}, {"@type": "Question", "name": "Do you work with company pages too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page."}}, {"@type": "Question", "name": "How long does a thumbnail take?", "acceptedAnswer": {"@type": "Answer", "text": "48 hours from the brief (24 hours on monthly packs), with 2 revisions."}}, {"@type": "Question", "name": "What is ABC testing?", "acceptedAnswer": {"@type": "Answer", "text": "YouTube's Test & Compare shows 3 thumbnails to different viewers and keeps the one that gets the most watch time. I design all 3 so you test real ideas, not colour changes."}}, {"@type": "Question", "name": "Do you work with agencies?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Agencies get white-label rates at 20% off the prices on this page. Tell me about your clients in the form."}}, {"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "100% upfront, by PayPal or Wise. Monthly plans are paid before each month starts. First I send you the scope in writing, and you reply \"Yes\" before you pay."}}]}</script>
 </head>
 <body>
 
@@ -1620,13 +1837,7 @@
      To change TEXT: Edit the words between tags
      To change a LINK: Edit the URL inside href="..."
      To change an IMAGE: Edit the URL inside src="..."
-     To ADD a portfolio item: Copy any <div class="work-item">...</div> block
      To ADD a testimonial:   Copy any <div class="test-card">...</div> block
-
-     HOW TO HOST FOR FREE:
-     1. Go to netlify.com/drop
-     2. Drag this HTML file onto the page
-     3. Done! You get a free live URL instantly
      ============================================= -->
 
   <!-- ====== NAVBAR ====== -->
@@ -1641,9 +1852,9 @@
       <ul class="nav-links">
         <li><a href="#linkedin">LinkedIn</a></li>
         <li><a href="#results">Thumbnails</a></li>
+        <li><a href="#video">Video</a></li>
         <li><a href="#social">Social</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1665,9 +1876,9 @@
     <ul>
       <li><a href="#linkedin" class="mlink">LinkedIn</a></li>
       <li><a href="#results"  class="mlink">Thumbnails</a></li>
+      <li><a href="#video"    class="mlink">Video</a></li>
       <li><a href="#social"   class="mlink">Social</a></li>
       <li><a href="#services" class="mlink">Services</a></li>
-      <li><a href="#work"     class="mlink">Work</a></li>
       <li><a href="#about"    class="mlink">About</a></li>
       <li><a href="#contact"  class="mlink">Contact</a></li>
     </ul>
@@ -1693,7 +1904,7 @@
 
       <!-- ✏️ EDIT: Tagline below headline -->
       <p class="hero-sub">
-        LinkedIn, YouTube thumbnails and social media for <b>founders, creators and agencies.</b> One system, built to win <b>clicks and clients.</b>
+        LinkedIn, YouTube thumbnails, video editing and social media for <b>founders, creators and agencies.</b> One system, built to win <b>clicks and clients.</b>
       </p>
 
       <div class="hero-cta">
@@ -1706,7 +1917,7 @@
       <ul class="hero-stats hero-proof">
         <li><span class="hero-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12l3 3 5-6"/></svg></span><span><b class="stat-n">100+</b> projects done</span></li>
         <li><span class="hero-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b class="stat-n">3+</b> years active</span></li>
-        <li><span class="hero-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18.5 14.8c1.7.7 2.8 2.4 3 5.2"/></svg></span><span><b class="stat-n">2K+</b> social followers</span></li>
+        <li><span class="hero-chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="3.5"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></span><span><b class="stat-n">1.1M+</b> views on client videos</span></li>
       </ul>
     </div>
   </section>
@@ -1730,7 +1941,7 @@
   </div>
 
   <!-- ====== LINKEDIN ACCOUNT MANAGEMENT ====== -->
-  <!-- ✏️ EDIT: LinkedIn section order: hero, Before/After, the two plans (#li-plans), Plan 01 proof (#li-work-setup), Plan 02 proof (#li-work-monthly), "Still deciding?" -->
+  <!-- ✏️ EDIT: LinkedIn section order: hero, Before/After, the three options (#li-plans) + comparison table, Profile Setup proof (#li-work-setup), Monthly proof (#li-work-monthly), "Pick in 10 seconds" -->
   <section id="linkedin" class="sec li-sec">
     <div class="wrap">
       <!-- ✏️ EDIT: LinkedIn hero — headline, buttons and the three quick facts -->
@@ -1743,23 +1954,27 @@
             <button type="button" class="btn btn-li" aria-haspopup="true" aria-expanded="false">Choose Your Plan <span class="btn-ico">▾</span></button>
             <div class="li-pick-menu" role="menu" hidden>
               <a role="menuitem" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
-                <span><b>Profile Setup</b><small>Banner &amp; Featured set · 3 revisions</small></span>
+                <span><b>Profile Setup</b><small>Audit, headline, About, banner &amp; Featured · 2 revisions</small></span>
                 <em>$79<small>one-time</small></em>
               </a>
               <a role="menuitem" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
-                <span><b>Monthly Management</b><small>3 or 5 posts a week, done for you</small></span>
+                <span><b>Design Pack</b><small>You write the posts, I design them</small></span>
                 <em>$179<small>/month+</small></em>
               </a>
-              <a class="li-pick-more" href="#li-plans">Compare both plans ↓</a>
+              <a role="menuitem" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
+                <span><b>Done-For-You Monthly</b><small>3 or 5 posts a week, written, designed and posted</small></span>
+                <em>$249<small>/month+</small></em>
+              </a>
+              <a class="li-pick-more" href="#li-plans">Compare all 3 options ↓</a>
             </div>
           </div>
           <a href="#li-ba" class="btn btn-li-ghost">See Before &amp; After</a>
         </div>
         <ul class="li-facts">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Starting at $79</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Profile ready in 48 hours</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>3 revisions included</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Nothing goes live until you approve</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Profile ready in 3–4 working days</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>2 revision rounds included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>You approve every week's posts in one message</li>
         </ul>
       </div>
 
@@ -1778,6 +1993,8 @@
               <span class="ba-av ba-av-empty" aria-hidden="true"></span>
               <b class="ba-name">Your Name</b>
               <span class="ba-role">Founder · Consultant</span>
+              <div class="ba-row"><span>Headline</span><em class="bad">✕ Just a job title</em></div>
+              <div class="ba-row"><span>About</span><em class="bad">✕ Empty, or reads like a CV</em></div>
               <div class="ba-row"><span>Featured</span><em class="bad">✕ Empty</em></div>
               <div class="ba-row"><span>Last post</span><em class="bad">✕ 3 months ago</em></div>
               <div class="ba-row"><span>Next step for a visitor</span><em class="bad">✕ None</em></div>
@@ -1791,6 +2008,8 @@
               <span class="ba-av"><img src="assets/linkedin/profiles/brandon-keys.webp" alt="" loading="lazy" width="240" height="240"></span>
               <b class="ba-name">Brandon Keys</b>
               <span class="ba-role">Founder, Keys Media</span>
+              <div class="ba-row"><span>Headline</span><em class="ok">✓ Who he helps + the result <i class="ba-pin p1">Profile Setup</i></em></div>
+              <div class="ba-row"><span>About</span><em class="ok">✓ Problem, proof, next step <i class="ba-pin p1">Profile Setup</i></em></div>
               <div class="ba-row"><span>Featured</span><em class="ok">✓ Book a call · See results <i class="ba-pin p1">Profile Setup</i></em></div>
               <div class="ba-row"><span>Last post</span><em class="ok">✓ This week <i class="ba-pin p2">Monthly</i></em></div>
               <div class="ba-row"><span>Next step for a visitor</span><em class="ok">✓ Book a strategy call</em></div>
@@ -1799,55 +2018,105 @@
         </div>
       </div>
 
-      <!-- ====== The two plans ====== -->
+      <!-- ====== The three LinkedIn options ====== -->
       <div id="li-plans" class="li-plans-head" data-fade>
-        <span class="li-eyebrow">Two plans</span>
-        <h3>Fix the profile. <span>Then fill the feed.</span></h3>
-        <p>Start with either one, or do both. Every plan starts with a 2-minute form and a reply within 24 hours.</p>
+        <span class="li-eyebrow">Three options</span>
+        <h3>Three ways I can help <span>on LinkedIn.</span></h3>
+        <p>Fix your profile once, get your posts designed, or hand over everything. Each one starts with a 2-minute form, and I reply within 24 hours.</p>
       </div>
-      <!-- ✏️ EDIT: The two LinkedIn plans -->
-      <div class="li-plans">
+      <!-- ✏️ EDIT: The three LinkedIn options -->
+      <div class="li-plans li-plans-3">
         <article class="lp-card" data-fade data-d="1">
-          <span class="lp-step">Plan 01 · Fix the profile</span>
+          <span class="lp-step">Option 01 · Fix the profile</span>
           <h4>Profile Setup</h4>
-          <p class="lp-for">For when people visit your profile but don't reach out.</p>
+          <p class="lp-for">For when people visit your profile but don't message you.</p>
           <div class="lp-price">$79<small>one-time</small></div>
           <ul class="lp-list">
+            <li>Profile audit scorecard: 10 points, scored before and after</li>
+            <li>Your positioning line: who you help, the result, the proof</li>
+            <li>3 headline options to pick from</li>
+            <li>A new About section, written for your ideal client</li>
             <li>Custom banner built around your offer</li>
-            <li>Featured section graphics that point to one next step</li>
-            <li>Matched to your brand colours and photo</li>
-            <li>Delivered in 48 hours</li>
-            <li>3 revisions, plus 2 free updates in the year</li>
+            <li>3 Featured graphics, each pointing to one next step</li>
+            <li>Profile photo background fixed in your brand colours</li>
+            <li>A step-by-step upload guide (about 10 minutes)</li>
+            <li>30-day result check: profile views before vs after</li>
           </ul>
+          <p class="lp-meta">Ready in 3–4 working days · 2 revision rounds</p>
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline lp-btn" target="_blank" rel="noopener">Get My Profile Set Up →</a>
           <a href="#li-work-setup" class="lp-see">See profiles I've set up ↓</a>
         </article>
-        <article class="lp-card lp-feat" data-fade data-d="2">
-          <span class="lp-badge">Most popular</span>
-          <span class="lp-step">Plan 02 · Fill the feed</span>
-          <h4>Monthly Management</h4>
-          <p class="lp-for">For when you know you should post, but it never happens.</p>
+        <article class="lp-card" data-fade data-d="2">
+          <span class="lp-badge lp-badge-new">New</span>
+          <span class="lp-step">Option 02 · You write, I design</span>
+          <h4>Design Pack</h4>
+          <p class="lp-for">For when you write your own posts but have no time to design them.</p>
           <div class="lp-tiers">
-            <div class="lp-tier"><b>Consistent</b><div class="lp-price">$179<small>/month</small></div><div class="lp-mix"><span><b>3</b> posts a week</span><em>1 carousel · 1 cheat sheet · 1 post</em></div></div>
-            <div class="lp-tier"><b>Full Feed</b><div class="lp-price">$349<small>/month</small></div><div class="lp-mix"><span><b>5</b> posts a week</span><em>1 carousel · 2 cheat sheets · 2 posts</em></div></div>
+            <div class="lp-tier"><b>12 posts</b><div class="lp-price">$179<small>/month</small></div><em>2 carousels · 3 cheat sheets · 3 infographics · 4 image posts</em></div>
+            <div class="lp-tier"><b>20 posts</b><div class="lp-price">$279<small>/month</small></div><em>4 carousels · 5 cheat sheets · 5 infographics · 6 image posts</em></div>
           </div>
           <ul class="lp-list">
-            <li>Strategy and a calendar planned a month ahead</li>
-            <li>Written in your voice, designed on-brand</li>
-            <li>Scheduled and published for you</li>
-            <li>A monthly report on what worked</li>
+            <li>Send your post text any time: WhatsApp, Google Doc, Notion, anything</li>
+            <li>I turn your words into on-brand graphics, headline and slide text included</li>
+            <li>Delivered in 3 working days</li>
+            <li>Swap one post type for another when you need to</li>
+            <li>2 revision rounds on every post</li>
+            <li>You publish (or I can publish for you as an add-on)</li>
           </ul>
-          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li lp-btn" target="_blank" rel="noopener">Start for $179/month <span class="btn-ico">→</span></a>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline lp-btn" target="_blank" rel="noopener">Start My Design Pack →</a>
+          <a href="#li-work-monthly" class="lp-see">See posts I've designed ↓</a>
+        </article>
+        <article class="lp-card lp-feat" data-fade data-d="3">
+          <span class="lp-badge">Most popular</span>
+          <span class="lp-step">Option 03 · Hand it all over</span>
+          <h4>Done-For-You Monthly</h4>
+          <p class="lp-for">For when you know you should post, but never find the time to write or design.</p>
+          <div class="lp-tiers">
+            <div class="lp-tier"><b>Consistent</b><div class="lp-price">$249<small>/month</small></div><em><span><b>3</b> posts a week</span> 1 carousel · 1 cheat sheet · 1 post</em></div>
+            <div class="lp-tier"><b>Full Feed</b><div class="lp-price">$449<small>/month</small></div><em><span><b>5</b> posts a week</span> 1 carousel · 2 cheat sheets · 2 posts</em></div>
+          </div>
+          <ul class="lp-list">
+            <li>Research, strategy and a content plan every month</li>
+            <li>Written in your voice, with 3 captions to choose from on every post</li>
+            <li>Designed on-brand</li>
+            <li>Published for you on set days</li>
+            <li>Every Friday, approve next week's posts in one message</li>
+            <li>Monthly report with 3 actions for next month</li>
+            <li><b>Commit to 3 months, get Profile Setup free</b> ($79 value)</li>
+          </ul>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li lp-btn" target="_blank" rel="noopener">Start for $249/month <span class="btn-ico">→</span></a>
           <a href="#li-work-monthly" class="lp-see">See posts I've made ↓</a>
         </article>
       </div>
+
+      <!-- ✏️ EDIT: Comparison table (on phones each row turns into a small card) -->
+      <div class="li-compare" data-fade>
+        <h4 class="li-compare-h">Side by side</h4>
+        <div class="li-compare-wrap">
+          <table class="lc-table">
+            <thead>
+              <tr><th scope="col"><span class="sr-only">What you get</span></th><th scope="col">Profile Setup</th><th scope="col">Design Pack</th><th scope="col" class="lc-feat">Done-For-You Monthly</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Price</th><td data-label="Profile Setup"><span class="lc-v"><b>$79</b> once</span></td><td data-label="Design Pack"><span class="lc-v"><b>$179 / $279</b> a month</span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v"><b>$249 / $449</b> a month</span></td></tr>
+              <tr><th scope="row">Profile audit + headline + About</th><td data-label="Profile Setup"><span class="lc-v"><span class="lc-yes" aria-label="Included">✓</span></span></td><td data-label="Design Pack"><span class="lc-v"><span class="lc-no" aria-label="Not included">–</span></span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v">Free with 3 months</span></td></tr>
+              <tr><th scope="row">Strategy and monthly plan</th><td data-label="Profile Setup"><span class="lc-v"><span class="lc-no" aria-label="Not included">–</span></span></td><td data-label="Design Pack"><span class="lc-v"><span class="lc-no" aria-label="Not included">–</span></span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v"><span class="lc-yes" aria-label="Included">✓</span></span></td></tr>
+              <tr><th scope="row">Writing</th><td data-label="Profile Setup"><span class="lc-v">Headline + About only</span></td><td data-label="Design Pack"><span class="lc-v">You write</span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v"><span class="lc-yes" aria-hidden="true">✓</span> 3 captions per post</span></td></tr>
+              <tr><th scope="row">Design</th><td data-label="Profile Setup"><span class="lc-v">Banner + Featured</span></td><td data-label="Design Pack"><span class="lc-v"><span class="lc-yes" aria-label="Included">✓</span></span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v"><span class="lc-yes" aria-label="Included">✓</span></span></td></tr>
+              <tr><th scope="row">Publishing</th><td data-label="Profile Setup"><span class="lc-v"><span class="lc-no" aria-label="Not included">–</span></span></td><td data-label="Design Pack"><span class="lc-v">You (add-on available)</span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v"><span class="lc-yes" aria-label="Included">✓</span></span></td></tr>
+              <tr><th scope="row">Monthly report</th><td data-label="Profile Setup"><span class="lc-v">30-day result check</span></td><td data-label="Design Pack"><span class="lc-v"><span class="lc-no" aria-label="Not included">–</span></span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v"><span class="lc-yes" aria-label="Included">✓</span></span></td></tr>
+              <tr><th scope="row">Delivery</th><td data-label="Profile Setup"><span class="lc-v">3–4 working days</span></td><td data-label="Design Pack"><span class="lc-v">3 working days per post</span></td><td data-label="Done-For-You Monthly" class="lc-feat"><span class="lc-v">Weekly, approved every Friday</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <!-- ====== Plan 01 proof: profile showcase (banner + profile photo + Featured section), two sliding rows ====== -->
+    <!-- ====== Profile Setup proof: profile showcase (banner + profile photo + Featured section), two sliding rows ====== -->
     <!-- ✏️ EDIT: Each profile is one <article class="pf-card">. Rows repeat automatically; the second row slides the other way. -->
     <div id="li-work-setup" class="pf-show" data-fade>
       <div class="wrap pf-head">
-        <span class="lp-tag">Plan 01 · Profile Setup · $79</span>
+        <span class="lp-tag">Profile Setup · $79</span>
         <h3>Profiles I've set up. <span>Banner, photo, Featured.</span></h3>
       </div>
       <div class="pf-marquee">
@@ -1924,13 +2193,13 @@
       </div>
       <div class="wrap pf-foot">
         <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Get My Profile Set Up, $79 <span class="btn-ico">→</span></a>
-        <span>3 revisions · 2 free updates in the year</span>
+        <span>Ready in 3–4 working days · 2 revision rounds</span>
       </div>
     </div>
 
-    <!-- ====== Plan 02 proof: how monthly works + real posts ====== -->
+    <!-- ====== Done-For-You Monthly proof: how monthly works + real posts ====== -->
     <div id="li-work-monthly" class="wrap li-work-head" data-fade>
-      <span class="lp-tag lp-tag-light">Plan 02 · Monthly Management · from $179/month</span>
+      <span class="lp-tag lp-tag-light">Done-For-You Monthly · from $249/month</span>
       <h3>A month of posts, <span>handled end to end.</span></h3>
       <p>Every post on the Keys Media company page is researched, written, designed and published by me.</p>
     </div>
@@ -1947,7 +2216,7 @@
           </li>
           <li class="li-step" data-fade data-d="3">
             <span class="li-num">03</span>
-            <div><h3>Post Writing</h3><p>Hooks, stories and insights written in your voice, built to stop the scroll and start conversations.</p></div>
+            <div><h3>Post Writing</h3><p>Hooks, stories and insights written in your voice. Every post comes with 3 captions, so you pick the one that sounds most like you.</p></div>
           </li>
           <li class="li-step" data-fade data-d="4">
             <span class="li-num">04</span>
@@ -1955,11 +2224,11 @@
           </li>
           <li class="li-step" data-fade data-d="5">
             <span class="li-num">05</span>
-            <div><h3>Publishing &amp; Scheduling</h3><p>Posts go live at the right times, every week, without you having to log in and do it yourself.</p></div>
+            <div><h3>Friday Approval &amp; Publishing</h3><p>Every Friday you get next week's posts. Reply once with your picks, and they go live on set days without you logging in.</p></div>
           </li>
           <li class="li-step" data-fade data-d="6">
             <span class="li-num">06</span>
-            <div><h3>Monthly Report</h3><p>A clear report on what performed, what didn't and what we change next month.</p></div>
+            <div><h3>Monthly Report</h3><p>A clear report on what performed, what didn't, and 3 things we'll do next month.</p></div>
           </li>
         </ol>
 
@@ -2007,23 +2276,28 @@
     </div>
     <div class="wrap">
       <div class="li-cta" data-fade>
-        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $179/month <span class="btn-ico">→</span></a>
-        <span class="li-cta-note">3 posts a week ($179) or 5 posts a week ($349) · Planned a month ahead · Reply within 24 hours</span>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-li" target="_blank" rel="noopener">Start for $249/month <span class="btn-ico">→</span></a>
+        <span class="li-cta-note">3 posts a week ($249) or 5 posts a week ($449) · 3 captions on every post · 3 months = Profile Setup free</span>
       </div>
 
-      <!-- ====== Still deciding? ====== -->
+      <!-- ====== Pick in 10 seconds ====== -->
       <div class="li-decide" data-fade>
-        <h3>Still deciding? <span>Here's the short version.</span></h3>
-        <div class="li-decide-grid">
+        <h3>Pick in 10 seconds. <span>Which one sounds like you?</span></h3>
+        <div class="li-decide-grid li-decide-3">
           <a class="ld-opt" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
-            <span class="ld-k">Pick Profile Setup if</span>
-            <p>People find you, look around, and leave without messaging.</p>
+            <span class="ld-k">People see your profile and leave without messaging</span>
+            <p>Profile Setup</p>
             <b>$79 one-time →</b>
           </a>
-          <a class="ld-opt ld-feat" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
-            <span class="ld-k">Pick Monthly Management if</span>
-            <p>Your profile is fine, but nobody sees it because you rarely post.</p>
+          <a class="ld-opt" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
+            <span class="ld-k">You write your posts, but designing them takes too long</span>
+            <p>Design Pack</p>
             <b>From $179/month →</b>
+          </a>
+          <a class="ld-opt ld-feat" href="https://forms.gle/bXXwp2FDUppkxMsu7" target="_blank" rel="noopener">
+            <span class="ld-k">You have no time to write or design</span>
+            <p>Done-For-You Monthly</p>
+            <b>From $249/month →</b>
           </a>
         </div>
         <ol class="ld-steps">
@@ -2042,17 +2316,17 @@
   <section id="results" class="sec res-sec">
     <div class="wrap">
       <div class="res-head" data-fade>
-        <span class="tag">YouTube Thumbnails</span>
+        <span class="tag">YouTube Packaging</span>
         <h2 class="h2">Design That Clicks, <span class="orange">Not Just Looks.</span></h2>
-        <p class="lead">A thumbnail has about a second to win the click. These are real videos from client channels, and several ran far above the channel's average video.</p>
+        <p class="lead">Every video gets research, 3 title options and 3 test-ready thumbnails, so you can see which one wins. The videos below are real ones from client channels.</p>
       </div>
 
       <!-- ✏️ EDIT: Thumbnail quick facts -->
       <ul class="th-facts" data-fade>
+        <li>3 thumbnails per video (A, B, C)</li>
+        <li>3 title options</li>
         <li>Delivered in 48 hours</li>
-        <li>2 revisions included</li>
-        <li>Matched to your title</li>
-        <li>From $25 per thumbnail</li>
+        <li>From $39 per video</li>
       </ul>
 
       <div class="res-stats" data-fade>
@@ -2236,14 +2510,14 @@
       <div class="th-block" data-fade>
         <div class="th-head">
           <span class="th-eyebrow">How it works</span>
-          <h3>From title to thumbnail <span>in 48 hours.</span></h3>
+          <h3>From brief to <span>a tested winner.</span></h3>
         </div>
         <ol class="th-steps">
-          <li><b>Brief</b><span>Send the title, the video idea and any photos you want in it.</span></li>
-          <li><b>Concept</b><span>I plan the idea and the layout before I design anything.</span></li>
-          <li><b>Design</b><span>The full thumbnail at 1280×720, built for the click.</span></li>
-          <li><b>Revisions</b><span>2 rounds of changes included.</span></li>
-          <li><b>Delivery</b><span>Final file within 48 hours, ready to upload.</span></li>
+          <li><b>Brief</b><span>Send the title, a few lines on the video and some good photos of you.</span></li>
+          <li><b>Research</b><span>I look at what's winning in your niche right now, so we start from real data.</span></li>
+          <li><b>3 titles + A/B/C</b><span>3 title options and 3 thumbnails, each one a different idea.</span></li>
+          <li><b>Delivery (48h)</b><span>Ready for YouTube Test &amp; Compare. 2 rounds of changes included.</span></li>
+          <li><b>7-day result</b><span>You send the result, I tell you which one won and what we try next.</span></li>
         </ol>
       </div>
 
@@ -2269,26 +2543,110 @@
       <!-- ✏️ EDIT: What's included -->
       <div class="th-block th-offer" data-fade>
         <div class="th-inc">
-          <h4>What you get</h4>
+          <h4>What every video gets</h4>
           <ul>
-            <li>A 1280×720 thumbnail, ready to upload to YouTube</li>
-            <li>Text and layout matched to your title</li>
-            <li>Delivered within 48 hours</li>
-            <li>2 revisions included</li>
-            <li>A consistent look across videos: templates, colour and type rules</li>
-            <li>Per video or as a monthly pack</li>
+            <li>Research on what's winning in your niche right now</li>
+            <li>3 title options that match the thumbnail ideas</li>
+            <li>3 thumbnails (A, B, C), each a different idea, ready for YouTube Test &amp; Compare</li>
+            <li>1280 × 720, checked at phone size</li>
+            <li>Delivered in 48 hours, 2 revisions</li>
+            <li>A 7-day check: which thumbnail won, and what we learned</li>
           </ul>
         </div>
         <div class="th-quote">
-          <h4>From $25 per thumbnail</h4>
-          <p>Monthly packs cost less per thumbnail. Tell me about your channel and how often you post. You get a price and a timeline within 24 hours.</p>
-          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get a thumbnail quote →</a>
+          <h4>Pick how often you post</h4>
+          <!-- ✏️ EDIT: Thumbnail plans -->
+          <ul class="th-plans">
+            <li><span class="th-plan-n">Per video</span><span class="th-plan-p">$39</span><small>48-hour delivery</small></li>
+            <li><span class="th-plan-n">4 videos a month</span><span class="th-plan-p">$129<i>/month</i></span><small>About $32 a video · 24-hour delivery · channel template · monthly "what won" summary</small></li>
+            <li><span class="th-plan-n">8 videos a month</span><span class="th-plan-p">$239<i>/month</i></span><small>About $30 a video · 24-hour delivery · channel template · monthly "what won" summary</small></li>
+          </ul>
+          <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-dark" target="_blank" rel="noopener">Get my thumbnails →</a>
         </div>
       </div>
     </div>
 
     <div class="wrap res-foot" data-fade>
       <p class="res-note">Hover the rows to pause · Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
+    </div>
+  </section>
+
+  <!-- ====== VIDEO EDITING ====== -->
+  <!-- ✏️ EDIT: To show a real example later, replace a <div class="vs-visual">…</div> with
+       <video src="assets/video/talking-head.mp4" muted loop playsinline autoplay preload="none" poster="assets/video/talking-head.webp"></video> -->
+  <section id="video" class="sec vid-sec">
+    <div class="wrap">
+      <div class="sm-head" data-fade>
+        <span class="tag">Video Editing</span>
+        <h2 class="h2">Videos edited for you.<br><span class="orange">Any style.</span></h2>
+        <p class="lead">Send your footage or your podcast link. Get scroll-stopping videos back in 48 hours.</p>
+      </div>
+
+      <!-- ✏️ EDIT: The 4 video styles -->
+      <div class="vs-grid">
+          <article class="vs-card" data-fade data-d="1">
+            <div class="vs-visual"><svg viewBox="0 0 160 200" aria-hidden="true"><rect width="160" height="200" rx="14" fill="#0b1a2b"/><circle cx="80" cy="78" r="26" fill="#a0cef7"/><path d="M30 168c4-30 24-46 50-46s46 16 50 46z" fill="#a0cef7" opacity=".85"/><g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" class="vs-zoom"><path d="M22 34v-12h12M138 34v-12h-12M22 116v12h12M138 116v12h-12"/></g><rect x="26" y="150" width="108" height="26" rx="7" fill="#fff"/><text x="80" y="168" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="12" fill="#0b1a2b">THIS <tspan fill="#0f7abf">CHANGED</tspan> IT</text></svg></div>
+            <i>01 · Talking-head</i>
+            <h3>Talking-head</h3>
+            <p>You record on your phone. I turn it into a clean reel: mistakes cut, captions on, zooms in the right places.</p>
+            <span class="vs-send"><b>You send:</b> A phone video of you</span>
+          </article>
+          <article class="vs-card" data-fade data-d="2">
+            <div class="vs-visual"><svg viewBox="0 0 160 200" aria-hidden="true"><rect width="160" height="200" rx="14" fill="#0b1a2b"/><rect x="16" y="22" width="128" height="62" rx="8" fill="#16304d"/><circle cx="56" cy="50" r="12" fill="#a0cef7"/><circle cx="104" cy="50" r="12" fill="#a0cef7" opacity=".7"/><rect x="40" y="66" width="32" height="10" rx="5" fill="#a0cef7" opacity=".5"/><rect x="88" y="66" width="32" height="10" rx="5" fill="#a0cef7" opacity=".35"/><g fill="#a0cef7"><rect x="24" y="96" width="4" height="10" rx="2"/><rect x="32" y="92" width="4" height="18" rx="2"/><rect x="40" y="98" width="4" height="6" rx="2"/><rect x="48" y="90" width="4" height="22" rx="2"/><rect x="56" y="95" width="4" height="12" rx="2"/></g><g fill="#fff"><rect x="96" y="92" width="4" height="18" rx="2"/><rect x="104" y="88" width="4" height="26" rx="2"/><rect x="112" y="94" width="4" height="14" rx="2"/><rect x="120" y="90" width="4" height="22" rx="2"/><rect x="128" y="96" width="4" height="10" rx="2"/></g><path d="M66 101h22" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/><rect x="56" y="122" width="48" height="66" rx="8" fill="none" stroke="#fff" stroke-width="2.5" class="vs-pulse"/><circle cx="80" cy="148" r="10" fill="#a0cef7"/><rect x="62" y="168" width="36" height="8" rx="4" fill="#fff"/></svg></div>
+            <i>02 · Clip</i>
+            <h3>Clip</h3>
+            <p>I cut the best moments from your podcast, keynote or YouTube video into vertical clips.</p>
+            <span class="vs-send"><b>You send:</b> A podcast, talk or YouTube link</span>
+          </article>
+          <article class="vs-card" data-fade data-d="3">
+            <div class="vs-visual"><svg viewBox="0 0 160 200" aria-hidden="true"><rect width="160" height="200" rx="14" fill="#0b1a2b"/><rect x="16" y="20" width="128" height="80" rx="8" fill="#16304d"/><path d="M16 86l34-30 24 20 22-16 48 32v8H16z" fill="#a0cef7" opacity=".75"/><circle cx="112" cy="40" r="9" fill="#fff" opacity=".9"/><rect x="16" y="106" width="61" height="34" rx="6" fill="#16304d"/><rect x="83" y="106" width="61" height="34" rx="6" fill="#16304d"/><path d="M24 134l14-12 10 8 10-6 13 10z" fill="#a0cef7" opacity=".5"/><path d="M91 134l18-16 26 16z" fill="#a0cef7" opacity=".5"/><rect x="66" y="150" width="14" height="22" rx="7" fill="#fff"/><path d="M60 164a13 13 0 0 0 26 0M73 177v6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><g fill="#a0cef7" class="vs-wave"><rect x="92" y="158" width="3" height="12" rx="1.5"/><rect x="99" y="154" width="3" height="20" rx="1.5"/><rect x="106" y="160" width="3" height="8" rx="1.5"/><rect x="113" y="156" width="3" height="16" rx="1.5"/></g><g fill="#a0cef7" class="vs-wave"><rect x="44" y="158" width="3" height="12" rx="1.5"/><rect x="51" y="155" width="3" height="18" rx="1.5"/></g></svg></div>
+            <i>03 · Faceless voice-over</i>
+            <h3>Faceless voice-over</h3>
+            <p>Your voice over b-roll and footage. No camera needed, and it still sounds like you.</p>
+            <span class="vs-send"><b>You send:</b> A voice recording + the topic</span>
+          </article>
+          <article class="vs-card" data-fade data-d="4">
+            <div class="vs-visual"><svg viewBox="0 0 160 200" aria-hidden="true"><rect width="160" height="200" rx="14" fill="#0b1a2b"/><text x="20" y="62" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="38" fill="#fff">Why?</text><text x="20" y="82" font-family="DM Sans,sans-serif" font-weight="700" font-size="11" fill="#a0cef7">EXPLAINED IN 60s</text><g class="vs-bars"><rect x="22" y="146" width="20" height="30" rx="4" fill="#16304d"/><rect x="50" y="128" width="20" height="48" rx="4" fill="#16304d"/><rect x="78" y="112" width="20" height="64" rx="4" fill="#a0cef7" opacity=".6"/><rect x="106" y="94" width="20" height="82" rx="4" fill="#a0cef7"/></g><path d="M28 132l28-16 28-14 32-20" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M108 78l10 3-4 9" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="128" cy="40" r="14" fill="none" stroke="#a0cef7" stroke-width="3" stroke-dasharray="60 30"/></svg></div>
+            <i>04 · Motion (VOX-style)</i>
+            <h3>Motion (VOX-style)</h3>
+            <p>Your voice with animated text, charts and graphics. Great for explaining one idea well.</p>
+            <span class="vs-send"><b>You send:</b> A voice recording + your script</span>
+          </article>
+      </div>
+
+      <!-- ✏️ EDIT: Included in every video -->
+      <div class="vs-inc" data-fade>
+        <b>Every video includes</b>
+        <ul>
+          <li>A hook in the first 3 seconds</li>
+          <li>Animated captions in your brand style</li>
+          <li>Cuts and zooms</li>
+          <li>B-roll and music</li>
+          <li>Sized for every platform (9:16 and 4:5)</li>
+          <li>48-hour delivery</li>
+          <li>2 revisions</li>
+        </ul>
+      </div>
+
+      <!-- ✏️ EDIT: Video packs -->
+      <div class="vp-grid" data-fade>
+        <div class="vp-card"><span class="vp-n">Starter</span><div class="vp-p">$199<small>/month</small></div><b>8 videos a month</b><em>About $24.90 a video</em></div>
+        <div class="vp-card vp-feat"><span class="vp-n">Growth</span><div class="vp-p">$369<small>/month</small></div><b>16 videos a month</b><em>About $23 a video</em></div>
+        <div class="vp-card"><span class="vp-n">Pro</span><div class="vp-p">$649<small>/month</small></div><b>30 videos a month</b><em>About $21.60 a video</em></div>
+      </div>
+      <p class="vp-note">Pick any style for every video. Videos up to 90 seconds. Single videos and long YouTube edits: ask for a quote.</p>
+
+      <!-- ✏️ EDIT: How it works -->
+      <ol class="sm-month vs-steps" data-fade>
+        <li><b>Step 1</b><strong>Pick your styles</strong><span>Tell me which styles you like and share 1–2 videos you love the look of.</span></li>
+        <li><b>Step 2</b><strong>Send your footage</strong><span>One line is enough: "Style · Topic · Link".</span></li>
+        <li><b>Step 3</b><strong>Get your video in 48 hours</strong><span>Ready to post. Want changes? Send them in one message.</span></li>
+      </ol>
+
+      <div class="sm-foot" data-fade>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Start My Video Pack →</a>
+        <span>Reply within 24 hours · You post the videos, or add Social Media Management and I post them</span>
+      </div>
     </div>
   </section>
 
@@ -2299,7 +2657,7 @@
       <div class="sm-head" data-fade>
         <span class="tag">Social Media Management</span>
         <h2 class="h2">Show Up Everywhere.<br><span class="orange">Without Doing It Yourself.</span></h2>
-        <p class="lead">I plan, design, write and post your content every month, on the platforms your customers use. You approve. I handle the rest.</p>
+        <p class="lead">I plan your month, design your posts, edit your reels, write captions in your voice and get it all posted, on the platforms your customers use. You approve. I handle the rest.</p>
       </div>
 
       <!-- ✏️ EDIT: Platforms -->
@@ -2307,37 +2665,58 @@
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</span>
         <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7h3l.5-4h-3.5V8.9c0-.6.4-.9 1-.9z"/></svg>Facebook</span>
         <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.2h1.7L7.4 4.73H5.58z"/></svg>X (Twitter)</span>
-        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg>YouTube Community &amp; Shorts</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg>YouTube Shorts</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>LinkedIn</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.3v12.6a2.7 2.7 0 1 1-2.7-2.7c.3 0 .5 0 .8.1V9.6a6 6 0 1 0 5.2 6V9.2a7.6 7.6 0 0 0 4.5 1.4V7.3a4.3 4.3 0 0 1-3.4-1.5z"/></svg>TikTok</span>
       </div>
 
       <div class="sm-layout">
         <!-- ✏️ EDIT: What's included -->
         <div class="sm-cards" data-fade>
           <div class="sm-card"><i>01 · Plan</i><h3>Strategy &amp; calendar</h3><p>A content plan for the month, built around your goals and your offer.</p></div>
-          <div class="sm-card"><i>02 · Create</i><h3>Design + captions</h3><p>On-brand graphics and carousels, with captions written in your voice.</p></div>
-          <div class="sm-card"><i>03 · Publish</i><h3>Scheduling &amp; posting</h3><p>Every post scheduled and published for you, on every platform.</p></div>
-          <div class="sm-card"><i>04 · Report</i><h3>Monthly report</h3><p>What worked, what didn't, and what we change next month.</p></div>
+          <div class="sm-card"><i>02 · Create</i><h3>Posts, reels + captions</h3><p>On-brand posts, reels edited in the style you pick, and captions in your voice for each platform.</p></div>
+          <div class="sm-card"><i>03 · Publish</i><h3>Posting, your way</h3><p>I schedule everything for you, or you schedule with the files I send. Same price either way.</p></div>
+          <div class="sm-card"><i>04 · Report</i><h3>Monthly report</h3><p>Reach, followers, your top 3 posts, and 3 things we change next month.</p></div>
         </div>
 
-        <!-- ✏️ EDIT: Example posts. Put images in assets/social/ (1080×1350) and replace each placeholder div with:
-             <img src="assets/social/post-1.jpg" alt="Instagram post for CLIENT: TOPIC" loading="lazy" width="1080" height="1350">
-             Expected files: post-1.jpg … post-9.jpg -->
+        <!-- ✏️ EDIT: Example creatives. Put images in assets/ads/ (720×720) and copy one <img> line below. -->
         <div class="sm-feed" data-fade data-d="2">
           <div class="sm-feed-top">
             <span class="sm-feed-av" aria-hidden="true"></span>
-            <div><b>yourbrand</b><small>A month of posts, planned and on-brand</small></div>
+            <div><b>Recent client creatives</b><small>Bubbly Bins · Insure247 · Know Your Business</small></div>
           </div>
           <div class="sm-grid">
-            <div class="ph-box" role="img" aria-label="Example post 1, coming soon">Post 1</div>
-            <div class="ph-box" role="img" aria-label="Example post 2, coming soon">Post 2</div>
-            <div class="ph-box" role="img" aria-label="Example post 3, coming soon">Post 3</div>
-            <div class="ph-box" role="img" aria-label="Example post 4, coming soon">Post 4</div>
-            <div class="ph-box" role="img" aria-label="Example post 5, coming soon">Post 5</div>
-            <div class="ph-box" role="img" aria-label="Example post 6, coming soon">Post 6</div>
-            <div class="ph-box" role="img" aria-label="Example post 7, coming soon">Post 7</div>
-            <div class="ph-box" role="img" aria-label="Example post 8, coming soon">Post 8</div>
-            <div class="ph-box" role="img" aria-label="Example post 9, coming soon">Post 9</div>
+            <img src="assets/ads/bubbly-bins-dreaded.jpg" alt="Bubbly Bins ad: "You've dreaded this for a year. Gone this week." A smiling blue bin next to a bin-day calendar" loading="lazy" decoding="async" width="720" height="720">
+            <img src="assets/ads/bubbly-bins-first-clean.jpg" alt="Bubbly Bins ad: "Make the first thing they see the clean one. First clean's free." A happy bin outside a front door" loading="lazy" decoding="async" width="720" height="720">
+            <img src="assets/ads/bubbly-bins-street-smell.jpg" alt="Bubbly Bins ad: "You're the reason the street doesn't smell right." A row of smiling bins and one dirty, unhappy bin" loading="lazy" decoding="async" width="720" height="720">
+            <img src="assets/ads/insure247-loyal-premiums.jpg" alt="Insure247 ad: "9 years loyal. Premiums keep going up. Found it for less in minutes." A hand holding a phone comparing UK car insurers" loading="lazy" decoding="async" width="720" height="720">
+            <img src="assets/ads/insure247-renewal-gone-up.jpg" alt="Insure247 ad: "Your insurance renewal price has gone up." A worried man reading his car insurance renewal letter" loading="lazy" decoding="async" width="720" height="1080">
+            <img src="assets/ads/kyb-vat-gap.jpg" alt="Know Your Business ad: "Profitable business. Wrong month for cash. HMRC does not care." A VAT bill of £12,846 next to £2,190 cash available" loading="lazy" decoding="async" width="720" height="720">
           </div>
+        </div>
+      </div>
+
+      <!-- ✏️ EDIT: Social media plans -->
+      <div class="sm-plans" data-fade>
+        <div class="smp-card">
+          <span class="smp-n">Starter</span>
+          <div class="smp-p">$349<small>/month</small></div>
+          <ul>
+            <li><b>2 platforms</b> of your choice</li>
+            <li><b>8 posts + 4 reels</b> every month</li>
+          </ul>
+        </div>
+        <div class="smp-card smp-feat">
+          <span class="smp-n">Growth</span>
+          <div class="smp-p">$599<small>/month</small></div>
+          <ul>
+            <li><b>6 platforms:</b> Instagram, Facebook, LinkedIn, X, TikTok, YouTube Shorts</li>
+            <li><b>12 posts + 12 reels</b> every month</li>
+          </ul>
+        </div>
+        <div class="smp-inc">
+          <b>Both plans include</b>
+          <span>Monthly content plan</span><span>Post design</span><span>Reel editing in your chosen style</span><span>Captions in your voice for each platform</span><span>Posting (I schedule, or you do with my files)</span><span>Monthly report</span>
         </div>
       </div>
 
@@ -2345,13 +2724,13 @@
       <ol class="sm-month" data-fade>
         <li><b>Start</b><strong>Onboarding</strong><span>A short form about your brand, your goals and your platforms.</span></li>
         <li><b>Plan</b><strong>Calendar</strong><span>I send next month's plan. You approve it.</span></li>
-        <li><b>Create</b><strong>You approve posts</strong><span>You see every post before it goes live.</span></li>
+        <li><b>Create</b><strong>You approve on Fridays</strong><span>Every Friday you see next week's posts and reels. Reply once with your picks.</span></li>
         <li><b>Report</b><strong>Monthly report</strong><span>Results, what worked, and the plan for next month.</span></li>
       </ol>
 
       <div class="sm-foot" data-fade>
-        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Get a social media quote →</a>
-        <span>Custom quote · Reply within 24 hours · Nothing goes live until you approve</span>
+        <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary" target="_blank" rel="noopener">Start Social Media Management →</a>
+        <span>From $349/month · Reply within 24 hours · Agencies: 20% off, white-label</span>
       </div>
     </div>
   </section>
@@ -2362,62 +2741,76 @@
       <div class="svc-head" data-fade>
         <span class="tag">Services</span>
         <h2 class="h2">Pick What You Need.<br><span class="orange">I Handle the Rest.</span></h2>
-        <p class="lead">Three services, one design system. Choose one and fill a 2-minute form. You get scope, timeline and price within 24 hours.</p>
+        <p class="lead">Four services, one design system. Pick one and fill a 2-minute form. You get the scope and timeline in writing within 24 hours.</p>
       </div>
 
-      <div class="svc-grid">
+      <div class="svc-grid svc-grid-4">
         <!-- ✏️ EDIT: Service 1 -->
         <div class="svc-card svc-feat" data-fade data-d="1">
           <span class="svc-badge">Most popular</span>
           <div class="svc-icon">💼</div>
           <span class="svc-best">Best for: Founders, creators &amp; agency owners</span>
           <div class="svc-title">LinkedIn Management</div>
-          <p class="svc-out">Stay visible on LinkedIn without writing a word.</p>
-          <div class="svc-price "><small>from </small>$179<small>/month</small></div>
-          <p class="svc-alt">Or a one-time profile setup for <b>$79</b></p>
+          <p class="svc-out">A profile that turns visitors into messages, and posts that keep you seen.</p>
+          <div class="svc-price"><small>from </small>$79</div>
           <ul class="svc-list">
-            <li>3 posts a week ($179) or 5 posts a week ($349)</li>
-            <li>Written in your voice, designed on-brand</li>
-            <li>Scheduled, published &amp; reported monthly</li>
+            <li><b>$79</b> profile setup, one-time</li>
+            <li><b>Design Pack</b> from $179/month: you write, I design</li>
+            <li><b>Done-for-you</b> from $249/month: written, designed, posted</li>
           </ul>
           <div class="svc-actions">
-            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary svc-btn" target="_blank" rel="noopener">Start for $179/month →</a>
-            <a href="#li-plans" class="svc-link">Compare both plans →</a>
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary svc-btn" target="_blank" rel="noopener">Choose My LinkedIn Option →</a>
+            <a href="#li-plans" class="svc-link">Compare all 3 options →</a>
           </div>
         </div>
         <!-- ✏️ EDIT: Service 2 -->
         <div class="svc-card" data-fade data-d="2">
-          
           <div class="svc-icon">🎯</div>
           <span class="svc-best">Best for: YouTube channels that want more clicks</span>
-          <div class="svc-title">YouTube Thumbnails</div>
-          <p class="svc-out">Win the click on every video, with a look that stays on-brand.</p>
-          <div class="svc-price"><small>from </small>$25<small>/thumbnail</small></div>
+          <div class="svc-title">YouTube Packaging</div>
+          <p class="svc-out">Stop guessing which thumbnail works. Test 3 real ideas on every video.</p>
+          <div class="svc-price"><small>from </small>$39<small>/video</small></div>
           <ul class="svc-list">
-            <li>CTR-led thumbnails matched to the title</li>
-            <li>Templates plus colour and type rules</li>
-            <li>Per-video or monthly pack · 48h, 2 revisions</li>
+            <li>A/B/C thumbnails + 3 title options</li>
+            <li>Ready for YouTube Test &amp; Compare</li>
+            <li>7-day result · 48h delivery, 2 revisions</li>
           </ul>
           <div class="svc-actions">
-            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a thumbnail quote →</a>
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get my thumbnails →</a>
             <a href="#results" class="svc-link">See results →</a>
           </div>
         </div>
         <!-- ✏️ EDIT: Service 3 -->
         <div class="svc-card" data-fade data-d="3">
-          
+          <div class="svc-icon">🎬</div>
+          <span class="svc-best">Best for: Founders and creators who record, but never edit</span>
+          <div class="svc-title">Video Editing</div>
+          <p class="svc-out">Send raw footage or a podcast link. Get reels people actually stop for.</p>
+          <div class="svc-price"><small>from </small>$199<small>/month</small></div>
+          <ul class="svc-list">
+            <li>8, 16 or 30 videos a month, any style</li>
+            <li>Hook, animated captions, b-roll and music</li>
+            <li>48-hour delivery, 2 revisions</li>
+          </ul>
+          <div class="svc-actions">
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Start My Video Pack →</a>
+            <a href="#video" class="svc-link">See the 4 styles →</a>
+          </div>
+        </div>
+        <!-- ✏️ EDIT: Service 4 -->
+        <div class="svc-card" data-fade data-d="4">
           <div class="svc-icon">📱</div>
           <span class="svc-best">Best for: Brands that want to stay active everywhere</span>
           <div class="svc-title">Social Media Management</div>
-          <p class="svc-out">Instagram, Facebook, X and YouTube, planned and posted for you.</p>
-          <div class="svc-price svc-quote">Custom quote</div>
+          <p class="svc-out">Posts, reels and posting handled, on the platforms your customers use.</p>
+          <div class="svc-price"><small>from </small>$349<small>/month</small></div>
           <ul class="svc-list">
-            <li>Monthly strategy and content calendar</li>
-            <li>Designed posts with captions in your voice</li>
-            <li>Scheduled, published &amp; reported monthly</li>
+            <li>Starter: 2 platforms, 8 posts + 4 reels</li>
+            <li>Growth: 6 platforms, 12 posts + 12 reels</li>
+            <li>Plan, design, captions, posting &amp; report</li>
           </ul>
           <div class="svc-actions">
-            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Get a social media quote →</a>
+            <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline svc-btn" target="_blank" rel="noopener">Start Social Media Management →</a>
             <a href="#social" class="svc-link">See what's included →</a>
           </div>
         </div>
@@ -2448,9 +2841,10 @@
       </div>
       <ul class="svc-assure" data-fade>
         <li>Reply within 24 hours</li>
-        <li>Nothing goes live until you approve it</li>
-        <li>Progress on your own Notion board</li>
+        <li>You approve the work in one message</li>
+        <li>All files in your own Google Drive folder</li>
       </ul>
+      <p class="svc-agency" data-fade><b>Agencies:</b> white-label rates at 20% off the prices on this page. Ask in the form.</p>
     </div>
   </section>
 
@@ -2481,70 +2875,6 @@
       <p class="neg-foot" data-fade>
         The thinking that makes a thumbnail win the click <strong>is the same thinking that makes a post stop the scroll.</strong>
       </p>
-    </div>
-  </section>
-
-  <!-- ====== WORK / PORTFOLIO ====== -->
-  <section id="work" class="sec work-sec">
-    <div class="wrap">
-      <div class="work-head" data-fade>
-        <span class="tag">Portfolio</span>
-        <h2 class="h2">Selected <span class="orange">Design Work</span></h2>
-      </div>
-
-      <div class="work-grid">
-
-        <!-- ✏️ EDIT: To add more work, copy a work-item block below and change the src, alt, category, name, and year -->
-        <div class="work-item" data-fade data-d="1">
-          <img src="assets/work/linkedin-branding-mockup.webp"
-               alt="LinkedIn Branding Design" loading="lazy" width="1200" height="825">
-          <div class="work-overlay">
-            <div>
-              <div class="work-cat">LinkedIn Branding</div>
-              <div class="work-name">Brand System for Creator</div>
-              <div class="work-yr">2023</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-item" data-fade data-d="2">
-          <img src="assets/work/thumbnail-design.webp" width="1024" height="768" alt="Thumbnail Design" loading="lazy">
-          <div class="work-overlay">
-            <div>
-              <div class="work-cat">Thumbnail Design</div>
-              <div class="work-name">YouTube CTR Optimization</div>
-              <div class="work-yr">2023</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-item" data-fade data-d="3">
-          <img src="assets/work/poster-design.webp" width="1024" height="768" alt="Poster Design" loading="lazy">
-          <div class="work-overlay">
-            <div>
-              <div class="work-cat">Poster Design</div>
-              <div class="work-name">Event Brand Creatives</div>
-              <div class="work-yr">2023</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-item" data-fade data-d="4">
-          <img src="assets/work/instagram-design.webp" width="1024" height="768" alt="Instagram Post Design" loading="lazy">
-          <div class="work-overlay">
-            <div>
-              <div class="work-cat">Instagram Design</div>
-              <div class="work-name">Social Content System</div>
-              <div class="work-yr">2023</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="work-foot" data-fade>
-        <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">Browse All Work on Behance →</a>
-      </div>
     </div>
   </section>
 
@@ -2580,13 +2910,13 @@
         <li class="proc-item" data-fade data-d="4">
           <span class="proc-n">04</span>
           <div class="proc-t">Delivery</div>
-          <p class="proc-d">Work lands on your own Notion board, so you always see what is in progress and what is done.</p>
+          <p class="proc-d">Work lands in your own Google Drive folder, neatly named, so you always know what is ready and what is next.</p>
         </li>
 
         <li class="proc-item" data-fade data-d="5">
           <span class="proc-n">05</span>
           <div class="proc-t">Revisions &amp; Approval</div>
-          <p class="proc-d">You review, I refine. Nothing goes live until you approve it.</p>
+          <p class="proc-d">You send all your changes in one numbered message, I fix them. 2 revision rounds are included.</p>
         </li>
 
         <li class="proc-item" data-fade data-d="6">
@@ -2636,6 +2966,7 @@
             <span class="skill-pill">LinkedIn Management</span>
             <span class="skill-pill">YouTube Thumbnails</span>
             <span class="skill-pill">Packaging &amp; CTR</span>
+            <span class="skill-pill">Video Editing</span>
             <span class="skill-pill">Social Media Management</span>
             <span class="skill-pill">Brand Identity &amp; Ads</span>
             <span class="skill-pill">AI Workflows</span>
@@ -2643,7 +2974,7 @@
 
           <div class="about-btns">
             <a href="https://wa.me/919461817353" class="btn btn-primary" target="_blank" rel="noopener">Work With Me →</a>
-            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">View Behance</a>
+            <a href="https://www.behance.net/faizgraphicsdesigner" class="btn btn-outline" target="_blank" rel="noopener">Browse All Work on Behance →</a>
           </div>
         </div>
 
@@ -2700,13 +3031,51 @@
         <span class="tag">FAQ</span>
         <h2 class="h2">Questions <span class="orange">Before You Start</span></h2>
       </div>
-      <div class="faq-list" data-fade>
-        <details><summary>Do I need to get on a call?</summary><p>No. You fill a 2-minute form and I send scope, timeline and price within 24 hours. A call happens only if you ask for one.</p></details>
-        <details><summary>What's the difference between $179 and $349?</summary><p>Both include strategy, a monthly calendar, writing in your voice, design, scheduling and a monthly report. Consistent ($179) is 3 posts a week. Full Feed ($349) is 5 posts a week.</p></details>
-        <details><summary>Do you reply to comments for me?</summary><p>No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing.</p></details>
-        <details><summary>Will the posts sound like me?</summary><p>Yes. Before the first post I study your past posts, your offer and how you talk. You approve every post before it goes live.</p></details>
-        <details><summary>Do you work with company pages too?</summary><p>Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page.</p></details>
-        <details><summary>How do I pay?</summary><p>Monthly plans are paid at the start of each month. Profile Setup is paid upfront. I send a secure payment link with the proposal.</p></details>
+      <!-- ✏️ EDIT: FAQ groups. Each <details> is one question. -->
+      <div class="faq-groups">
+        <div class="faq-group" data-fade>
+          <h3 class="faq-gh"><span aria-hidden="true">🚀</span>Getting started</h3>
+          <div class="faq-list">
+            <details><summary>Do I need to get on a call?</summary><p>No. You fill a 2-minute form and I send the scope, timeline and price within 24 hours. A call happens only if you ask for one.</p></details>
+            <details><summary>How do I pay?</summary><p>100% upfront, by PayPal or Wise. Monthly plans are paid before each month starts. First I send you the scope in writing, and you reply "Yes" before you pay.</p></details>
+            <details><summary>Do you work with agencies?</summary><p>Yes. Agencies get white-label rates at 20% off the prices on this page. Tell me about your clients in the form.</p></details>
+            <details><summary>Do you work with company pages too?</summary><p>Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page.</p></details>
+          </div>
+        </div>
+        <div class="faq-group" data-fade>
+          <h3 class="faq-gh"><span aria-hidden="true">💼</span>LinkedIn posts</h3>
+          <div class="faq-list">
+            <details><summary>What's the difference between Consistent and Full Feed?</summary><p>Both include strategy, a monthly plan, writing in your voice with 3 captions to choose from on every post, design, publishing and a monthly report. Consistent ($249/month) is 3 posts a week. Full Feed ($449/month) is 5 posts a week. Commit to 3 months on either and your Profile Setup is free.</p></details>
+            <details><summary>How do I approve posts?</summary><p>Every Friday you get a folder with next week's posts. Reply in one message with your choices or changes. If you don't reply in 48 hours, my recommended caption goes live.</p></details>
+            <details><summary>Will the posts sound like me?</summary><p>Yes. Before the first post I study your past posts, your offer and how you talk. You also get 3 captions on every post, so you pick the one that sounds most like you.</p></details>
+            <details><summary>Do you reply to comments for me?</summary><p>No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing.</p></details>
+          </div>
+        </div>
+        <div class="faq-group" data-fade>
+          <h3 class="faq-gh"><span aria-hidden="true">🪪</span>Profile Setup</h3>
+          <div class="faq-list">
+            <details><summary>Do you write my headline and About too?</summary><p>Yes. Profile Setup includes your positioning line, 3 headline options and a full About section, written from a short questionnaire. You approve the text before any design starts.</p></details>
+            <details><summary>What do you need from me for Profile Setup?</summary><p>Answers to 8 short questions, your best photo, your brand colours or website, and a screenshot of your LinkedIn analytics so we can compare results after 30 days.</p></details>
+          </div>
+        </div>
+        <div class="faq-group" data-fade>
+          <h3 class="faq-gh"><span aria-hidden="true">🎨</span>Design Pack</h3>
+          <div class="faq-list">
+            <details><summary>I already write my posts. Can you just design them?</summary><p>Yes, that's the Design Pack. Send your text any time and get the designs in 3 working days.</p></details>
+            <details><summary>Can I change the post types in my Design Pack?</summary><p>Yes, you can swap one type for another. The only swap not allowed is an image post for a carousel.</p></details>
+          </div>
+        </div>
+        <div class="faq-group" data-fade>
+          <h3 class="faq-gh"><span aria-hidden="true">🎯</span>YouTube thumbnails</h3>
+          <div class="faq-list">
+            <details><summary>How long does a thumbnail take?</summary><p>48 hours from the brief (24 hours on monthly packs), with 2 revisions.</p></details>
+            <details><summary>What is ABC testing?</summary><p>YouTube's Test &amp; Compare shows 3 thumbnails to different viewers and keeps the one that gets the most watch time. I design all 3 so you test real ideas, not colour changes.</p></details>
+          </div>
+        </div>
+      </div>
+      <div class="faq-more" data-fade>
+        <div><b>Still have a question?</b><span>Ask me on WhatsApp. I reply within 24 hours.</span></div>
+        <a href="https://wa.me/919461817353" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Ask on WhatsApp →</a>
       </div>
     </div>
   </section>
@@ -2750,7 +3119,8 @@
           <a href="#home" class="footer-logo logo">
             <img src="assets/brand/logo-light.webp" alt="designwithfaiz" width="774" height="144" loading="lazy">
           </a>
-          <p class="ft-tag">LinkedIn management, YouTube thumbnails and social media for founders, creators and agencies. A studio in Jaipur, working with the US, UK and Canada.</p>
+          <p class="ft-tag">LinkedIn, YouTube thumbnails, video editing and social media for founders, creators and agencies. A studio in Jaipur, working with the US, UK and Canada.</p>
+          <p class="ft-agency">Agencies: white-label at 20% off. Ask in the form.</p>
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary btn-sm ft-cta" target="_blank" rel="noopener">Start Your Project →</a>
         </div>
 
@@ -2758,9 +3128,9 @@
           <h4>Explore</h4>
           <a href="#linkedin">LinkedIn</a>
           <a href="#results">Thumbnails</a>
+          <a href="#video">Video</a>
           <a href="#social">Social</a>
           <a href="#services">Services</a>
-          <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -2768,7 +3138,8 @@
         <div class="ft-col">
           <h4>Services</h4>
           <a href="#linkedin">LinkedIn Management</a>
-          <a href="#results">YouTube Thumbnails</a>
+          <a href="#results">YouTube Packaging</a>
+          <a href="#video">Video Editing</a>
           <a href="#social">Social Media Management</a>
           <a href="#other-services">Other services</a>
         </div>
@@ -2841,7 +3212,7 @@
     setTimeout(() => { fadeEls.forEach(el => el.classList.add('vis')); }, 2500);
 
     // ---- Hero numbers: count up from 0 when they scroll into view ----
-    // Reads the final text (e.g. "27+", "2K+") so editing the HTML is all you need.
+    // Reads the final text (e.g. "27+", "1.1M+") so editing the HTML is all you need.
     document.querySelectorAll('.hero-stats .stat-n').forEach(el => {
       const m = el.textContent.trim().match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
       if (!m || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
