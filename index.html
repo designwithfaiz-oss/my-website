@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/icon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/icon-512.png">
   <link rel="apple-touch-icon" href="assets/brand/icon-180.png">
@@ -1925,6 +1926,148 @@
     /* ---- Contact: other services moved here ---- */
     .cta-other { max-width: 980px; margin: 56px auto 0; text-align: left; }
     .cta-sec .svc-agency { margin-top: 16px; }
+
+    /* =============================================
+       POLISH PASS: bug fixes, mobile patterns, motion
+       ============================================= */
+    /* ---- Fixes ---- */
+    .li-hero { position: relative; z-index: 6; }
+    .th-offer { margin: 96px auto 0; }
+    .th-inc { display: flex; flex-direction: column; }
+    .th-inc-proof { margin-top: auto; padding-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .th-inc-proof div { border: 1px solid var(--res-line); border-radius: 14px; padding: 14px 16px; background: rgba(160,206,247,0.06); }
+    .th-inc-proof b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -0.03em; color: var(--accent); line-height: 1; }
+    .th-inc-proof span { display: block; font-size: 13px; color: var(--res-muted); margin-top: 6px; line-height: 1.4; }
+    @media (max-width: 640px) { .th-offer { margin-top: 72px; } }
+
+    /* ---- Motion: buttons, tiles, cards ---- */
+    .btn { position: relative; overflow: hidden; isolation: isolate; }
+    .btn::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.32) 50%, transparent 70%); transform: translateX(-130%); transition: transform .75s ease; }
+    .btn:hover::after { transform: translateX(130%); }
+    .btn:active { transform: scale(0.97); }
+    .pk-img img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+    .pk-tile:hover .pk-img img { transform: scale(1.06); }
+    .pk-tile:active, .ld-opt:active, .vs-card:active, .smp-card:active { transform: scale(0.98); }
+    .vp-card, .smp-card { transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease); }
+    .vp-card:hover, .smp-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(15,122,191,0.14); }
+    .faq-groups .faq-list summary::after, .lp-more summary::after, .li-compare > summary::after { transition: transform .3s ease, background .3s ease; }
+    @media (prefers-reduced-motion: reduce) { .btn::after { display: none; } .pk-img img { transition: none; } }
+
+    /* ---- Tabs / segmented / switch (phones only) ---- */
+    .tabbar { display: none; }
+    @keyframes tabIn { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
+    @media (max-width: 760px) {
+      .tabbar { display: flex; position: relative; gap: 4px; padding: 5px; margin: 0 auto 16px; border-radius: 100px; background: #eaf2fb; border: 1px solid var(--border); max-width: 460px; }
+      .tabbar button { flex: 1; position: relative; z-index: 1; border: 0; background: none; cursor: pointer; font: 700 13px/1.2 var(--font); color: var(--text-muted); padding: 11px 6px; border-radius: 100px; transition: color .3s ease; white-space: nowrap; }
+      .tabbar button i { font-style: normal; color: #f5b301; }
+      .tabbar button.is-on { color: #fff; }
+      .tab-ind { position: absolute; z-index: 0; top: 5px; bottom: 5px; left: 5px; width: 0; border-radius: 100px; background: #0a66c2; box-shadow: 0 6px 16px rgba(10,102,194,0.3); transition: left .4s cubic-bezier(.4,0,.2,1), width .4s cubic-bezier(.4,0,.2,1); }
+      .tabbar-seg { border-radius: 14px; }
+      .tabbar-seg button { border-radius: 10px; }
+      .tabbar-seg .tab-ind { border-radius: 10px; background: #0b1a2b; box-shadow: 0 6px 16px rgba(10,30,60,0.3); }
+      .tabbar-switch { background: #0b1a2b; border-color: #0b1a2b; }
+      .tabbar-switch button { color: #b9c4cf; }
+      .tabbar-switch button.is-on { color: #0b1220; }
+      .tabbar-switch .tab-ind { background: var(--accent); box-shadow: none; }
+      .js [data-tabpanel]:not(.is-on) { display: none !important; }
+      .js [data-tabpanel].is-on { animation: tabIn .4s cubic-bezier(.2,.8,.2,1) both; }
+      .li-plans-3 { max-width: 460px; }
+      .vp-grid { margin-top: 0; }
+      .sm-plans { margin-top: 0; }
+      .smp-inc { margin-top: 2px; }
+    }
+
+    /* ---- Bottom sheet (comparison on phones) ---- */
+    .sheet-open { display: none; }
+    dialog.sheet { position: fixed; inset: auto 0 0 0; margin: 0; width: 100%; max-width: 100%; max-height: 86vh; border: 0; padding: 0; border-radius: 22px 22px 0 0; background: var(--bg-card); color: var(--text); overflow: hidden; box-shadow: 0 -20px 60px rgba(10,30,60,0.3); }
+    dialog.sheet[open] { animation: sheetUp .42s cubic-bezier(.2,.8,.2,1); }
+    dialog.sheet.closing { animation: sheetDown .3s ease forwards; }
+    dialog.sheet::backdrop { background: rgba(11,26,43,0.55); }
+    @keyframes sheetUp { from { transform: translateY(100%); } to { transform: none; } }
+    @keyframes sheetDown { to { transform: translateY(100%); } }
+    .sheet-top { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 20px 18px 12px; }
+    .sheet-top b { font-family: var(--font-display); font-size: 19px; }
+    .sheet-grab { position: absolute; top: 8px; left: 50%; width: 44px; height: 5px; border-radius: 3px; background: #c9d6e4; transform: translateX(-50%); }
+    .sheet-x { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); background: #fff; font-size: 14px; cursor: pointer; color: var(--text); }
+    .sheet-body { padding: 0 14px 26px; overflow-y: auto; max-height: calc(86vh - 66px); overscroll-behavior: contain; }
+    @media (max-width: 760px) {
+      .js .li-compare { display: none; }
+      .sheet-open { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; max-width: 460px; margin: 18px auto 0; padding: 15px 18px; border-radius: 14px; border: 1px solid var(--border); background: #fff; font: 700 16px var(--font-display); color: var(--text); cursor: pointer; transition: transform var(--ease), border-color var(--ease); }
+      .sheet-open span { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-raised); color: #0a66c2; font-size: 14px; }
+      .sheet-open:active { transform: scale(0.98); }
+    }
+
+    /* ---- Swipe carousels with dots (phones) ---- */
+    .swipe-dots { display: none; }
+    @media (max-width: 760px) {
+      .swipe { display: flex !important; grid-template-columns: none !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin-left: -16px; margin-right: -16px; padding: 4px 16px 8px; scroll-padding: 0 16px; scrollbar-width: none; max-width: none; }
+      .swipe::-webkit-scrollbar { display: none; }
+      .swipe > * { flex: 0 0 84%; scroll-snap-align: start; min-width: 0; }
+      .swipe-dots { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 12px 0 0; }
+      .swipe-dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 4px; background: #c9d6e4; cursor: pointer; transition: width .35s ease, background .35s ease; }
+      .swipe-dots button.on { width: 22px; background: var(--accent-dark); }
+      .swipe-dots + .swipe-hint, .swipe-hint { display: block; text-align: center; font-size: 12px; font-weight: 600; color: var(--text-dim); margin-top: 6px; }
+      .vs-grid.swipe { margin-top: 30px; }
+      .vs-grid.swipe .vs-card { display: flex; flex-direction: column; padding: 12px 12px 18px; }
+      .vs-grid.swipe .vs-visual { grid-row: auto; aspect-ratio: 4 / 3; margin-bottom: 14px; }
+      .vs-grid.swipe .vs-card i, .vs-grid.swipe .vs-card h3, .vs-grid.swipe .vs-card p { padding: 0 4px; }
+      .vs-grid.swipe .vs-send { margin: 12px 4px 0; }
+      .neg-grid.swipe .neg-card { padding: 28px 24px; }
+      .neg-grid.swipe .neg-card:hover, .vs-card:hover { transform: none; }
+    }
+    .swipe-hint { display: none; }
+
+    /* ---- Flip cards (thumbnail rules on phones) ---- */
+    .flip-hint { display: none; }
+    .flip-b .th-rule-n { display: none; }
+    @media (max-width: 760px) {
+      .th-rules { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .th-rule.flip { padding: 0; background: none; border: 0; perspective: 900px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+      .flip-in { display: grid; min-height: 124px; height: 100%; transition: transform .65s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+      .flip-f, .flip-b { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; padding: 14px; border: 1px solid var(--res-line); }
+      .flip-f { background: rgba(255,255,255,0.04); display: flex; flex-direction: column; }
+      .flip-b { background: linear-gradient(160deg, #16304d, #0f2238); transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; }
+      .flip-b .th-rule-n { display: inline; }
+      .flip-b p { font-size: 13.5px; line-height: 1.45; color: var(--res-text); margin-top: 6px; }
+      .th-rule.flip.on .flip-in { transform: rotateY(180deg); }
+      .flip-hint { display: block; margin-top: auto; padding-top: 8px; font-size: 11.5px; font-weight: 700; color: var(--accent); }
+      .th-rule.flip h4 { font-size: 15.5px; margin: 6px 0 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .flip-in { transition: none; } }
+
+    /* ---- Stepper accordion (How it works on phones) ---- */
+    @media (max-width: 640px) {
+      .stepper { gap: 8px; }
+      .stepper .proc-item { display: grid; grid-template-columns: 40px 1fr; grid-template-rows: auto 0fr; column-gap: 14px; align-items: center; padding: 12px 16px; cursor: pointer; transition: grid-template-rows .4s cubic-bezier(.4,0,.2,1), border-color var(--ease), background var(--ease); -webkit-tap-highlight-color: transparent; }
+      .stepper .proc-item:hover { transform: none; box-shadow: none; }
+      .stepper .proc-n { grid-column: 1; grid-row: 1; width: 40px; height: 40px; font-size: 14px; margin: 0; }
+      .stepper .proc-t { grid-column: 2; grid-row: 1; margin: 0; display: flex; justify-content: space-between; align-items: center; font-size: 16.5px; min-height: 40px; }
+      .stepper .proc-t::after { content: "+"; width: 26px; height: 26px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: var(--bg-raised); color: var(--accent-dark); font-size: 17px; transition: transform .35s ease; }
+      .stepper .proc-d { grid-column: 2; grid-row: 2; align-self: stretch; overflow: hidden; min-height: 0; margin: 0; transition: padding .4s ease; }
+      .stepper .proc-item.open { grid-template-rows: auto 1fr; border-color: var(--accent); background: #fff; }
+      .stepper .proc-item.open .proc-t::after { transform: rotate(45deg); }
+      .stepper .proc-item.open .proc-d { padding: 2px 0 6px; }
+    }
+
+    /* ---- Read more (About on phones) ---- */
+    .clamp-btn { display: none; }
+    @media (max-width: 760px) {
+      .js .clamp { position: relative; max-height: 168px; overflow: hidden; transition: max-height .6s cubic-bezier(.4,0,.2,1); }
+      .js .clamp::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 80px; background: linear-gradient(rgba(245,248,252,0), var(--bg-card)); pointer-events: none; transition: opacity .4s ease; }
+      .js .clamp.open { max-height: 900px; }
+      .js .clamp.open::after { opacity: 0; }
+      .clamp-btn { display: inline-flex; align-items: center; gap: 6px; margin: 8px 0 18px; padding: 9px 16px; border-radius: 100px; border: 1px solid var(--border); background: #fff; font: 700 14px var(--font); color: var(--accent-dark); cursor: pointer; }
+      .clamp-btn span { transition: transform .35s ease; }
+      .clamp-btn[aria-expanded="true"] span { transform: rotate(180deg); }
+    }
+
+    /* ---- Auto-scrolling chips (phones) ---- */
+    @keyframes chipsRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .chips-mask { overflow: hidden; margin: 0 -16px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .chips-run { display: flex !important; flex-wrap: nowrap !important; justify-content: flex-start !important; width: max-content; gap: 8px !important; padding: 2px 16px; animation: chipsRun 28s linear infinite; }
+    .chips-run > * { flex: 0 0 auto; white-space: nowrap; }
+    .chips-mask:active .chips-run { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .chips-run { animation: none; } }
   </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Designwithfaiz", "url": "https://designwithfaiz.com", "email": "hello@designwithfaiz.com", "founder": {"@type": "Person", "name": "Faiz Ahmed"}, "address": {"@type": "PostalAddress", "addressLocality": "Jaipur", "addressCountry": "IN"}, "areaServed": "Worldwide", "description": "LinkedIn management, YouTube packaging (thumbnails and titles), video editing and social media management for founders, creators and agencies.", "sameAs": ["https://www.linkedin.com/in/faiz-ahmed-7931022b8/", "https://x.com/designwithfaiz", "https://www.behance.net/faizgraphicsdesigner"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "name": "LinkedIn Profile Setup", "price": "79", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Design Pack: 12 posts", "price": "179", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Design Pack: 20 posts", "price": "279", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Management: Consistent (3 posts a week)", "price": "249", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "249", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Management: Full Feed (5 posts a week)", "price": "449", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "449", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "YouTube Packaging: per video (3 thumbnails + 3 titles)", "price": "39", "priceCurrency": "USD"}, {"@type": "Offer", "name": "YouTube Packaging: 4 videos a month", "price": "129", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "129", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "YouTube Packaging: 8 videos a month", "price": "239", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "239", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 8 videos a month", "price": "199", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "199", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 16 videos a month", "price": "369", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "369", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 30 videos a month", "price": "649", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "649", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Social Media Management: Starter", "price": "349", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "349", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Social Media Management: Growth", "price": "599", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "599", "priceCurrency": "USD", "unitText": "MONTH"}}]}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need to get on a call?", "acceptedAnswer": {"@type": "Answer", "text": "No. You fill a 2-minute form and I send the scope, timeline and price within 24 hours. A call happens only if you ask for one."}}, {"@type": "Question", "name": "What's the difference between Consistent and Full Feed?", "acceptedAnswer": {"@type": "Answer", "text": "Both include strategy, a monthly plan, writing in your voice with 3 captions to choose from on every post, design, publishing and a monthly report. Consistent ($249/month) is 3 posts a week. Full Feed ($449/month) is 5 posts a week. Commit to 3 months on either and your Profile Setup is free."}}, {"@type": "Question", "name": "How do I approve posts?", "acceptedAnswer": {"@type": "Answer", "text": "Every Friday you get a folder with next week's posts. Reply in one message with your choices or changes. If you don't reply in 48 hours, my recommended caption goes live."}}, {"@type": "Question", "name": "I already write my posts. Can you just design them?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that's the Design Pack. Send your text any time and get the designs in 3 working days."}}, {"@type": "Question", "name": "Can I change the post types in my Design Pack?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can swap one type for another. The only swap not allowed is an image post for a carousel."}}, {"@type": "Question", "name": "Do you write my headline and About too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Profile Setup includes your positioning line, 3 headline options and a full About section, written from a short questionnaire. You approve the text before any design starts."}}, {"@type": "Question", "name": "What do you need from me for Profile Setup?", "acceptedAnswer": {"@type": "Answer", "text": "Answers to 8 short questions, your best photo, your brand colours or website, and a screenshot of your LinkedIn analytics so we can compare results after 30 days."}}, {"@type": "Question", "name": "Will the posts sound like me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Before the first post I study your past posts, your offer and how you talk. You also get 3 captions on every post, so you pick the one that sounds most like you."}}, {"@type": "Question", "name": "Do you reply to comments for me?", "acceptedAnswer": {"@type": "Answer", "text": "No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing."}}, {"@type": "Question", "name": "Do you work with company pages too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page."}}, {"@type": "Question", "name": "How long does a thumbnail take?", "acceptedAnswer": {"@type": "Answer", "text": "48 hours from the brief (24 hours on monthly packs), with 2 revisions."}}, {"@type": "Question", "name": "What is ABC testing?", "acceptedAnswer": {"@type": "Answer", "text": "YouTube's Test & Compare shows 3 thumbnails to different viewers and keeps the one that gets the most watch time. I design all 3 so you test real ideas, not colour changes."}}, {"@type": "Question", "name": "Do you work with agencies?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Agencies get white-label rates at 20% off the prices on this page. Tell me about your clients in the form."}}, {"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "100% upfront, by PayPal or Wise. Monthly plans are paid before each month starts. First I send you the scope in writing, and you reply \"Yes\" before you pay."}}]}</script>
@@ -2043,7 +2186,9 @@
   </div>
 
   <!-- ====== WHAT DO YOU NEED? (service picker) ====== -->
-  <!-- ✏️ EDIT: The 4 service tiles. Each one jumps to its section. -->
+  <!-- ✏️ EDIT: The 4 service tiles. Each one jumps to its section.
+       Banners live in assets/services/ (linkedin, thumbnails, video, social .webp, 1280×800).
+       To use your own banner: save it with the same name and size and it replaces this one. -->
   <section id="pick" class="pick-sec">
     <div class="wrap">
       <div class="pick-head" data-fade>
@@ -2052,25 +2197,25 @@
       </div>
       <div class="pk-grid" data-fade>
         <a class="pk-tile" href="#linkedin">
-          <span class="pk-img"><img src="assets/linkedin/title-shift-37x.webp" alt="" loading="lazy" decoding="async" width="720" height="900" style="object-position:top"><i>01</i></span>
+          <span class="pk-img"><img src="assets/services/linkedin.webp" alt="" loading="lazy" decoding="async" width="1280" height="800"><i>01</i></span>
           <b>LinkedIn</b>
           <span class="pk-line">A profile and posts that bring messages</span>
           <span class="pk-price">from $79 <em aria-hidden="true">→</em></span>
         </a>
         <a class="pk-tile" href="#results">
-          <span class="pk-img"><img src="assets/results/starmer-lies.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i>02</i></span>
+          <span class="pk-img"><img src="assets/services/thumbnails.webp" alt="" loading="lazy" decoding="async" width="1280" height="800"><i>02</i></span>
           <b>YouTube thumbnails</b>
           <span class="pk-line">3 thumbnails per video, tested on YouTube</span>
           <span class="pk-price">from $39/video <em aria-hidden="true">→</em></span>
         </a>
         <a class="pk-tile" href="#video">
-          <span class="pk-img"><svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#0b1a2b"/><circle cx="80" cy="46" r="18" fill="#a0cef7"/><path d="M44 120c3-22 17-34 36-34s33 12 36 34z" fill="#a0cef7" opacity=".85"/><g stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M22 28v-10h10M138 28v-10h-10M22 92v10h10M138 92v10h-10"/></g><rect x="38" y="84" width="84" height="20" rx="6" fill="#fff"/><text x="80" y="98" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="10" fill="#0b1a2b">WATCH <tspan fill="#0f7abf">THIS</tspan></text></svg><i>03</i></span>
+          <span class="pk-img"><img src="assets/services/video.webp" alt="" loading="lazy" decoding="async" width="1280" height="800"><i>03</i></span>
           <b>Video editing</b>
           <span class="pk-line">Send raw footage, get ready-to-post reels</span>
           <span class="pk-price">from $199/month <em aria-hidden="true">→</em></span>
         </a>
         <a class="pk-tile" href="#social">
-          <span class="pk-img"><img src="assets/ads/bubbly-bins-first-clean.jpg" alt="" loading="lazy" decoding="async" width="720" height="720"><i>04</i></span>
+          <span class="pk-img"><img src="assets/services/social.webp" alt="" loading="lazy" decoding="async" width="1280" height="800"><i>04</i></span>
           <b>Social media</b>
           <span class="pk-line">Posts, reels and posting, every month</span>
           <span class="pk-price">from $349/month <em aria-hidden="true">→</em></span>
@@ -2190,9 +2335,14 @@
           <b>From $249/month ↓</b>
         </a>
       </div>
-      <!-- ✏️ EDIT: The three LinkedIn options -->
+      <!-- ✏️ EDIT: The three LinkedIn options (on phones they show as tabs, one card at a time) -->
+      <div class="tabbar tabbar-pill" data-tabbar="li" role="tablist" aria-label="LinkedIn options">
+        <button type="button" role="tab" data-target="lp-setup">Profile Setup</button>
+        <button type="button" role="tab" data-target="lp-pack">Design Pack</button>
+        <button type="button" role="tab" data-target="lp-monthly" data-default>Monthly <i>★</i></button>
+      </div>
       <div class="li-plans li-plans-3">
-        <article id="lp-setup" class="lp-card" data-fade data-d="1">
+        <article id="lp-setup" class="lp-card" data-tabpanel="li" data-fade data-d="1">
           <span class="lp-step">Option 01 · Fix the profile</span>
           <h4>Profile Setup</h4>
           <p class="lp-for">For when people visit your profile but don't message you.</p>
@@ -2203,7 +2353,7 @@
             <li>3 headline options to pick from</li>
             <li>A new About section, written for your ideal client</li>
           </ul>
-          <details class="lp-more"><summary>See all 9 things you get</summary>
+          <details class="lp-more anim"><summary>See all 9 things you get</summary>
             <ul class="lp-list">
               <li>Custom banner built around your offer</li>
               <li>3 Featured graphics, each pointing to one next step</li>
@@ -2216,7 +2366,7 @@
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline lp-btn" target="_blank" rel="noopener">Get My Profile Set Up →</a>
           <a href="#li-work-setup" class="lp-see">See profiles I've set up ↓</a>
         </article>
-        <article id="lp-pack" class="lp-card" data-fade data-d="2">
+        <article id="lp-pack" class="lp-card" data-tabpanel="li" data-fade data-d="2">
           <span class="lp-badge lp-badge-new">New</span>
           <span class="lp-step">Option 02 · You write, I design</span>
           <h4>Design Pack</h4>
@@ -2231,7 +2381,7 @@
             <li>Delivered in 3 working days</li>
             <li>Swap one post type for another when you need to</li>
           </ul>
-          <details class="lp-more"><summary>+ 2 more</summary>
+          <details class="lp-more anim"><summary>+ 2 more</summary>
             <ul class="lp-list">
               <li>2 revision rounds on every post</li>
               <li>You publish (or I can publish for you as an add-on)</li>
@@ -2240,7 +2390,7 @@
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-outline lp-btn" target="_blank" rel="noopener">Start My Design Pack →</a>
           <a href="#li-work-monthly" class="lp-see">See posts I've designed ↓</a>
         </article>
-        <article id="lp-monthly" class="lp-card lp-feat" data-fade data-d="3">
+        <article id="lp-monthly" class="lp-card lp-feat is-on" data-tabpanel="li" data-fade data-d="3">
           <span class="lp-badge">Most popular</span>
           <span class="lp-step">Option 03 · Hand it all over</span>
           <h4>Done-For-You Monthly</h4>
@@ -2255,7 +2405,7 @@
             <li>Every Friday, approve next week's posts in one message</li>
             <li><b>Commit to 3 months, get Profile Setup free</b> ($79 value)</li>
           </ul>
-          <details class="lp-more"><summary>+ 3 more</summary>
+          <details class="lp-more anim"><summary>+ 3 more</summary>
             <ul class="lp-list">
               <li>Designed on-brand</li>
               <li>Published for you on set days</li>
@@ -2268,7 +2418,12 @@
       </div>
 
       <!-- ✏️ EDIT: Comparison table (on phones each row turns into a small card) -->
-      <details class="li-compare" id="li-compare" data-fade>
+      <button type="button" class="sheet-open" data-sheet="cmp-sheet">Compare all 3 side by side <span aria-hidden="true">↑</span></button>
+      <dialog class="sheet" id="cmp-sheet" aria-label="Compare the 3 LinkedIn options">
+        <div class="sheet-top"><span class="sheet-grab" aria-hidden="true"></span><b>Compare all 3</b><button type="button" class="sheet-x" aria-label="Close">✕</button></div>
+        <div class="sheet-body"></div>
+      </dialog>
+      <details class="li-compare anim" id="li-compare" data-fade>
         <summary class="li-compare-h">Compare all 3 side by side</summary>
         <div class="li-compare-wrap">
           <table class="lc-table">
@@ -2655,12 +2810,12 @@
           <h3>Six rules. <span>Every thumbnail, every time.</span></h3>
         </div>
         <div class="th-rules">
-          <div class="th-rule"><span class="th-rule-n">01</span><h4>One clear focus</h4><p>One subject. The eye knows where to land.</p></div>
-          <div class="th-rule"><span class="th-rule-n">02</span><h4>Face and emotion</h4><p>A real reaction sets the mood.</p></div>
-          <div class="th-rule"><span class="th-rule-n">03</span><h4>Three words or fewer</h4><p>Adds to the title, never repeats it.</p></div>
-          <div class="th-rule"><span class="th-rule-n">04</span><h4>Contrast that stands out</h4><p>Pops on light and dark YouTube.</p></div>
-          <div class="th-rule"><span class="th-rule-n">05</span><h4>Checked at phone size</h4><p>If it reads small, it reads everywhere.</p></div>
-          <div class="th-rule"><span class="th-rule-n">06</span><h4>Matched to the title</h4><p>One story, so the click feels worth it.</p></div>
+          <div class="th-rule flip" tabindex="0"><div class="flip-in"><div class="flip-f"><span class="th-rule-n">01</span><h4>One clear focus</h4><span class="flip-hint" aria-hidden="true">Tap ↻</span></div><div class="flip-b"><span class="th-rule-n">01</span><p>One subject. The eye knows where to land.</p></div></div></div>
+          <div class="th-rule flip" tabindex="0"><div class="flip-in"><div class="flip-f"><span class="th-rule-n">02</span><h4>Face and emotion</h4><span class="flip-hint" aria-hidden="true">Tap ↻</span></div><div class="flip-b"><span class="th-rule-n">02</span><p>A real reaction sets the mood.</p></div></div></div>
+          <div class="th-rule flip" tabindex="0"><div class="flip-in"><div class="flip-f"><span class="th-rule-n">03</span><h4>Three words or fewer</h4><span class="flip-hint" aria-hidden="true">Tap ↻</span></div><div class="flip-b"><span class="th-rule-n">03</span><p>Adds to the title, never repeats it.</p></div></div></div>
+          <div class="th-rule flip" tabindex="0"><div class="flip-in"><div class="flip-f"><span class="th-rule-n">04</span><h4>Contrast that stands out</h4><span class="flip-hint" aria-hidden="true">Tap ↻</span></div><div class="flip-b"><span class="th-rule-n">04</span><p>Pops on light and dark YouTube.</p></div></div></div>
+          <div class="th-rule flip" tabindex="0"><div class="flip-in"><div class="flip-f"><span class="th-rule-n">05</span><h4>Checked at phone size</h4><span class="flip-hint" aria-hidden="true">Tap ↻</span></div><div class="flip-b"><span class="th-rule-n">05</span><p>If it reads small, it reads everywhere.</p></div></div></div>
+          <div class="th-rule flip" tabindex="0"><div class="flip-in"><div class="flip-f"><span class="th-rule-n">06</span><h4>Matched to the title</h4><span class="flip-hint" aria-hidden="true">Tap ↻</span></div><div class="flip-b"><span class="th-rule-n">06</span><p>One story, so the click feels worth it.</p></div></div></div>
         </div>
       </div>
 
@@ -2687,7 +2842,7 @@
           <span class="th-eyebrow">Niches</span>
           <h3>Channels I design for.</h3>
         </div>
-        <div class="th-niches">
+        <div class="th-niches" data-chips>
           <span>Commentary &amp; news</span>
           <span>Politics</span>
           <span>Comedy &amp; entertainment</span>
@@ -2711,6 +2866,10 @@
             <li>Delivered in 48 hours, 2 revisions</li>
             <li>A 7-day check: which thumbnail won, and what we learned</li>
           </ul>
+          <div class="th-inc-proof">
+            <div><b>1.1M+</b><span>views on featured client videos</span></div>
+            <div><b>26.2x</b><span>best video vs the channel average</span></div>
+          </div>
         </div>
         <div class="th-quote">
           <h4>Pick how often you post</h4>
@@ -2743,7 +2902,7 @@
       </div>
 
       <!-- ✏️ EDIT: The 4 video styles -->
-      <div class="vs-grid">
+      <div class="vs-grid swipe" data-swipe>
           <article class="vs-card" data-fade data-d="1">
             <div class="vs-visual"><svg viewBox="0 0 160 200" aria-hidden="true"><rect width="160" height="200" rx="14" fill="#0b1a2b"/><circle cx="80" cy="78" r="26" fill="#a0cef7"/><path d="M30 168c4-30 24-46 50-46s46 16 50 46z" fill="#a0cef7" opacity=".85"/><g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" class="vs-zoom"><path d="M22 34v-12h12M138 34v-12h-12M22 116v12h12M138 116v12h-12"/></g><rect x="26" y="150" width="108" height="26" rx="7" fill="#fff"/><text x="80" y="168" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="12" fill="#0b1a2b">THIS <tspan fill="#0f7abf">CHANGED</tspan> IT</text></svg></div>
             <i>01 · Talking-head</i>
@@ -2777,7 +2936,7 @@
       <!-- ✏️ EDIT: Included in every video -->
       <div class="vs-inc" data-fade>
         <b>Every video includes</b>
-        <ul>
+        <ul data-chips>
           <li>A hook in the first 3 seconds</li>
           <li>Animated captions in your brand style</li>
           <li>Cuts and zooms</li>
@@ -2789,10 +2948,15 @@
       </div>
 
       <!-- ✏️ EDIT: Video packs -->
+      <div class="tabbar tabbar-seg" data-tabbar="vp" role="tablist" aria-label="Videos a month">
+        <button type="button" role="tab" data-target="vp-8">8 videos</button>
+        <button type="button" role="tab" data-target="vp-16" data-default>16 videos</button>
+        <button type="button" role="tab" data-target="vp-30">30 videos</button>
+      </div>
       <div class="vp-grid" data-fade>
-        <div class="vp-card"><span class="vp-n">Starter</span><div class="vp-p">$199<small>/month</small></div><b>8 videos a month</b><em>About $24.90 a video</em></div>
-        <div class="vp-card vp-feat"><span class="vp-n">Growth</span><div class="vp-p">$369<small>/month</small></div><b>16 videos a month</b><em>About $23 a video</em></div>
-        <div class="vp-card"><span class="vp-n">Pro</span><div class="vp-p">$649<small>/month</small></div><b>30 videos a month</b><em>About $21.60 a video</em></div>
+        <div class="vp-card" id="vp-8" data-tabpanel="vp"><span class="vp-n">Starter</span><div class="vp-p">$199<small>/month</small></div><b>8 videos a month</b><em>About $24.90 a video</em></div>
+        <div class="vp-card vp-feat is-on" id="vp-16" data-tabpanel="vp"><span class="vp-n">Growth</span><div class="vp-p">$369<small>/month</small></div><b>16 videos a month</b><em>About $23 a video</em></div>
+        <div class="vp-card" id="vp-30" data-tabpanel="vp"><span class="vp-n">Pro</span><div class="vp-p">$649<small>/month</small></div><b>30 videos a month</b><em>About $21.60 a video</em></div>
       </div>
       <p class="vp-note">Pick any style for every video. Videos up to 90 seconds. Single videos and long YouTube edits: ask for a quote.</p>
 
@@ -2833,7 +2997,7 @@
 
       <div class="sm-layout">
         <!-- ✏️ EDIT: What's included -->
-        <div class="sm-cards" data-fade>
+        <div class="sm-cards swipe" data-swipe data-fade>
           <div class="sm-card"><i>01 · Plan</i><h3>Strategy &amp; calendar</h3><p>A content plan for the month, built around your goals and your offer.</p></div>
           <div class="sm-card"><i>02 · Create</i><h3>Posts, reels + captions</h3><p>On-brand posts, reels edited in the style you pick, and captions in your voice for each platform.</p></div>
           <div class="sm-card"><i>03 · Publish</i><h3>Posting, your way</h3><p>I schedule everything for you, or you schedule with the files I send. Same price either way.</p></div>
@@ -2858,8 +3022,12 @@
       </div>
 
       <!-- ✏️ EDIT: Social media plans -->
+      <div class="tabbar tabbar-switch" data-tabbar="smp" role="tablist" aria-label="Social media plan">
+        <button type="button" role="tab" data-target="smp-starter" data-default>Starter · 2 platforms</button>
+        <button type="button" role="tab" data-target="smp-growth">Growth · 6 platforms</button>
+      </div>
       <div class="sm-plans" data-fade>
-        <div class="smp-card">
+        <div class="smp-card is-on" id="smp-starter" data-tabpanel="smp">
           <span class="smp-n">Starter</span>
           <div class="smp-p">$349<small>/month</small></div>
           <ul>
@@ -2867,7 +3035,7 @@
             <li><b>8 posts + 4 reels</b> every month</li>
           </ul>
         </div>
-        <div class="smp-card smp-feat">
+        <div class="smp-card smp-feat" id="smp-growth" data-tabpanel="smp">
           <span class="smp-n">Growth</span>
           <div class="smp-p">$599<small>/month</small></div>
           <ul>
@@ -2904,7 +3072,7 @@
         <h2 class="h2">I write it. I design it.<br><span class="orange">That's the difference.</span></h2>
       </div>
 
-      <div class="neg-grid">
+      <div class="neg-grid swipe" data-swipe>
         <!-- ✏️ EDIT: Each card -->
         <div class="neg-card" data-fade data-d="1">
           <div class="neg-strike"><s>Writing without design</s></div>
@@ -2936,7 +3104,7 @@
       </div>
 
       <!-- ✏️ EDIT: Change process step title & description -->
-      <ol class="process-grid">
+      <ol class="process-grid stepper">
         <li class="proc-item" data-fade data-d="1">
           <span class="proc-n">01</span>
           <div class="proc-t">Project form</div>
@@ -2999,6 +3167,7 @@
           <h2 class="h2">Hey, I'm Faiz.</h2>
 
           <!-- ✏️ EDIT: Update your bio -->
+          <div class="clamp" data-clamp>
           <p class="about-bio">
             I'm Faiz Ahmed. I run Designwithfaiz, a design and content studio in Jaipur, India, working with founders, creators and agencies around the world, mostly in the US, UK and Canada.
           </p>
@@ -3008,6 +3177,9 @@
           <p class="about-bio" style="margin-top:-4px">
             I use AI for research and first drafts, so things move fast. I still check every line and every design myself before you see it.
           </p>
+          </div>
+          <button type="button" class="clamp-btn" aria-expanded="false">Read more <span aria-hidden="true">▾</span></button>
+
 
           <!-- ✏️ EDIT: Add or remove skill tags -->
           <div class="about-skills">
@@ -3038,7 +3210,7 @@
         <h2 class="h2">What <span class="orange">clients say</span></h2>
       </div>
 
-      <div class="test-grid">
+      <div class="test-grid swipe" data-swipe>
 
         <!-- ✏️ EDIT: Change testimonial quote, name, role, avatar -->
         <div class="test-card" data-fade data-d="1">
@@ -3084,40 +3256,40 @@
         <div class="faq-group" data-fade>
           <h3 class="faq-gh"><span aria-hidden="true">🚀</span>Getting started</h3>
           <div class="faq-list">
-            <details><summary>Do I need to get on a call?</summary><p>No. You fill a 2-minute form and I send the scope, timeline and price within 24 hours. A call happens only if you ask for one.</p></details>
-            <details><summary>How do I pay?</summary><p>100% upfront, by PayPal or Wise. Monthly plans are paid before each month starts. First I send you the scope in writing, and you reply "Yes" before you pay.</p></details>
-            <details><summary>Do you work with agencies?</summary><p>Yes. Agencies get white-label rates at 20% off the prices on this page. Tell me about your clients in the form.</p></details>
-            <details><summary>Do you work with company pages too?</summary><p>Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page.</p></details>
+            <details class="anim"><summary>Do I need to get on a call?</summary><p>No. You fill a 2-minute form and I send the scope, timeline and price within 24 hours. A call happens only if you ask for one.</p></details>
+            <details class="anim"><summary>How do I pay?</summary><p>100% upfront, by PayPal or Wise. Monthly plans are paid before each month starts. First I send you the scope in writing, and you reply "Yes" before you pay.</p></details>
+            <details class="anim"><summary>Do you work with agencies?</summary><p>Yes. Agencies get white-label rates at 20% off the prices on this page. Tell me about your clients in the form.</p></details>
+            <details class="anim"><summary>Do you work with company pages too?</summary><p>Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page.</p></details>
           </div>
         </div>
         <div class="faq-group" data-fade>
           <h3 class="faq-gh"><span aria-hidden="true">💼</span>LinkedIn posts</h3>
           <div class="faq-list">
-            <details><summary>What's the difference between Consistent and Full Feed?</summary><p>Both include strategy, a monthly plan, writing in your voice with 3 captions to choose from on every post, design, publishing and a monthly report. Consistent ($249/month) is 3 posts a week. Full Feed ($449/month) is 5 posts a week. Commit to 3 months on either and your Profile Setup is free.</p></details>
-            <details><summary>How do I approve posts?</summary><p>Every Friday you get a folder with next week's posts. Reply in one message with your choices or changes. If you don't reply in 48 hours, my recommended caption goes live.</p></details>
-            <details><summary>Will the posts sound like me?</summary><p>Yes. Before the first post I study your past posts, your offer and how you talk. You also get 3 captions on every post, so you pick the one that sounds most like you.</p></details>
-            <details><summary>Do you reply to comments for me?</summary><p>No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing.</p></details>
+            <details class="anim"><summary>What's the difference between Consistent and Full Feed?</summary><p>Both include strategy, a monthly plan, writing in your voice with 3 captions to choose from on every post, design, publishing and a monthly report. Consistent ($249/month) is 3 posts a week. Full Feed ($449/month) is 5 posts a week. Commit to 3 months on either and your Profile Setup is free.</p></details>
+            <details class="anim"><summary>How do I approve posts?</summary><p>Every Friday you get a folder with next week's posts. Reply in one message with your choices or changes. If you don't reply in 48 hours, my recommended caption goes live.</p></details>
+            <details class="anim"><summary>Will the posts sound like me?</summary><p>Yes. Before the first post I study your past posts, your offer and how you talk. You also get 3 captions on every post, so you pick the one that sounds most like you.</p></details>
+            <details class="anim"><summary>Do you reply to comments for me?</summary><p>No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing.</p></details>
           </div>
         </div>
         <div class="faq-group" data-fade>
           <h3 class="faq-gh"><span aria-hidden="true">🪪</span>Profile Setup</h3>
           <div class="faq-list">
-            <details><summary>Do you write my headline and About too?</summary><p>Yes. Profile Setup includes your positioning line, 3 headline options and a full About section, written from a short questionnaire. You approve the text before any design starts.</p></details>
-            <details><summary>What do you need from me for Profile Setup?</summary><p>Answers to 8 short questions, your best photo, your brand colours or website, and a screenshot of your LinkedIn analytics so we can compare results after 30 days.</p></details>
+            <details class="anim"><summary>Do you write my headline and About too?</summary><p>Yes. Profile Setup includes your positioning line, 3 headline options and a full About section, written from a short questionnaire. You approve the text before any design starts.</p></details>
+            <details class="anim"><summary>What do you need from me for Profile Setup?</summary><p>Answers to 8 short questions, your best photo, your brand colours or website, and a screenshot of your LinkedIn analytics so we can compare results after 30 days.</p></details>
           </div>
         </div>
         <div class="faq-group" data-fade>
           <h3 class="faq-gh"><span aria-hidden="true">🎨</span>Design Pack</h3>
           <div class="faq-list">
-            <details><summary>I already write my posts. Can you just design them?</summary><p>Yes, that's the Design Pack. Send your text any time and get the designs in 3 working days.</p></details>
-            <details><summary>Can I change the post types in my Design Pack?</summary><p>Yes, you can swap one type for another. The only swap not allowed is an image post for a carousel.</p></details>
+            <details class="anim"><summary>I already write my posts. Can you just design them?</summary><p>Yes, that's the Design Pack. Send your text any time and get the designs in 3 working days.</p></details>
+            <details class="anim"><summary>Can I change the post types in my Design Pack?</summary><p>Yes, you can swap one type for another. The only swap not allowed is an image post for a carousel.</p></details>
           </div>
         </div>
         <div class="faq-group" data-fade>
           <h3 class="faq-gh"><span aria-hidden="true">🎯</span>YouTube thumbnails</h3>
           <div class="faq-list">
-            <details><summary>How long does a thumbnail take?</summary><p>48 hours from the brief (24 hours on monthly packs), with 2 revisions.</p></details>
-            <details><summary>What is ABC testing?</summary><p>YouTube's Test &amp; Compare shows 3 thumbnails to different viewers and keeps the one that gets the most watch time. I design all 3 so you test real ideas, not colour changes.</p></details>
+            <details class="anim"><summary>How long does a thumbnail take?</summary><p>48 hours from the brief (24 hours on monthly packs), with 2 revisions.</p></details>
+            <details class="anim"><summary>What is ABC testing?</summary><p>YouTube's Test &amp; Compare shows 3 thumbnails to different viewers and keeps the one that gets the most watch time. I design all 3 so you test real ideas, not colour changes.</p></details>
           </div>
         </div>
       </div>
@@ -3229,6 +3401,139 @@
   </footer>
 
   <script>
+
+
+    // ---- Polish pass: mobile patterns + motion ----
+    (function () {
+      var mq = window.matchMedia('(max-width: 760px)');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Tabs, segmented selector and switch (CSS only shows them on phones)
+      var activate = {};
+      document.querySelectorAll('[data-tabbar]').forEach(function (bar) {
+        var key = bar.dataset.tabbar;
+        var btns = Array.prototype.slice.call(bar.querySelectorAll('button'));
+        var ind = document.createElement('span'); ind.className = 'tab-ind'; bar.appendChild(ind);
+        function place() { var on = bar.querySelector('button.is-on'); if (!on) return; ind.style.left = on.offsetLeft + 'px'; ind.style.width = on.offsetWidth + 'px'; }
+        function set(id) {
+          btns.forEach(function (b) { var on = b.dataset.target === id; b.classList.toggle('is-on', on); b.setAttribute('aria-selected', on); });
+          document.querySelectorAll('[data-tabpanel="' + key + '"]').forEach(function (p) { p.classList.toggle('is-on', p.id === id); });
+          place();
+        }
+        activate[key] = set;
+        btns.forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.target); }); });
+        var def = bar.querySelector('[data-default]') || btns[0];
+        set(def.dataset.target);
+        window.addEventListener('resize', place);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+      });
+      // Links to a tab panel (e.g. the LinkedIn chooser) switch to that tab
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#"]'); if (!a || a.getAttribute('href').length < 2) return;
+        var el = document.getElementById(a.getAttribute('href').slice(1));
+        if (!el || !el.dataset.tabpanel || !mq.matches) return;
+        e.preventDefault();
+        activate[el.dataset.tabpanel](el.id);
+        var bar = document.querySelector('[data-tabbar="' + el.dataset.tabpanel + '"]');
+        var y = bar.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+      });
+
+      // Bottom sheet: comparison table
+      document.querySelectorAll('[data-sheet]').forEach(function (btn) {
+        var sheet = document.getElementById(btn.dataset.sheet); if (!sheet || !sheet.showModal) return;
+        var body = sheet.querySelector('.sheet-body');
+        function close() {
+          if (reduce) { sheet.close(); return; }
+          sheet.classList.add('closing');
+          setTimeout(function () { sheet.classList.remove('closing'); sheet.close(); }, 280);
+        }
+        btn.addEventListener('click', function () {
+          if (!body.children.length) { var src = document.querySelector('#li-compare .li-compare-wrap'); if (src) body.appendChild(src.cloneNode(true)); }
+          sheet.showModal();
+        });
+        sheet.querySelector('.sheet-x').addEventListener('click', close);
+        sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });
+        sheet.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+      });
+
+      // Swipe carousels: dots that follow the scroll
+      document.querySelectorAll('[data-swipe]').forEach(function (row) {
+        var items = Array.prototype.slice.call(row.children);
+        var dots = document.createElement('div'); dots.className = 'swipe-dots'; dots.setAttribute('aria-hidden', 'true');
+        items.forEach(function (it, i) {
+          var d = document.createElement('button'); d.type = 'button'; d.tabIndex = -1;
+          d.addEventListener('click', function () { row.scrollTo({ left: it.offsetLeft - row.offsetLeft - 16, behavior: reduce ? 'auto' : 'smooth' }); });
+          dots.appendChild(d);
+        });
+        row.insertAdjacentElement('afterend', dots);
+        var hint = document.createElement('span'); hint.className = 'swipe-hint'; hint.textContent = 'Swipe to see more →';
+        dots.insertAdjacentElement('afterend', hint);
+        function update() {
+          var mid = row.scrollLeft + row.clientWidth / 2, best = 0, bd = 1e9;
+          items.forEach(function (it, i) { var c = it.offsetLeft - row.offsetLeft + it.offsetWidth / 2, dd = Math.abs(c - mid); if (dd < bd) { bd = dd; best = i; } });
+          Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle('on', i === best); });
+          if (row.scrollLeft > 20) hint.style.opacity = '0';
+        }
+        row.addEventListener('scroll', update, { passive: true }); update();
+      });
+
+      // Flip cards
+      document.querySelectorAll('.flip').forEach(function (c) {
+        function t() { if (mq.matches) c.classList.toggle('on'); }
+        c.addEventListener('click', t);
+        c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+      });
+
+      // Stepper accordion
+      document.querySelectorAll('.stepper .proc-item').forEach(function (it, i) {
+        it.setAttribute('tabindex', '0');
+        function t() { if (window.matchMedia('(max-width: 640px)').matches) it.classList.toggle('open'); }
+        it.addEventListener('click', t);
+        it.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+        if (i === 0) it.classList.add('open');
+      });
+
+      // Read more
+      document.querySelectorAll('[data-clamp]').forEach(function (box) {
+        var btn = box.parentNode.querySelector('.clamp-btn'); if (!btn) return;
+        btn.addEventListener('click', function () {
+          var open = box.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+          btn.firstChild.textContent = open ? 'Show less ' : 'Read more ';
+        });
+      });
+
+      // Auto-scrolling chips (phones only)
+      if (mq.matches && !reduce) document.querySelectorAll('[data-chips]').forEach(function (list) {
+        var mask = document.createElement('div'); mask.className = 'chips-mask';
+        list.parentNode.insertBefore(mask, list); mask.appendChild(list);
+        Array.prototype.slice.call(list.children).forEach(function (c) { var k = c.cloneNode(true); k.setAttribute('aria-hidden', 'true'); list.appendChild(k); });
+        list.classList.add('chips-run');
+      });
+
+      // Smooth open/close for <details class="anim">
+      document.querySelectorAll('details.anim').forEach(function (d) {
+        var sm = d.querySelector('summary'); var running = null;
+        sm.addEventListener('click', function (e) {
+          if (reduce || !d.animate) return;
+          e.preventDefault(); if (running) running.cancel();
+          var cs = getComputedStyle(d);
+          var closedH = sm.offsetHeight + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+          var start = d.offsetHeight + 'px';
+          d.style.overflow = 'hidden';
+          if (!d.open) {
+            d.open = true;
+            var end = d.offsetHeight + 'px';
+            running = d.animate({ height: [start, end] }, { duration: 320, easing: 'cubic-bezier(.4,0,.2,1)' });
+          } else {
+            running = d.animate({ height: [start, closedH + 'px'] }, { duration: 260, easing: 'cubic-bezier(.4,0,.2,1)' });
+            running.onfinish = function () { d.open = false; };
+          }
+          running.addEventListener('finish', function () { d.style.overflow = ''; running = null; });
+        });
+      });
+    })();
 
     // ---- Clarity pass: compare table open on desktop, sticky service bar on phones ----
     (function () {
