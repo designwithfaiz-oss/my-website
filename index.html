@@ -90,7 +90,7 @@
     /* ---- Utilities ---- */
     .wrap   { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
     .wrap-narrow { max-width: 920px; margin: 0 auto; padding: 0 28px; }
-    .sec    { padding: 110px 0; }
+    .sec    { padding: 72px 0; }
     .center { text-align: center; }
     .center .lead { margin-left: auto; margin-right: auto; }
 
@@ -1155,9 +1155,9 @@
        ============================================= */
     [data-fade] {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s cubic-bezier(.4,0,.2,1),
-                  transform 0.65s cubic-bezier(.4,0,.2,1);
+      transform: translateY(16px);
+      transition: opacity 0.5s cubic-bezier(.4,0,.2,1),
+                  transform 0.5s cubic-bezier(.4,0,.2,1);
     }
     [data-fade].vis { opacity: 1; transform: translateY(0); }
     [data-d="1"] { transition-delay: 0.08s; }
@@ -1183,7 +1183,7 @@
       .about-grid { grid-template-columns: 360px 1fr; gap: 56px; }
     }
     @media (max-width: 1024px) {
-      .sec { padding: 84px 0; }
+      .sec { padding: 64px 0; }
       .neg-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .svc-grid { grid-template-columns: repeat(2, 1fr); }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1194,7 +1194,7 @@
       .stats-item:nth-child(4) { border-right: none; border-top: 1px solid rgba(31,31,31,0.14); }
     }
     @media (max-width: 768px) {
-      .sec  { padding: 72px 0; }
+      .sec  { padding: 56px 0; }
       .wrap, .wrap-narrow { padding: 0 20px; }
 
       .nav-links, .nav-actions .btn-outline { display: none; }
@@ -1224,7 +1224,7 @@
       .proc-item { padding: 26px 22px; }
     }
     @media (max-width: 480px) {
-      .sec  { padding: 60px 0; }
+      .sec  { padding: 48px 0; }
       .wrap, .wrap-narrow { padding: 0 16px; }
 
       .btn { font-size: 14px; padding: 13px 22px; }
@@ -1707,13 +1707,6 @@
     @media (max-width: 860px) { .li-decide-3 { grid-template-columns: 1fr; } }
 
     /* ---- Thumbnails: plans ---- */
-    .th-plans { list-style: none; display: grid; gap: 0; margin: 16px 0 22px; }
-    .th-plans li { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 12px; padding: 13px 0; border-top: 1px solid rgba(11,18,32,0.14); }
-    .th-plans li:first-child { border-top: 0; padding-top: 4px; }
-    .th-plan-n { font-weight: 700; font-size: 15.5px; }
-    .th-plan-p { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; }
-    .th-plan-p i { font-style: normal; font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: 0; color: #2c3e52; }
-    .th-plans small { grid-column: 1 / -1; font-size: 13px; line-height: 1.5; color: #1f2d3d; }
     .btn-dark { background: #0b1220; color: #fff; border: 1.5px solid #0b1220; }
     .btn-dark:hover { background: #16304d; border-color: #16304d; transform: translateY(-2px); }
 
@@ -2068,6 +2061,48 @@
     .chips-run > * { flex: 0 0 auto; white-space: nowrap; }
     .chips-mask:active .chips-run { animation-play-state: paused; }
     @media (prefers-reduced-motion: reduce) { .chips-run { animation: none; } }
+
+    /* ---- Thumbnail plans: one clean card per plan ---- */
+    .th-quote { padding: 28px; }
+    .th-plans { display: grid; gap: 10px; margin: 18px 0 20px; list-style: none; }
+    .thp { position: relative; background: rgba(255,255,255,0.55); border: 1px solid rgba(11,18,32,0.10); border-radius: 16px; padding: 14px 16px; }
+    .thp-best { background: #fff; border-color: #0b1220; box-shadow: 0 10px 24px rgba(11,18,32,0.12); margin-top: 8px; }
+    .thp-badge { position: absolute; top: -11px; right: 14px; font-size: 10.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; background: #0b1220; color: #fff; }
+    .thp-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .thp-n { font-weight: 700; font-size: 15.5px; color: #0b1220; }
+    .thp-p { font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -0.03em; color: #0b1220; line-height: 1; white-space: nowrap; }
+    .thp-p small { font-family: var(--font); font-size: 13px; font-weight: 600; letter-spacing: 0; color: #2c3e52; margin-left: 2px; }
+    .thp-save { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: #0f5f96; background: rgba(15,122,191,0.12); padding: 3px 10px; border-radius: 100px; }
+    .thp-x { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; padding: 0; }
+    .thp-x li { position: relative; padding-left: 18px; font-size: 13px; line-height: 1.4; color: #1f2d3d; }
+    .thp-x li::before { content: "✓"; position: absolute; left: 0; top: 0; font-weight: 800; color: #0f7abf; }
+    @media (max-width: 640px) { .th-quote { padding: 22px 18px; } .thp { padding: 13px 14px; } .thp-p { font-size: 25px; } }
+
+    /* ---- Spacing + phone text fixes ---- */
+    .li-facts li { text-align: left; }
+    .li-cta { text-align: center; }
+    .li-cta-note { max-width: 520px; }
+    @media (hover: none) { .hover-only { display: none; } }
+    @media (max-width: 760px) {
+      .ld-steps { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; gap: 10px; }
+      .lp-tag { font-size: 11px; letter-spacing: 1px; line-height: 1.5; padding: 6px 14px; }
+      .vs-inc { margin-bottom: 28px; }
+      .tabbar-seg { margin-top: 8px; }
+      .sm-month { grid-template-columns: 1fr 1fr !important; gap: 10px; margin-top: 40px; }
+      .sm-month li { padding: 14px; }
+      .sm-month strong { font-size: 15.5px; }
+      .sm-month span { font-size: 13px; line-height: 1.45; display: block; }
+      .cta-btns { flex-direction: row !important; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .cta-btns .btn:not(.cta-soc) { width: 100%; max-width: 360px; }
+      .cta-btns .btn.cta-soc { flex: 1 1 0; max-width: none; width: auto; padding: 11px 10px; font-size: 13px; justify-content: center; }
+      .cta-other { margin-top: 40px; padding: 20px 16px; }
+      .cta-other ul { grid-template-columns: 1fr 1fr !important; gap: 8px; }
+      .cta-other li { padding: 12px; }
+      .cta-other li b { font-size: 14px; line-height: 1.3; }
+      .cta-other li span { font-size: 12.5px; line-height: 1.4; }
+      .li-text { margin-bottom: 10px; }
+      .vs-steps li:last-child { grid-column: 1 / -1; }
+    }
   </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Designwithfaiz", "url": "https://designwithfaiz.com", "email": "hello@designwithfaiz.com", "founder": {"@type": "Person", "name": "Faiz Ahmed"}, "address": {"@type": "PostalAddress", "addressLocality": "Jaipur", "addressCountry": "IN"}, "areaServed": "Worldwide", "description": "LinkedIn management, YouTube packaging (thumbnails and titles), video editing and social media management for founders, creators and agencies.", "sameAs": ["https://www.linkedin.com/in/faiz-ahmed-7931022b8/", "https://x.com/designwithfaiz", "https://www.behance.net/faizgraphicsdesigner"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "name": "LinkedIn Profile Setup", "price": "79", "priceCurrency": "USD"}, {"@type": "Offer", "name": "LinkedIn Design Pack: 12 posts", "price": "179", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Design Pack: 20 posts", "price": "279", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Management: Consistent (3 posts a week)", "price": "249", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "249", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "LinkedIn Management: Full Feed (5 posts a week)", "price": "449", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "449", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "YouTube Packaging: per video (3 thumbnails + 3 titles)", "price": "39", "priceCurrency": "USD"}, {"@type": "Offer", "name": "YouTube Packaging: 4 videos a month", "price": "129", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "129", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "YouTube Packaging: 8 videos a month", "price": "239", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "239", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 8 videos a month", "price": "199", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "199", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 16 videos a month", "price": "369", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "369", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Video Editing: 30 videos a month", "price": "649", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "649", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Social Media Management: Starter", "price": "349", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "349", "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Social Media Management: Growth", "price": "599", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "599", "priceCurrency": "USD", "unitText": "MONTH"}}]}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need to get on a call?", "acceptedAnswer": {"@type": "Answer", "text": "No. You fill a 2-minute form and I send the scope, timeline and price within 24 hours. A call happens only if you ask for one."}}, {"@type": "Question", "name": "What's the difference between Consistent and Full Feed?", "acceptedAnswer": {"@type": "Answer", "text": "Both include strategy, a monthly plan, writing in your voice with 3 captions to choose from on every post, design, publishing and a monthly report. Consistent ($249/month) is 3 posts a week. Full Feed ($449/month) is 5 posts a week. Commit to 3 months on either and your Profile Setup is free."}}, {"@type": "Question", "name": "How do I approve posts?", "acceptedAnswer": {"@type": "Answer", "text": "Every Friday you get a folder with next week's posts. Reply in one message with your choices or changes. If you don't reply in 48 hours, my recommended caption goes live."}}, {"@type": "Question", "name": "I already write my posts. Can you just design them?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that's the Design Pack. Send your text any time and get the designs in 3 working days."}}, {"@type": "Question", "name": "Can I change the post types in my Design Pack?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, you can swap one type for another. The only swap not allowed is an image post for a carousel."}}, {"@type": "Question", "name": "Do you write my headline and About too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Profile Setup includes your positioning line, 3 headline options and a full About section, written from a short questionnaire. You approve the text before any design starts."}}, {"@type": "Question", "name": "What do you need from me for Profile Setup?", "acceptedAnswer": {"@type": "Answer", "text": "Answers to 8 short questions, your best photo, your brand colours or website, and a screenshot of your LinkedIn analytics so we can compare results after 30 days."}}, {"@type": "Question", "name": "Will the posts sound like me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Before the first post I study your past posts, your offer and how you talk. You also get 3 captions on every post, so you pick the one that sounds most like you."}}, {"@type": "Question", "name": "Do you reply to comments for me?", "acceptedAnswer": {"@type": "Answer", "text": "No. Replies should come from you, so your audience talks to the real person. I handle planning, writing, design and publishing."}}, {"@type": "Question", "name": "Do you work with company pages too?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I run both personal profiles and company pages, including the Keys Media Consulting company page."}}, {"@type": "Question", "name": "How long does a thumbnail take?", "acceptedAnswer": {"@type": "Answer", "text": "48 hours from the brief (24 hours on monthly packs), with 2 revisions."}}, {"@type": "Question", "name": "What is ABC testing?", "acceptedAnswer": {"@type": "Answer", "text": "YouTube's Test & Compare shows 3 thumbnails to different viewers and keeps the one that gets the most watch time. I design all 3 so you test real ideas, not colour changes."}}, {"@type": "Question", "name": "Do you work with agencies?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Agencies get white-label rates at 20% off the prices on this page. Tell me about your clients in the form."}}, {"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "100% upfront, by PayPal or Wise. Monthly plans are paid before each month starts. First I send you the scope in writing, and you reply \"Yes\" before you pay."}}]}</script>
@@ -2874,18 +2909,30 @@
         <div class="th-quote">
           <h4>Pick how often you post</h4>
           <!-- ✏️ EDIT: Thumbnail plans -->
-          <ul class="th-plans">
-            <li><span class="th-plan-n">Per video</span><span class="th-plan-p">$39</span><small>48-hour delivery</small></li>
-            <li><span class="th-plan-n">4 videos a month</span><span class="th-plan-p">$129<i>/month</i></span><small>About $32 a video · 24-hour delivery · channel template · monthly "what won" summary</small></li>
-            <li><span class="th-plan-n">8 videos a month</span><span class="th-plan-p">$239<i>/month</i></span><small>About $30 a video · 24-hour delivery · channel template · monthly "what won" summary</small></li>
-          </ul>
+          <div class="th-plans">
+            <div class="thp">
+              <div class="thp-top"><span class="thp-n">Per video</span><span class="thp-p">$39</span></div>
+              <ul class="thp-x"><li>48-hour delivery</li><li>Pay as you go</li></ul>
+            </div>
+            <div class="thp">
+              <div class="thp-top"><span class="thp-n">4 videos a month</span><span class="thp-p">$129<small>/month</small></span></div>
+              <span class="thp-save">About $32 a video</span>
+              <ul class="thp-x"><li>24-hour delivery</li><li>Channel template</li><li>Monthly "what won" summary</li></ul>
+            </div>
+            <div class="thp thp-best">
+              <span class="thp-badge">Lowest price per video</span>
+              <div class="thp-top"><span class="thp-n">8 videos a month</span><span class="thp-p">$239<small>/month</small></span></div>
+              <span class="thp-save">About $30 a video</span>
+              <ul class="thp-x"><li>24-hour delivery</li><li>Channel template</li><li>Monthly "what won" summary</li></ul>
+            </div>
+          </div>
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-dark" target="_blank" rel="noopener">Get my thumbnails →</a>
         </div>
       </div>
     </div>
 
     <div class="wrap res-foot" data-fade>
-      <p class="res-note">Hover the rows to pause · Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
+      <p class="res-note"><span class="hover-only">Hover the rows to pause · </span>Outlier score (e.g. 15.4x) = views compared with the channel's average video.</p>
     </div>
   </section>
 
@@ -3322,9 +3369,9 @@
           <!-- ✏️ EDIT: Contact buttons -->
           <a href="https://forms.gle/bXXwp2FDUppkxMsu7" class="btn btn-primary"  target="_blank" rel="noopener">📝 Fill the Project Form</a>
           <a href="https://wa.me/919461817353"                        class="btn btn-outline"  target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
-          <a href="https://x.com/designwithfaiz"                      class="btn btn-outline"  target="_blank" rel="noopener">X / Twitter</a>
-          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline"  target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.behance.net/faizgraphicsdesigner"      class="btn btn-outline"  target="_blank" rel="noopener">Behance</a>
+          <a href="https://x.com/designwithfaiz"                      class="btn btn-outline cta-soc"  target="_blank" rel="noopener">X / Twitter</a>
+          <a href="https://www.linkedin.com/in/faiz-ahmed-7931022b8/" class="btn btn-outline cta-soc"  target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.behance.net/faizgraphicsdesigner"      class="btn btn-outline cta-soc"  target="_blank" rel="noopener">Behance</a>
         </div>
       </div>
       <div id="other-services" class="svc-other cta-other" data-fade>
@@ -3591,7 +3638,7 @@
             io.unobserve(e.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px 8% 0px' });
       fadeEls.forEach(el => io.observe(el));
     } else {
       fadeEls.forEach(el => el.classList.add('vis'));
